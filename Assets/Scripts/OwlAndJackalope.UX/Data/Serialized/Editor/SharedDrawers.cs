@@ -1,0 +1,241 @@
+﻿using System;
+using System.Reflection;
+using System.Text.RegularExpressions;
+using OwlAndJackalope.UX.Data.Serialized.Editor.EnumExtensions;
+using OwlAndJackalope.UX.Modules;
+using UnityEditor;
+using UnityEditorInternal;
+using UnityEngine;
+
+namespace OwlAndJackalope.UX.Data.Serialized.Editor
+{
+    public static class SharedDrawers
+    {
+        public const float Buffer = 5;
+        public const string TypeString = "_type";
+        public const string NameString = "_name";
+        public const string CollectionString = "_collection";
+        public const string ValueString = "_value";
+        public const string StringValueString = "_stringValue";
+        public const string ReferenceValueString = "_referenceValue";
+        public const string VectorValueString = "_vectorValue";
+        
+        public const string EnumAssemblyString = "_enumAssemblyName";
+        public const string EnumTypeString = "_enumTypeName";
+        
+        public const string ReferenceTemplatePath = "Reference._collectionDetails";
+        public const string ExperiencePath = "_referenceModule._reference._collectionDetails";
+        
+        public const string KeyTypeString = "_keyType";
+        public const string ValueTypeString = "_valueType";
+
+        public const string KeyCollectionString = "_keyCollection";
+        public const string ValueCollectionString = "_valueCollection";
+        
+        public const string KeyEnumTypeString = "_keyEnumTypeName";
+        public const string KeyEnumAssemblyString = "_keyEnumAssemblyName";
+        public const string ValueEnumTypeString = "_valueEnumTypeName";
+        public const string ValueEnumAssemblyString = "_valueEnumAssemblyName";
+        
+        public static SerializedProperty DrawTypeField(
+            Rect position, 
+            SerializedProperty property, 
+            string typeString, 
+            Action<SerializedProperty> clearPropValues)
+        {
+            return DrawTypeField(position, property, typeString, null, clearPropValues);
+        }
+
+        public static SerializedProperty DrawTypeField(
+            Rect position,
+            SerializedProperty property,
+            string typeString,
+            string fieldName,
+            Action<SerializedProperty> clearPropValues)
+        {
+            var typeProp = property.FindPropertyRelative(typeString);
+            var previousType = typeProp.enumValueIndex;
+            if (property.serializedObject.targetObject is Experience || InCollection(property))
+            {
+                if (fieldName != null)
+                {
+                    EditorGUI.LabelField(position, fieldName, ((DetailType)typeProp.enumValueIndex).ToString(), EditorStyles.helpBox);    
+                }
+                else
+                {
+                    EditorGUI.LabelField(position, ((DetailType)typeProp.enumValueIndex).ToString(), EditorStyles.helpBox);    
+                }
+            }
+            else
+            {
+                if (fieldName != null)
+                {
+                    EditorGUI.PropertyField(position, typeProp, new GUIContent(fieldName));
+                }
+                else
+                {
+                    EditorGUI.PropertyField(position, typeProp, GUIContent.none);
+                }
+                if (typeProp.enumValueIndex != previousType)
+                {
+                    clearPropValues?.Invoke(property);
+                }
+            }
+
+            return typeProp;
+        }
+
+        public static SerializedProperty DrawNameField
+            (Rect position, 
+            SerializedProperty property, 
+            string nameString, 
+            DetailNameChecker checker)
+        {
+            var enabled = GUI.enabled;
+            GUI.enabled = !Application.isPlaying;
+            var nameProp = property.FindPropertyRelative(nameString);
+            var previousName = nameProp.stringValue;
+            var newName = EditorGUI.TextField(position, GUIContent.none, previousName);
+            nameProp.stringValue = checker.CheckName(previousName, newName, property);
+            GUI.enabled = enabled;
+
+            return nameProp;
+        }
+
+        public static (SerializedProperty enumTypeProp, SerializedProperty enumAssemblyProp) DrawEnumTypeField(
+            Rect position, 
+            SerializedProperty property,
+            string enumTypeString,
+            string enumAssemblyString)
+        {
+            return DrawEnumTypeField(position, property, enumTypeString, enumAssemblyString, null);
+        }
+        
+        public static (SerializedProperty enumTypeProp, SerializedProperty enumAssemblyProp) DrawEnumTypeField(
+            Rect position, 
+            SerializedProperty property,
+            string enumTypeString,
+            string enumAssemblyString,
+            string fieldName)
+        {
+            var previousEnabled = GUI.enabled;
+            GUI.enabled = !InCollection(property);
+            
+            var assemblyProp = property.FindPropertyRelative(enumAssemblyString);
+            var enumTypeProp = property.FindPropertyRelative(enumTypeString);
+            
+            var index = Array.FindIndex(SerializedDetailEnumCache.EnumTypeFullNames, x => enumTypeProp.stringValue == x);
+            index = Math.Max(0, index);
+            
+            index = EditorGUI.Popup(position, fieldName ?? string.Empty, index, SerializedDetailEnumCache.EnumTypeNames);   
+            var type = SerializedDetailEnumCache.GetEnumType(SerializedDetailEnumCache.EnumTypeNames[index]);
+            if (type != null)
+            {
+                assemblyProp.stringValue = type.Assembly.FullName;
+                enumTypeProp.stringValue = type.FullName;
+            }
+
+            GUI.enabled = previousEnabled;
+            return (enumTypeProp, assemblyProp);
+        }
+        
+        public static bool InCollection(SerializedProperty property)
+        {
+            var collectionRegex = new Regex("_collectionDetails.Array.*_collection.Array");
+            var mapRegex = new Regex("_mapDetails.Array.*Collection.Array");
+            return collectionRegex.IsMatch(property.propertyPath) || mapRegex.IsMatch(property.propertyPath);
+        }
+
+        public static float GetCollectionHeight(SerializedProperty property, string collectionString)
+        {
+            var rowSize = EditorGUIUtility.singleLineHeight + Buffer;
+            var collections = property.FindPropertyRelative(collectionString);
+            return rowSize * (collections.isExpanded ? (5 + Mathf.Max(1,collections.arraySize)) : 3);
+        }
+        
+        public static float GetMapHeight(SerializedProperty property, string collectionString)
+        {
+            var rowSize = EditorGUIUtility.singleLineHeight + Buffer;
+            var collections = property.FindPropertyRelative(collectionString);
+            return rowSize * (collections.isExpanded ? (6 + Mathf.Max(2,collections.arraySize * 2)) : 4);
+        }
+
+        public static ReorderableList CreateDetailList(SerializedProperty property, 
+            string typeString, 
+            string nameString,
+            bool allowReordering,
+            Action<SerializedProperty> clearFunc)
+        {
+            var list = new ReorderableList(property.serializedObject, 
+                property, 
+                allowReordering, 
+                false, 
+                true, 
+                true);
+
+            list.drawElementCallback = (rect, index, active, focused) =>
+            {
+                EditorGUI.PropertyField(rect, property.GetArrayElementAtIndex(index));
+            };
+
+            list.onAddDropdownCallback = (rect, reorderableList) =>
+            {
+                var type = typeof(DetailType);
+                var menu = new GenericMenu();
+                foreach (var val in type.GetEnumNames())
+                {
+                    menu.AddItem(new GUIContent(val), false, selection =>
+                    {
+                        var enumName = (string) selection;
+                        property.InsertArrayElementAtIndex(property.arraySize);
+                        var newItem = property.GetArrayElementAtIndex(property.arraySize - 1);
+                        newItem.FindPropertyRelative(typeString).enumValueIndex = (int)Enum.Parse(type, enumName);
+
+                        var guidString = Guid.NewGuid().ToString();
+                        newItem.FindPropertyRelative(nameString).stringValue =
+                            $"{enumName} {guidString.Substring(0, guidString.IndexOf("-"))}";
+                        
+                        clearFunc?.Invoke(newItem);
+
+                        property.serializedObject.ApplyModifiedProperties();
+                    }, val);
+                }
+                menu.DropDown(rect);
+            };
+            
+            return list;
+        }
+
+        public static ReorderableList CreateMapList(SerializedProperty property)
+        {
+            var list = new ReorderableList(property.serializedObject, property, false, false, true, true);
+            list.drawElementCallback = (rect, index, active, focused) =>
+            {
+                EditorGUI.PropertyField(rect, property.GetArrayElementAtIndex(index), true);
+            };
+            list.elementHeightCallback = index =>
+            {
+                var prop = property.GetArrayElementAtIndex(index);
+                return GetMapHeight(prop, KeyCollectionString);
+            };
+            list.onAddDropdownCallback = (rect, list) =>
+            {
+                SelectMapTypeWindow.Open(rect, (keyType, valueType) =>
+                {
+                    property.InsertArrayElementAtIndex(property.arraySize);
+                    var newItem = property.GetArrayElementAtIndex(property.arraySize - 1);
+                    
+                    newItem.FindPropertyRelative(KeyTypeString).enumValueIndex = (int)keyType;
+                    newItem.FindPropertyRelative(ValueTypeString).enumValueIndex = (int)valueType;
+                    
+                    var guidString = Guid.NewGuid().ToString();
+                    newItem.FindPropertyRelative(NameString).stringValue =
+                        $"{keyType.ToString()} {guidString.Substring(0, guidString.IndexOf("-"))}";
+                    property.serializedObject.ApplyModifiedProperties();
+                });
+            };
+
+            return list;
+        }
+    }
+}

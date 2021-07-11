@@ -1,0 +1,76 @@
+﻿using System;
+using System.Reflection;
+using UnityEngine;
+
+namespace OwlAndJackalope.UX.Data.Serialized
+{
+    /// <summary>
+    /// Serialized detail type indicates the data type that this will represent.
+    /// It can be a primitive type or another reference object.
+    /// </summary>
+    public enum DetailType
+    {
+        Bool = 0,
+        Integer = 1,
+        Long = 2,
+        Float = 3,
+        Double = 4,
+        Enum = 5,
+        String = 6,
+        Reference = 7,
+        Vector2 = 8,
+        Vector3 = 9,
+        Color = 10,
+
+        Custom = 11
+    }
+
+    public static class DetailTypeExtensions
+    {
+        public static Type ConvertToType(this DetailType detailType, string enumName, string enumAssembly)
+        {
+            switch (detailType)
+            {
+                case DetailType.Bool:
+                    return typeof(bool);
+                case DetailType.Integer:
+                    return typeof(int);
+                case DetailType.Long:
+                    return typeof(long);
+                case DetailType.Float:
+                    return typeof(float);
+                case DetailType.Double:
+                    return typeof(double);
+                case DetailType.Enum:
+                    return GetEnumType(enumName, enumAssembly);
+                case DetailType.String:
+                    return typeof(string);
+                case DetailType.Reference:
+                    return typeof(IReference);
+                case DetailType.Vector2:
+                    return typeof(Vector2);
+                case DetailType.Vector3:
+                    return typeof(Vector3);
+                case DetailType.Color:
+                    return typeof(Color);
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(detailType), detailType, null);
+            }
+        }
+
+        private static Type GetEnumType(string enumName, string assemblyName)
+        {
+            try
+            {
+                var assembly = Assembly.Load(assemblyName);
+                return assembly.GetType(enumName);
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning($"Can't deserialize enum type: {e}");
+            }
+
+            return null;
+        }
+    }
+}

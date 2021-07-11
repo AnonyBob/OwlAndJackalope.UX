@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308a0fcb92eb4130aea54ffbe7361354, type: 3}
+  m_Name: DanielCraig
+  m_EditorClassIdentifier: 
+  Reference:
+    _details:
+    - _name: Name
+      _type: 6
+      _enumTypeName: 
+      _enumAssemblyName: 
+      _value: 0
+      _stringValue: Daniel Craig
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+    - _name: Age
+      _type: 2
+      _enumTypeName: 
+      _enumAssemblyName: 
+      _value: 53.1
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+    - _name: EyeColor
+      _type: 10
+      _enumTypeName: 
+      _enumAssemblyName: 
+      _value: 53.1
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0.495283, y: 0.8127325, z: 1, w: 1}
+    _collectionDetails:
+    - _name: Float 78f6265d
+      _type: 6
+      _enumTypeName: 
+      _enumAssemblyName: 
+      _collection: []
+    - _name: Reference c4f6f428
+      _type: 7
+      _enumTypeName: 
+      _enumAssemblyName: 
+      _collection: []
+    _mapDetails:
+    - _name: UniqueName
+      _keyType: 6
+      _keyEnumTypeName: 
+      _keyEnumAssemblyName: 
+      _valueType: 8
+      _valueEnumTypeName: 
+      _valueEnumAssemblyName: 
+      _keyCollection: []
+      _valueCollection: []
