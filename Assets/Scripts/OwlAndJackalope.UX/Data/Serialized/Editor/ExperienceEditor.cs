@@ -35,8 +35,8 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
                 _referenceEditor.Draw();
                 EditorGUI.indentLevel--;
             }
-            
-            
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_stateModule"), true);
             serializedObject.ApplyModifiedProperties();
         }
     }

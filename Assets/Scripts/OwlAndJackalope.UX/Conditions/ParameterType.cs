@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace OwlAndJackalope.UX.Data.Conditions
+namespace OwlAndJackalope.UX.Conditions
 {
     public enum ParameterType
     {

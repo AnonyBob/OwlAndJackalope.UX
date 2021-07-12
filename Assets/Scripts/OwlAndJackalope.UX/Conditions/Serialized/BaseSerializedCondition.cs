@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
+using OwlAndJackalope.UX.Data;
 using OwlAndJackalope.UX.Data.Serialized;
 using UnityEngine;
 
-namespace OwlAndJackalope.UX.Data.Conditions.Serialized
+namespace OwlAndJackalope.UX.Conditions.Serialized
 {
     [System.Serializable]
     public class BaseSerializedCondition : ISerializedCondition

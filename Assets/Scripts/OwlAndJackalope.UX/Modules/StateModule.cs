@@ -1,4 +1,8 @@
-﻿namespace OwlAndJackalope.UX.Modules
+﻿using System.Collections.Generic;
+using OwlAndJackalope.UX.States.Serialized;
+using UnityEngine;
+
+namespace OwlAndJackalope.UX.Modules
 {
     /// <summary>
     /// Maintains the relationship between the reference's details and the various defined states.
@@ -8,6 +12,7 @@
     [System.Serializable]
     public class StateModule
     {
-        
+        [SerializeField]
+        private List<BaseSerializedState> _states;
     }
 }

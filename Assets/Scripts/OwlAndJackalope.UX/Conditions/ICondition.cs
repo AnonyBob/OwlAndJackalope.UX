@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using OwlAndJackalope.UX.Data;
 
-namespace OwlAndJackalope.UX.Data.Conditions
+namespace OwlAndJackalope.UX.Conditions
 {
     public interface ICondition
     {

@@ -1,22 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using OwlAndJackalope.UX.Data.Conditions;
+using OwlAndJackalope.UX.Conditions;
+using OwlAndJackalope.UX.Data;
 
-namespace OwlAndJackalope.UX.Data.State
+namespace OwlAndJackalope.UX.States
 {
     public class BaseRuntimeState : IState
     {
         public bool IsActive => _active;
+
+        public string Name => _name;
         
         public event Action OnStateActiveChanged;
-        
+
+        private readonly string _name;
         private readonly IReference _reference;
         private readonly List<ICondition> _conditions;
         private bool _active;
 
-        public BaseRuntimeState(IReference reference, IEnumerable<ICondition> conditions)
+        public BaseRuntimeState(string name, IReference reference, IEnumerable<ICondition> conditions)
         {
+            _name = name;
             _reference = reference;
             _conditions = conditions.ToList();
 

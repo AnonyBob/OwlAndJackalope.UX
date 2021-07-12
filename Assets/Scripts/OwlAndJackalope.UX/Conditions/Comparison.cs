@@ -1,4 +1,4 @@
-﻿namespace OwlAndJackalope.UX.Data.Conditions
+﻿namespace OwlAndJackalope.UX.Conditions
 {
     public enum Comparison
     {

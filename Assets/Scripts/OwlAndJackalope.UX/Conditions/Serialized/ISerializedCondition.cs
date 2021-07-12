@@ -1,4 +1,4 @@
-﻿namespace OwlAndJackalope.UX.Data.Conditions.Serialized
+﻿namespace OwlAndJackalope.UX.Conditions.Serialized
 {
     public interface ISerializedCondition
     {
