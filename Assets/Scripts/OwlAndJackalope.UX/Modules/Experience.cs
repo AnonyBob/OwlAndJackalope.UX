@@ -1,6 +1,6 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using OwlAndJackalope.UX.Data;
-using OwlAndJackalope.UX.Modules.Initializers;
+using OwlAndJackalope.UX.States;
 using UnityEngine;
 
 namespace OwlAndJackalope.UX.Modules
@@ -12,8 +12,13 @@ namespace OwlAndJackalope.UX.Modules
             get => _reference;
             set
             {
-                _reference = value;
-                EstablishStateConnections();
+                if (_reference == null)
+                {
+                    _reference = new BaseReference(_referenceModule.GetReference());
+                }
+                
+                _reference.AddDetails(value);
+                CreateStatesIfNeeded();
             }
         }
         
@@ -21,19 +26,23 @@ namespace OwlAndJackalope.UX.Modules
         [SerializeField] private ActionModule _actionModule;
         [SerializeField] private StateModule _stateModule;
 
-        private IReference _reference;
+        private IMutableReference _reference;
+        private Dictionary<string, IState> _states;
         
         private void Start()
         {
-            if (Reference == null)
+            if (_reference == null)
             {
-                Reference = _referenceModule.GetReference();
+                _reference = new BaseReference(_referenceModule.GetReference());
             }
         }
 
-        private void EstablishStateConnections()
+        private void CreateStatesIfNeeded()
         {
-            //TODO: Link the states to parameter changes.
+            if (_states == null)
+            {
+                //_states = _stateModule.GetStates(Reference);
+            }
         }
 
         public void HandleDetailNameChange(string previousName, string newName)
@@ -43,7 +52,6 @@ namespace OwlAndJackalope.UX.Modules
                 return;
             }
             
-            Debug.Log($"Doing name change: {previousName} --> {newName}");
             foreach (var handler in GetComponentsInChildren<IDetailNameChangeHandler>())
             {
                 if (!ReferenceEquals(handler, this))

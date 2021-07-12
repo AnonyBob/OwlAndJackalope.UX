@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using OwlAndJackalope.UX.Data;
 using OwlAndJackalope.UX.Data.Serialized;
 using UnityEngine;
@@ -58,7 +57,7 @@ namespace OwlAndJackalope.UX.Conditions.Serialized
 
             return null;
         }
-
+        
         private ICondition CreateComparableCondition<T>() where T : IComparable<T>
         {
             if (_parameterTwo.Type == ParameterType.Value)
@@ -67,6 +66,7 @@ namespace OwlAndJackalope.UX.Conditions.Serialized
             }
             return new BaseRuntimeCondition<T>(_parameterOne, _parameterTwo, _comparisonType);
         }
+        
         
         protected virtual ICondition CreateCustom()
         {

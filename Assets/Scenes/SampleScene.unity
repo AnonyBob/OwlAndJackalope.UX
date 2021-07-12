@@ -214,24 +214,8 @@ MonoBehaviour:
   _referenceModule:
     _reference:
       _details:
-      - _name: Bool b4629b48
+      - _name: First
         _type: 0
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      - _name: Double 69c85d01
-        _type: 4
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      - _name: Reference 31100578
-        _type: 7
         _enumTypeName: 
         _enumAssemblyName: 
         _value: 0
@@ -242,67 +226,41 @@ MonoBehaviour:
         _type: 5
         _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
         _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        _value: 4.1
+        _value: 9.1
         _stringValue: 
         _referenceValue: {fileID: 0}
         _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _collectionDetails:
-      - _name: Integer 9b224164
-        _type: 1
+      - _name: Again
+        _type: 7
         _enumTypeName: 
         _enumAssemblyName: 
-        _collection:
-        - _name: 
-          _type: 1
-          _enumTypeName: 
-          _enumAssemblyName: 
-          _value: 0.1
-          _stringValue: 
-          _referenceValue: {fileID: 0}
-          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        - _name: 
-          _type: 1
-          _enumTypeName: 
-          _enumAssemblyName: 
-          _value: 1.1
-          _stringValue: 
-          _referenceValue: {fileID: 0}
-          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        - _name: 
-          _type: 1
-          _enumTypeName: 
-          _enumAssemblyName: 
-          _value: 2.1
-          _stringValue: 
-          _referenceValue: {fileID: 0}
-          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      - _name: Enum 40146274
-        _type: 5
-        _enumTypeName: UnityEngine.UI.Slider+Direction
-        _enumAssemblyName: UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-        _collection:
-        - _name: 
-          _type: 5
-          _enumTypeName: UnityEngine.UI.Slider+Direction
-          _enumAssemblyName: UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-          _value: 0.1
-          _stringValue: 
-          _referenceValue: {fileID: 0}
-          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        - _name: 
-          _type: 5
-          _enumTypeName: UnityEngine.UI.Slider+Direction
-          _enumAssemblyName: UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-          _value: 1.1
-          _stringValue: 
-          _referenceValue: {fileID: 0}
-          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _value: 0
+        _stringValue: 
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      - _name: Really Dumbe
+        _type: 4
+        _enumTypeName: 
+        _enumAssemblyName: 
+        _value: 2.3
+        _stringValue: 
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      - _name: Second
+        _type: 0
+        _enumTypeName: 
+        _enumAssemblyName: 
+        _value: 1
+        _stringValue: 
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _collectionDetails: []
       _mapDetails:
-      - _name: String 7105fe85
+      - _name: Users
         _keyType: 6
         _keyEnumTypeName: 
         _keyEnumAssemblyName: 
-        _valueType: 9
+        _valueType: 7
         _valueEnumTypeName: 
         _valueEnumAssemblyName: 
         _keyCollection:
@@ -311,18 +269,116 @@ MonoBehaviour:
           _enumTypeName: 
           _enumAssemblyName: 
           _value: 0
-          _stringValue: Nice Position
+          _stringValue: Good Man
+          _referenceValue: {fileID: 0}
+          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        - _name: 
+          _type: 6
+          _enumTypeName: 
+          _enumAssemblyName: 
+          _value: 0
+          _stringValue: Bad Man
           _referenceValue: {fileID: 0}
           _vectorValue: {x: 0, y: 0, z: 0, w: 0}
         _valueCollection:
         - _name: 
-          _type: 9
+          _type: 7
           _enumTypeName: 
           _enumAssemblyName: 
           _value: 0
           _stringValue: 
+          _referenceValue: {fileID: 11400000, guid: 36e4f3503b900874ba20cf9eb410c84f, type: 2}
+          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        - _name: 
+          _type: 7
+          _enumTypeName: 
+          _enumAssemblyName: 
+          _value: 0
+          _stringValue: 
+          _referenceValue: {fileID: 11400000, guid: 580c00866a4b8eb42b8d64586e697726, type: 2}
+          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+  _stateModule:
+    _states:
+    - _name: Nice State
+      _conditions:
+      - _parameterOne:
+          Name: Enum ebc1f209
+          Type: 1
+          ComponentType: 0
+        _parameterTwo:
+          Name: 
+          Type: 2
+          ComponentType: 0
+        _value:
+          _name: 
+          _type: 5
+          _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+          _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+          _value: 8.1
+          _stringValue: 
           _referenceValue: {fileID: 0}
           _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _detailType: 0
+        _comparisonType: 0
+      - _parameterOne:
+          Name: First
+          Type: 1
+          ComponentType: 0
+        _parameterTwo:
+          Name: Second
+          Type: 0
+          ComponentType: 0
+        _value:
+          _name: 
+          _type: 0
+          _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+          _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+          _value: 0
+          _stringValue: 
+          _referenceValue: {fileID: 0}
+          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _detailType: 0
+        _comparisonType: 0
+    - _name: Bad State
+      _conditions:
+      - _parameterOne:
+          Name: Enum ebc1f209
+          Type: 1
+          ComponentType: 0
+        _parameterTwo:
+          Name: 
+          Type: 0
+          ComponentType: 0
+        _value:
+          _name: 
+          _type: 5
+          _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+          _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+          _value: 2.1
+          _stringValue: 
+          _referenceValue: {fileID: 0}
+          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _detailType: 0
+        _comparisonType: 0
+      - _parameterOne:
+          Name: First
+          Type: 1
+          ComponentType: 0
+        _parameterTwo:
+          Name: Second
+          Type: 1
+          ComponentType: 0
+        _value:
+          _name: 
+          _type: 0
+          _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+          _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+          _value: 0
+          _stringValue: 
+          _referenceValue: {fileID: 0}
+          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _detailType: 0
+        _comparisonType: 0
 --- !u!20 &1687258584
 Camera:
   m_ObjectHideFlags: 0

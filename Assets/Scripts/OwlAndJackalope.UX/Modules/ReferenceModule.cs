@@ -11,7 +11,7 @@ namespace OwlAndJackalope.UX.Modules
     /// state and related actions.
     /// </summary>
     [System.Serializable]
-    public class ReferenceModule : IReferenceProvider
+    public class ReferenceModule
     {
         [SerializeField]
         private BaseSerializedReference _reference;

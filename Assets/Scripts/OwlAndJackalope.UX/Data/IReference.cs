@@ -20,6 +20,8 @@ namespace OwlAndJackalope.UX.Data
     {
         bool AddDetail(IDetail detail, bool overwrite = true);
 
+        int AddDetails(IEnumerable<IDetail> details, bool overwrite = true);
+
         bool RemoveDetail(IDetail detail);
     }
 }

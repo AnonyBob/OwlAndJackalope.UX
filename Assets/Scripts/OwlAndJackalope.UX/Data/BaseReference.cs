@@ -40,6 +40,10 @@ namespace OwlAndJackalope.UX.Data
             }
         }
 
+        public BaseReference()
+        {
+        }
+
         public IDetail GetDetail(string name)
         {
             if (!string.IsNullOrEmpty(name))
@@ -58,14 +62,29 @@ namespace OwlAndJackalope.UX.Data
 
         public bool AddDetail(IDetail detail, bool overwrite = true)
         {
-            if (!overwrite && _details.ContainsKey(detail.Name))
+            var added = InternalAdd(detail, overwrite);
+            if (added)
             {
-                return false;
+                Version++;
             }
 
-            _details[detail.Name] = detail;
-            Version++;
-            return true;
+            return added;
+        }
+
+        public int AddDetails(IEnumerable<IDetail> details, bool overwrite = true)
+        {
+            var totalAdded = 0;
+            foreach (var detail in details)
+            {
+                if (InternalAdd(detail, overwrite))
+                    totalAdded++;
+            }
+
+            if (totalAdded > 0)
+            {
+                Version++;
+            }
+            return totalAdded;
         }
 
         public bool RemoveDetail(IDetail detail)
@@ -83,6 +102,17 @@ namespace OwlAndJackalope.UX.Data
         {
             // ReSharper disable once HeapView.BoxingAllocation, details will not be value types.
             return _details.Values.GetEnumerator();
+        }
+
+        private bool InternalAdd(IDetail detail, bool overwrite)
+        {
+            if (!overwrite && _details.ContainsKey(detail.Name))
+            {
+                return false;
+            }
+
+            _details[detail.Name] = detail;
+            return true;
         }
 
         IEnumerator IEnumerable.GetEnumerator()

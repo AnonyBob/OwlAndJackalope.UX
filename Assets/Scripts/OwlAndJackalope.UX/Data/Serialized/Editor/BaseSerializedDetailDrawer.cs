@@ -29,7 +29,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
             }
 
             EditorGUI.BeginProperty(position, label, property);
-            if (!SharedDrawers.InCollection(property))
+            if (!SharedDrawers.InCollection(property) && !SharedDrawers.InCondition(property))
             {
                 var typePos = new Rect(position.x, position.y, position.width * 0.15f, EditorGUIUtility.singleLineHeight);
                 var typeProp = SharedDrawers.DrawTypeField(typePos, property, SharedDrawers.TypeString, ClearPropValues);

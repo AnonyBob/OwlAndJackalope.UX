@@ -59,5 +59,10 @@ namespace OwlAndJackalope.UX.Data
         {
             return SetValue((TValue) obj);
         }
+
+        public override string ToString()
+        {
+            return $"{Name}-{typeof(TValue).Name}: {_internalValue}";
+        }
     }
 }

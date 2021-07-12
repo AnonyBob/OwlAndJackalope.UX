@@ -58,6 +58,23 @@ namespace OwlAndJackalope.UX.Data.Serialized
             }
         }
 
+        public static bool IsComparable(this DetailType type)
+        {
+            switch (type)
+            {
+                case DetailType.Bool:
+                case DetailType.Integer:
+                case DetailType.Long:
+                case DetailType.Float:
+                case DetailType.Double:
+                case DetailType.Enum:
+                case DetailType.String:
+                    return true; 
+                default:
+                    return false;
+            }
+        }
+
         private static Type GetEnumType(string enumName, string assemblyName)
         {
             try

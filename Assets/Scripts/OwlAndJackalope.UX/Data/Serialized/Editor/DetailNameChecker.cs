@@ -8,58 +8,87 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
         private readonly string NameString = "_name";
         private readonly string ReferenceTemplatePath;
         private readonly string ExperiencePath;
-        
+
         public DetailNameChecker(string referenceTemplatePath, string experiencePath)
         {
             ReferenceTemplatePath = referenceTemplatePath;
             ExperiencePath = experiencePath;
         }
-        
+
         public string CheckName(string previousName, string newName, SerializedProperty property)
         {
             var targetObject = property.serializedObject.targetObject;
-            if(targetObject is ReferenceTemplate)
+            
+            if (targetObject is ReferenceTemplate)
             {
-                var details = property.serializedObject.FindProperty(ReferenceTemplatePath);
-                for (var i = 0; i < details.arraySize; ++i)
+                var reference = property.serializedObject.FindProperty(ReferenceTemplatePath);
+                if (!IsNameValid(reference, newName))
                 {
-                    var detailProp = details.GetArrayElementAtIndex(i);
-                    if (detailProp.FindPropertyRelative(NameString).stringValue == newName)
-                    {
-                        return previousName;
-                    }
+                    return previousName;
                 }
             }
             else if (targetObject is Experience experience)
             {
-                var details = property.serializedObject.FindProperty(ExperiencePath);
-                for (var i = 0; i < details.arraySize; ++i)
+                var reference = property.serializedObject.FindProperty(ExperiencePath);
+                if (!IsNameValid(reference, newName))
                 {
-                    var detailProp = details.GetArrayElementAtIndex(i);
-                    if (detailProp.FindPropertyRelative(NameString).stringValue == newName)
-                    {
-                        return previousName;
-                    }
-                }
-
-                if (previousName != newName)
-                {
-                    experience.HandleDetailNameChange(previousName, newName);    
+                    return previousName;
                 }
                 
+                if (previousName != newName)
+                {
+                    UpdateConditions(property.serializedObject.FindProperty(SharedDrawers.ExperienceStatesPath), previousName, newName);
+                    experience.HandleDetailNameChange(previousName, newName);
+                }
             }
-            else if(CheckNameCustom(newName, property))
-            {
-                return previousName;
-            }
-            
+
             return newName;
         }
 
-        protected virtual bool CheckNameCustom(string newName, SerializedProperty property)
+        private bool IsNameValid(SerializedProperty referenceProp, string newName)
         {
-            //OVERRIDE TO ADD ADDITIONAL NAME CHECKS.
-            return false;
+            return IsNameValid(referenceProp, SharedDrawers.ReferenceDetailsString, newName)
+                   && IsNameValid(referenceProp, SharedDrawers.ReferenceCollectionDetailsString, newName)
+                   && IsNameValid(referenceProp, SharedDrawers.ReferenceMapDetailsString, newName);
+        }
+        
+        private bool IsNameValid(SerializedProperty referenceProp, string detailsPath, string newName)
+        {
+            var details = referenceProp.FindPropertyRelative(detailsPath);
+            for (var i = 0; i < details.arraySize; ++i)
+            {
+                var detailProp = details.GetArrayElementAtIndex(i);
+                if (detailProp.FindPropertyRelative(NameString).stringValue == newName)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private void UpdateConditions(SerializedProperty states, string previousName, string newName)
+        {
+            for (var i = 0; i < states.arraySize; ++i)
+            {
+                var state = states.GetArrayElementAtIndex(i);
+                var conditions = state.FindPropertyRelative(SharedDrawers.ConditionsString);
+                for (var j = 0; j < conditions.arraySize; ++j)
+                {
+                    var condition = conditions.GetArrayElementAtIndex(j);
+                    var paramOneName = condition.FindPropertyRelative("_parameterOne.Name");
+                    if (paramOneName.stringValue == previousName)
+                    {
+                        paramOneName.stringValue = newName;
+                    }
+                    
+                    var paramTwoName = condition.FindPropertyRelative("_parameterTwo.Name");
+                    if (paramTwoName.stringValue == previousName)
+                    {
+                        paramTwoName.stringValue = newName;
+                    }
+                }
+            }
         }
     }
 }

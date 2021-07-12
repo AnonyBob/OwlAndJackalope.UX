@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using OwlAndJackalope.UX.Data.Serialized.Editor.EnumExtensions;
 using OwlAndJackalope.UX.Modules;
@@ -23,9 +22,15 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
         public const string EnumAssemblyString = "_enumAssemblyName";
         public const string EnumTypeString = "_enumTypeName";
         
-        public const string ReferenceTemplatePath = "Reference._collectionDetails";
-        public const string ExperiencePath = "_referenceModule._reference._collectionDetails";
-        
+        public const string ReferenceTemplatePath = "Reference";
+        public const string ExperiencePath = "_referenceModule._reference";
+        public const string ReferenceDetailsString = "_details";
+        public const string ReferenceCollectionDetailsString = "_collectionDetails";
+        public const string ReferenceMapDetailsString = "_mapDetails";
+
+        public const string ExperienceStatesPath = "_stateModule._states";
+        public const string ConditionsString = "_conditions";
+
         public const string KeyTypeString = "_keyType";
         public const string ValueTypeString = "_valueType";
 
@@ -96,7 +101,11 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
             var nameProp = property.FindPropertyRelative(nameString);
             var previousName = nameProp.stringValue;
             var newName = EditorGUI.TextField(position, GUIContent.none, previousName);
-            nameProp.stringValue = checker.CheckName(previousName, newName, property);
+            if (previousName != newName)
+            {
+                nameProp.stringValue = checker.CheckName(previousName, newName, property);    
+            }
+            
             GUI.enabled = enabled;
 
             return nameProp;
@@ -144,6 +153,11 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
             var collectionRegex = new Regex("_collectionDetails.Array.*_collection.Array");
             var mapRegex = new Regex("_mapDetails.Array.*Collection.Array");
             return collectionRegex.IsMatch(property.propertyPath) || mapRegex.IsMatch(property.propertyPath);
+        }
+
+        public static bool InCondition(SerializedProperty property)
+        {
+            return property.propertyPath.Contains("_conditions");
         }
 
         public static float GetCollectionHeight(SerializedProperty property, string collectionString)

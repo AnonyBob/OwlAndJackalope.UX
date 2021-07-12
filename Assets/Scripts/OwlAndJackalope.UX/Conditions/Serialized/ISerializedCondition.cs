@@ -1,4 +1,6 @@
-﻿namespace OwlAndJackalope.UX.Conditions.Serialized
+﻿using OwlAndJackalope.UX.Modules;
+
+namespace OwlAndJackalope.UX.Conditions.Serialized
 {
     public interface ISerializedCondition
     {

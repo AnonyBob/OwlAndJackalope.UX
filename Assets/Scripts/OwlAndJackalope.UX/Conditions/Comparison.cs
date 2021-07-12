@@ -10,4 +10,18 @@
         LessThanEqual = 5,
         IsSet = 6,
     }
+
+    public static class ComparisonExtensions
+    {
+        public static readonly string[] AsString = new[]
+        {
+            "==",
+            "!=",
+            ">",
+            ">=",
+            "<",
+            "<=",
+            "is set"
+        };
+    }
 }
