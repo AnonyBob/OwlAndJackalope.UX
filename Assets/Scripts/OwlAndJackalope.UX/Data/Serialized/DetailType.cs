@@ -60,6 +60,10 @@ namespace OwlAndJackalope.UX.Data.Serialized
                     return typeof(GameObject);
                 case DetailType.AssetReference:
                     return typeof(AssetReference);
+                case DetailType.Sprite:
+                    return typeof(Sprite);
+                case DetailType.Texture:
+                    return typeof(Texture2D);
                 default:
                     throw new ArgumentOutOfRangeException(nameof(detailType), detailType, null);
             }
