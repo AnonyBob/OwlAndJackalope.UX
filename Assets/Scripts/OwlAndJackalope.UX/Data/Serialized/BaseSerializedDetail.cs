@@ -2,6 +2,7 @@
 using System.Reflection;
 using OwlAndJackalope.UX.Data.Extensions;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace OwlAndJackalope.UX.Data.Serialized
 {
@@ -17,6 +18,10 @@ namespace OwlAndJackalope.UX.Data.Serialized
         public string StringValue => _stringValue;
         public ReferenceTemplate ReferenceValue => _referenceValue;
         public Vector4 VectorValue => _vectorValue;
+        public GameObject GameObjectValue => _gameObjectValue;
+        public AssetReference AssetReferenceValue => _assetReferenceValue;
+        public Texture2D TextureValue => _textureValue;
+        public Sprite SpriteValue => _spriteValue;
         
         //Identifying information used to select for the detail.
         [SerializeField] protected string _name;
@@ -30,6 +35,10 @@ namespace OwlAndJackalope.UX.Data.Serialized
         [SerializeField] protected string _stringValue;
         [SerializeField] protected ReferenceTemplate _referenceValue;
         [SerializeField] protected Vector4 _vectorValue;
+        [SerializeField] protected GameObject _gameObjectValue;
+        [SerializeField] protected AssetReference _assetReferenceValue;
+        [SerializeField] protected Texture2D _textureValue;
+        [SerializeField] protected Sprite _spriteValue;
 
         public IDetail ConvertToDetail()
         {
@@ -57,6 +66,14 @@ namespace OwlAndJackalope.UX.Data.Serialized
                     return new BaseDetail<Vector3>(_name, this.GetVector3());
                 case DetailType.Color:
                     return new BaseDetail<Color>(_name, this.GetColor());
+                case DetailType.GameObject:
+                    return new BaseDetail<GameObject>(_name, this.GetGameObject());
+                case DetailType.Texture:
+                    return new BaseDetail<Texture2D>(_name, this.GetTexture());
+                case DetailType.Sprite:
+                    return new BaseDetail<Sprite>(_name, this.GetSprite());
+                case DetailType.AssetReference:
+                    return new BaseDetail<AssetReference>(_name, this.GetAssetReference());
                 default:
                     throw new ArgumentOutOfRangeException();
             }

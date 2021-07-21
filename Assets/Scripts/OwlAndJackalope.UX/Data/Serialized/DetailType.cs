@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace OwlAndJackalope.UX.Data.Serialized
 {
@@ -21,6 +22,10 @@ namespace OwlAndJackalope.UX.Data.Serialized
         Vector2 = 8,
         Vector3 = 9,
         Color = 10,
+        GameObject = 11,
+        Texture = 12,
+        Sprite = 13,
+        AssetReference = 14,
     }
 
     public static class DetailTypeExtensions
@@ -51,6 +56,10 @@ namespace OwlAndJackalope.UX.Data.Serialized
                     return typeof(Vector3);
                 case DetailType.Color:
                     return typeof(Color);
+                case DetailType.GameObject:
+                    return typeof(GameObject);
+                case DetailType.AssetReference:
+                    return typeof(AssetReference);
                 default:
                     throw new ArgumentOutOfRangeException(nameof(detailType), detailType, null);
             }

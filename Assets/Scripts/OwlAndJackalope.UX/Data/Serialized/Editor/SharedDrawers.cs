@@ -18,6 +18,10 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
         public const string StringValueString = "_stringValue";
         public const string ReferenceValueString = "_referenceValue";
         public const string VectorValueString = "_vectorValue";
+        public const string GameObjectValueString = "_gameObjectValue";
+        public const string AssetReferenceValueString = "_assetReferenceValue";
+        public const string SpriteValueString = "_spriteValue";
+        public const string TextureValueString = "_textureValue";
         
         public const string EnumAssemblyString = "_enumAssemblyName";
         public const string EnumTypeString = "_enumTypeName";

@@ -1,6 +1,7 @@
 ﻿using System;
 using OwlAndJackalope.UX.Data.Serialized;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace OwlAndJackalope.UX.Data.Extensions
 {
@@ -71,6 +72,26 @@ namespace OwlAndJackalope.UX.Data.Extensions
             return detail.VectorValue;
         }
 
+        public static GameObject GetGameObject(this BaseSerializedDetail detail)
+        {
+            return detail.GameObjectValue;
+        }
+
+        public static Texture2D GetTexture(this BaseSerializedDetail detail)
+        {
+            return detail.TextureValue;
+        }
+
+        public static Sprite GetSprite(this BaseSerializedDetail detail)
+        {
+            return detail.SpriteValue;
+        }
+
+        public static AssetReference GetAssetReference(this BaseSerializedDetail detail)
+        {
+            return detail.AssetReferenceValue;
+        }
+
         public static object GetValue(this BaseSerializedDetail detail, Type type)
         {
             if (type == typeof(bool))
@@ -95,6 +116,14 @@ namespace OwlAndJackalope.UX.Data.Extensions
                 return detail.GetVector3();
             if (type == typeof(Color))
                 return detail.GetColor();
+            if (type == typeof(GameObject))
+                return detail.GetGameObject();
+            if (type == typeof(AssetReference))
+                return detail.GetAssetReference();
+            if (type == typeof(Sprite))
+                return detail.GetSprite();
+            if (type == typeof(Texture2D))
+                return detail.GetTexture();
 
             return null;
         }

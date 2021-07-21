@@ -26,7 +26,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
             var detailName = DrawParameter(p1Pos, property, ParamOneName, options, ParameterType.Detail);
             
             var eqPos = new Rect(p1Pos.x + p1Pos.width + SharedDrawers.Buffer, pos.y, equalityWidth, pos.height);
-            DrawEquality(eqPos, property);
+            DrawComparison(eqPos, property);
             
             var p2Pos = new Rect(eqPos.x + eqPos.width + SharedDrawers.Buffer, pos.y, parameterWidth, pos.height);
             DrawParameter(p2Pos, property, ParamTwoName, options, null, detailName);
@@ -77,7 +77,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
             return nameProp.stringValue;
         }
 
-        private void DrawEquality(Rect position, SerializedProperty property)
+        private void DrawComparison(Rect position, SerializedProperty property)
         {
             var comparison = property.FindPropertyRelative(ComparisonTypeName);
             var comparisonType = comparison.enumValueIndex;

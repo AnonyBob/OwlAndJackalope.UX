@@ -58,6 +58,10 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
             var stringValueProp = property.FindPropertyRelative(SharedDrawers.StringValueString);
             var referenceProp = property.FindPropertyRelative(SharedDrawers.ReferenceValueString);
             var vectorValueProp = property.FindPropertyRelative(SharedDrawers.VectorValueString);
+            var gameObjectValueProp = property.FindPropertyRelative(SharedDrawers.GameObjectValueString);
+            var assetRefValueProp = property.FindPropertyRelative(SharedDrawers.AssetReferenceValueString);
+            var spriteValueProp = property.FindPropertyRelative(SharedDrawers.SpriteValueString);
+            var textureValueProp = property.FindPropertyRelative(SharedDrawers.TextureValueString);
             var valuePosition = new Rect(remaining.x, remaining.y, remaining.width, EditorGUIUtility.singleLineHeight);
             
             switch (type)
@@ -100,6 +104,22 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
                     break;
                 case DetailType.Color:
                     vectorValueProp.vector4Value = EditorGUI.ColorField(valuePosition, GUIContent.none, vectorValueProp.vector4Value);
+                    break;
+                case DetailType.GameObject:
+                    gameObjectValueProp.objectReferenceValue = EditorGUI.ObjectField(valuePosition, GUIContent.none,
+                        gameObjectValueProp.objectReferenceValue, typeof(GameObject), true);
+                    break;
+                case DetailType.AssetReference:
+                    var previousWidth = EditorGUIUtility.labelWidth;
+                    EditorGUIUtility.labelWidth = 0.01f;
+                    EditorGUI.PropertyField(valuePosition, assetRefValueProp, GUIContent.none);
+                    EditorGUIUtility.labelWidth = previousWidth;
+                    break;
+                case DetailType.Sprite:
+                    EditorGUI.PropertyField(valuePosition, spriteValueProp, GUIContent.none);
+                    break;
+                case DetailType.Texture:
+                    EditorGUI.PropertyField(valuePosition, textureValueProp, GUIContent.none);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
