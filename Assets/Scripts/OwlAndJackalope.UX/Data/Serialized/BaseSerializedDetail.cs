@@ -57,16 +57,9 @@ namespace OwlAndJackalope.UX.Data.Serialized
                     return new BaseDetail<Vector3>(_name, this.GetVector3());
                 case DetailType.Color:
                     return new BaseDetail<Color>(_name, this.GetColor());
-                case DetailType.Custom:
-                    return CreateCustomDetail();
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-        }
-
-        protected virtual IDetail CreateCustomDetail()
-        {
-            return null; //OVERRIDE TO ADD EVEN MORE!
         }
 
         private IDetail CreateEnumDetail()

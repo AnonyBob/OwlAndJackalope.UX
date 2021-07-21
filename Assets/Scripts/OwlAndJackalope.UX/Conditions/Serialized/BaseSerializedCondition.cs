@@ -49,8 +49,6 @@ namespace OwlAndJackalope.UX.Conditions.Serialized
                     break;
                 case DetailType.Color:
                     break;
-                case DetailType.Custom:
-                    return CreateCustom();
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -65,12 +63,6 @@ namespace OwlAndJackalope.UX.Conditions.Serialized
                 return new BaseRuntimeCondition<T>(_parameterOne, _value.ConvertToDetail() as IDetail<T>, _comparisonType);
             }
             return new BaseRuntimeCondition<T>(_parameterOne, _parameterTwo, _comparisonType);
-        }
-        
-        
-        protected virtual ICondition CreateCustom()
-        {
-            throw new NotImplementedException();
         }
     }
 }

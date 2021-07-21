@@ -101,9 +101,6 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
                 case DetailType.Color:
                     vectorValueProp.vector4Value = EditorGUI.ColorField(valuePosition, GUIContent.none, vectorValueProp.vector4Value);
                     break;
-                case DetailType.Custom:
-                    DrawCustomType(remaining, property);
-                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
@@ -150,23 +147,11 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
             property.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue = string.Empty;
 
             _data.Remove(property.propertyPath);
-            ClearCustomValues(property);
         }
 
         protected virtual DetailNameChecker GetNameChecker()
         {
             return new DetailNameChecker(SharedDrawers.ReferenceTemplatePath, SharedDrawers.ExperiencePath);
-        }
-        
-        protected virtual void DrawCustomType(Rect position, SerializedProperty property)
-        {
-            //OVERRIDE TO HANDLE ADDITIONAL TYPES!
-            EditorGUI.LabelField(position, "Not Supported");
-        }
-
-        protected virtual void ClearCustomValues(SerializedProperty property)
-        {
-            //OVERRIDE TO HANDLE CLEARING CUSTOM VALUES
         }
     }
 }

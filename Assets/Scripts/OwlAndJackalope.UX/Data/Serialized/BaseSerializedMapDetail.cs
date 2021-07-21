@@ -23,11 +23,6 @@ namespace OwlAndJackalope.UX.Data.Serialized
         
         public IDetail ConvertToDetail()
         {
-            if (_keyType == DetailType.Custom || _valueType == DetailType.Custom)
-            {
-                return CreateCustomDetail();
-            }
-
             var keyType = _keyType.ConvertToType(_keyEnumTypeName, _keyEnumAssemblyName);
             var valueType = _valueType.ConvertToType(_valueEnumTypeName, _valueEnumAssemblyName);
             
@@ -54,11 +49,6 @@ namespace OwlAndJackalope.UX.Data.Serialized
             }
             
             return dictionary;
-        }
-
-        protected virtual IDetail CreateCustomDetail()
-        {
-            return null; //OVERRIDE TO ADD EVEN MORE!
         }
     }
 }

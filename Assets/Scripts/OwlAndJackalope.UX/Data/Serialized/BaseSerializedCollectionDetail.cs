@@ -20,11 +20,6 @@ namespace OwlAndJackalope.UX.Data.Serialized
         [SerializeField] private List<BaseSerializedDetail> _collection = new List<BaseSerializedDetail>();
         public IDetail ConvertToDetail()
         {
-            if (_type == DetailType.Custom)
-            {
-                return CreateCustomDetail();
-            }
-
             var type = _type.ConvertToType(_enumTypeName, _enumAssemblyName);
             var collectionType = typeof(BaseCollectionDetail<>).MakeGenericType(type);
             return (IDetail) Activator.CreateInstance(collectionType, _name, ConstructList(type), false);
@@ -41,11 +36,6 @@ namespace OwlAndJackalope.UX.Data.Serialized
             }
 
             return list;
-        }
-
-        protected virtual IDetail CreateCustomDetail()
-        {
-            return null; //OVERRIDE TO ADD EVEN MORE!
         }
     }
 }

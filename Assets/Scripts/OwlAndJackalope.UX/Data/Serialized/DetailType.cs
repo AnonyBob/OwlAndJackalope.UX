@@ -21,8 +21,6 @@ namespace OwlAndJackalope.UX.Data.Serialized
         Vector2 = 8,
         Vector3 = 9,
         Color = 10,
-
-        Custom = 11
     }
 
     public static class DetailTypeExtensions
