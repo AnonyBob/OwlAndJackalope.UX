@@ -9,11 +9,7 @@ namespace OwlAndJackalope.UX.Modules
         public IReference Reference
         {
             get => _referenceModule.Reference;
-            set
-            {
-                _referenceModule.Reference = value;
-                _stateModule.Initialize(_referenceModule.Reference);
-            }
+            set => _referenceModule.Reference = value;
         }
 
         public StateModule States => _stateModule;
