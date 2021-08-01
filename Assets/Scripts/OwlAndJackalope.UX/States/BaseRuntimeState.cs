@@ -64,7 +64,7 @@ namespace OwlAndJackalope.UX.States
             CheckActive();
         }
 
-        private void HandleVersionChange()
+        private void HandleDetailVersionChange()
         {
             CheckActive();
         }
@@ -73,7 +73,7 @@ namespace OwlAndJackalope.UX.States
         {
             for(var i = _usedDetails.Count - 1; i > -1; --i)
             {
-                _usedDetails[i].VersionChanged -= HandleVersionChange;
+                _usedDetails[i].VersionChanged -= HandleDetailVersionChange;
                 _usedDetails.RemoveAt(i);
             }
         }
@@ -88,7 +88,7 @@ namespace OwlAndJackalope.UX.States
                     var detail = _reference.GetDetail(detailNames);
                     if (detail != null)
                     {
-                        detail.VersionChanged += HandleVersionChange;
+                        detail.VersionChanged += HandleDetailVersionChange;
                         _usedDetails.Add(detail);
                     }
                 }

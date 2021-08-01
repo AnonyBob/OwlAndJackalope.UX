@@ -16,6 +16,8 @@ namespace OwlAndJackalope.UX.Modules
             }
         }
 
+        public StateModule States => _stateModule;
+
         [SerializeField] private ReferenceModule _referenceModule;
         [SerializeField] private ActionModule _actionModule;
         [SerializeField] private StateModule _stateModule;

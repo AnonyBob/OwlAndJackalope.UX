@@ -41,7 +41,6 @@ namespace OwlAndJackalope.UX.Modules
                 {
                     _runtimeReference.AddDetails(providedReference);    
                 }
-                
             }
         }
     }
