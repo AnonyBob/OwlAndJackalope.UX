@@ -7,6 +7,6 @@ namespace OwlAndJackalope.UX.Modules.Initializers
     /// </summary>
     public interface IReferenceProvider
     {
-        IReference GetReference();
+        IReference Reference { get; set; }
     }
 }

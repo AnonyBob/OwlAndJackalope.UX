@@ -1,48 +1,29 @@
-﻿using System.Collections.Generic;
-using OwlAndJackalope.UX.Data;
-using OwlAndJackalope.UX.States;
+﻿using OwlAndJackalope.UX.Data;
+using OwlAndJackalope.UX.Modules.Initializers;
 using UnityEngine;
 
 namespace OwlAndJackalope.UX.Modules
 {
-    public class Experience : MonoBehaviour, IDetailNameChangeHandler
+    public class Experience : MonoBehaviour, IDetailNameChangeHandler, IReferenceProvider
     {
         public IReference Reference
         {
-            get => _reference;
+            get => _referenceModule.Reference;
             set
             {
-                if (_reference == null)
-                {
-                    _reference = new BaseReference(_referenceModule.GetReference());
-                }
-                
-                _reference.AddDetails(value);
-                CreateStatesIfNeeded();
+                _referenceModule.Reference = value;
+                _stateModule.Initialize(_referenceModule.Reference);
             }
         }
-        
+
         [SerializeField] private ReferenceModule _referenceModule;
         [SerializeField] private ActionModule _actionModule;
         [SerializeField] private StateModule _stateModule;
 
-        private IMutableReference _reference;
-        private Dictionary<string, IState> _states;
-        
-        private void Start()
+        private void Awake()
         {
-            if (_reference == null)
-            {
-                _reference = new BaseReference(_referenceModule.GetReference());
-            }
-        }
-
-        private void CreateStatesIfNeeded()
-        {
-            if (_states == null)
-            {
-                //_states = _stateModule.GetStates(Reference);
-            }
+            _referenceModule.Initialize(GetComponent<ExperienceReferenceProvider>());
+            _stateModule.Initialize(_referenceModule.Reference);
         }
 
         public void HandleDetailNameChange(string previousName, string newName)

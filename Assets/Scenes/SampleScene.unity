@@ -214,81 +214,182 @@ MonoBehaviour:
   _referenceModule:
     _reference:
       _details:
-      - _name: First
+      - _name: Name
+        _type: 6
+        _enumTypeName: 
+        _enumAssemblyName: 
+        _value: 0
+        _stringValue: Kaitlin
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _gameObjectValue: {fileID: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+        _textureValue: {fileID: 0}
+        _spriteValue: {fileID: 0}
+      - _name: Age
+        _type: 1
+        _enumTypeName: 
+        _enumAssemblyName: 
+        _value: 28.1
+        _stringValue: Some Name
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _gameObjectValue: {fileID: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+        _textureValue: {fileID: 0}
+        _spriteValue: {fileID: 0}
+      - _name: Gender
         _type: 0
         _enumTypeName: 
         _enumAssemblyName: 
         _value: 0
-        _stringValue: 
+        _stringValue: Some Name
         _referenceValue: {fileID: 0}
         _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      - _name: Enum ebc1f209
-        _type: 5
-        _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        _value: 9.1
-        _stringValue: 
+        _gameObjectValue: {fileID: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+        _textureValue: {fileID: 0}
+        _spriteValue: {fileID: 0}
+      - _name: HeightFeet
+        _type: 1
+        _enumTypeName: 
+        _enumAssemblyName: 
+        _value: 5.1
+        _stringValue: Some Name
         _referenceValue: {fileID: 0}
         _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      - _name: Again
+        _gameObjectValue: {fileID: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+        _textureValue: {fileID: 0}
+        _spriteValue: {fileID: 0}
+      - _name: HeightInches
+        _type: 1
+        _enumTypeName: 
+        _enumAssemblyName: 
+        _value: 2.1
+        _stringValue: Some Name
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _gameObjectValue: {fileID: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+        _textureValue: {fileID: 0}
+        _spriteValue: {fileID: 0}
+      - _name: GameObject d62a1d5d
+        _type: 11
+        _enumTypeName: 
+        _enumAssemblyName: 
+        _value: 2.1
+        _stringValue: Some Name
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _gameObjectValue: {fileID: 653260035}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+        _textureValue: {fileID: 0}
+        _spriteValue: {fileID: 0}
+      - _name: Texture 7c480713
+        _type: 12
+        _enumTypeName: 
+        _enumAssemblyName: 
+        _value: 2.1
+        _stringValue: Some Name
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _gameObjectValue: {fileID: 653260035}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+        _textureValue: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
+        _spriteValue: {fileID: 0}
+      - _name: Sprite 8d5c993c
+        _type: 13
+        _enumTypeName: 
+        _enumAssemblyName: 
+        _value: 2.1
+        _stringValue: Some Name
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _gameObjectValue: {fileID: 653260035}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+        _textureValue: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
+        _spriteValue: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+      _collectionDetails:
+      - _name: Aliases
+        _type: 6
+        _enumTypeName: 
+        _enumAssemblyName: 
+        _collection:
+        - _name: 
+          _type: 6
+          _enumTypeName: 
+          _enumAssemblyName: 
+          _value: 0
+          _stringValue: Gentle Chaos
+          _referenceValue: {fileID: 0}
+          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+          _gameObjectValue: {fileID: 0}
+          _assetReferenceValue:
+            m_AssetGUID: 
+            m_SubObjectName: 
+            m_SubObjectType: 
+          _textureValue: {fileID: 0}
+          _spriteValue: {fileID: 0}
+        - _name: 
+          _type: 6
+          _enumTypeName: 
+          _enumAssemblyName: 
+          _value: 0
+          _stringValue: Funny Bunny
+          _referenceValue: {fileID: 0}
+          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+          _gameObjectValue: {fileID: 0}
+          _assetReferenceValue:
+            m_AssetGUID: 
+            m_SubObjectName: 
+            m_SubObjectType: 
+          _textureValue: {fileID: 0}
+          _spriteValue: {fileID: 0}
+        - _name: 
+          _type: 6
+          _enumTypeName: 
+          _enumAssemblyName: 
+          _value: 0
+          _stringValue: SupraCuet
+          _referenceValue: {fileID: 0}
+          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+          _gameObjectValue: {fileID: 0}
+          _assetReferenceValue:
+            m_AssetGUID: 
+            m_SubObjectName: 
+            m_SubObjectType: 
+          _textureValue: {fileID: 0}
+          _spriteValue: {fileID: 0}
+      - _name: Pets
         _type: 7
         _enumTypeName: 
         _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      - _name: Really Dumbe
-        _type: 4
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 2.3
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      - _name: Second
-        _type: 0
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 1
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _collectionDetails: []
-      _mapDetails:
-      - _name: Users
-        _keyType: 6
-        _keyEnumTypeName: 
-        _keyEnumAssemblyName: 
-        _valueType: 7
-        _valueEnumTypeName: 
-        _valueEnumAssemblyName: 
-        _keyCollection:
-        - _name: 
-          _type: 6
-          _enumTypeName: 
-          _enumAssemblyName: 
-          _value: 0
-          _stringValue: Good Man
-          _referenceValue: {fileID: 0}
-          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        - _name: 
-          _type: 6
-          _enumTypeName: 
-          _enumAssemblyName: 
-          _value: 0
-          _stringValue: Bad Man
-          _referenceValue: {fileID: 0}
-          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _valueCollection:
-        - _name: 
-          _type: 7
-          _enumTypeName: 
-          _enumAssemblyName: 
-          _value: 0
-          _stringValue: 
-          _referenceValue: {fileID: 11400000, guid: 36e4f3503b900874ba20cf9eb410c84f, type: 2}
-          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _collection:
         - _name: 
           _type: 7
           _enumTypeName: 
@@ -297,88 +398,100 @@ MonoBehaviour:
           _stringValue: 
           _referenceValue: {fileID: 11400000, guid: 580c00866a4b8eb42b8d64586e697726, type: 2}
           _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+          _gameObjectValue: {fileID: 0}
+          _assetReferenceValue:
+            m_AssetGUID: 
+            m_SubObjectName: 
+            m_SubObjectType: 
+          _textureValue: {fileID: 0}
+          _spriteValue: {fileID: 0}
+        - _name: 
+          _type: 7
+          _enumTypeName: 
+          _enumAssemblyName: 
+          _value: 0
+          _stringValue: 
+          _referenceValue: {fileID: 11400000, guid: 36e4f3503b900874ba20cf9eb410c84f, type: 2}
+          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+          _gameObjectValue: {fileID: 0}
+          _assetReferenceValue:
+            m_AssetGUID: 
+            m_SubObjectName: 
+            m_SubObjectType: 
+          _textureValue: {fileID: 0}
+          _spriteValue: {fileID: 0}
+      _mapDetails:
+      - _name: Favorite Colors
+        _keyType: 6
+        _keyEnumTypeName: 
+        _keyEnumAssemblyName: 
+        _valueType: 10
+        _valueEnumTypeName: 
+        _valueEnumAssemblyName: 
+        _keyCollection:
+        - _name: 
+          _type: 6
+          _enumTypeName: 
+          _enumAssemblyName: 
+          _value: 0
+          _stringValue: Red
+          _referenceValue: {fileID: 0}
+          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+          _gameObjectValue: {fileID: 0}
+          _assetReferenceValue:
+            m_AssetGUID: 
+            m_SubObjectName: 
+            m_SubObjectType: 
+          _textureValue: {fileID: 0}
+          _spriteValue: {fileID: 0}
+        - _name: 
+          _type: 6
+          _enumTypeName: 
+          _enumAssemblyName: 
+          _value: 0
+          _stringValue: Blue
+          _referenceValue: {fileID: 0}
+          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+          _gameObjectValue: {fileID: 0}
+          _assetReferenceValue:
+            m_AssetGUID: 
+            m_SubObjectName: 
+            m_SubObjectType: 
+          _textureValue: {fileID: 0}
+          _spriteValue: {fileID: 0}
+        _valueCollection:
+        - _name: 
+          _type: 10
+          _enumTypeName: 
+          _enumAssemblyName: 
+          _value: 0
+          _stringValue: 
+          _referenceValue: {fileID: 0}
+          _vectorValue: {x: 1, y: 0, z: 0, w: 1}
+          _gameObjectValue: {fileID: 0}
+          _assetReferenceValue:
+            m_AssetGUID: 
+            m_SubObjectName: 
+            m_SubObjectType: 
+          _textureValue: {fileID: 0}
+          _spriteValue: {fileID: 0}
+        - _name: 
+          _type: 10
+          _enumTypeName: 
+          _enumAssemblyName: 
+          _value: 0
+          _stringValue: 
+          _referenceValue: {fileID: 0}
+          _vectorValue: {x: 0.03529412, y: 0.50980395, z: 0.9490197, w: 1}
+          _gameObjectValue: {fileID: 0}
+          _assetReferenceValue:
+            m_AssetGUID: 
+            m_SubObjectName: 
+            m_SubObjectType: 
+          _textureValue: {fileID: 0}
+          _spriteValue: {fileID: 0}
   _stateModule:
-    _states:
-    - _name: Nice State
-      _conditions:
-      - _parameterOne:
-          Name: Enum ebc1f209
-          Type: 1
-          ComponentType: 0
-        _parameterTwo:
-          Name: 
-          Type: 2
-          ComponentType: 0
-        _value:
-          _name: 
-          _type: 5
-          _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-          _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-          _value: 8.1
-          _stringValue: 
-          _referenceValue: {fileID: 0}
-          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _detailType: 0
-        _comparisonType: 0
-      - _parameterOne:
-          Name: First
-          Type: 1
-          ComponentType: 0
-        _parameterTwo:
-          Name: Second
-          Type: 0
-          ComponentType: 0
-        _value:
-          _name: 
-          _type: 0
-          _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-          _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-          _value: 0
-          _stringValue: 
-          _referenceValue: {fileID: 0}
-          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _detailType: 0
-        _comparisonType: 0
-    - _name: Bad State
-      _conditions:
-      - _parameterOne:
-          Name: Enum ebc1f209
-          Type: 1
-          ComponentType: 0
-        _parameterTwo:
-          Name: 
-          Type: 0
-          ComponentType: 0
-        _value:
-          _name: 
-          _type: 5
-          _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-          _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-          _value: 2.1
-          _stringValue: 
-          _referenceValue: {fileID: 0}
-          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _detailType: 0
-        _comparisonType: 0
-      - _parameterOne:
-          Name: First
-          Type: 1
-          ComponentType: 0
-        _parameterTwo:
-          Name: Second
-          Type: 1
-          ComponentType: 0
-        _value:
-          _name: 
-          _type: 0
-          _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-          _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-          _value: 0
-          _stringValue: 
-          _referenceValue: {fileID: 0}
-          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _detailType: 0
-        _comparisonType: 0
+    _states: []
 --- !u!20 &1687258584
 Camera:
   m_ObjectHideFlags: 0

@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using OwlAndJackalope.UX.Data;
+using OwlAndJackalope.UX.States;
 using OwlAndJackalope.UX.States.Serialized;
 using UnityEngine;
 
@@ -14,5 +16,10 @@ namespace OwlAndJackalope.UX.Modules
     {
         [SerializeField]
         private List<BaseSerializedState> _states;
+
+        public void Initialize(IReference reference)
+        {
+            
+        }
     }
 }

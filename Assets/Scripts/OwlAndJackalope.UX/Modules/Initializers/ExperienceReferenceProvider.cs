@@ -13,17 +13,12 @@ namespace OwlAndJackalope.UX.Modules.Initializers
     /// actual reference.
     /// </summary>
     [RequireComponent(typeof(Experience))]
-    public class ReferenceProvider : MonoBehaviour, IReferenceProvider
+    public class ExperienceReferenceProvider : MonoBehaviour
     {
         [SerializeField]
         private ReferenceTemplate _fallback;
 
-        private void OnEnable()
-        {
-            GetComponent<Experience>().Reference = GetReference();
-        }
-        
-        public IReference GetReference()
+        public IReference GetReferenceForExperience()
         {
             return GetOverrideReference() ?? _fallback.Reference.ConvertToReference();
         }
