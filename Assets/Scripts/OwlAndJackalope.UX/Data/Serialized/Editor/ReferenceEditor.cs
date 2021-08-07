@@ -47,9 +47,10 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
         
         public void Draw()
         {
+            EditorGUI.indentLevel++;
             if (EditorGUILayout.PropertyField(_detailListProp, false))
             {
-                _detailList.DoLayoutList();    
+                _detailList.DoLayoutList();
             }
             
             if (EditorGUILayout.PropertyField(_collectionListProp, false))
@@ -58,11 +59,12 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
                 CacheMethod.Invoke(_collectionDetailList, Empty);
             }
 
-             if (EditorGUILayout.PropertyField(_mapListProp, false))
+            if (EditorGUILayout.PropertyField(_mapListProp, false))
             {
                 _mapDetailList.DoLayoutList();
                 CacheMethod.Invoke(_mapDetailList, Empty);
             }
+            EditorGUI.indentLevel--;
         }
     }
 }

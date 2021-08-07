@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using OwlAndJackalope.UX.Data.Serialized.Editor.EnumExtensions;
-using OwlAndJackalope.UX.Modules;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -49,49 +48,48 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
         public static SerializedProperty DrawTypeField(
             Rect position, 
             SerializedProperty property, 
-            string typeString, 
-            Action<SerializedProperty> clearPropValues)
+            string typeString,
+            string enumTypeString)
         {
-            return DrawTypeField(position, property, typeString, null, clearPropValues);
+            return DrawTypeField(position, property, typeString, enumTypeString, null);
         }
 
         public static SerializedProperty DrawTypeField(
             Rect position,
             SerializedProperty property,
             string typeString,
-            string fieldName,
-            Action<SerializedProperty> clearPropValues)
+            string enumTypeString,
+            string fieldName)
         {
             var typeProp = property.FindPropertyRelative(typeString);
-            var previousType = typeProp.enumValueIndex;
-            if (property.serializedObject.targetObject is Experience || InCollection(property))
+            //var enumTypeProp = property.FindPropertyRelative(EnumTypeString);
+            var detail = ((DetailType) typeProp.enumValueIndex);
+            var displayString = detail != DetailType.Enum
+                ? ((DetailType) typeProp.enumValueIndex).ToString()
+                : GetEnumString(property, enumTypeString);
+            if (fieldName != null)
             {
-                if (fieldName != null)
-                {
-                    EditorGUI.LabelField(position, fieldName, ((DetailType)typeProp.enumValueIndex).ToString(), EditorStyles.helpBox);    
-                }
-                else
-                {
-                    EditorGUI.LabelField(position, ((DetailType)typeProp.enumValueIndex).ToString(), EditorStyles.helpBox);    
-                }
+                EditorGUI.LabelField(position, fieldName, displayString, EditorStyles.helpBox);    
             }
             else
             {
-                if (fieldName != null)
-                {
-                    EditorGUI.PropertyField(position, typeProp, new GUIContent(fieldName));
-                }
-                else
-                {
-                    EditorGUI.PropertyField(position, typeProp, GUIContent.none);
-                }
-                if (typeProp.enumValueIndex != previousType)
-                {
-                    clearPropValues?.Invoke(property);
-                }
+                EditorGUI.LabelField(position, displayString, EditorStyles.helpBox);    
             }
 
             return typeProp;
+        }
+        
+        private static string GetEnumString(SerializedProperty property, string enumTypeString)
+        {
+            var enumProp = property.FindPropertyRelative(enumTypeString);
+            if (enumProp != null && !string.IsNullOrEmpty(enumProp.stringValue))
+            {
+                var regex = new Regex(".*[\\.\\+](.*)");
+                var groups = regex.Match(enumProp.stringValue).Groups;
+                return groups[1].Value;
+            }
+
+            return "";
         }
 
         public static SerializedProperty DrawNameField
@@ -132,7 +130,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
             string fieldName)
         {
             var previousEnabled = GUI.enabled;
-            GUI.enabled = !InCollection(property);
+            GUI.enabled = !InCollection(property) && !InCondition(property);
             
             var assemblyProp = property.FindPropertyRelative(enumAssemblyString);
             var enumTypeProp = property.FindPropertyRelative(enumTypeString);
@@ -168,7 +166,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
         {
             var rowSize = EditorGUIUtility.singleLineHeight + Buffer;
             var collections = property.FindPropertyRelative(collectionString);
-            return rowSize * (collections.isExpanded ? (5 + Mathf.Max(1,collections.arraySize)) : 3);
+            return rowSize * (collections.isExpanded ? (4 + Mathf.Max(1,collections.arraySize)) : 2);
         }
         
         public static float GetMapHeight(SerializedProperty property, string collectionString)

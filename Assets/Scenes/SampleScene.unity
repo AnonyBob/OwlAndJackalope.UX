@@ -274,11 +274,11 @@ MonoBehaviour:
           m_SubObjectType: 
         _textureValue: {fileID: 0}
         _spriteValue: {fileID: 0}
-      - _name: HeightInches
-        _type: 1
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 2.1
+      - _name: Enum 33279409
+        _type: 5
+        _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        _value: 11.1
         _stringValue: Some Name
         _referenceValue: {fileID: 0}
         _vectorValue: {x: 0, y: 0, z: 0, w: 0}
@@ -289,51 +289,6 @@ MonoBehaviour:
           m_SubObjectType: 
         _textureValue: {fileID: 0}
         _spriteValue: {fileID: 0}
-      - _name: GameObject d62a1d5d
-        _type: 11
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 2.1
-        _stringValue: Some Name
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 653260035}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      - _name: Texture 7c480713
-        _type: 12
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 2.1
-        _stringValue: Some Name
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 653260035}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
-        _spriteValue: {fileID: 0}
-      - _name: Sprite 8d5c993c
-        _type: 13
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 2.1
-        _stringValue: Some Name
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 653260035}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
-        _spriteValue: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
       _collectionDetails:
       - _name: Aliases
         _type: 6
@@ -491,7 +446,11 @@ MonoBehaviour:
           _textureValue: {fileID: 0}
           _spriteValue: {fileID: 0}
   _stateModule:
-    _states: []
+    _states:
+    - _name: Tall
+      _conditions: []
+    - _name: Short
+      _conditions: []
 --- !u!20 &1687258584
 Camera:
   m_ObjectHideFlags: 0

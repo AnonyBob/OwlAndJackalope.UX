@@ -32,7 +32,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
             if (!SharedDrawers.InCollection(property) && !SharedDrawers.InCondition(property))
             {
                 var typePos = new Rect(position.x, position.y, position.width * 0.15f, EditorGUIUtility.singleLineHeight);
-                var typeProp = SharedDrawers.DrawTypeField(typePos, property, SharedDrawers.TypeString, ClearPropValues);
+                var typeProp = SharedDrawers.DrawTypeField(typePos, property, SharedDrawers.TypeString, SharedDrawers.EnumTypeString);
                 var namePos = new Rect(typePos.x + typePos.width + SharedDrawers.Buffer, position.y, 
                     position.width * 0.3f - SharedDrawers.Buffer, EditorGUIUtility.singleLineHeight);
                 SharedDrawers.DrawNameField(namePos, property, SharedDrawers.NameString, propertyData.NameChecker);
@@ -128,12 +128,9 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
 
         private void DrawEnumType(Rect position, SerializedProperty property, PropertyData propertyData, SerializedProperty valueProp)
         {
-            var selectButtonPos = new Rect(position.x, position.y, position.width * 0.5f, position.height);
-            var (enumTypeProp, assemblyProp) =
-                SharedDrawers.DrawEnumTypeField(selectButtonPos, property, SharedDrawers.EnumTypeString, SharedDrawers.EnumAssemblyString);
-            
-            var valuePos = new Rect(selectButtonPos.x + selectButtonPos.width + SharedDrawers.Buffer, position.y, 
-                position.width * 0.5f - SharedDrawers.Buffer, position.height);
+            var enumTypeProp = property.FindPropertyRelative(SharedDrawers.EnumTypeString);
+            var assemblyProp = property.FindPropertyRelative(SharedDrawers.EnumAssemblyString);
+
             var assemblyName = assemblyProp.stringValue;
             var enumTypeName = enumTypeProp.stringValue;
             if (!string.IsNullOrEmpty(assemblyName) && !string.IsNullOrEmpty(enumTypeName))
@@ -147,12 +144,12 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
                 if (propertyData.LoadedEnumType != null)
                 {
                     var value = (int)Math.Floor(valueProp.doubleValue);
-                    var updatedValue = Convert.ToInt32(EditorGUI.EnumPopup(valuePos, (Enum)Enum.ToObject(propertyData.LoadedEnumType, value)));
+                    var updatedValue = Convert.ToInt32(EditorGUI.EnumPopup(position, (Enum)Enum.ToObject(propertyData.LoadedEnumType, value)));
                     valueProp.doubleValue = updatedValue + 0.1;
                 }
                 else
                 {
-                    EditorGUI.LabelField(valuePos, $"Could not load {enumTypeName}");
+                    EditorGUI.LabelField(position, $"Could not load {enumTypeName}");
                 }
             }
         }

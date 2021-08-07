@@ -64,18 +64,9 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
             
             EditorGUI.LabelField(keyTypeNamePos, "Key Type");
             EditorGUI.LabelField(valueTypeNamePos, "Value Type");
-            SharedDrawers.DrawTypeField(keyTypePos, property, SharedDrawers.KeyTypeString, ClearKeyPropValues);
-            SharedDrawers.DrawTypeField(valueTypePos, property, SharedDrawers.ValueTypeString, ClearValuePropValues);
+            SharedDrawers.DrawTypeField(keyTypePos, property, SharedDrawers.KeyTypeString, SharedDrawers.KeyEnumTypeString);
+            SharedDrawers.DrawTypeField(valueTypePos, property, SharedDrawers.ValueTypeString, SharedDrawers.ValueEnumTypeString);
 
-            if (keyIsEnum)
-            {
-                SharedDrawers.DrawEnumTypeField(keyEnumPos, property, SharedDrawers.KeyEnumTypeString, SharedDrawers.KeyEnumAssemblyString);    
-            }
-            if (valueIsEnum)
-            {
-                SharedDrawers.DrawEnumTypeField(valueEnumPos, property, SharedDrawers.ValueEnumTypeString, SharedDrawers.ValueEnumAssemblyString);    
-            }
-            
             var collectionY = valueTypePos.y + valueTypePos.height + SharedDrawers.Buffer;
             var collectionHeaderPos = new Rect(position.x + SharedDrawers.Buffer * 3, collectionY, 
                 position.width - SharedDrawers.Buffer * 3, position.height - collectionY);

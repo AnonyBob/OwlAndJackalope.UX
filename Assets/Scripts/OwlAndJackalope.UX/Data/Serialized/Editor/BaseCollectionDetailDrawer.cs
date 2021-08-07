@@ -29,27 +29,14 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
             }
 
             EditorGUI.BeginProperty(position, label, property);
-            var namePos = new Rect(position.x, position.y + SharedDrawers.Buffer, position.width, EditorGUIUtility.singleLineHeight);
+            
+            var typePos = new Rect(position.x, position.y + SharedDrawers.Buffer, position.width * 0.1f, EditorGUIUtility.singleLineHeight);
+            SharedDrawers.DrawTypeField(typePos, property, SharedDrawers.TypeString, SharedDrawers.EnumTypeString);
+            
+            var namePos = new Rect(typePos.x + typePos.width + SharedDrawers.Buffer, 
+                position.y + SharedDrawers.Buffer, position.width * 0.8f, EditorGUIUtility.singleLineHeight);
             SharedDrawers.DrawNameField(namePos, property, SharedDrawers.NameString, propertyData.NameChecker);
             
-            var typePos = new Rect(position.x, namePos.y + namePos.height + SharedDrawers.Buffer, 
-                position.width * 0.25f, EditorGUIUtility.singleLineHeight);
-            EditorGUI.LabelField(typePos, "Type");
-            typePos.x += typePos.width + SharedDrawers.Buffer;
-            var typeProp = SharedDrawers.DrawTypeField(typePos, property, SharedDrawers.TypeString, ClearPropValues);
-
-            if ((DetailType) typeProp.enumValueIndex == DetailType.Enum)
-            {
-                var enumPos = new Rect(typePos.x + typePos.width + SharedDrawers.Buffer, typePos.y, 
-                    position.width * 0.5f - SharedDrawers.Buffer * 2, EditorGUIUtility.singleLineHeight);
-                var previousEnumType = property.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue;
-                var (enumTypeProp, _) = SharedDrawers.DrawEnumTypeField(enumPos, property, SharedDrawers.EnumTypeString, SharedDrawers.EnumAssemblyString);
-                if (previousEnumType != enumTypeProp.stringValue)
-                {
-                    property.FindPropertyRelative(SharedDrawers.CollectionString).arraySize = 0;
-                }
-            }
-
             var collectionY = typePos.y + typePos.height + SharedDrawers.Buffer;
             var collectionHeaderPos = new Rect(position.x + SharedDrawers.Buffer * 3, collectionY, 
                 position.width - SharedDrawers.Buffer * 3, position.height - collectionY);

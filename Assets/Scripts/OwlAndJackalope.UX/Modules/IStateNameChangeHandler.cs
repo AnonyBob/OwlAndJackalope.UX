@@ -1,6 +1,6 @@
 ﻿namespace OwlAndJackalope.UX.Modules
 {
-    public interface IHandleStateNameChange
+    public interface IStateNameChangeHandler
     {
         void HandleStateNameChange(string previousName, string newName);
     }

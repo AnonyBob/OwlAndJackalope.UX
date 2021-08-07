@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace OwlAndJackalope.UX.Modules
 {
-    public class Experience : MonoBehaviour, IDetailNameChangeHandler, IReferenceProvider
+    public class Experience : MonoBehaviour, IDetailNameChangeHandler, IStateNameChangeHandler, IReferenceProvider
     {
         public IReference Reference
         {
@@ -36,6 +36,17 @@ namespace OwlAndJackalope.UX.Modules
                 if (!ReferenceEquals(handler, this))
                 {
                     handler.HandleDetailNameChange(previousName, newName);
+                }
+            }
+        }
+
+        public void HandleStateNameChange(string previousName, string newName)
+        {
+            foreach (var handler in GetComponentsInChildren<IStateNameChangeHandler>())
+            {
+                if (!ReferenceEquals(handler, this))
+                {
+                    handler.HandleStateNameChange(previousName, newName);
                 }
             }
         }

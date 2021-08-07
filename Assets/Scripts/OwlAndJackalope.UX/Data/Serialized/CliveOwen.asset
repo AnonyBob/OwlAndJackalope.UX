@@ -74,6 +74,21 @@ MonoBehaviour:
         m_SubObjectType: 
       _textureValue: {fileID: 0}
       _spriteValue: {fileID: 0}
+    - _name: Enum 9b498a3d
+      _type: 5
+      _enumTypeName: UnityEngine.UI.Slider+Direction
+      _enumAssemblyName: UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+      _value: 3.1
+      _stringValue: Clive Owen
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _gameObjectValue: {fileID: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+      _textureValue: {fileID: 0}
+      _spriteValue: {fileID: 0}
     _collectionDetails:
     - _name: StarPathDirections
       _type: 5
@@ -85,6 +100,36 @@ MonoBehaviour:
         _enumTypeName: UnityEngine.UI.Slider+Direction
         _enumAssemblyName: UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
         _value: 2.1
+        _stringValue: 
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _gameObjectValue: {fileID: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+        _textureValue: {fileID: 0}
+        _spriteValue: {fileID: 0}
+      - _name: 
+        _type: 5
+        _enumTypeName: UnityEngine.UI.Slider+Direction
+        _enumAssemblyName: UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+        _value: 2.1
+        _stringValue: 
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _gameObjectValue: {fileID: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+        _textureValue: {fileID: 0}
+        _spriteValue: {fileID: 0}
+      - _name: 
+        _type: 5
+        _enumTypeName: UnityEngine.UI.Slider+Direction
+        _enumAssemblyName: UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+        _value: 0.1
         _stringValue: 
         _referenceValue: {fileID: 0}
         _vectorValue: {x: 0, y: 0, z: 0, w: 0}
@@ -185,4 +230,23 @@ MonoBehaviour:
           m_SubObjectType: 
         _textureValue: {fileID: 0}
         _spriteValue: {fileID: 0}
-    _mapDetails: []
+    _mapDetails:
+    - _name: Enum 7cd3d7f4
+      _keyType: 5
+      _keyEnumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _keyEnumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _valueType: 6
+      _valueEnumTypeName: 
+      _valueEnumAssemblyName: 
+      _keyCollection: []
+      _valueCollection: []
+    - _name: Enum 1c2bea6a
+      _keyType: 5
+      _keyEnumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _keyEnumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _valueType: 5
+      _valueEnumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _valueEnumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      _keyCollection: []
+      _valueCollection: []
