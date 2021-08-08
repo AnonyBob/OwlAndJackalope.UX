@@ -11,8 +11,8 @@ namespace OwlAndJackalope.UX.Modules
     /// The states can be used like a state machine to setup different UX experiences. State relationships
     /// cannot be modified by external providers.
     /// </summary>
-    [System.Serializable]
-    public class StateModule
+    [System.Serializable, RequireComponent(typeof(ReferenceModule))]
+    public sealed class StateModule : MonoBehaviour, IReferenceDependentModule, IStateNameChangeHandler
     {
         [SerializeField]
         private List<BaseSerializedState> _states;
@@ -40,6 +40,17 @@ namespace OwlAndJackalope.UX.Modules
             }
 
             return null;
+        }
+
+        public void HandleStateNameChange(string previousName, string newName)
+        {
+            foreach (var handler in GetComponentsInChildren<IStateNameChangeHandler>())
+            {
+                if (!ReferenceEquals(handler, this))
+                {
+                    handler.HandleStateNameChange(previousName, newName);
+                }
+            }
         }
     }
 }

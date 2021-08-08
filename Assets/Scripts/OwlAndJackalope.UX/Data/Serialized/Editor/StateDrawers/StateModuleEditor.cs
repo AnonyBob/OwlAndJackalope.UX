@@ -5,36 +5,26 @@ using OwlAndJackalope.UX.Modules;
 using UnityEditor;
 using UnityEngine;
 
-namespace OwlAndJackalope.UX.Data.Serialized.Editor
+namespace OwlAndJackalope.UX.Data.Serialized.Editor.StateDrawers
 {
-    public class StateModuleEditor
+    [CustomEditor(typeof(StateModule))]
+    public class StateModuleEditor : UnityEditor.Editor
     {
         private const string StateName = "_name";
         private const string Conditions = "_conditions";
         
-        private readonly SerializedProperty _moduleProperty;
-        private readonly SerializedProperty _statesProperty;
-        private readonly SerializedObject _serializedObject;
-
-        private SerializedProperty _selectedState;
+        private SerializedProperty _statesProperty;
         private int? _selectedStateIndex;
-        
-        public StateModuleEditor(SerializedObject serializedObject)
+
+        public override void OnInspectorGUI()
         {
-            _serializedObject = serializedObject;
-            _moduleProperty = _serializedObject.FindProperty("_stateModule");
-            _statesProperty = _moduleProperty.FindPropertyRelative("_states");
-        }
-        
-        public void Draw()
-        {
+            _statesProperty = serializedObject.FindProperty("_states");
             using (new EditorGUILayout.HorizontalScope())
             {
                 var selectedStateIndex = EditorGUILayout.Popup("States", _selectedStateIndex ?? 0, GetStateNames().ToArray());
-                if (!_selectedStateIndex.HasValue || selectedStateIndex != _selectedStateIndex.Value && _statesProperty.arraySize > 0)
+                if ((!_selectedStateIndex.HasValue || selectedStateIndex != _selectedStateIndex.Value) && _statesProperty.arraySize > 0)
                 {
                     _selectedStateIndex = selectedStateIndex;
-                    _selectedState = _statesProperty.GetArrayElementAtIndex(_selectedStateIndex.Value);
                 }
 
                 if (GUILayout.Button("+", GUILayout.Width(30)))
@@ -43,11 +33,12 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
                 }
             }
 
-            if (_selectedState != null)
+            if (_selectedStateIndex.HasValue && _statesProperty.arraySize > _selectedStateIndex.Value)
             {
                 using (new EditorGUILayout.HorizontalScope())
                 {
-                    var stateName = _selectedState.FindPropertyRelative(StateName);
+                    var selectedState = _statesProperty.GetArrayElementAtIndex(_selectedStateIndex.Value);
+                    var stateName = selectedState.FindPropertyRelative(StateName);
                     var newStateName = EditorGUILayout.TextField("State Name", stateName.stringValue);
                     if (newStateName != stateName.stringValue)
                     {
@@ -60,14 +51,16 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
                     }
                 }
 
-                if (_selectedState != null)
+                if (_selectedStateIndex.HasValue)
                 {
                     EditorGUI.indentLevel++;
-                    EditorGUILayout.PropertyField(_selectedState.FindPropertyRelative(Conditions), true);
+                    var selectedState = _statesProperty.GetArrayElementAtIndex(_selectedStateIndex.Value);
+                    EditorGUILayout.PropertyField(selectedState.FindPropertyRelative(Conditions), true);
                     EditorGUI.indentLevel--;
                 }
             }
-            
+
+            serializedObject.ApplyModifiedProperties();
         }
 
         private IEnumerable<string> GetStateNames()
@@ -82,10 +75,10 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
         {
             _selectedStateIndex = _statesProperty.arraySize;
             _statesProperty.InsertArrayElementAtIndex(_statesProperty.arraySize);
-            _selectedState = _statesProperty.GetArrayElementAtIndex(_selectedStateIndex.Value);
+            var selectedState = _statesProperty.GetArrayElementAtIndex(_selectedStateIndex.Value);
 
-            _selectedState.FindPropertyRelative(StateName).stringValue = $"State{Guid.NewGuid().ToString().Substring(0, 6)}";
-            _selectedState.FindPropertyRelative(Conditions).ClearArray();
+            selectedState.FindPropertyRelative(StateName).stringValue = $"State{Guid.NewGuid().ToString().Substring(0, 6)}";
+            selectedState.FindPropertyRelative(Conditions).ClearArray();
         }
 
         private string HandleNameChange(string newName, string oldName)
@@ -102,7 +95,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
                 }
             }
 
-            if(_serializedObject.targetObject is IStateNameChangeHandler handler)
+            if(serializedObject.targetObject is IStateNameChangeHandler handler)
             {
                 handler.HandleStateNameChange(oldName, newName);
             }
@@ -114,7 +107,6 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
         {
             _statesProperty.DeleteArrayElementAtIndex(_selectedStateIndex.Value);
             _selectedStateIndex = null;
-            _selectedState = null;
         }
     }
 }

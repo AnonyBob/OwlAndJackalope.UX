@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEditorInternal;
 
-namespace OwlAndJackalope.UX.Data.Serialized.Editor
+namespace OwlAndJackalope.UX.Data.Serialized.Editor.ReferenceDrawers
 {
     public class ReferenceEditor
     {

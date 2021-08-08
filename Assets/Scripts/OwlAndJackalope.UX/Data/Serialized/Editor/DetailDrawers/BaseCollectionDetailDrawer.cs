@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace OwlAndJackalope.UX.Data.Serialized.Editor
+namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
 {
     [CustomPropertyDrawer(typeof(BaseSerializedCollectionDetail))]
     public class BaseCollectionDetailDrawer : PropertyDrawer
@@ -96,7 +96,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
 
         protected virtual DetailNameChecker GetNameChecker()
         {
-            return new DetailNameChecker(SharedDrawers.ReferenceTemplatePath, SharedDrawers.ExperiencePath);
+            return new DetailNameChecker(SharedDrawers.ReferenceTemplatePath, SharedDrawers.ReferenceModulePath);
         }
     }
 }

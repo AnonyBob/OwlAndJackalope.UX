@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 
-namespace OwlAndJackalope.UX.Data.Serialized.Editor
+namespace OwlAndJackalope.UX.Data.Serialized.Editor.ReferenceDrawers
 {
     [CustomEditor(typeof(ReferenceTemplate))]
     public class ReferenceTemplateEditor : UnityEditor.Editor

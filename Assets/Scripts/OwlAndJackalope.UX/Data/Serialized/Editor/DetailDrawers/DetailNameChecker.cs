@@ -1,18 +1,18 @@
 ﻿using OwlAndJackalope.UX.Modules;
 using UnityEditor;
 
-namespace OwlAndJackalope.UX.Data.Serialized.Editor
+namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
 {
     public class DetailNameChecker
     {
         private readonly string NameString = "_name";
         private readonly string ReferenceTemplatePath;
-        private readonly string ExperiencePath;
+        private readonly string ReferenceModulePath;
 
-        public DetailNameChecker(string referenceTemplatePath, string experiencePath)
+        public DetailNameChecker(string referenceTemplatePath, string referenceModulePath)
         {
             ReferenceTemplatePath = referenceTemplatePath;
-            ExperiencePath = experiencePath;
+            ReferenceModulePath = referenceModulePath;
         }
 
         public string CheckName(string previousName, string newName, SerializedProperty property)
@@ -27,9 +27,9 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
                     return previousName;
                 }
             }
-            else if (targetObject is Experience experience)
+            else if (targetObject is ReferenceModule module)
             {
-                var reference = property.serializedObject.FindProperty(ExperiencePath);
+                var reference = property.serializedObject.FindProperty(ReferenceModulePath);
                 if (!IsNameValid(reference, newName))
                 {
                     return previousName;
@@ -37,8 +37,8 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
                 
                 if (previousName != newName)
                 {
-                    UpdateConditions(property.serializedObject.FindProperty(SharedDrawers.ExperienceStatesPath), previousName, newName);
-                    experience.HandleDetailNameChange(previousName, newName);
+                    //UpdateConditions(property.serializedObject.FindProperty(SharedDrawers.ExperienceStatesPath), previousName, newName);
+                    module.HandleDetailNameChange(previousName, newName);
                 }
             }
 

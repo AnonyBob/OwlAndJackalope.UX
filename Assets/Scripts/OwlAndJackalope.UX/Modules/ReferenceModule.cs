@@ -1,16 +1,10 @@
 ﻿using OwlAndJackalope.UX.Data;
 using OwlAndJackalope.UX.Data.Serialized;
-using OwlAndJackalope.UX.Modules.Initializers;
 using UnityEngine;
 
 namespace OwlAndJackalope.UX.Modules
 {
-    /// <summary>
-    /// The module on an experience responsible for defining the details that drive the
-    /// state and related actions.
-    /// </summary>
-    [System.Serializable]
-    public class ReferenceModule
+    public sealed class ReferenceModule : MonoBehaviour, IDetailNameChangeHandler
     {
         public IReference Reference
         {
@@ -19,10 +13,14 @@ namespace OwlAndJackalope.UX.Modules
             {
                 if (_runtimeReference == null)
                 {
-                    _runtimeReference = new BaseReference(_reference.ConvertToReference());
+                    Initialize();
                 }
 
-                _runtimeReference.AddDetails(value);
+                if (value != null)
+                {
+                    _runtimeReference.AddDetails(value);    
+                }
+                
             }
         }
         
@@ -30,16 +28,34 @@ namespace OwlAndJackalope.UX.Modules
         private BaseSerializedReference _reference;
         private IMutableReference _runtimeReference;
 
-        public void Initialize(ExperienceReferenceProvider provider)
+        private void Awake()
         {
-            _runtimeReference = new BaseReference(_reference.ConvertToReference());
+            Initialize();
             
+            var provider = GetComponent<ReferenceProvider>();
             if (provider != null)
             {
-                var providedReference = provider.GetReferenceForExperience();
-                if (providedReference != null)
+                Reference = provider.ProvideReference();
+            }
+
+            foreach (var module in GetComponents<IReferenceDependentModule>())
+            {
+                module.Initialize(Reference);
+            }
+        }
+
+        private void Initialize()
+        {
+            _runtimeReference = new BaseReference(_reference.ConvertToReference());
+        }
+        
+        public void HandleDetailNameChange(string previousName, string newName)
+        {
+            foreach (var handler in GetComponentsInChildren<IDetailNameChangeHandler>())
+            {
+                if (!ReferenceEquals(handler, this))
                 {
-                    _runtimeReference.AddDetails(providedReference);    
+                    handler.HandleDetailNameChange(previousName, newName);
                 }
             }
         }

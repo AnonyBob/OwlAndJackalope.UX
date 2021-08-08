@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using OwlAndJackalope.UX.Conditions;
 using OwlAndJackalope.UX.Conditions.Serialized;
+using OwlAndJackalope.UX.Modules;
 using UnityEditor;
 using UnityEngine;
 
@@ -90,7 +91,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
 
         private (int DetailType, string EnumType, string EnumAssembly) GetDetailType(SerializedProperty property, string detailName)
         {
-            var details = property.serializedObject.FindProperty($"{SharedDrawers.ExperiencePath}.{SharedDrawers.ReferenceDetailsString}");
+            var details = GetDetailsProperty(property);
             for (var i = 0; i < details.arraySize; ++i)
             {
                 var detail = details.GetArrayElementAtIndex(i);
@@ -109,7 +110,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
         
         private IEnumerable<string> GetDetailOptions(SerializedProperty property, int detailType)
         {
-            var details = property.serializedObject.FindProperty($"{SharedDrawers.ExperiencePath}.{SharedDrawers.ReferenceDetailsString}");
+            var details = GetDetailsProperty(property);
             for (var i = 0; i < details.arraySize; ++i)
             {
                 var detail = details.GetArrayElementAtIndex(i);
@@ -129,6 +130,13 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
             {
                 yield return "A"; //Arguments are only accessible in actions.
             }
+        }
+
+        private SerializedProperty GetDetailsProperty(SerializedProperty property)
+        {
+            var target = property.serializedObject.targetObject as MonoBehaviour;
+            var serializedReference = new SerializedObject(target.GetComponentInParent<ReferenceModule>());
+            return serializedReference.FindProperty($"{SharedDrawers.ReferenceModulePath}.{SharedDrawers.ReferenceDetailsString}");
         }
     }
 }

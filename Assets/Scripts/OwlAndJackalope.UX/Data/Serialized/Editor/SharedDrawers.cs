@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers;
 using OwlAndJackalope.UX.Data.Serialized.Editor.EnumExtensions;
 using UnityEditor;
 using UnityEditorInternal;
@@ -26,7 +27,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
         public const string EnumTypeString = "_enumTypeName";
         
         public const string ReferenceTemplatePath = "Reference";
-        public const string ExperiencePath = "_referenceModule._reference";
+        public const string ReferenceModulePath = "_reference";
         public const string ReferenceDetailsString = "_details";
         public const string ReferenceCollectionDetailsString = "_collectionDetails";
         public const string ReferenceMapDetailsString = "_mapDetails";
