@@ -31,8 +31,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
         public const string ReferenceDetailsString = "_details";
         public const string ReferenceCollectionDetailsString = "_collectionDetails";
         public const string ReferenceMapDetailsString = "_mapDetails";
-
-        public const string ExperienceStatesPath = "_stateModule._states";
+        
         public const string ConditionsString = "_conditions";
 
         public const string KeyTypeString = "_keyType";

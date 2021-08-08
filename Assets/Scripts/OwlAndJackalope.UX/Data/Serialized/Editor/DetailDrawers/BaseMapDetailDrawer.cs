@@ -33,7 +33,6 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
             SharedDrawers.DrawNameField(namePos, property, SharedDrawers.NameString, propertyData.NameChecker);
             
             var keyTypeProp = property.FindPropertyRelative(SharedDrawers.KeyTypeString);
-            var keyIsEnum = (DetailType)keyTypeProp.enumValueIndex == DetailType.Enum;
             var keyTypeNamePos = new Rect(position.x, 
                 namePos.y + namePos.height + SharedDrawers.Buffer, 
                 position.width * 0.25f, 

@@ -30,7 +30,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
 
             EditorGUI.BeginProperty(position, label, property);
             
-            var typePos = new Rect(position.x, position.y + SharedDrawers.Buffer, position.width * 0.1f, EditorGUIUtility.singleLineHeight);
+            var typePos = new Rect(position.x, position.y + SharedDrawers.Buffer, position.width * 0.15f, EditorGUIUtility.singleLineHeight);
             SharedDrawers.DrawTypeField(typePos, property, SharedDrawers.TypeString, SharedDrawers.EnumTypeString);
             
             var namePos = new Rect(typePos.x + typePos.width + SharedDrawers.Buffer, 

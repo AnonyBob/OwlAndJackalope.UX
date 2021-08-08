@@ -214,33 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _states:
   - _name: State71d519
-    _conditions:
-    - _parameterOne:
-        Name: Double 22111a06
-        Type: 1
-        ComponentType: 0
-      _parameterTwo:
-        Name: Float 10eb8a41
-        Type: 0
-        ComponentType: 0
-      _value:
-        _name: 
-        _type: 4
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      _detailType: 0
-      _comparisonType: 0
+    _conditions: []
   - _name: State088cb9
     _conditions: []
   - _name: Statedf153e
@@ -255,7 +229,7 @@ MonoBehaviour:
         ComponentType: 0
       _value:
         _name: 
-        _type: 3
+        _type: 0
         _enumTypeName: 
         _enumAssemblyName: 
         _value: 0
@@ -373,122 +347,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reference:
-    _details:
-    - _name: Double 22111a06
-      _type: 4
-      _enumTypeName: 
-      _enumAssemblyName: 
-      _value: 0
-      _stringValue: 
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _gameObjectValue: {fileID: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-      _textureValue: {fileID: 0}
-      _spriteValue: {fileID: 0}
-    - _name: Float 10eb8a41
-      _type: 3
-      _enumTypeName: 
-      _enumAssemblyName: 
-      _value: 0
-      _stringValue: 
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _gameObjectValue: {fileID: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-      _textureValue: {fileID: 0}
-      _spriteValue: {fileID: 0}
+    _details: []
     _collectionDetails:
     - _name: Double 95f575f0
       _type: 4
       _enumTypeName: 
       _enumAssemblyName: 
       _collection: []
-    _mapDetails:
-    - _name: String 34143866
-      _keyType: 6
-      _keyEnumTypeName: 
-      _keyEnumAssemblyName: 
-      _valueType: 13
-      _valueEnumTypeName: 
-      _valueEnumAssemblyName: 
-      _keyCollection:
-      - _name: 
-        _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      _valueCollection:
-      - _name: 
-        _type: 13
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-    - _name: String bb13e7a2
-      _keyType: 6
-      _keyEnumTypeName: 
-      _keyEnumAssemblyName: 
-      _valueType: 11
-      _valueEnumTypeName: 
-      _valueEnumAssemblyName: 
-      _keyCollection:
-      - _name: 
-        _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      _valueCollection:
-      - _name: 
-        _type: 11
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
+    _mapDetails: []
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0
