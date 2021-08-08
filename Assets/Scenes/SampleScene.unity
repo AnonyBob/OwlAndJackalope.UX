@@ -289,6 +289,36 @@ MonoBehaviour:
           m_SubObjectType: 
         _textureValue: {fileID: 0}
         _spriteValue: {fileID: 0}
+      - _name: Enum 7adbb408
+        _type: 5
+        _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        _value: 11.1
+        _stringValue: Some Name
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _gameObjectValue: {fileID: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+        _textureValue: {fileID: 0}
+        _spriteValue: {fileID: 0}
+      - _name: SomeValue
+        _type: 4
+        _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        _value: 11.1
+        _stringValue: Some Name
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _gameObjectValue: {fileID: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+        _textureValue: {fileID: 0}
+        _spriteValue: {fileID: 0}
       _collectionDetails:
       - _name: Aliases
         _type: 6
@@ -448,8 +478,6 @@ MonoBehaviour:
   _stateModule:
     _states:
     - _name: Tall
-      _conditions: []
-    - _name: Short
       _conditions: []
 --- !u!20 &1687258584
 Camera:

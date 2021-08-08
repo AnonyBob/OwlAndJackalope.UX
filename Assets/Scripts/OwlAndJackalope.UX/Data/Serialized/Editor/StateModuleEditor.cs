@@ -60,9 +60,12 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
                     }
                 }
 
-                EditorGUI.indentLevel++;
-                EditorGUILayout.PropertyField(_selectedState.FindPropertyRelative(Conditions), true);
-                EditorGUI.indentLevel--;
+                if (_selectedState != null)
+                {
+                    EditorGUI.indentLevel++;
+                    EditorGUILayout.PropertyField(_selectedState.FindPropertyRelative(Conditions), true);
+                    EditorGUI.indentLevel--;
+                }
             }
             
         }

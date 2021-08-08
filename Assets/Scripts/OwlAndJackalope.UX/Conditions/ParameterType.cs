@@ -4,10 +4,10 @@ namespace OwlAndJackalope.UX.Conditions
 {
     public enum ParameterType
     {
-        Value = 0,
-        Detail = 1,
-        Argument = 2,
-        DetailComponent = 3,
+        Value = 0, //Value
+        Detail = 1, //Detail
+        Argument = 2, //Argument
+        DetailComponent = 3, //Detail Component
     }
 
     public enum ComponentType
