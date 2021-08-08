@@ -7,7 +7,7 @@ using OwlAndJackalope.UX.Modules;
 using UnityEditor;
 using UnityEngine;
 
-namespace OwlAndJackalope.UX.Data.Serialized.Editor
+namespace OwlAndJackalope.UX.Data.Serialized.Editor.StateDrawers
 {
     [CustomPropertyDrawer(typeof(BaseSerializedCondition))]
     public class ConditionPropertyDrawer : PropertyDrawer
