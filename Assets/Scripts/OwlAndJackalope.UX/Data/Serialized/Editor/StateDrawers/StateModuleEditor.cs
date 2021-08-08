@@ -53,10 +53,8 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.StateDrawers
 
                 if (_selectedStateIndex.HasValue)
                 {
-                    EditorGUI.indentLevel++;
                     var selectedState = _statesProperty.GetArrayElementAtIndex(_selectedStateIndex.Value);
                     EditorGUILayout.PropertyField(selectedState.FindPropertyRelative(Conditions), true);
-                    EditorGUI.indentLevel--;
                 }
             }
 

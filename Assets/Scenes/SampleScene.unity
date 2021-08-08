@@ -213,14 +213,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _states:
-  - _name: State71d519
-    _conditions: []
-  - _name: State088cb9
-    _conditions: []
-  - _name: Statedf153e
+  - _name: CheckTwo
     _conditions:
     - _parameterOne:
-        Name: Float 10eb8a41
+        Name: Stupid
+        Type: 1
+        ComponentType: 0
+      _parameterTwo:
+        Name: 
+        Type: 0
+        ComponentType: 0
+      _value:
+        _name: 
+        _type: 0
+        _enumTypeName: 
+        _enumAssemblyName: 
+        _value: 0
+        _stringValue: 
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _gameObjectValue: {fileID: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+        _textureValue: {fileID: 0}
+        _spriteValue: {fileID: 0}
+      _detailType: 0
+      _comparisonType: 0
+  - _name: ChekcOne
+    _conditions:
+    - _parameterOne:
+        Name: Stupid
         Type: 1
         ComponentType: 0
       _parameterTwo:
@@ -347,13 +371,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reference:
-    _details: []
-    _collectionDetails:
-    - _name: Double 95f575f0
-      _type: 4
+    _details:
+    - _name: Stupid
+      _type: 0
       _enumTypeName: 
       _enumAssemblyName: 
-      _collection: []
+      _value: 0
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _gameObjectValue: {fileID: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+      _textureValue: {fileID: 0}
+      _spriteValue: {fileID: 0}
+    _collectionDetails: []
     _mapDetails: []
 --- !u!1 &2138677391
 GameObject:

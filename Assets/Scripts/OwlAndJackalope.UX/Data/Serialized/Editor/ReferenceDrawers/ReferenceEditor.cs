@@ -47,7 +47,6 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.ReferenceDrawers
         
         public void Draw()
         {
-            EditorGUI.indentLevel++;
             if (EditorGUILayout.PropertyField(_detailListProp, false))
             {
                 _detailList.DoLayoutList();
@@ -64,7 +63,6 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.ReferenceDrawers
                 _mapDetailList.DoLayoutList();
                 CacheMethod.Invoke(_mapDetailList, Empty);
             }
-            EditorGUI.indentLevel--;
         }
     }
 }

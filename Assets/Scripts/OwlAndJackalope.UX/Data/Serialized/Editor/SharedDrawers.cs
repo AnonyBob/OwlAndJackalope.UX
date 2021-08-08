@@ -244,6 +244,9 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
                     newItem.FindPropertyRelative(KeyTypeString).enumValueIndex = (int)keyType;
                     newItem.FindPropertyRelative(ValueTypeString).enumValueIndex = (int)valueType;
                     
+                    newItem.FindPropertyRelative(KeyCollectionString).ClearArray();
+                    newItem.FindPropertyRelative(ValueCollectionString).ClearArray();
+                    
                     var guidString = Guid.NewGuid().ToString();
                     newItem.FindPropertyRelative(NameString).stringValue =
                         $"{keyType.ToString()} {guidString.Substring(0, guidString.IndexOf("-"))}";

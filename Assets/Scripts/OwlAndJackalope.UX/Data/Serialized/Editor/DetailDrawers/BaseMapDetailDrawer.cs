@@ -159,20 +159,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
             property.FindPropertyRelative(SharedDrawers.KeyCollectionString).arraySize = 0;
             property.FindPropertyRelative(SharedDrawers.ValueCollectionString).arraySize = 0;
         }
-
-        protected virtual void ClearKeyPropValues(SerializedProperty property)
-        {
-            property.FindPropertyRelative(SharedDrawers.KeyEnumTypeString).stringValue = string.Empty;
-            property.FindPropertyRelative(SharedDrawers.KeyEnumAssemblyString).stringValue = string.Empty;
-            ClearPropValues(property);
-        }
-
-        protected virtual void ClearValuePropValues(SerializedProperty property)
-        {
-            property.FindPropertyRelative(SharedDrawers.ValueEnumTypeString).stringValue = string.Empty;
-            property.FindPropertyRelative(SharedDrawers.ValueEnumAssemblyString).stringValue = string.Empty;
-            ClearPropValues(property);
-        }
+        
 
         protected virtual DetailNameChecker GetNameChecker()
         {

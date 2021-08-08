@@ -59,9 +59,13 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.StateDrawers
             {
                 var detailType = referenceDetail != null ? GetDetailType(property, referenceDetail).DetailType : -1;
                 var options = GetDetailOptions(property, detailType).ToArray();
+                if (options.Length == 0)
+                {
+                    return string.Empty;
+                }
                 var detailIndex = Math.Max(0, Array.IndexOf(options, nameProp.stringValue));
                 var nextIndex = EditorGUI.Popup(namePos, detailIndex, options);
-                if (string.IsNullOrEmpty(nameProp.stringValue) || (nextIndex != detailIndex && nextIndex >= 0 && nextIndex < options.Length))
+                if (string.IsNullOrEmpty(nameProp.stringValue) || nextIndex != detailIndex || (nextIndex < options.Length && options[nextIndex] != nameProp.stringValue))
                 {
                     nameProp.stringValue = options[nextIndex];
                 }
