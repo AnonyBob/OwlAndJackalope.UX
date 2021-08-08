@@ -60,7 +60,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
                 var options = GetDetailOptions(property, detailType).ToArray();
                 var detailIndex = Math.Max(0, Array.IndexOf(options, nameProp.stringValue));
                 var nextIndex = EditorGUI.Popup(namePos, detailIndex, options);
-                if (nextIndex != detailIndex && nextIndex >= 0 && nextIndex < options.Length)
+                if (string.IsNullOrEmpty(nameProp.stringValue) || (nextIndex != detailIndex && nextIndex >= 0 && nextIndex < options.Length))
                 {
                     nameProp.stringValue = options[nextIndex];
                 }
