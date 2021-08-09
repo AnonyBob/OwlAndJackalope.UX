@@ -30,9 +30,9 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.ReferenceDrawers
             _collectionListProp = _serializedObject.FindProperty(propertyNamePrefix + CollectionsPath);
             _mapListProp = _serializedObject.FindProperty(propertyNamePrefix + MapsPath);
 
-            _detailList = SharedDrawers.CreateDetailList(_detailListProp, SharedDrawers.TypeString, SharedDrawers.NameString, true,null);
-            _collectionDetailList = SharedDrawers.CreateDetailList(_collectionListProp, SharedDrawers.TypeString, SharedDrawers.NameString,
-                false, newItem =>
+            _detailList = SharedDrawers.CreateDetailList(_detailListProp, true,null);
+            _collectionDetailList = SharedDrawers.CreateDetailList(_collectionListProp, false, 
+                newItem =>
                 {
                     newItem.FindPropertyRelative(SharedDrawers.CollectionString).ClearArray();
                 });

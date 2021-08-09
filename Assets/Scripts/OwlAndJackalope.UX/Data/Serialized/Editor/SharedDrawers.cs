@@ -173,12 +173,10 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
         {
             var rowSize = EditorGUIUtility.singleLineHeight + Buffer;
             var collections = property.FindPropertyRelative(collectionString);
-            return rowSize * (collections.isExpanded ? (6 + Mathf.Max(2,collections.arraySize * 2)) : 4);
+            return rowSize * (collections.isExpanded ? (4 + Mathf.Max(2,collections.arraySize * 2)) : 2);
         }
 
-        public static ReorderableList CreateDetailList(SerializedProperty property, 
-            string typeString, 
-            string nameString,
+        public static ReorderableList CreateDetailList(SerializedProperty property,
             bool allowReordering,
             Action<SerializedProperty> clearFunc)
         {
@@ -198,28 +196,64 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
             {
                 var type = typeof(DetailType);
                 var menu = new GenericMenu();
+                var enumTypeString = DetailType.Enum.ToString();
                 foreach (var val in type.GetEnumNames())
                 {
-                    menu.AddItem(new GUIContent(val), false, selection =>
+                    if (val != enumTypeString)
                     {
-                        var enumName = (string) selection;
-                        property.InsertArrayElementAtIndex(property.arraySize);
-                        var newItem = property.GetArrayElementAtIndex(property.arraySize - 1);
-                        newItem.FindPropertyRelative(typeString).enumValueIndex = (int)Enum.Parse(type, enumName);
-
-                        var guidString = Guid.NewGuid().ToString();
-                        newItem.FindPropertyRelative(nameString).stringValue =
-                            $"{enumName} {guidString.Substring(0, guidString.IndexOf("-"))}";
-                        
-                        clearFunc?.Invoke(newItem);
-
-                        property.serializedObject.ApplyModifiedProperties();
-                    }, val);
+                        menu.AddItem(new GUIContent(val), false, selection =>
+                        {
+                            var enumName = (string) selection;
+                            var detailType = (DetailType)Enum.Parse(type, enumName);
+                            InsertNewItem(property, detailType, clearFunc);
+                        }, val);
+                    }
+                    else
+                    {
+                        foreach (var enumType in SerializedDetailEnumCache.EnumTypes)
+                        {
+                            menu.AddItem(new GUIContent($"{enumTypeString}/{enumType.Name}"), false, selection =>
+                            {
+                                InsertNewEnumItem(property, enumType, clearFunc);
+                            }, enumType);
+                        }
+                    }
+                    
                 }
                 menu.DropDown(rect);
             };
             
             return list;
+        }
+
+        private static void InsertNewItem(SerializedProperty property, DetailType detailType, Action<SerializedProperty> clearFunc)
+        {
+            property.InsertArrayElementAtIndex(property.arraySize);
+            var newItem = property.GetArrayElementAtIndex(property.arraySize - 1);
+            newItem.FindPropertyRelative(TypeString).enumValueIndex = (int)detailType;
+            
+            var guidString = Guid.NewGuid().ToString();
+            newItem.FindPropertyRelative(NameString).stringValue =
+                $"{detailType} {guidString.Substring(0, guidString.IndexOf("-"))}"; 
+            
+            clearFunc?.Invoke(newItem);
+            property.serializedObject.ApplyModifiedProperties();
+        }
+
+        private static void InsertNewEnumItem(SerializedProperty property, Type enumType, Action<SerializedProperty> clearFunc)
+        {
+            property.InsertArrayElementAtIndex(property.arraySize);
+            var newItem = property.GetArrayElementAtIndex(property.arraySize - 1);
+            newItem.FindPropertyRelative(TypeString).enumValueIndex = (int)DetailType.Enum;
+            newItem.FindPropertyRelative(EnumTypeString).stringValue = enumType.FullName;
+            newItem.FindPropertyRelative(EnumAssemblyString).stringValue = enumType.Assembly.FullName;
+            
+            var guidString = Guid.NewGuid().ToString();
+            newItem.FindPropertyRelative(NameString).stringValue =
+                $"{enumType.Name} {guidString.Substring(0, guidString.IndexOf("-"))}"; 
+            
+            clearFunc?.Invoke(newItem);
+            property.serializedObject.ApplyModifiedProperties();
         }
 
         public static ReorderableList CreateMapList(SerializedProperty property)
@@ -241,8 +275,14 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
                     property.InsertArrayElementAtIndex(property.arraySize);
                     var newItem = property.GetArrayElementAtIndex(property.arraySize - 1);
                     
-                    newItem.FindPropertyRelative(KeyTypeString).enumValueIndex = (int)keyType;
-                    newItem.FindPropertyRelative(ValueTypeString).enumValueIndex = (int)valueType;
+                    newItem.FindPropertyRelative(KeyTypeString).enumValueIndex = (int)keyType.MainType;
+                    newItem.FindPropertyRelative(ValueTypeString).enumValueIndex = (int)valueType.MainType;
+
+                    newItem.FindPropertyRelative(KeyEnumTypeString).stringValue = keyType.EnumType?.FullName;
+                    newItem.FindPropertyRelative(KeyEnumAssemblyString).stringValue = keyType.EnumType?.Assembly?.FullName;
+                    
+                    newItem.FindPropertyRelative(ValueEnumTypeString).stringValue = valueType.EnumType?.FullName;
+                    newItem.FindPropertyRelative(ValueEnumAssemblyString).stringValue = valueType.EnumType?.Assembly?.FullName;
                     
                     newItem.FindPropertyRelative(KeyCollectionString).ClearArray();
                     newItem.FindPropertyRelative(ValueCollectionString).ClearArray();

@@ -1,6 +1,5 @@
 ﻿using OwlAndJackalope.UX.Modules;
 using UnityEditor;
-using UnityEngine;
 
 namespace OwlAndJackalope.UX.Data.Serialized.Editor.ReferenceDrawers
 {

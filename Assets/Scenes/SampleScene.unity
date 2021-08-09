@@ -212,63 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12994531942f4318b75cfcc7e02fc38e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _states:
-  - _name: CheckTwo
-    _conditions:
-    - _parameterOne:
-        Name: Stupid
-        Type: 1
-        ComponentType: 0
-      _parameterTwo:
-        Name: 
-        Type: 0
-        ComponentType: 0
-      _value:
-        _name: 
-        _type: 0
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      _detailType: 0
-      _comparisonType: 0
-  - _name: ChekcOne
-    _conditions:
-    - _parameterOne:
-        Name: Stupid
-        Type: 1
-        ComponentType: 0
-      _parameterTwo:
-        Name: 
-        Type: 0
-        ComponentType: 0
-      _value:
-        _name: 
-        _type: 0
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      _detailType: 0
-      _comparisonType: 0
+  _states: []
 --- !u!20 &1687258584
 Camera:
   m_ObjectHideFlags: 0
@@ -371,22 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reference:
-    _details:
-    - _name: Stupid
-      _type: 0
-      _enumTypeName: 
-      _enumAssemblyName: 
-      _value: 0
-      _stringValue: 
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _gameObjectValue: {fileID: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-      _textureValue: {fileID: 0}
-      _spriteValue: {fileID: 0}
+    _details: []
     _collectionDetails: []
     _mapDetails: []
 --- !u!1 &2138677391

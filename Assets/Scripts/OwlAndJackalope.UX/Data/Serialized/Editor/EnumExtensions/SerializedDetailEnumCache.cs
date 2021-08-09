@@ -6,16 +6,16 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.EnumExtensions
 {
     public static class SerializedDetailEnumCache
     {
-        private static readonly List<Type> EnumTypes = new List<Type>();
+        private static readonly List<Type> _enumTypes = new List<Type>();
         private static string[] _cachedEnumTypeNames;
         private static string[] _cachedEnumTypeFullNames;
         public static string[] EnumTypeNames
         {
             get
             {
-                if (_cachedEnumTypeNames == null || _cachedEnumTypeNames.Length != EnumTypes.Count)
+                if (_cachedEnumTypeNames == null || _cachedEnumTypeNames.Length != _enumTypes.Count)
                 {
-                    _cachedEnumTypeNames = EnumTypes.Select(x => x.Name).ToArray();
+                    _cachedEnumTypeNames = _enumTypes.Select(x => x.Name).ToArray();
                 }
 
                 return _cachedEnumTypeNames;
@@ -26,21 +26,23 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.EnumExtensions
         {
             get
             {
-                if (_cachedEnumTypeFullNames == null || _cachedEnumTypeFullNames.Length != EnumTypes.Count)
+                if (_cachedEnumTypeFullNames == null || _cachedEnumTypeFullNames.Length != _enumTypes.Count)
                 {
-                    _cachedEnumTypeFullNames = EnumTypes.Select(x => x.FullName).ToArray();
+                    _cachedEnumTypeFullNames = _enumTypes.Select(x => x.FullName).ToArray();
                 }
 
                 return _cachedEnumTypeFullNames;
             }
         }
 
+        public static IEnumerable<Type> EnumTypes => _enumTypes;
+
         public static void AddEnumType(Type type)
         {
             if (type.IsEnum && !EnumTypes.Contains(type))
             {
-                EnumTypes.Add(type);
-                EnumTypes.Sort((type1, type2) => type1.Name.CompareTo(type2.Name));
+                _enumTypes.Add(type);
+                _enumTypes.Sort((type1, type2) => type1.Name.CompareTo(type2.Name));
             }
         }
 

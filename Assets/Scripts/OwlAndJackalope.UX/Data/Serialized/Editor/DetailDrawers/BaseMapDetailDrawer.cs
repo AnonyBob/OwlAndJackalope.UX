@@ -29,42 +29,24 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
             }
             
             EditorGUI.BeginProperty(position, label, property);
-            var namePos = new Rect(position.x, position.y + SharedDrawers.Buffer, position.width, EditorGUIUtility.singleLineHeight);
-            SharedDrawers.DrawNameField(namePos, property, SharedDrawers.NameString, propertyData.NameChecker);
-            
-            var keyTypeProp = property.FindPropertyRelative(SharedDrawers.KeyTypeString);
-            var keyTypeNamePos = new Rect(position.x, 
-                namePos.y + namePos.height + SharedDrawers.Buffer, 
-                position.width * 0.25f, 
-                EditorGUIUtility.singleLineHeight);
-            var keyTypePos = new Rect(keyTypeNamePos.x + keyTypeNamePos.width + SharedDrawers.Buffer, 
-                keyTypeNamePos.y, 
-                keyTypeNamePos.width - SharedDrawers.Buffer, 
-                EditorGUIUtility.singleLineHeight);
-            var keyEnumPos = new Rect(keyTypePos.x + keyTypePos.width + SharedDrawers.Buffer, 
-                keyTypePos.y, 
-                position.width * 0.5f - SharedDrawers.Buffer, 
-                EditorGUIUtility.singleLineHeight);
 
-            var valueTypeProp = property.FindPropertyRelative(SharedDrawers.ValueTypeString);
-            var valueIsEnum = (DetailType) valueTypeProp.enumValueIndex == DetailType.Enum;
-            var valueTypeNamePos = new Rect(position.x, 
-                keyTypeNamePos.y + keyTypeNamePos.height + SharedDrawers.Buffer, 
+            var keyTypePos = new Rect(position.x, 
+                position.y + SharedDrawers.Buffer, 
                 position.width * 0.25f, 
                 EditorGUIUtility.singleLineHeight);
-            var valueTypePos = new Rect(valueTypeNamePos.x + valueTypeNamePos.width + SharedDrawers.Buffer, 
-                valueTypeNamePos.y, 
+            
+            var valueTypePos = new Rect(keyTypePos.x + keyTypePos.width + SharedDrawers.Buffer, 
+                keyTypePos.y, 
                 position.width * 0.25f - SharedDrawers.Buffer, 
                 EditorGUIUtility.singleLineHeight);
-            var valueEnumPos = new Rect(valueTypePos.x + valueTypePos.width + SharedDrawers.Buffer, 
-                valueTypePos.y, 
-                position.width * 0.5f - SharedDrawers.Buffer, 
-                EditorGUIUtility.singleLineHeight);
             
-            EditorGUI.LabelField(keyTypeNamePos, "Key Type");
-            EditorGUI.LabelField(valueTypeNamePos, "Value Type");
             SharedDrawers.DrawTypeField(keyTypePos, property, SharedDrawers.KeyTypeString, SharedDrawers.KeyEnumTypeString);
             SharedDrawers.DrawTypeField(valueTypePos, property, SharedDrawers.ValueTypeString, SharedDrawers.ValueEnumTypeString);
+            
+            var namePos = new Rect(valueTypePos.x + valueTypePos.width + SharedDrawers.Buffer,
+                position.y + SharedDrawers.Buffer, position.width * 0.5f - SharedDrawers.Buffer, 
+                EditorGUIUtility.singleLineHeight);
+            SharedDrawers.DrawNameField(namePos, property, SharedDrawers.NameString, propertyData.NameChecker);
 
             var collectionY = valueTypePos.y + valueTypePos.height + SharedDrawers.Buffer;
             var collectionHeaderPos = new Rect(position.x + SharedDrawers.Buffer * 3, collectionY, 
@@ -109,7 +91,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
                 keyProp.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue =
                     property.FindPropertyRelative(SharedDrawers.KeyEnumTypeString).stringValue;
                 keyProp.FindPropertyRelative(SharedDrawers.EnumAssemblyString).stringValue =
-                    property.FindPropertyRelative(SharedDrawers.KeyEnumTypeString).stringValue;
+                    property.FindPropertyRelative(SharedDrawers.KeyEnumAssemblyString).stringValue;
                 
                 valueProp.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex =
                     property.FindPropertyRelative(SharedDrawers.ValueTypeString).enumValueIndex;
