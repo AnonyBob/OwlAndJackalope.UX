@@ -184,6 +184,9 @@ GameObject:
   - component: {fileID: 1687258582}
   - component: {fileID: 1687258586}
   - component: {fileID: 1687258583}
+  - component: {fileID: 1687258587}
+  - component: {fileID: 1687258588}
+  - component: {fileID: 1687258589}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -213,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _reference:
     _details:
-    - _name: DetailType 24517488
+    - _name: Detail
       _type: 5
       _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
       _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -228,7 +231,177 @@ MonoBehaviour:
         m_SubObjectType: 
       _textureValue: {fileID: 0}
       _spriteValue: {fileID: 0}
-    _collectionDetails: []
+    - _name: Float
+      _type: 3
+      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _value: 0.10000000149011612
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _gameObjectValue: {fileID: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+      _textureValue: {fileID: 0}
+      _spriteValue: {fileID: 0}
+    - _name: String
+      _type: 6
+      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _value: 0.10000000149011612
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _gameObjectValue: {fileID: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+      _textureValue: {fileID: 0}
+      _spriteValue: {fileID: 0}
+    - _name: Bool
+      _type: 0
+      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _value: 1
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _gameObjectValue: {fileID: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+      _textureValue: {fileID: 0}
+      _spriteValue: {fileID: 0}
+    - _name: Sprite 5b9bdd19
+      _type: 13
+      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _value: 1
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _gameObjectValue: {fileID: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+      _textureValue: {fileID: 0}
+      _spriteValue: {fileID: 0}
+    - _name: GameObject 7f726683
+      _type: 11
+      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _value: 1
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _gameObjectValue: {fileID: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+      _textureValue: {fileID: 0}
+      _spriteValue: {fileID: 0}
+    - _name: Texture c50b549d
+      _type: 12
+      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _value: 1
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _gameObjectValue: {fileID: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+      _textureValue: {fileID: 0}
+      _spriteValue: {fileID: 0}
+    - _name: AssetReference 71151090
+      _type: 14
+      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _value: 1
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _gameObjectValue: {fileID: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 36e4f3503b900874ba20cf9eb410c84f
+        m_SubObjectName: 
+        m_SubObjectType: 
+      _textureValue: {fileID: 0}
+      _spriteValue: {fileID: 0}
+    - _name: Reference 78360d75
+      _type: 7
+      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _value: 1
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _gameObjectValue: {fileID: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+      _textureValue: {fileID: 0}
+      _spriteValue: {fileID: 0}
+    - _name: Double ab27a1f1
+      _type: 4
+      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _value: 1
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _gameObjectValue: {fileID: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+      _textureValue: {fileID: 0}
+      _spriteValue: {fileID: 0}
+    - _name: Long 02a11916
+      _type: 2
+      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _value: 1.1
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _gameObjectValue: {fileID: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+      _textureValue: {fileID: 0}
+      _spriteValue: {fileID: 0}
+    - _name: Integer
+      _type: 1
+      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _value: 1.1
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _gameObjectValue: {fileID: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+      _textureValue: {fileID: 0}
+      _spriteValue: {fileID: 0}
+    _collectionDetails:
+    - _name: String ce5e963c
+      _type: 6
+      _enumTypeName: 
+      _enumAssemblyName: 
+      _collection: []
     _mapDetails: []
 --- !u!20 &1687258584
 Camera:
@@ -319,6 +492,46 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &1687258587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687258581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 807343e6f5eb4b3197cc12f1bd1967b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DetailName: Bool
+  TargetObject: {fileID: 653260035}
+--- !u!114 &1687258588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687258581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 044db90653854a1ab2e0e1562747247e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Template: {fileID: 11400000, guid: 36e4f3503b900874ba20cf9eb410c84f, type: 2}
+--- !u!114 &1687258589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687258581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f935017481e4e759b9e04bf56f0dee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DetailName: Integer
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0

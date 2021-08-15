@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using UnityEditor;
 using UnityEditorInternal;
+using UnityEngine;
 
 namespace OwlAndJackalope.UX.Data.Serialized.Editor.ReferenceDrawers
 {
@@ -47,22 +48,34 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.ReferenceDrawers
         
         public void Draw()
         {
+            var isPlaying = Application.isPlaying;
             if (EditorGUILayout.PropertyField(_detailListProp, false))
             {
+                HandleAddAndRemove(_detailList, isPlaying);
+                _detailList.draggable = !isPlaying;
                 _detailList.DoLayoutList();
             }
             
             if (EditorGUILayout.PropertyField(_collectionListProp, false))
             {
+                HandleAddAndRemove(_collectionDetailList, isPlaying);
                 _collectionDetailList.DoLayoutList();
                 CacheMethod.Invoke(_collectionDetailList, Empty);
             }
 
             if (EditorGUILayout.PropertyField(_mapListProp, false))
             {
+                HandleAddAndRemove(_mapDetailList, isPlaying);
                 _mapDetailList.DoLayoutList();
                 CacheMethod.Invoke(_mapDetailList, Empty);
             }
+        }
+
+        private void HandleAddAndRemove(ReorderableList list, bool isPlaying)
+        {
+            list.displayAdd = !isPlaying;
+            list.displayRemove = !isPlaying;
+            list.draggable = !isPlaying;
         }
     }
 }
