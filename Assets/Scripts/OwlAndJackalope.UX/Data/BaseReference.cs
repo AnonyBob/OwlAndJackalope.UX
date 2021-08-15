@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 
 namespace OwlAndJackalope.UX.Data
 {
@@ -119,10 +120,21 @@ namespace OwlAndJackalope.UX.Data
         {
             return GetEnumerator();
         }
-
+        
         public bool Equals(IReference other)
         {
             return ReferenceEquals(this, other);
+        }
+        
+        public override string ToString()
+        {
+            var sb = new StringBuilder();
+            foreach (var detail in _details)
+            {
+                sb.AppendLine($"{detail.Key}: {detail.Value.GetObject()}");
+            }
+
+            return sb.ToString();
         }
     }
 }

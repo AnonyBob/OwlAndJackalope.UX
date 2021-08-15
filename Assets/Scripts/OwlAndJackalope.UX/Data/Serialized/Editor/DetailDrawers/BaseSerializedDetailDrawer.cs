@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using OwlAndJackalope.UX.Data.Extensions;
+using OwlAndJackalope.UX.Modules;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
 {
@@ -64,6 +67,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
             var textureValueProp = property.FindPropertyRelative(SharedDrawers.TextureValueString);
             var valuePosition = new Rect(remaining.x, remaining.y, remaining.width, EditorGUIUtility.singleLineHeight);
             
+            EditorGUI.BeginChangeCheck();
             switch (type)
             {
                 case DetailType.Bool:
@@ -73,7 +77,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
                     valueProp.doubleValue = EditorGUI.IntField(valuePosition, GUIContent.none, (int)Math.Floor(valueProp.doubleValue)) + 0.1;
                     break;
                 case DetailType.Long:
-                    valueProp.doubleValue = EditorGUI.LongField(valuePosition, GUIContent.none, (int)Math.Floor(valueProp.doubleValue)) + 0.1;
+                    valueProp.doubleValue = EditorGUI.LongField(valuePosition, GUIContent.none, (long)Math.Floor(valueProp.doubleValue)) + 0.1;
                     break;
                 case DetailType.Float:
                     valueProp.doubleValue = EditorGUI.FloatField(valuePosition, GUIContent.none, (float)valueProp.doubleValue);
@@ -124,6 +128,19 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
+
+            if (EditorGUI.EndChangeCheck() && Application.isPlaying)
+            {
+                var module = property.serializedObject.targetObject as ReferenceModule;
+                if (module != null)
+                {
+                    var name = property.FindPropertyRelative(SharedDrawers.NameString).stringValue;
+                    var detail = module.Reference.GetDetail(name) as IMutableDetail;
+                    detail?.SetObject(GetValue(property, propertyData, type));
+                    
+                    Debug.Log(module.Reference);
+                }
+            }
         }
 
         private void DrawEnumType(Rect position, SerializedProperty property, PropertyData propertyData, SerializedProperty valueProp)
@@ -154,16 +171,64 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
             }
         }
 
-        private void ClearPropValues(SerializedProperty property)
+        private object GetValue(SerializedProperty property, PropertyData propertyData, DetailType type)
         {
-            property.FindPropertyRelative(SharedDrawers.ValueString).doubleValue = 0;
-            property.FindPropertyRelative(SharedDrawers.StringValueString).stringValue = string.Empty;
-            property.FindPropertyRelative(SharedDrawers.ReferenceValueString).objectReferenceValue = null;
-            property.FindPropertyRelative(SharedDrawers.VectorValueString).vector4Value = Vector4.zero;
-            property.FindPropertyRelative(SharedDrawers.EnumAssemblyString).stringValue = string.Empty;
-            property.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue = string.Empty;
+            var valueProp = property.FindPropertyRelative(SharedDrawers.ValueString);
+            var vectorValueProp = property.FindPropertyRelative(SharedDrawers.VectorValueString);
+            var gameObjectValueProp = property.FindPropertyRelative(SharedDrawers.GameObjectValueString);
+            var assetRefValueProp = property.FindPropertyRelative(SharedDrawers.AssetReferenceValueString);
+            var spriteValueProp = property.FindPropertyRelative(SharedDrawers.SpriteValueString);
+            var textureValueProp = property.FindPropertyRelative(SharedDrawers.TextureValueString);
+            switch (type)
+            {
+                case DetailType.Bool:
+                    return valueProp.doubleValue > 0;
+                case DetailType.Integer:
+                    return (int) Math.Floor(valueProp.doubleValue);
+                case DetailType.Long:
+                    return (long) Math.Floor(valueProp.doubleValue);
+                case DetailType.Float:
+                    return (float) valueProp.doubleValue;
+                case DetailType.Double:
+                    return valueProp.doubleValue;
+                case DetailType.Enum:
+                    return GetEnumValue(property,  propertyData, (int)Math.Floor(valueProp.doubleValue));
+                case DetailType.String:
+                    return property.FindPropertyRelative(SharedDrawers.StringValueString).stringValue;
+                case DetailType.Reference:
+                    return (property.FindPropertyRelative(SharedDrawers.ReferenceValueString).objectReferenceValue 
+                        as ReferenceTemplate)?.Reference?.ConvertToReference();
+                case DetailType.Vector2:
+                    return (Vector2)vectorValueProp.vector4Value;
+                case DetailType.Vector3:
+                    return (Vector3)vectorValueProp.vector4Value;
+                case DetailType.Color:
+                    return (Color)vectorValueProp.vector4Value;
+                case DetailType.GameObject:
+                    return property.FindPropertyRelative(SharedDrawers.GameObjectValueString)
+                        .objectReferenceValue as GameObject;
+                case DetailType.Texture:
+                    return property.FindPropertyRelative(SharedDrawers.TextureValueString).objectReferenceValue as
+                        Texture2D;
+                case DetailType.Sprite:
+                    return property.FindPropertyRelative(SharedDrawers.SpriteValueString).objectReferenceValue as
+                        Sprite;
+                case DetailType.AssetReference:
+                    return new AssetReference(property.FindPropertyRelative(SharedDrawers.AssetReferenceValueString)
+                        .FindPropertyRelative("m_AssetGUID").stringValue);
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
+        }
 
-            _data.Remove(property.propertyPath);
+        private object GetEnumValue(SerializedProperty property, PropertyData propertyData, int enumValue)
+        {
+            if (propertyData.LoadedEnumType != null)
+            {
+                return Enum.ToObject(propertyData.LoadedEnumType, enumValue);
+            }
+
+            return DetailType.Bool;
         }
 
         protected virtual DetailNameChecker GetNameChecker()

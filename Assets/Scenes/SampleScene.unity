@@ -212,7 +212,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reference:
-    _details: []
+    _details:
+    - _name: DetailType 24517488
+      _type: 5
+      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _value: 0.1
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _gameObjectValue: {fileID: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+      _textureValue: {fileID: 0}
+      _spriteValue: {fileID: 0}
     _collectionDetails: []
     _mapDetails: []
 --- !u!20 &1687258584
