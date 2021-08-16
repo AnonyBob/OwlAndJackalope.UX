@@ -23,6 +23,8 @@ namespace OwlAndJackalope.UX.Modules
                 
             }
         }
+
+        public BaseSerializedReference SerializedReference => _reference;
         
         [SerializeField]
         private BaseSerializedReference _reference;

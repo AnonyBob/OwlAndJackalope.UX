@@ -12,12 +12,16 @@ namespace OwlAndJackalope.UX.Data.Serialized
     [System.Serializable]
     public class BaseSerializedCollectionDetail : ISerializedDetail
     {
+        public string Name => _name;
+        public Type Type => typeof(List<>).MakeGenericType(_type.ConvertToType(_enumTypeName, _enumAssemblyName));
+        
         [SerializeField] protected string _name;
         [SerializeField] protected DetailType _type;
         [SerializeField] protected string _enumTypeName = "";
         [SerializeField] protected string _enumAssemblyName = "";
         
         [SerializeField] private List<BaseSerializedDetail> _collection = new List<BaseSerializedDetail>();
+        
         public IDetail ConvertToDetail()
         {
             var type = _type.ConvertToType(_enumTypeName, _enumAssemblyName);

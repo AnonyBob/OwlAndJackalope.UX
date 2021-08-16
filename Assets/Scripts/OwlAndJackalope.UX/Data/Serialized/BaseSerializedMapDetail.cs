@@ -9,8 +9,13 @@ namespace OwlAndJackalope.UX.Data.Serialized
     [System.Serializable]
     public class BaseSerializedMapDetail : ISerializedDetail
     {
-        [SerializeField] protected string _name;
+        public string Name => _name;
+
+        public Type Type => typeof(Dictionary<,>).MakeGenericType(
+            _keyType.ConvertToType(_keyEnumTypeName, _keyEnumAssemblyName),
+            _valueType.ConvertToType(_valueEnumTypeName, _valueEnumAssemblyName));
         
+        [SerializeField] protected string _name;
         [SerializeField] protected DetailType _keyType;
         [SerializeField] protected string _keyEnumTypeName = "";
         [SerializeField] protected string _keyEnumAssemblyName = "";
@@ -20,7 +25,9 @@ namespace OwlAndJackalope.UX.Data.Serialized
         
         [SerializeField] private List<BaseSerializedDetail> _keyCollection = new List<BaseSerializedDetail>();
         [SerializeField] private List<BaseSerializedDetail> _valueCollection = new List<BaseSerializedDetail>();
+
         
+
         public IDetail ConvertToDetail()
         {
             var keyType = _keyType.ConvertToType(_keyEnumTypeName, _keyEnumAssemblyName);

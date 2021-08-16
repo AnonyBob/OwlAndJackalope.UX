@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using OwlAndJackalope.UX.Modules;
 using TMPro;
 using UnityEngine;
 
@@ -9,10 +8,11 @@ namespace OwlAndJackalope.UX.Observers
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class TextDetailBinder : BaseDetailBinder
     {
-        [SerializeField]
+        [SerializeField, DetailName(typeof(string))]
         private string _baseStringDetailName;
 
-        [SerializeField]
+        [SerializeField, DetailName(typeof(string), typeof(int),
+             typeof(long), typeof(double), typeof(bool))]
         private string[] _stringArgumentDetailNames;
 
         private TextMeshProUGUI _text;
@@ -50,9 +50,16 @@ namespace OwlAndJackalope.UX.Observers
         {
             if (_text != null)
             {
-                if (_stringArgumentObservers?.Length > 0)
+                if (_stringArgumentObservers?.Length > 0 && !string.IsNullOrEmpty(text))
                 {
-                    text = string.Format(text, _stringArgumentObservers.Select(x => x.ObjectValue).ToArray());
+                    try
+                    {
+                        text = string.Format(text, _stringArgumentObservers.Select(x => x.ObjectValue).ToArray());
+                    }
+                    catch (FormatException)
+                    {
+                        Debug.LogWarning($"{text} is in a bad format");
+                    }
                 }
                 
                 _text.SetText(text);

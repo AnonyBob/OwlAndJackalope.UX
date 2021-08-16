@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -22,6 +23,16 @@ namespace OwlAndJackalope.UX.Data.Serialized
                 .Union(_collectionDetails.Select(d => d.ConvertToDetail()))
                 .Union(_mapDetails.Select(d => d.ConvertToDetail()))
                 .Where(x => x != null));
+        }
+
+        public IEnumerable<ISerializedDetail> GetDetails(Type[] acceptableTypes)
+        {
+            return _details
+                .Where(x => acceptableTypes.Contains(x.Type)).Cast<ISerializedDetail>()
+                .Union(_collectionDetails
+                    .Where(x => acceptableTypes.Contains(x.Type)).Cast<ISerializedDetail>())
+                .Union(_mapDetails
+                    .Where(x => acceptableTypes.Contains(x.Type)).Cast<ISerializedDetail>());
         }
 
         public IEnumerator<ISerializedDetail> GetEnumerator()

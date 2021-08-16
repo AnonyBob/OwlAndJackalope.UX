@@ -14,6 +14,9 @@ namespace OwlAndJackalope.UX.Data.Serialized
     [System.Serializable]
     public class BaseSerializedDetail : ISerializedDetail
     {
+        public string Name => _name;
+        public Type Type => _type.ConvertToType(_enumTypeName, _enumAssemblyName);
+        
         public double NumericValue => _value;
         public string StringValue => _stringValue;
         public ReferenceTemplate ReferenceValue => _referenceValue;
@@ -39,6 +42,8 @@ namespace OwlAndJackalope.UX.Data.Serialized
         [SerializeField] protected AssetReference _assetReferenceValue;
         [SerializeField] protected Texture2D _textureValue;
         [SerializeField] protected Sprite _spriteValue;
+
+        
 
         public IDetail ConvertToDetail()
         {
