@@ -158,7 +158,6 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
                 if (propertyData.RuntimeDetail is IMutableDetail mutable)
                 {
                     mutable.SetObject(GetValue(property, propertyData, type));
-                    Debug.Log(mutable.GetObject());
                 }
             }
 
