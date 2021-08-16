@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using OwlAndJackalope.UX.Data.Extensions;
 using OwlAndJackalope.UX.Modules;
 using UnityEditor;
 using UnityEngine;
@@ -11,13 +12,11 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
     [CustomPropertyDrawer(typeof(BaseSerializedDetail))]
     public class BaseSerializedDetailDrawer : PropertyDrawer
     {
-        protected class PropertyData
+        protected class PropertyData : BasePropertyData
         {
             public DetailNameChecker NameChecker;
             public Assembly LoadedAssembly;
             public Type LoadedEnumType;
-            public IDetail RuntimeDetail;
-            public long RuntimeDetailVersion;
         }
         protected readonly Dictionary<string, PropertyData> _data = new Dictionary<string, PropertyData>();
         
@@ -31,7 +30,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
                 };
                 _data[property.propertyPath] = propertyData;
             }
-            HandleRuntimeDetailChanged(property, propertyData);
+            propertyData.HandleRuntimeDetailChanged(property, UpdateValue);
             
             EditorGUI.BeginProperty(position, label, property);
             if (!SharedDrawers.InCollection(property) && !SharedDrawers.InCondition(property))
@@ -68,6 +67,9 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
             var spriteValueProp = property.FindPropertyRelative(SharedDrawers.SpriteValueString);
             var textureValueProp = property.FindPropertyRelative(SharedDrawers.TextureValueString);
             var valuePosition = new Rect(remaining.x, remaining.y, remaining.width, EditorGUIUtility.singleLineHeight);
+
+            var enabled = GUI.enabled;
+            GUI.enabled = !Application.isPlaying || propertyData.RuntimeDetail is IMutableDetail;
             
             EditorGUI.BeginChangeCheck();
             switch (type)
@@ -94,12 +96,22 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
                     EditorGUI.PropertyField(valuePosition, stringValueProp,  GUIContent.none);
                     break;
                 case DetailType.Reference:
-                    EditorGUI.PropertyField(valuePosition, referenceProp, GUIContent.none);
-                    if (referenceProp.objectReferenceValue == property.serializedObject.targetObject)
+                    if (Application.isPlaying)
                     {
-                        //Don't allow self reference. Its still possible for someone to double up if two different
-                        //objects reference each other, but as a sanity check let's not let it happen here.
-                        referenceProp.objectReferenceValue = null;
+                        var value = referenceProp.objectReferenceValue != null ? referenceProp.objectReferenceValue.name : "None";
+                        var reference = propertyData.RuntimeDetail?.GetObject() as IReference;
+                        value = reference?.ShortPrint() ?? value;
+                        EditorGUI.LabelField(valuePosition, value);
+                    }
+                    else
+                    {
+                        EditorGUI.PropertyField(valuePosition, referenceProp, GUIContent.none);
+                        if (referenceProp.objectReferenceValue == property.serializedObject.targetObject)
+                        {
+                            //Don't allow self reference. Its still possible for someone to double up if two different
+                            //objects reference each other, but as a sanity check let's not let it happen here.
+                            referenceProp.objectReferenceValue = null;
+                        } 
                     }
                     break;
                 case DetailType.Vector2:
@@ -116,10 +128,20 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
                         gameObjectValueProp.objectReferenceValue, typeof(GameObject), true);
                     break;
                 case DetailType.AssetReference:
-                    var previousWidth = EditorGUIUtility.labelWidth;
-                    EditorGUIUtility.labelWidth = 0.01f;
-                    EditorGUI.PropertyField(valuePosition, assetRefValueProp, GUIContent.none);
-                    EditorGUIUtility.labelWidth = previousWidth;
+                    if (Application.isPlaying)
+                    {
+                        var value = assetRefValueProp.FindPropertyRelative("m_AssetGUID").stringValue;
+                        var runtimeReference = propertyData.RuntimeDetail?.GetObject() as AssetReference;
+                        value = runtimeReference?.AssetGUID ?? value;
+                        EditorGUI.LabelField(valuePosition, value);
+                    }
+                    else
+                    {
+                        var previousWidth = EditorGUIUtility.labelWidth;
+                        EditorGUIUtility.labelWidth = 0.01f;
+                        EditorGUI.PropertyField(valuePosition, assetRefValueProp, GUIContent.none);
+                        EditorGUIUtility.labelWidth = previousWidth;
+                    }
                     break;
                 case DetailType.Sprite:
                     EditorGUI.PropertyField(valuePosition, spriteValueProp, GUIContent.none);
@@ -139,6 +161,8 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
                     Debug.Log(mutable.GetObject());
                 }
             }
+
+            GUI.enabled = enabled;
         }
 
         private void DrawEnumType(Rect position, SerializedProperty property, PropertyData propertyData, SerializedProperty valueProp)
@@ -169,84 +193,11 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
             }
         }
 
-        private void HandleRuntimeDetailChanged(SerializedProperty property, PropertyData propertyData)
+        private void UpdateValue(SerializedProperty property, BasePropertyData propertyData)
         {
-            if (Application.isPlaying)
-            {
-                if (propertyData.RuntimeDetail == null)
-                {
-                    var module = property.serializedObject.targetObject as ReferenceModule;
-                    if (module != null)
-                    {
-                        var name = property.FindPropertyRelative(SharedDrawers.NameString).stringValue;
-                        propertyData.RuntimeDetail = module.Reference.GetDetail(name);
-                        propertyData.RuntimeDetailVersion = -1;
-                    }
-                }
-                else if (propertyData.RuntimeDetail.Version != propertyData.RuntimeDetailVersion)
-                {
-                    UpdateValue(property, propertyData, propertyData.RuntimeDetail.GetObject());
-                    propertyData.RuntimeDetailVersion = propertyData.RuntimeDetail.Version;
-                }
-            }
-        }
-
-        private void UpdateValue(SerializedProperty property, PropertyData propertyData, object value)
-        {
+            var value = propertyData.RuntimeDetail.GetObject();
             var type = (DetailType)property.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex;
-            var valueProp = property.FindPropertyRelative(SharedDrawers.ValueString);
-            var vectorValueProp = property.FindPropertyRelative(SharedDrawers.VectorValueString);
-            switch (type)
-            {
-                case DetailType.Bool:
-                    valueProp.doubleValue = ((bool) value) ? 1 : -1;
-                    break;
-                case DetailType.Integer:
-                    valueProp.doubleValue = ((int) value) + 0.1;
-                    break;
-                case DetailType.Long:
-                    valueProp.doubleValue = ((long) value) + 0.1;
-                    break;
-                case DetailType.Float:
-                    valueProp.doubleValue = (float) value;
-                    break;
-                case DetailType.Double:
-                    valueProp.doubleValue = (double) value;
-                    break;
-                case DetailType.Enum:
-                    valueProp.doubleValue = ((int) value) + 0.1;
-                    break;
-                case DetailType.String:
-                    property.FindPropertyRelative(SharedDrawers.StringValueString).stringValue = ((string) value);
-                    break;
-                case DetailType.Reference:
-                    break;
-                case DetailType.Vector2:
-                    vectorValueProp.vector4Value = (Vector2) value;
-                    break;
-                case DetailType.Vector3:
-                    vectorValueProp.vector4Value = (Vector3) value;
-                    break;
-                case DetailType.Color:
-                    vectorValueProp.vector4Value = (Color) value;
-                    break;
-                case DetailType.GameObject:
-                    property.FindPropertyRelative(SharedDrawers.GameObjectValueString).objectReferenceValue =
-                        (GameObject) value;
-                    break;
-                case DetailType.Texture:
-                    property.FindPropertyRelative(SharedDrawers.TextureValueString).objectReferenceValue =
-                        (Texture2D) value;
-                    break;
-                case DetailType.Sprite:
-                    property.FindPropertyRelative(SharedDrawers.SpriteValueString).objectReferenceValue =
-                        (Sprite) value;
-                    break;
-                case DetailType.AssetReference:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            SharedDrawers.UpdateValueInBaseDetail(property, type, value);
         }
 
         private object GetValue(SerializedProperty property, PropertyData propertyData, DetailType type)

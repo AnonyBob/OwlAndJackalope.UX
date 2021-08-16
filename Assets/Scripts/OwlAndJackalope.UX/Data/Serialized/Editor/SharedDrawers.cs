@@ -296,5 +296,69 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
 
             return list;
         }
+        
+        public static void ToggleAddAndRemove(ReorderableList list, bool isPlaying)
+        {
+            list.displayAdd = !isPlaying;
+            list.displayRemove = !isPlaying;
+            list.draggable = !isPlaying;
+        }
+        
+        public static void UpdateValueInBaseDetail(SerializedProperty property, DetailType type, object value)
+        {
+            var valueProp = property.FindPropertyRelative(ValueString);
+            var vectorValueProp = property.FindPropertyRelative(VectorValueString);
+            switch (type)
+            {
+                case DetailType.Bool:
+                    valueProp.doubleValue = ((bool) value) ? 1 : -1;
+                    break;
+                case DetailType.Integer:
+                    valueProp.doubleValue = ((int) value) + 0.1;
+                    break;
+                case DetailType.Long:
+                    valueProp.doubleValue = ((long) value) + 0.1;
+                    break;
+                case DetailType.Float:
+                    valueProp.doubleValue = (float) value;
+                    break;
+                case DetailType.Double:
+                    valueProp.doubleValue = (double) value;
+                    break;
+                case DetailType.Enum:
+                    valueProp.doubleValue = ((int) value) + 0.1;
+                    break;
+                case DetailType.String:
+                    property.FindPropertyRelative(StringValueString).stringValue = ((string) value);
+                    break;
+                case DetailType.Reference:
+                    break;
+                case DetailType.Vector2:
+                    vectorValueProp.vector4Value = (Vector2) value;
+                    break;
+                case DetailType.Vector3:
+                    vectorValueProp.vector4Value = (Vector3) value;
+                    break;
+                case DetailType.Color:
+                    vectorValueProp.vector4Value = (Color) value;
+                    break;
+                case DetailType.GameObject:
+                    property.FindPropertyRelative(GameObjectValueString).objectReferenceValue =
+                        (GameObject) value;
+                    break;
+                case DetailType.Texture:
+                    property.FindPropertyRelative(TextureValueString).objectReferenceValue =
+                        (Texture2D) value;
+                    break;
+                case DetailType.Sprite:
+                    property.FindPropertyRelative(SpriteValueString).objectReferenceValue =
+                        (Sprite) value;
+                    break;
+                case DetailType.AssetReference:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
     }
 }

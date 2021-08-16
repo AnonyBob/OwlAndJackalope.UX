@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
     [CustomPropertyDrawer(typeof(BaseSerializedCollectionDetail))]
     public class BaseCollectionDetailDrawer : PropertyDrawer
     {
-        protected class PropertyData
+        protected class PropertyData : BasePropertyData
         {
             public DetailNameChecker NameChecker;
             public ReorderableList List;
@@ -27,6 +28,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
                 };
                 _data[property.propertyPath] = propertyData;
             }
+            propertyData.HandleRuntimeDetailChanged(property, UpdateValues);
 
             EditorGUI.BeginProperty(position, label, property);
             
@@ -46,10 +48,29 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
                 var collectionListPos = new Rect(collectionHeaderPos.x, 
                     collectionHeaderPos.y + EditorGUIUtility.singleLineHeight + SharedDrawers.Buffer, 
                     collectionHeaderPos.width, collectionHeaderPos.height);
+                
+                SharedDrawers.ToggleAddAndRemove(propertyData.List, Application.isPlaying);
                 propertyData.List.DoList(collectionListPos);
             }
 
             EditorGUI.EndProperty();
+        }
+
+        private void UpdateValues(SerializedProperty property, BasePropertyData propertydata)
+        {
+            var value = propertydata.RuntimeDetail.GetObject() as IList;
+            var type = (DetailType)property.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex;
+            var collections = property.FindPropertyRelative(SharedDrawers.CollectionString);
+            collections.ClearArray();
+
+            if (value != null)
+            {
+                foreach (var item in value)
+                {
+                    var newItem = AddItem(property, collections);
+                    SharedDrawers.UpdateValueInBaseDetail(newItem, type, item);
+                }
+            }
         }
 
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
@@ -69,14 +90,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
 
             list.onAddCallback = reorderableList =>
             {
-                collectionProp.InsertArrayElementAtIndex(collectionProp.arraySize);
-                var prop = collectionProp.GetArrayElementAtIndex(collectionProp.arraySize - 1);
-                prop.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex =
-                    property.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex;
-                prop.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue =
-                    property.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue;
-                prop.FindPropertyRelative(SharedDrawers.EnumAssemblyString).stringValue =
-                    property.FindPropertyRelative(SharedDrawers.EnumAssemblyString).stringValue;
+                AddItem(property, collectionProp);
             };
 
             list.drawElementCallback = (rect, index, active, focused) =>
@@ -87,11 +101,17 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
             return list;
         }
 
-        protected virtual void ClearPropValues(SerializedProperty property)
+        private SerializedProperty AddItem(SerializedProperty property, SerializedProperty collectionProp)
         {
-            property.FindPropertyRelative(SharedDrawers.CollectionString).arraySize = 0;
-            property.FindPropertyRelative(SharedDrawers.EnumAssemblyString).stringValue = string.Empty;
-            property.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue = string.Empty;
+            collectionProp.InsertArrayElementAtIndex(collectionProp.arraySize);
+            var newItem = collectionProp.GetArrayElementAtIndex(collectionProp.arraySize - 1);
+            newItem.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex =
+                property.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex;
+            newItem.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue =
+                property.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue;
+            newItem.FindPropertyRelative(SharedDrawers.EnumAssemblyString).stringValue =
+                property.FindPropertyRelative(SharedDrawers.EnumAssemblyString).stringValue;
+            return newItem;
         }
 
         protected virtual DetailNameChecker GetNameChecker()

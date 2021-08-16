@@ -1,4 +1,6 @@
-﻿namespace OwlAndJackalope.UX.Data.Extensions
+﻿using System.Linq;
+
+namespace OwlAndJackalope.UX.Data.Extensions
 {
     public static class ReferenceExtensions
     {
@@ -25,6 +27,16 @@
         public static IMutableMapDetail<TKey, TValue> GetMutableMap<TKey, TValue>(this IReference reference, string name)
         {
             return reference.GetDetail(name) as IMutableMapDetail<TKey, TValue>;
+        }
+
+        public static string ShortPrint(this IReference reference)
+        {
+            if (reference == null)
+            {
+                return null;
+            }
+
+            return $"{reference.GetType().Name} -- {reference.Count()}";
         }
     }
 }

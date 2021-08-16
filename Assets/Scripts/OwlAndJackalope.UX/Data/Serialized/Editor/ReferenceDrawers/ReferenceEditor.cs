@@ -51,31 +51,24 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.ReferenceDrawers
             var isPlaying = Application.isPlaying;
             if (EditorGUILayout.PropertyField(_detailListProp, false))
             {
-                HandleAddAndRemove(_detailList, isPlaying);
+                SharedDrawers.ToggleAddAndRemove(_detailList, isPlaying);
                 _detailList.draggable = !isPlaying;
                 _detailList.DoLayoutList();
             }
             
             if (EditorGUILayout.PropertyField(_collectionListProp, false))
             {
-                HandleAddAndRemove(_collectionDetailList, isPlaying);
+                SharedDrawers.ToggleAddAndRemove(_collectionDetailList, isPlaying);
                 _collectionDetailList.DoLayoutList();
                 CacheMethod.Invoke(_collectionDetailList, Empty);
             }
 
             if (EditorGUILayout.PropertyField(_mapListProp, false))
             {
-                HandleAddAndRemove(_mapDetailList, isPlaying);
+                SharedDrawers.ToggleAddAndRemove(_mapDetailList, isPlaying);
                 _mapDetailList.DoLayoutList();
                 CacheMethod.Invoke(_mapDetailList, Empty);
             }
-        }
-
-        private void HandleAddAndRemove(ReorderableList list, bool isPlaying)
-        {
-            list.displayAdd = !isPlaying;
-            list.displayRemove = !isPlaying;
-            list.draggable = !isPlaying;
         }
     }
 }
