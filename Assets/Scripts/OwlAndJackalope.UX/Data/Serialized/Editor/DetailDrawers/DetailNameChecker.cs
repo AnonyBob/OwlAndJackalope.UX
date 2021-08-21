@@ -37,8 +37,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
                 
                 if (previousName != newName)
                 {
-                    //UpdateConditions(property.serializedObject.FindProperty(SharedDrawers.ExperienceStatesPath), previousName, newName);
-                    module.HandleDetailNameChange(previousName, newName);
+                    module.HandleDetailNameChange(previousName, newName, null);
                 }
             }
 

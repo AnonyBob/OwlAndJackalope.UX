@@ -51,13 +51,16 @@ namespace OwlAndJackalope.UX.Modules
             _runtimeReference = new BaseReference(_reference.ConvertToReference());
         }
         
-        public void HandleDetailNameChange(string previousName, string newName)
+        public void HandleDetailNameChange(string previousName, string newName, IDetailNameChangeHandler root)
         {
-            foreach (var handler in GetComponentsInChildren<IDetailNameChangeHandler>())
+            if (root == null)
             {
-                if (!ReferenceEquals(handler, this))
+                foreach (var handler in GetComponentsInChildren<IDetailNameChangeHandler>())
                 {
-                    handler.HandleDetailNameChange(previousName, newName);
+                    if (!ReferenceEquals(handler, this))
+                    {
+                        handler.HandleDetailNameChange(previousName, newName, this);
+                    }
                 }
             }
         }

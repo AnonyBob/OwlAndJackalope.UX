@@ -1,12 +1,13 @@
 ﻿using System;
 using OwlAndJackalope.UX.Data;
 using OwlAndJackalope.UX.Data.Serialized;
+using OwlAndJackalope.UX.Modules;
 using UnityEngine;
 
 namespace OwlAndJackalope.UX.Conditions.Serialized
 {
     [System.Serializable]
-    public class BaseSerializedCondition : ISerializedCondition
+    public class BaseSerializedCondition : ISerializedCondition, IDetailNameChangeHandler
     {
         [SerializeField]
         private Parameter _parameterOne;
@@ -63,6 +64,19 @@ namespace OwlAndJackalope.UX.Conditions.Serialized
                 return new BaseRuntimeCondition<T>(_parameterOne, _value.ConvertToDetail() as IDetail<T>, _comparisonType);
             }
             return new BaseRuntimeCondition<T>(_parameterOne, _parameterTwo, _comparisonType);
+        }
+
+        public void HandleDetailNameChange(string previousName, string newName, IDetailNameChangeHandler root)
+        {
+            if (_parameterOne.Name == previousName)
+            {
+                _parameterOne.Name = newName;
+            }
+
+            if (_parameterTwo.Name == previousName)
+            {
+                _parameterTwo.Name = newName;
+            }
         }
     }
 }

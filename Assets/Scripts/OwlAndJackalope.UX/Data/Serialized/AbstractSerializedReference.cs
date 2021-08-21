@@ -28,7 +28,7 @@ namespace OwlAndJackalope.UX.Data.Serialized
         public IEnumerable<ISerializedDetail> GetDetails(Type[] acceptableTypes)
         {
             return _details
-                .Where(x => acceptableTypes.Contains(x.Type)).Cast<ISerializedDetail>()
+                .Where(x => acceptableTypes.Any(t => t.IsAssignableFrom(x.Type))).Cast<ISerializedDetail>()
                 .Union(_collectionDetails
                     .Where(x => acceptableTypes.Contains(x.Type)).Cast<ISerializedDetail>())
                 .Union(_mapDetails

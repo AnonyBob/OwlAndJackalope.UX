@@ -12,7 +12,7 @@ namespace OwlAndJackalope.UX.Modules
     /// cannot be modified by external providers.
     /// </summary>
     [System.Serializable, RequireComponent(typeof(ReferenceModule))]
-    public sealed class StateModule : MonoBehaviour, IReferenceDependentModule, IStateNameChangeHandler
+    public sealed class StateModule : MonoBehaviour, IReferenceDependentModule, IStateNameChangeHandler, IDetailNameChangeHandler
     {
         [SerializeField]
         private List<BaseSerializedState> _states;
@@ -51,6 +51,22 @@ namespace OwlAndJackalope.UX.Modules
                     handler.HandleStateNameChange(previousName, newName);
                 }
             }
+        }
+
+        public void HandleDetailNameChange(string previousName, string newName, IDetailNameChangeHandler root)
+        {
+            if (GetComponentInParent<ReferenceModule>() == root)
+            {
+                foreach (var state in _states)
+                {
+                    state.HandleDetailNameChange(previousName, newName, this);
+                }
+            }
+            
+                        
+#if UNITY_EDITOR
+            UnityEditor.EditorUtility.SetDirty(this);
+#endif
         }
     }
 }

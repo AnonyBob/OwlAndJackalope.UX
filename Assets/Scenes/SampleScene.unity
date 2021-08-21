@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 383866827}
   - component: {fileID: 383866826}
   - component: {fileID: 383866830}
+  - component: {fileID: 383866831}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -241,7 +242,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1600, y: 900}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -281,7 +282,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1840528505}
+  - {fileID: 1063022875}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -303,248 +304,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reference:
-    _details:
-    - _name: Detail
-      _type: 5
-      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _value: 0.1
-      _stringValue: 
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _gameObjectValue: {fileID: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-      _textureValue: {fileID: 0}
-      _spriteValue: {fileID: 0}
-    - _name: Float
-      _type: 3
-      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _value: 0.10000000149011612
-      _stringValue: 
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _gameObjectValue: {fileID: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-      _textureValue: {fileID: 0}
-      _spriteValue: {fileID: 0}
-    - _name: Good Name
-      _type: 6
-      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _value: 0.10000000149011612
-      _stringValue: 
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _gameObjectValue: {fileID: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-      _textureValue: {fileID: 0}
-      _spriteValue: {fileID: 0}
-    - _name: Bool
-      _type: 0
-      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _value: 1
-      _stringValue: 
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _gameObjectValue: {fileID: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-      _textureValue: {fileID: 0}
-      _spriteValue: {fileID: 0}
-    - _name: Sprite
-      _type: 13
-      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _value: 1
-      _stringValue: 
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _gameObjectValue: {fileID: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-      _textureValue: {fileID: 0}
-      _spriteValue: {fileID: 0}
-    - _name: GameObject
-      _type: 11
-      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _value: 1
-      _stringValue: 
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _gameObjectValue: {fileID: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-      _textureValue: {fileID: 0}
-      _spriteValue: {fileID: 0}
-    - _name: Texture
-      _type: 12
-      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _value: 1
-      _stringValue: 
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _gameObjectValue: {fileID: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-      _textureValue: {fileID: 0}
-      _spriteValue: {fileID: 0}
-    - _name: AssetReference
-      _type: 14
-      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _value: 1
-      _stringValue: 
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _gameObjectValue: {fileID: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 36e4f3503b900874ba20cf9eb410c84f
-        m_SubObjectName: 
-        m_SubObjectType: 
-      _textureValue: {fileID: 0}
-      _spriteValue: {fileID: 0}
-    - _name: Reference
-      _type: 7
-      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _value: 1
-      _stringValue: 
-      _referenceValue: {fileID: 11400000, guid: 580c00866a4b8eb42b8d64586e697726, type: 2}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _gameObjectValue: {fileID: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-      _textureValue: {fileID: 0}
-      _spriteValue: {fileID: 0}
-    - _name: Double
-      _type: 4
-      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _value: 1
-      _stringValue: 
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _gameObjectValue: {fileID: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-      _textureValue: {fileID: 0}
-      _spriteValue: {fileID: 0}
-    - _name: Long
-      _type: 2
-      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _value: 1.1
-      _stringValue: 
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _gameObjectValue: {fileID: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-      _textureValue: {fileID: 0}
-      _spriteValue: {fileID: 0}
-    - _name: A Number
-      _type: 1
-      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _value: 1.1
-      _stringValue: 
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _gameObjectValue: {fileID: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-      _textureValue: {fileID: 0}
-      _spriteValue: {fileID: 0}
-    _collectionDetails:
-    - _name: String List
-      _type: 6
-      _enumTypeName: 
-      _enumAssemblyName: 
-      _collection:
-      - _name: 
+    _details: []
+    _collectionDetails: []
+    _mapDetails: []
+--- !u!114 &383866831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383866825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12994531942f4318b75cfcc7e02fc38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _states:
+  - _name: Active
+    _conditions:
+    - _parameterOne:
+        Name: BaseText
+        Type: 1
+        ComponentType: 0
+      _parameterTwo:
+        Name: BaseText
+        Type: 0
+        ComponentType: 0
+      _value:
+        _name: 
         _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: Some Long Text
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      - _name: 
-        _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: Something Else
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      - _name: 
-        _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: AnotherThing
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-    - _name: Bool List
-      _type: 0
-      _enumTypeName: 
-      _enumAssemblyName: 
-      _collection:
-      - _name: 
-        _type: 0
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
+        _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        _value: 0.1
         _stringValue: 
         _referenceValue: {fileID: 0}
         _vectorValue: {x: 0, y: 0, z: 0, w: 0}
@@ -555,10 +346,21 @@ MonoBehaviour:
           m_SubObjectType: 
         _textureValue: {fileID: 0}
         _spriteValue: {fileID: 0}
-      - _name: 
-        _type: 0
-        _enumTypeName: 
-        _enumAssemblyName: 
+      _detailType: 0
+      _comparisonType: 1
+    - _parameterOne:
+        Name: Double
+        Type: 1
+        ComponentType: 0
+      _parameterTwo:
+        Name: Double
+        Type: 0
+        ComponentType: 0
+      _value:
+        _name: 
+        _type: 4
+        _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         _value: 1
         _stringValue: 
         _referenceValue: {fileID: 0}
@@ -570,176 +372,50 @@ MonoBehaviour:
           m_SubObjectType: 
         _textureValue: {fileID: 0}
         _spriteValue: {fileID: 0}
-    - _name: Long List
-      _type: 2
-      _enumTypeName: 
-      _enumAssemblyName: 
-      _collection:
-      - _name: 
+      _detailType: 0
+      _comparisonType: 3
+  - _name: Online
+    _conditions:
+    - _parameterOne:
+        Name: Bool
+        Type: 1
+        ComponentType: 0
+      _parameterTwo:
+        Name: 
+        Type: 0
+        ComponentType: 0
+      _value:
+        _name: 
+        _type: 0
+        _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        _value: 1
+        _stringValue: 
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _gameObjectValue: {fileID: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+        _textureValue: {fileID: 0}
+        _spriteValue: {fileID: 0}
+      _detailType: 0
+      _comparisonType: 0
+    - _parameterOne:
+        Name: Long
+        Type: 1
+        ComponentType: 0
+      _parameterTwo:
+        Name: 
+        Type: 0
+        ComponentType: 0
+      _value:
+        _name: 
         _type: 2
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0.1
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      - _name: 
-        _type: 2
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 23.1
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-    - _name: Vector List
-      _type: 8
-      _enumTypeName: 
-      _enumAssemblyName: 
-      _collection:
-      - _name: 
-        _type: 8
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 45, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      - _name: 
-        _type: 8
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 45, y: 67, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-    - _name: Sprite List
-      _type: 13
-      _enumTypeName: 
-      _enumAssemblyName: 
-      _collection:
-      - _name: 
-        _type: 13
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-      - _name: 
-        _type: 13
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
-    - _name: Asset Reference List
-      _type: 14
-      _enumTypeName: 
-      _enumAssemblyName: 
-      _collection:
-      - _name: 
-        _type: 14
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 36e4f3503b900874ba20cf9eb410c84f
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-    - _name: Reference List
-      _type: 7
-      _enumTypeName: 
-      _enumAssemblyName: 
-      _collection:
-      - _name: 
-        _type: 7
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 11400000, guid: 36e4f3503b900874ba20cf9eb410c84f, type: 2}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      - _name: 
-        _type: 7
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 11400000, guid: 50f4147aa183d5a43a07cf7068a1fffc, type: 2}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-    - _name: Detail List
-      _type: 5
-      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _collection:
-      - _name: 
-        _type: 5
         _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
         _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        _value: 0.1
+        _value: 24.1
         _stringValue: 
         _referenceValue: {fileID: 0}
         _vectorValue: {x: 0, y: 0, z: 0, w: 0}
@@ -750,259 +426,8 @@ MonoBehaviour:
           m_SubObjectType: 
         _textureValue: {fileID: 0}
         _spriteValue: {fileID: 0}
-      - _name: 
-        _type: 5
-        _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        _value: 2.1
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      - _name: 
-        _type: 5
-        _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        _value: 12.1
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      - _name: 
-        _type: 5
-        _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        _value: 13.1
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-    _mapDetails:
-    - _name: DetailString Map
-      _keyType: 5
-      _keyEnumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-      _keyEnumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _valueType: 6
-      _valueEnumTypeName: 
-      _valueEnumAssemblyName: 
-      _keyCollection:
-      - _name: 
-        _type: 5
-        _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        _value: 2.1
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      - _name: 
-        _type: 5
-        _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
-        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        _value: 1.1
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      _valueCollection:
-      - _name: 
-        _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: Howdy
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      - _name: 
-        _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: Not Howdy
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-    - _name: LongColor Map
-      _keyType: 2
-      _keyEnumTypeName: 
-      _keyEnumAssemblyName: 
-      _valueType: 10
-      _valueEnumTypeName: 
-      _valueEnumAssemblyName: 
-      _keyCollection:
-      - _name: 
-        _type: 2
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 23.1
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      - _name: 
-        _type: 2
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0.1
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      _valueCollection:
-      - _name: 
-        _type: 10
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 1, y: 0, z: 0, w: 1}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      - _name: 
-        _type: 10
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0.98564005, y: 1, z: 0, w: 1}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-    - _name: GameobjectReference Map
-      _keyType: 11
-      _keyEnumTypeName: 
-      _keyEnumAssemblyName: 
-      _valueType: 7
-      _valueEnumTypeName: 
-      _valueEnumAssemblyName: 
-      _keyCollection:
-      - _name: 
-        _type: 11
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 2138677391}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      - _name: 
-        _type: 11
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 0}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 653260035}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      _valueCollection:
-      - _name: 
-        _type: 7
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 11400000, guid: 36e4f3503b900874ba20cf9eb410c84f, type: 2}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
-      - _name: 
-        _type: 7
-        _enumTypeName: 
-        _enumAssemblyName: 
-        _value: 0
-        _stringValue: 
-        _referenceValue: {fileID: 11400000, guid: 36e4f3503b900874ba20cf9eb410c84f, type: 2}
-        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-        _gameObjectValue: {fileID: 0}
-        _assetReferenceValue:
-          m_AssetGUID: 
-          m_SubObjectName: 
-          m_SubObjectType: 
-        _textureValue: {fileID: 0}
-        _spriteValue: {fileID: 0}
+      _detailType: 0
+      _comparisonType: 2
 --- !u!1 &653260035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,6 +476,81 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1063022874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1063022875}
+  - component: {fileID: 1063022877}
+  - component: {fileID: 1063022876}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1063022875
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063022874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 383866829}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1063022876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063022874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.38861695, g: 0.5855008, b: 0.6698113, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1063022877
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063022874}
+  m_CullTransparentMesh: 1
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1167,159 +667,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!1 &1840528504
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1840528505}
-  - component: {fileID: 1840528508}
-  - component: {fileID: 1840528507}
-  - component: {fileID: 1840528506}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1840528505
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840528504}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 383866829}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1840528506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840528504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1577b0a6a0cf4849810ef43a6db60561, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _referenceModule: {fileID: 0}
-  _baseStringDetailName: Good Name
-  _stringArgumentDetailNames:
-  - Double
-  - A Number
-  - Bool
---- !u!114 &1840528507
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840528504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: New Text
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1840528508
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1840528504}
-  m_CullTransparentMesh: 1
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,8 +26,6 @@ namespace OwlAndJackalope.UX.Data.Serialized
         [SerializeField] private List<BaseSerializedDetail> _keyCollection = new List<BaseSerializedDetail>();
         [SerializeField] private List<BaseSerializedDetail> _valueCollection = new List<BaseSerializedDetail>();
 
-        
-
         public IDetail ConvertToDetail()
         {
             var keyType = _keyType.ConvertToType(_keyEnumTypeName, _keyEnumAssemblyName);

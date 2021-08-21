@@ -12,7 +12,7 @@ namespace OwlAndJackalope.UX.Observers
         private string _baseStringDetailName;
 
         [SerializeField, DetailName(typeof(string), typeof(int),
-             typeof(long), typeof(double), typeof(bool))]
+             typeof(long), typeof(double), typeof(bool), typeof(Enum))]
         private string[] _stringArgumentDetailNames;
 
         private TextMeshProUGUI _text;

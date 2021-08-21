@@ -2,6 +2,6 @@
 {
     public interface IDetailNameChangeHandler
     {
-        void HandleDetailNameChange(string previousName, string newName);
+        void HandleDetailNameChange(string previousName, string newName, IDetailNameChangeHandler root);
     }
 }

@@ -33,16 +33,21 @@ namespace OwlAndJackalope.UX.Observers
 
         protected abstract int UpdateDetailNames(string previousName, string newName);
 
-        public void HandleDetailNameChange(string previousName, string newName)
+        public void HandleDetailNameChange(string previousName, string newName, IDetailNameChangeHandler root)
         {
-            var detailsChanged = UpdateDetailNames(previousName, newName);
-            if (detailsChanged > 0)
+            _referenceModule = _referenceModule != null ? _referenceModule : GetComponentInParent<ReferenceModule>();
+            if (_referenceModule == root as ReferenceModule)
             {
-                Debug.Log($"{name} updated {detailsChanged} observers to {newName}");
+                var detailsChanged = UpdateDetailNames(previousName, newName);
+                if (detailsChanged > 0)
+                {
+                    Debug.Log($"{name} updated {detailsChanged} observers to {newName}");
 #if UNITY_EDITOR
-                UnityEditor.EditorUtility.SetDirty(this);
+                    UnityEditor.EditorUtility.SetDirty(this);
 #endif
+                }
             }
+
         }
     }
 }

@@ -43,7 +43,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
                 var options = GetOptions(propertyData);
                 var currentIndex = Math.Max(0, Array.IndexOf(options, property.stringValue));
                 var selectedIndex = EditorGUI.Popup(position, label.text, currentIndex, options);
-                if (selectedIndex != currentIndex && selectedIndex >= 0 && selectedIndex < options.Length)
+                if (selectedIndex >= 0 && selectedIndex < options.Length)
                 {
                     property.stringValue = options[selectedIndex];
                 }
