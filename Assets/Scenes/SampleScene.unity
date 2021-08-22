@@ -402,6 +402,18 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+    - _name: FloatValue
+      _type: 3
+      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _value: 20.030000686645508
+      _stringValue: White
+      _referenceValue: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+      _vectorValue: {x: 0.495283, y: 0.8127325, z: 1, w: 1}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
     _collectionDetails: []
     _mapDetails: []
 --- !u!114 &383866831
@@ -691,15 +703,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1600815305}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1577b0a6a0cf4849810ef43a6db60561, type: 3}
+  m_Script: {fileID: 11500000, guid: fc0592971f854bfd83f64fa5233dd9d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _referenceModule: {fileID: 383866830}
-  _baseStringObserver:
-    DetailName: AnotherName
-  _stringArgumentObservers:
-  - DetailName: Age
-  - DetailName: Ethnicity
+  _number:
+    DetailName: Age
+  _numberChangeDuration: 2
+  _numberFormat: N0
 --- !u!114 &1600815308
 MonoBehaviour:
   m_ObjectHideFlags: 0

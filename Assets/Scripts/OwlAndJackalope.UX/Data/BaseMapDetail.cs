@@ -87,6 +87,11 @@ namespace OwlAndJackalope.UX.Data
             return SetValue((Dictionary<TKey, TValue>) obj);
         }
 
+        public Type GetObjectType()
+        {
+            return typeof(Dictionary<TKey, TValue>);
+        }
+
         public void Add(KeyValuePair<TKey, TValue> item)
         {
             Add(item.Key, item.Value);

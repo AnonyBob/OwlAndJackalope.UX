@@ -55,6 +55,11 @@ namespace OwlAndJackalope.UX.Data
             return GetValue();
         }
 
+        public Type GetObjectType()
+        {
+            return typeof(TValue);
+        }
+
         public bool SetObject(object obj)
         {
             return SetValue((TValue) obj);

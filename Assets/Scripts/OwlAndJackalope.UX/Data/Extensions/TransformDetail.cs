@@ -45,6 +45,11 @@ namespace OwlAndJackalope.UX.Data.Extensions
             return GetValue();
         }
 
+        public Type GetObjectType()
+        {
+            return typeof(TOut);
+        }
+
         private void HandleVersionUpdate()
         {
             VersionChanged?.Invoke();
@@ -102,6 +107,11 @@ namespace OwlAndJackalope.UX.Data.Extensions
         public object GetObject()
         {
             return GetValue();
+        }
+
+        public Type GetObjectType()
+        {
+            return typeof(TOut);
         }
 
         private void HandleVersionUpdate()

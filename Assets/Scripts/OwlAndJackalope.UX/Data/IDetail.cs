@@ -1,4 +1,6 @@
-﻿namespace OwlAndJackalope.UX.Data
+﻿using System;
+
+namespace OwlAndJackalope.UX.Data
 {
     /// <summary>
     /// Container for a singular piece of data.
@@ -6,6 +8,8 @@
     public interface IDetail : IVersionedEvent, INameable
     {
         object GetObject();
+
+        Type GetObjectType();
     }
 
     /// <summary>

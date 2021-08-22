@@ -83,6 +83,11 @@ namespace OwlAndJackalope.UX.Data
             return SetValue((List<T>) obj);
         }
 
+        public Type GetObjectType()
+        {
+            return typeof(List<T>);
+        }
+
         public void Add(T item)
         {
             if (_value != null)

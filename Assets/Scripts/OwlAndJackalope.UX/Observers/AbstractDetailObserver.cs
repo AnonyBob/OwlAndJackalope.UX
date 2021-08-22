@@ -22,6 +22,13 @@ namespace OwlAndJackalope.UX.Observers
         private bool _suppressInitial;
         private bool _initialSetup;
 
+        public AbstractDetailObserver() { }
+        
+        public AbstractDetailObserver(string detailName)
+        {
+            DetailName = detailName;
+        }
+        
         public void Initialize(IReference reference, Action changeHandler = null, bool suppressInitial = true)
         {
             _initialSetup = true;
