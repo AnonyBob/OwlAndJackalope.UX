@@ -93,6 +93,11 @@ namespace OwlAndJackalope.UX.Data.Extensions
             return detail.AssetReferenceValue;
         }
 
+        public static TimeSpan GetTimeSpan(this BaseSerializedDetail detail)
+        {
+            return detail.TimeSpanValue;
+        }
+
         public static object GetValue(this BaseSerializedDetail detail, Type type)
         {
             if (type == typeof(bool))
@@ -125,7 +130,8 @@ namespace OwlAndJackalope.UX.Data.Extensions
                 return detail.GetSprite();
             if (type == typeof(Texture2D))
                 return detail.GetTexture();
-
+            if (type == typeof(TimeSpan))
+                return detail.GetTimeSpan();
             return null;
         }
     }

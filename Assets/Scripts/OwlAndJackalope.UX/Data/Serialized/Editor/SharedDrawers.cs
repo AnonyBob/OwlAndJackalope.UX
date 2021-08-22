@@ -370,6 +370,10 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
                     break;
                 case DetailType.AssetReference:
                     break;
+                case DetailType.TimeSpan:
+                    var timespan = (TimeSpan) value;
+                    valueProp.doubleValue = timespan.Ticks + 0.1;
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }

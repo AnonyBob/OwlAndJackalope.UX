@@ -26,6 +26,7 @@ namespace OwlAndJackalope.UX.Data.Serialized
         public AssetReference AssetReferenceValue => _assetReferenceValue;
         public Texture2D TextureValue => _referenceValue as Texture2D;
         public Sprite SpriteValue => _referenceValue as Sprite;
+        public TimeSpan TimeSpanValue => TimeSpan.FromTicks((long) Math.Floor(_value));
         
         //Identifying information used to select for the detail.
         [SerializeField] protected string _name;
@@ -75,6 +76,8 @@ namespace OwlAndJackalope.UX.Data.Serialized
                     return new BaseDetail<Sprite>(_name, this.GetSprite());
                 case DetailType.AssetReference:
                     return new BaseDetail<AssetReference>(_name, this.GetAssetReference());
+                case DetailType.TimeSpan:
+                    return new BaseDetail<TimeSpan>(_name, this.GetTimeSpan());
                 default:
                     throw new ArgumentOutOfRangeException();
             }

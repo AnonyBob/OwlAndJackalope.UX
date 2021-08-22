@@ -26,6 +26,7 @@ namespace OwlAndJackalope.UX.Data.Serialized
         Texture = 12,
         Sprite = 13,
         AssetReference = 14,
+        TimeSpan = 15,
     }
 
     public static class DetailTypeExtensions
@@ -64,6 +65,8 @@ namespace OwlAndJackalope.UX.Data.Serialized
                     return typeof(Sprite);
                 case DetailType.Texture:
                     return typeof(Texture2D);
+                case DetailType.TimeSpan:
+                    return typeof(TimeSpan);
                 default:
                     throw new ArgumentOutOfRangeException(nameof(detailType), detailType, null);
             }
@@ -80,6 +83,7 @@ namespace OwlAndJackalope.UX.Data.Serialized
                 case DetailType.Double:
                 case DetailType.Enum:
                 case DetailType.String:
+                case DetailType.TimeSpan:
                     return true; 
                 default:
                     return false;

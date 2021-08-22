@@ -49,6 +49,8 @@ namespace OwlAndJackalope.UX.Conditions.Serialized
                     return CreateComparableEnumCondition();
                 case DetailType.String:
                     return CreateComparableCondition<string>();
+                case DetailType.TimeSpan:
+                    return CreateComparableCondition<TimeSpan>();
                 case DetailType.Reference:
                     break;
                 case DetailType.Vector2:

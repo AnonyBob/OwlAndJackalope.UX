@@ -149,6 +149,23 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
                     referenceProp.objectReferenceValue = EditorGUI.ObjectField(valuePosition, GUIContent.none,
                         referenceProp.objectReferenceValue, typeof(Texture2D), true);
                     break;
+                case DetailType.TimeSpan:
+                    var timeSpan = TimeSpan.FromTicks((long) Math.Floor(valueProp.doubleValue));
+                    EditorGUIUtility.labelWidth = 10;
+                    var width = valuePosition.width / 4;
+                    var dayPos = new Rect(valuePosition.x, valuePosition.y, width, valuePosition.height);
+                    var hourPos = new Rect(valuePosition.x + width, valuePosition.y, width, valuePosition.height);
+                    var minPos = new Rect(valuePosition.x + width * 2, valuePosition.y, width, valuePosition.height);
+                    var secPos = new Rect(valuePosition.x + width  * 3, valuePosition.y, width, valuePosition.height);
+                    var days = EditorGUI.IntField(dayPos, "d", timeSpan.Days);
+                    var hours = EditorGUI.IntField(hourPos,"h", timeSpan.Hours);
+                    var mins = EditorGUI.IntField(minPos, "m", timeSpan.Minutes);
+                    var secs = EditorGUI.IntField(secPos, "s", timeSpan.Seconds);
+                    EditorGUIUtility.labelWidth = 0;
+                        
+                    timeSpan = new TimeSpan(days, hours, mins, secs);
+                    valueProp.doubleValue = timeSpan.Ticks + 0.1;
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
@@ -240,6 +257,8 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
                 case DetailType.AssetReference:
                     return new AssetReference(property.FindPropertyRelative(SharedDrawers.AssetReferenceValueString)
                         .FindPropertyRelative("m_AssetGUID").stringValue);
+                case DetailType.TimeSpan:
+                    return TimeSpan.FromTicks((long) Math.Floor(valueProp.doubleValue));
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }

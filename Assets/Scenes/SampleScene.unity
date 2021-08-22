@@ -390,6 +390,18 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+    - _name: Time
+      _type: 15
+      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _value: 20484000000000.1
+      _stringValue: White
+      _referenceValue: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+      _vectorValue: {x: 0.495283, y: 0.8127325, z: 1, w: 1}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
     _collectionDetails: []
     _mapDetails: []
 --- !u!114 &383866831
@@ -413,7 +425,7 @@ MonoBehaviour:
           Type: 1
           ComponentType: 0
         _parameterTwo:
-          Name: 
+          Name: Time
           Type: 0
           ComponentType: 0
         _value:
@@ -438,7 +450,7 @@ MonoBehaviour:
           Type: 1
           ComponentType: 0
         _parameterTwo:
-          Name: 
+          Name: Time
           Type: 0
           ComponentType: 0
         _value:
@@ -458,13 +470,38 @@ MonoBehaviour:
         _enumTypeName: 
         _enumAssemblyName: 
         _comparisonType: 2
+      - _parameterOne:
+          Name: Time
+          Type: 1
+          ComponentType: 0
+        _parameterTwo:
+          Name: Time
+          Type: 0
+          ComponentType: 0
+        _value:
+          _name: 
+          _type: 15
+          _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+          _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+          _value: 19872000000000.1
+          _stringValue: Nice
+          _referenceValue: {fileID: 0}
+          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+          _assetReferenceValue:
+            m_AssetGUID: 
+            m_SubObjectName: 
+            m_SubObjectType: 
+        _type: 15
+        _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        _comparisonType: 4
     - _conditions:
       - _parameterOne:
           Name: DetailType 93e1625d
           Type: 1
           ComponentType: 0
         _parameterTwo:
-          Name: 
+          Name: Time
           Type: 0
           ComponentType: 0
         _value:
