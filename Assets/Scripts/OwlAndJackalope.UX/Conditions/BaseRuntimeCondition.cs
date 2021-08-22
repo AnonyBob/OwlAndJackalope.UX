@@ -5,7 +5,6 @@ using OwlAndJackalope.UX.Data;
 namespace OwlAndJackalope.UX.Conditions
 {
     public class BaseRuntimeCondition<TValue> : ICondition
-        where TValue : IComparable<TValue>
     {
         private readonly Parameter _leftHandSide;
         private readonly Parameter _rightHandSide;
@@ -88,7 +87,7 @@ namespace OwlAndJackalope.UX.Conditions
         
         private bool CalculateComparison(IDetail<TValue> one, IDetail<TValue> two)
         {
-            var compare = one.GetValue().CompareTo(two.GetValue());
+            var compare = Comparer<TValue>.Default.Compare(one.GetValue(), two.GetValue());
             switch (_comparisonType)
             {
                 case Comparison.Equal:

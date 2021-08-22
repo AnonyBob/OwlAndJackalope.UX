@@ -27,16 +27,20 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.StateDrawers
                     _selectedStateIndex = selectedStateIndex;
                 }
 
+                GUI.enabled = !Application.isPlaying;
                 if (GUILayout.Button("+", GUILayout.Width(30)))
                 {
                     AddState();
                 }
+
+                GUI.enabled = true;
             }
 
             if (_selectedStateIndex.HasValue && _statesProperty.arraySize > _selectedStateIndex.Value)
             {
                 using (new EditorGUILayout.HorizontalScope())
                 {
+                    GUI.enabled = !Application.isPlaying;
                     var selectedState = _statesProperty.GetArrayElementAtIndex(_selectedStateIndex.Value);
                     var stateName = selectedState.FindPropertyRelative(StateName);
                     var newStateName = EditorGUILayout.TextField("State Name", stateName.stringValue);
@@ -45,9 +49,38 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.StateDrawers
                         stateName.stringValue = HandleNameChange(newStateName, stateName.stringValue);
                     }
 
-                    if (GUILayout.Button("Delete", GUILayout.Width(100)))
+                    if (Application.isPlaying)
                     {
-                        DeleteSelectedState();
+                        GUI.enabled = true;
+                        var stateModule = (StateModule) serializedObject.targetObject;
+                        var state = stateModule.GetState(stateName.stringValue);
+
+                        var originalColor = GUI.contentColor;
+                        if (state == null)
+                        {
+                            GUI.contentColor = Color.yellow;
+                            EditorGUILayout.LabelField("⚠️ Not Found", GUILayout.Width(100));
+                        }
+                        else if(state.IsActive)
+                        {
+                            GUI.contentColor = Color.green;
+                            EditorGUILayout.LabelField("✔️ Active", GUILayout.Width(100));
+                        }
+                        else
+                        {
+                            GUI.contentColor = Color.red;
+                            EditorGUILayout.LabelField("✖️ Inactive", GUILayout.Width(100));
+                        }
+
+                        GUI.contentColor = originalColor;
+                    }
+                    else
+                    {
+                        if (GUILayout.Button("Delete", GUILayout.Width(100)))
+                        {
+                            DeleteSelectedState();
+                        }
+                        GUI.enabled = true;
                     }
                 }
 

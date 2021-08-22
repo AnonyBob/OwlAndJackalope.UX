@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 383866827}
   - component: {fileID: 383866826}
   - component: {fileID: 383866830}
+  - component: {fileID: 383866831}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -377,8 +378,60 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+    - _name: DetailType 93e1625d
+      _type: 5
+      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _value: 0.1
+      _stringValue: White
+      _referenceValue: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+      _vectorValue: {x: 0.495283, y: 0.8127325, z: 1, w: 1}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
     _collectionDetails: []
     _mapDetails: []
+--- !u!114 &383866831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383866825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12994531942f4318b75cfcc7e02fc38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _states:
+  - _name: Statef59cae
+    _conditions:
+    - _parameterOne:
+        Name: DetailType 93e1625d
+        Type: 1
+        ComponentType: 0
+      _parameterTwo:
+        Name: 
+        Type: 0
+        ComponentType: 0
+      _value:
+        _name: 
+        _type: 5
+        _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        _value: 12.1
+        _stringValue: Thing
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+      _type: 5
+      _enumTypeName: OwlAndJackalope.UX.Data.Serialized.DetailType
+      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _comparisonType: 0
 --- !u!1 &653260035
 GameObject:
   m_ObjectHideFlags: 0
