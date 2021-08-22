@@ -49,9 +49,10 @@ namespace OwlAndJackalope.UX.Data.Extensions
 
         public static IReference GetReference(this BaseSerializedDetail detail)
         {
-            if (detail.ReferenceValue != null && detail.ReferenceValue.Reference != null)
+            var template = detail.ReferenceValue;
+            if (template != null && template.Reference != null)
             {
-                return detail.ReferenceValue.Reference.ConvertToReference();
+                return template.Reference.ConvertToReference();
             }
 
             return null;

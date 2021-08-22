@@ -23,7 +23,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.StateDrawers
             var equalityWidth = pos.width * 0.2f - SharedDrawers.Buffer;
             var p1Pos = new Rect(pos.x, pos.y, parameterWidth, pos.height);
             var detailName = DrawParameter(p1Pos, property, ParamOneName, ParameterType.Detail);
-            
+
             var eqPos = new Rect(p1Pos.x + p1Pos.width + SharedDrawers.Buffer, pos.y, equalityWidth, pos.height);
             DrawComparison(eqPos, property);
             

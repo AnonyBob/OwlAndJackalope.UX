@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using OwlAndJackalope.UX.Modules;
 using OwlAndJackalope.UX.Observers;
 using UnityEditor;
@@ -9,23 +10,26 @@ using UnityEngine;
 
 namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
 {
-    [CustomPropertyDrawer(typeof(DetailNameAttribute))]
-    public class DetailNameAttributeDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(DetailTypeAttribute))]
+    public class DetailTypeAttributeDrawer : PropertyDrawer
     {
         public class PropertyData
         {
             public ReferenceModule Module;
-            public DetailNameAttribute Attribute;
+            public DetailTypeAttribute Attribute;
         }
         protected readonly Dictionary<string, PropertyData> _data = new Dictionary<string, PropertyData>();
 
         public override void OnGUI(Rect position, SerializedProperty property,
             GUIContent label)
         {
+            label = new Regex("\\.data\\[\\d+\\]$").IsMatch(property.propertyPath) ? GUIContent.none : label;
+            
+            var name = property.FindPropertyRelative("DetailName");
             if (!_data.TryGetValue(property.propertyPath, out var propertyData))
             {
                 propertyData = new PropertyData();
-                propertyData.Attribute = (DetailNameAttribute) attribute;
+                propertyData.Attribute = (DetailTypeAttribute) attribute;
                 _data[property.propertyPath] = propertyData;
             }
 
@@ -41,16 +45,16 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
             if (propertyData.Module != null)
             {
                 var options = GetOptions(propertyData);
-                var currentIndex = Math.Max(0, Array.IndexOf(options, property.stringValue));
+                var currentIndex = Math.Max(0, Array.IndexOf(options, name.stringValue));
                 var selectedIndex = EditorGUI.Popup(position, label.text, currentIndex, options);
                 if (selectedIndex >= 0 && selectedIndex < options.Length)
                 {
-                    property.stringValue = options[selectedIndex];
+                    name.stringValue = options[selectedIndex];
                 }
             }
             else
             {
-                EditorGUI.PropertyField(position, property, label);
+                EditorGUI.PropertyField(position, name, label);
             }
         }
 

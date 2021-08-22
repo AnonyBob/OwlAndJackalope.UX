@@ -55,7 +55,7 @@ namespace OwlAndJackalope.UX.Modules
 
         public void HandleDetailNameChange(string previousName, string newName, IDetailNameChangeHandler root)
         {
-            if (GetComponentInParent<ReferenceModule>() == root)
+            if (ReferenceEquals(GetComponentInParent<ReferenceModule>(), root))
             {
                 foreach (var state in _states)
                 {

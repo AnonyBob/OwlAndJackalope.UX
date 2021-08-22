@@ -8,25 +8,24 @@ namespace OwlAndJackalope.UX.Observers
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class TextDetailBinder : BaseDetailBinder
     {
-        [SerializeField, DetailName(typeof(string))]
-        private string _baseStringDetailName;
-
-        [SerializeField, DetailName(typeof(string), typeof(int),
-             typeof(long), typeof(double), typeof(bool), typeof(Enum))]
-        private string[] _stringArgumentDetailNames;
-
-        private TextMeshProUGUI _text;
+        [SerializeField, DetailType(typeof(string))]
         private DetailObserver<string> _baseStringObserver;
+
+        [SerializeField, DetailType(typeof(string), typeof(int),
+              typeof(long), typeof(double), typeof(bool), typeof(Enum))]
         private DetailObserver[] _stringArgumentObservers;
+        
+        private TextMeshProUGUI _text;
 
         private void Start()
         {
             _text = GetComponent<TextMeshProUGUI>();
-            _baseStringObserver = new DetailObserver<string>(_baseStringDetailName, _referenceModule.Reference, UpdateText);
-            _stringArgumentObservers = new DetailObserver[_stringArgumentDetailNames.Length];
-            for (var i = 0; i < _stringArgumentObservers.Length; ++i)
+            var reference = _referenceModule.Reference;
+            
+            _baseStringObserver.Initialize(reference, UpdateText);
+            foreach (var observer in _stringArgumentObservers)
             {
-                _stringArgumentObservers[i] = new DetailObserver(_stringArgumentDetailNames[i], _referenceModule.Reference, UpdateText);
+                observer.Initialize(reference, UpdateText);
             }
             
             UpdateText();
@@ -43,35 +42,31 @@ namespace OwlAndJackalope.UX.Observers
 
         private void UpdateText()
         {
-            UpdateText(_baseStringObserver.Value);
-        }
-        
-        private void UpdateText(string text)
-        {
             if (_text != null)
             {
-                if (_stringArgumentObservers?.Length > 0 && !string.IsNullOrEmpty(text))
+                var formatText = _baseStringObserver.Value;
+                if (_stringArgumentObservers?.Length > 0 && !string.IsNullOrEmpty(formatText))
                 {
                     try
                     {
-                        text = string.Format(text, _stringArgumentObservers.Select(x => x.ObjectValue).ToArray());
+                        formatText = string.Format(formatText, _stringArgumentObservers.Select(x => x.ObjectValue).ToArray());
                     }
                     catch (FormatException)
                     {
-                        Debug.LogWarning($"{text} is in a bad format");
+                        Debug.LogWarning($"{formatText} is in a bad format");
                     }
                 }
                 
-                _text.SetText(text);
+                _text.SetText(formatText);
             }
         }
 
         protected override int UpdateDetailNames(string previousName, string newName)
         {
-            var sum = UpdateDetailName(ref _baseStringDetailName, previousName, newName);
-            for (var i = 0; i < _stringArgumentDetailNames.Length; ++i)
+            var sum = UpdateDetailName(_baseStringObserver, previousName, newName);
+            for (var i = 0; i < _stringArgumentObservers.Length; ++i)
             {
-                sum += UpdateDetailName(ref _stringArgumentDetailNames[i], previousName, newName);
+                sum += UpdateDetailName(_stringArgumentObservers[i], previousName, newName);
             }
             return sum;
         }

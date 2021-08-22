@@ -3,6 +3,7 @@ using System.Reflection;
 using OwlAndJackalope.UX.Data.Extensions;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using Object = UnityEngine.Object;
 
 namespace OwlAndJackalope.UX.Data.Serialized
 {
@@ -19,12 +20,12 @@ namespace OwlAndJackalope.UX.Data.Serialized
         
         public double NumericValue => _value;
         public string StringValue => _stringValue;
-        public ReferenceTemplate ReferenceValue => _referenceValue;
+        public ReferenceTemplate ReferenceValue => _referenceValue as ReferenceTemplate;
         public Vector4 VectorValue => _vectorValue;
-        public GameObject GameObjectValue => _gameObjectValue;
+        public GameObject GameObjectValue => _referenceValue as GameObject;
         public AssetReference AssetReferenceValue => _assetReferenceValue;
-        public Texture2D TextureValue => _textureValue;
-        public Sprite SpriteValue => _spriteValue;
+        public Texture2D TextureValue => _referenceValue as Texture2D;
+        public Sprite SpriteValue => _referenceValue as Sprite;
         
         //Identifying information used to select for the detail.
         [SerializeField] protected string _name;
@@ -36,14 +37,9 @@ namespace OwlAndJackalope.UX.Data.Serialized
         //overwritten if a reference provider is being used.
         [SerializeField] protected double _value = 0;
         [SerializeField] protected string _stringValue;
-        [SerializeField] protected ReferenceTemplate _referenceValue;
+        [SerializeField] protected Object _referenceValue;
         [SerializeField] protected Vector4 _vectorValue;
-        [SerializeField] protected GameObject _gameObjectValue;
         [SerializeField] protected AssetReference _assetReferenceValue;
-        [SerializeField] protected Texture2D _textureValue;
-        [SerializeField] protected Sprite _spriteValue;
-
-        
 
         public IDetail ConvertToDetail()
         {
@@ -104,7 +100,7 @@ namespace OwlAndJackalope.UX.Data.Serialized
 
         private IDetail CreateReferenceDetail()
         {
-            if (_referenceValue != null && _referenceValue.Reference != null)
+            if (ReferenceValue != null)
             {
                 return new BaseDetail<IReference>(_name, this.GetReference());
             } 

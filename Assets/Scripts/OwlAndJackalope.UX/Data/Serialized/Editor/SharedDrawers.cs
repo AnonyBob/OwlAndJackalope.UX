@@ -16,7 +16,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
         public const string CollectionString = "_collection";
         public const string ValueString = "_value";
         public const string StringValueString = "_stringValue";
-        public const string ReferenceValueString = "_referenceValue";
+        public const string ObjectValueString = "_referenceValue";
         public const string VectorValueString = "_vectorValue";
         public const string GameObjectValueString = "_gameObjectValue";
         public const string AssetReferenceValueString = "_assetReferenceValue";
@@ -343,15 +343,15 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
                     vectorValueProp.vector4Value = (Color) value;
                     break;
                 case DetailType.GameObject:
-                    property.FindPropertyRelative(GameObjectValueString).objectReferenceValue =
+                    property.FindPropertyRelative(ObjectValueString).objectReferenceValue =
                         (GameObject) value;
                     break;
                 case DetailType.Texture:
-                    property.FindPropertyRelative(TextureValueString).objectReferenceValue =
+                    property.FindPropertyRelative(ObjectValueString).objectReferenceValue =
                         (Texture2D) value;
                     break;
                 case DetailType.Sprite:
-                    property.FindPropertyRelative(SpriteValueString).objectReferenceValue =
+                    property.FindPropertyRelative(ObjectValueString).objectReferenceValue =
                         (Sprite) value;
                     break;
                 case DetailType.AssetReference:

@@ -60,12 +60,9 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
         {
             var valueProp = property.FindPropertyRelative(SharedDrawers.ValueString);
             var stringValueProp = property.FindPropertyRelative(SharedDrawers.StringValueString);
-            var referenceProp = property.FindPropertyRelative(SharedDrawers.ReferenceValueString);
+            var referenceProp = property.FindPropertyRelative(SharedDrawers.ObjectValueString);
             var vectorValueProp = property.FindPropertyRelative(SharedDrawers.VectorValueString);
-            var gameObjectValueProp = property.FindPropertyRelative(SharedDrawers.GameObjectValueString);
             var assetRefValueProp = property.FindPropertyRelative(SharedDrawers.AssetReferenceValueString);
-            var spriteValueProp = property.FindPropertyRelative(SharedDrawers.SpriteValueString);
-            var textureValueProp = property.FindPropertyRelative(SharedDrawers.TextureValueString);
             var valuePosition = new Rect(remaining.x, remaining.y, remaining.width, EditorGUIUtility.singleLineHeight);
 
             var enabled = GUI.enabled;
@@ -105,7 +102,8 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
                     }
                     else
                     {
-                        EditorGUI.PropertyField(valuePosition, referenceProp, GUIContent.none);
+                        referenceProp.objectReferenceValue = EditorGUI.ObjectField(valuePosition, GUIContent.none,
+                            referenceProp.objectReferenceValue, typeof(ReferenceTemplate), true);
                         if (referenceProp.objectReferenceValue == property.serializedObject.targetObject)
                         {
                             //Don't allow self reference. Its still possible for someone to double up if two different
@@ -124,8 +122,8 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
                     vectorValueProp.vector4Value = EditorGUI.ColorField(valuePosition, GUIContent.none, vectorValueProp.vector4Value);
                     break;
                 case DetailType.GameObject:
-                    gameObjectValueProp.objectReferenceValue = EditorGUI.ObjectField(valuePosition, GUIContent.none,
-                        gameObjectValueProp.objectReferenceValue, typeof(GameObject), true);
+                    referenceProp.objectReferenceValue = EditorGUI.ObjectField(valuePosition, GUIContent.none,
+                        referenceProp.objectReferenceValue, typeof(GameObject), true);
                     break;
                 case DetailType.AssetReference:
                     if (Application.isPlaying)
@@ -144,10 +142,12 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
                     }
                     break;
                 case DetailType.Sprite:
-                    EditorGUI.PropertyField(valuePosition, spriteValueProp, GUIContent.none);
+                    referenceProp.objectReferenceValue = EditorGUI.ObjectField(valuePosition, GUIContent.none,
+                        referenceProp.objectReferenceValue, typeof(Sprite), true);
                     break;
                 case DetailType.Texture:
-                    EditorGUI.PropertyField(valuePosition, textureValueProp, GUIContent.none);
+                    referenceProp.objectReferenceValue = EditorGUI.ObjectField(valuePosition, GUIContent.none,
+                        referenceProp.objectReferenceValue, typeof(Texture2D), true);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
@@ -220,7 +220,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
                 case DetailType.String:
                     return property.FindPropertyRelative(SharedDrawers.StringValueString).stringValue;
                 case DetailType.Reference:
-                    return (property.FindPropertyRelative(SharedDrawers.ReferenceValueString).objectReferenceValue 
+                    return (property.FindPropertyRelative(SharedDrawers.ObjectValueString).objectReferenceValue 
                         as ReferenceTemplate)?.Reference?.ConvertToReference();
                 case DetailType.Vector2:
                     return (Vector2)vectorValueProp.vector4Value;

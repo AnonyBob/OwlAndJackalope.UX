@@ -7,6 +7,10 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.ReferenceDrawers
 {
     public class ReferenceEditor
     {
+        public SerializedProperty DetailListProperty => _detailListProp;
+        public SerializedProperty CollectionListProperty => _collectionListProp;
+        public SerializedProperty MapListProperty => _mapListProp;
+        
         private const string DetailPath = "_details";
         private const string CollectionsPath = "_collectionDetails";
         private const string MapsPath = "_mapDetails";

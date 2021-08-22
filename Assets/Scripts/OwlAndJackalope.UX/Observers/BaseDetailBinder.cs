@@ -20,11 +20,11 @@ namespace OwlAndJackalope.UX.Observers
             }
         }
 
-        protected int UpdateDetailName(ref string target, string previousName, string newName)
+        protected int UpdateDetailName(AbstractDetailObserver target, string previousName, string newName)
         {
-            if (target == previousName)
+            if (target.DetailName == previousName)
             {
-                target = newName;
+                target.DetailName = newName;
                 return 1;
             }
 

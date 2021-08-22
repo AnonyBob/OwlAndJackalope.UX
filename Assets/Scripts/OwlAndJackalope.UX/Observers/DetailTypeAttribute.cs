@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace OwlAndJackalope.UX.Observers
 {
-    public class DetailNameAttribute : PropertyAttribute
+    public class DetailTypeAttribute : PropertyAttribute
     {
         public readonly Type[] AcceptableTypes;
 
-        public DetailNameAttribute(params Type[] acceptableTypes)
+        public DetailTypeAttribute(params Type[] acceptableTypes)
         {
             AcceptableTypes = acceptableTypes;
         }
