@@ -24,7 +24,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.ReferenceDrawers
                     typeof(ReferenceTemplate), false);
 
                 GUI.enabled = _referenceTemplate != null;
-                if (GUILayout.Button("Import"))
+                if (SharedDrawers.Button("Import", Color.blue, GUILayout.Width(100)))
                 {
                     ImportReferenceTemplate();
                 }
@@ -88,8 +88,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.ReferenceDrawers
             dst.FindPropertyRelative(SharedDrawers.StringValueString).stringValue = src.FindPropertyRelative(SharedDrawers.StringValueString).stringValue;
             dst.FindPropertyRelative(SharedDrawers.ObjectValueString).objectReferenceValue = src.FindPropertyRelative(SharedDrawers.ObjectValueString).objectReferenceValue;
             dst.FindPropertyRelative(SharedDrawers.VectorValueString).vector4Value = src.FindPropertyRelative(SharedDrawers.VectorValueString).vector4Value;
-            dst.FindPropertyRelative(SharedDrawers.AssetReferenceValueString).vector4Value = src.FindPropertyRelative(SharedDrawers.AssetReferenceValueString).vector4Value;
-
+            //dst.FindPropertyRelative(SharedDrawers.AssetReferenceValueString).vector4Value = src.FindPropertyRelative(SharedDrawers.AssetReferenceValueString).vector4Value;
         }
     }
 }

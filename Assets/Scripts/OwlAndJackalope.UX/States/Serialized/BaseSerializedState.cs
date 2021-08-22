@@ -14,18 +14,18 @@ namespace OwlAndJackalope.UX.States.Serialized
         private string _name;
 
         [SerializeField]
-        private List<BaseSerializedCondition> _conditions;
+        private List<SerializedConditionAndGroup> _conditionGroups;
 
         public IState ConvertToState(IReference reference)
         {
-            return new BaseRuntimeState(_name, reference, _conditions
+            return new BaseRuntimeState(_name, reference, _conditionGroups
                 .Select(x => x.ConvertToCondition())
                 .Where(x => x != null));
         }
 
         public void HandleDetailNameChange(string previousName, string newName, IDetailNameChangeHandler root)
         {
-            foreach (var condition in _conditions)
+            foreach (var condition in _conditionGroups)
             {
                 condition.HandleDetailNameChange(previousName, newName, this);
             }

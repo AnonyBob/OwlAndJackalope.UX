@@ -11,6 +11,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.StateDrawers
     public class StateModuleEditor : UnityEditor.Editor
     {
         private const string StateName = "_name";
+        private const string ConditionGroups = "_conditionGroups";
         private const string Conditions = "_conditions";
         
         private SerializedProperty _statesProperty;
@@ -28,7 +29,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.StateDrawers
                 }
 
                 GUI.enabled = !Application.isPlaying;
-                if (GUILayout.Button("+", GUILayout.Width(30)))
+                if (SharedDrawers.Button("ADD", Color.green, GUILayout.Width(50)))
                 {
                     AddState();
                 }
@@ -54,29 +55,24 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.StateDrawers
                         GUI.enabled = true;
                         var stateModule = (StateModule) serializedObject.targetObject;
                         var state = stateModule.GetState(stateName.stringValue);
-
-                        var originalColor = GUI.contentColor;
+                        
                         if (state == null)
                         {
-                            GUI.contentColor = Color.yellow;
-                            EditorGUILayout.LabelField("⚠️ Not Found", GUILayout.Width(100));
+                            SharedDrawers.Button("⚠️ Not Found", Color.yellow, GUILayout.Width(100));
                         }
                         else if(state.IsActive)
                         {
-                            GUI.contentColor = Color.green;
-                            EditorGUILayout.LabelField("✔️ Active", GUILayout.Width(100));
+                            SharedDrawers.Button("✔️ Active", Color.green, GUILayout.Width(100));
                         }
                         else
                         {
-                            GUI.contentColor = Color.red;
-                            EditorGUILayout.LabelField("✖️ Inactive", GUILayout.Width(100));
+                            SharedDrawers.Button("✖️ Inactive", Color.red, GUILayout.Width(100));
                         }
-
-                        GUI.contentColor = originalColor;
+                        
                     }
                     else
                     {
-                        if (GUILayout.Button("Delete", GUILayout.Width(100)))
+                        if (SharedDrawers.Button("✖",  Color.red, GUILayout.Width(50)))
                         {
                             DeleteSelectedState();
                         }
@@ -87,11 +83,43 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.StateDrawers
                 if (_selectedStateIndex.HasValue)
                 {
                     var selectedState = _statesProperty.GetArrayElementAtIndex(_selectedStateIndex.Value);
-                    EditorGUILayout.PropertyField(selectedState.FindPropertyRelative(Conditions), true);
+                    DrawConditionGroups(selectedState.FindPropertyRelative(ConditionGroups));
                 }
             }
 
             serializedObject.ApplyModifiedProperties();
+        }
+
+        private void DrawConditionGroups(SerializedProperty conditionGroups)
+        {
+            GUI.enabled = !Application.isPlaying;
+            EditorGUILayout.LabelField("Conditions");
+
+            for (var i = 0; i < conditionGroups.arraySize; ++i)
+            {
+                if(i > 0) 
+                    EditorGUILayout.LabelField("OR");
+
+                using (new EditorGUILayout.HorizontalScope("button"))
+                {
+                    var conditions = conditionGroups.GetArrayElementAtIndex(i).FindPropertyRelative(Conditions);
+                    EditorGUILayout.PropertyField(conditions, new GUIContent($"Group {i + 1}"), true);
+                    
+                    if (SharedDrawers.Button("✖", Color.red, GUILayout.Width(25)))
+                    {
+                        conditionGroups.DeleteArrayElementAtIndex(i);
+                    }
+                }
+            }
+            
+            if (SharedDrawers.Button("OR", Color.green, GUILayout.Width(100)))
+            {
+                conditionGroups.InsertArrayElementAtIndex(conditionGroups.arraySize);
+                var group = conditionGroups.GetArrayElementAtIndex(conditionGroups.arraySize - 1);
+                group.FindPropertyRelative(Conditions).ClearArray();
+            }
+
+            GUI.enabled = true;
         }
 
         private IEnumerable<string> GetStateNames()
@@ -109,7 +137,13 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.StateDrawers
             var selectedState = _statesProperty.GetArrayElementAtIndex(_selectedStateIndex.Value);
 
             selectedState.FindPropertyRelative(StateName).stringValue = $"State{Guid.NewGuid().ToString().Substring(0, 6)}";
-            selectedState.FindPropertyRelative(Conditions).ClearArray();
+            selectedState.FindPropertyRelative(ConditionGroups).ClearArray();
+        }
+        
+        private void DeleteSelectedState()
+        {
+            _statesProperty.DeleteArrayElementAtIndex(_selectedStateIndex.Value);
+            _selectedStateIndex = null;
         }
 
         private string HandleNameChange(string newName, string oldName)
@@ -132,12 +166,6 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.StateDrawers
             }
             
             return newName;
-        }
-
-        private void DeleteSelectedState()
-        {
-            _statesProperty.DeleteArrayElementAtIndex(_selectedStateIndex.Value);
-            _selectedStateIndex = null;
         }
     }
 }

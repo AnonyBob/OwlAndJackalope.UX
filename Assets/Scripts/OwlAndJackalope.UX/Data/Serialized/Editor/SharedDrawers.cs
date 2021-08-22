@@ -44,6 +44,20 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor
         public const string KeyEnumAssemblyString = "_keyEnumAssemblyName";
         public const string ValueEnumTypeString = "_valueEnumTypeName";
         public const string ValueEnumAssemblyString = "_valueEnumAssemblyName";
+
+        public static bool Button(string text, Color color, params GUILayoutOption[] options)
+        {
+            var originalColor = GUI.backgroundColor;
+            GUI.backgroundColor = color;
+            var value = GUILayout.Button(text, options);
+            GUI.backgroundColor = originalColor;
+            return value;
+        }
+        
+        public static bool Button(string text, params GUILayoutOption[] options)
+        {
+            return GUILayout.Button(text, options);
+        }
         
         public static SerializedProperty DrawTypeField(
             Rect position, 

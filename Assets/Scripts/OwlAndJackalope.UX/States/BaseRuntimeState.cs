@@ -40,12 +40,12 @@ namespace OwlAndJackalope.UX.States
         
         public void CheckActive()
         {
-            var nextActive = true;
+            var nextActive = false;
             for (var i = 0; i < _conditions.Count; ++i)
             {
-                if (!_conditions[i].IsMet(_reference))
+                if (_conditions[i].IsMet(_reference))
                 {
-                    nextActive = false;
+                    nextActive = true;
                     break;
                 }
             }
