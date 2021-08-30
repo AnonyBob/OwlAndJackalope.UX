@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using OwlAndJackalope.UX.Testing;
+using UnityEditor;
 using UnityEngine.UI;
 
 namespace OwlAndJackalope.UX.Data.Serialized.Editor.EnumExtensions
@@ -14,6 +15,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.EnumExtensions
         {
             SerializedDetailEnumCache.AddEnumType(typeof(DetailType));
             SerializedDetailEnumCache.AddEnumType(typeof(Slider.Direction));
+            SerializedDetailEnumCache.AddEnumType(typeof(EyeColor));
         }
     }
 }

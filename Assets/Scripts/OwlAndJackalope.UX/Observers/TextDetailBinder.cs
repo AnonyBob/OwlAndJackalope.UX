@@ -8,9 +8,15 @@ namespace OwlAndJackalope.UX.Observers
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class TextDetailBinder : BaseDetailBinder
     {
+        [SerializeField]
+        private bool _useDefaultString;
+        
         [SerializeField, DetailType(typeof(string))]
         private DetailObserver<string> _baseStringObserver;
 
+        [SerializeField]
+        private string _defaultString;
+        
         [SerializeField, DetailType(typeof(string), typeof(int),
               typeof(long), typeof(double), typeof(bool), typeof(Enum))]
         private DetailObserver[] _stringArgumentObservers;
@@ -44,7 +50,7 @@ namespace OwlAndJackalope.UX.Observers
         {
             if (_text != null)
             {
-                var formatText = _baseStringObserver.Value;
+                var formatText = _useDefaultString ? _defaultString : _baseStringObserver.Value;
                 if (_stringArgumentObservers?.Length > 0 && !string.IsNullOrEmpty(formatText))
                 {
                     try

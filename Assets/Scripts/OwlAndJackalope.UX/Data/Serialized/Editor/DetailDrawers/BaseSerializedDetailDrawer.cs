@@ -19,6 +19,18 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers
             public Type LoadedEnumType;
         }
         protected readonly Dictionary<string, PropertyData> _data = new Dictionary<string, PropertyData>();
+
+        public static void Clear(SerializedProperty newItem)
+        {
+            newItem.FindPropertyRelative(SharedDrawers.ValueString).doubleValue = 0;
+            newItem.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue = null;
+            newItem.FindPropertyRelative(SharedDrawers.EnumAssemblyString).stringValue = null;
+            newItem.FindPropertyRelative(SharedDrawers.StringValueString).stringValue = null;
+            newItem.FindPropertyRelative(SharedDrawers.ObjectValueString).objectReferenceValue = null;
+            newItem.FindPropertyRelative(SharedDrawers.VectorValueString).vector4Value = Vector4.zero;
+            newItem.FindPropertyRelative(SharedDrawers.AssetReferenceValueString).FindPropertyRelative("m_AssetGUID")
+                .stringValue = null;
+        }
         
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {

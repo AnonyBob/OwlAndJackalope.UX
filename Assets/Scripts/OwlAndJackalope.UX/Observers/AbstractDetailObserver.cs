@@ -66,10 +66,11 @@ namespace OwlAndJackalope.UX.Observers
                 Detail.VersionChanged += HandleDetailChanged;
                 if (!_initialSetup || !_suppressInitial)
                 {
-                    _initialSetup = false;
                     HandleDetailChanged();
                 }
             }
+            
+            _initialSetup = false;
         }
         
         private void HandleDetailChanged()

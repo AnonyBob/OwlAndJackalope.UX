@@ -1,4 +1,5 @@
-﻿using OwlAndJackalope.UX.Data;
+﻿using System.Collections.Generic;
+using OwlAndJackalope.UX.Data;
 using OwlAndJackalope.UX.Data.Serialized;
 using UnityEngine;
 
@@ -37,7 +38,7 @@ namespace OwlAndJackalope.UX.Modules
             var provider = GetComponent<ReferenceProvider>();
             if (provider != null)
             {
-                Reference = provider.ProvideReference();
+                AddDetails(provider.ProvideReference());
             }
 
             foreach (var module in GetComponents<IReferenceDependentModule>())
@@ -49,6 +50,16 @@ namespace OwlAndJackalope.UX.Modules
         private void Initialize()
         {
             _runtimeReference = new BaseReference(_reference.ConvertToReference());
+        }
+
+        public void AddDetails(IEnumerable<IDetail> details)
+        {
+            if (_runtimeReference == null)
+            {
+                Initialize();
+            }
+
+            _runtimeReference.AddDetails(details);
         }
         
         public void HandleDetailNameChange(string previousName, string newName, IDetailNameChangeHandler root)

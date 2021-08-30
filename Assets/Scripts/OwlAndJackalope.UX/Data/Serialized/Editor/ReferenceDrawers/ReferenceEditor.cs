@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using OwlAndJackalope.UX.Data.Serialized.Editor.DetailDrawers;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -35,7 +36,7 @@ namespace OwlAndJackalope.UX.Data.Serialized.Editor.ReferenceDrawers
             _collectionListProp = _serializedObject.FindProperty(propertyNamePrefix + CollectionsPath);
             _mapListProp = _serializedObject.FindProperty(propertyNamePrefix + MapsPath);
 
-            _detailList = SharedDrawers.CreateDetailList(_detailListProp, true,null);
+            _detailList = SharedDrawers.CreateDetailList(_detailListProp, true, BaseSerializedDetailDrawer.Clear);
             _collectionDetailList = SharedDrawers.CreateDetailList(_collectionListProp, false, 
                 newItem =>
                 {
