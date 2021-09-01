@@ -13,18 +13,17 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
     public class BaseSerializedCollectionDetail : ISerializedDetail
     {
         public string Name => _name;
-        public Type Type => typeof(List<>).MakeGenericType(_type.ConvertToType(_enumTypeName, _enumAssemblyName));
+        public Type Type => typeof(List<>).MakeGenericType(_type.ConvertToType(_enumId));
         
         [SerializeField] protected string _name;
         [SerializeField] protected DetailType _type;
-        [SerializeField] protected string _enumTypeName = "";
-        [SerializeField] protected string _enumAssemblyName = "";
+        [SerializeField] protected int _enumId;
         
         [SerializeField] private List<BaseSerializedDetail> _collection = new List<BaseSerializedDetail>();
         
         public IDetail ConvertToDetail()
         {
-            var type = _type.ConvertToType(_enumTypeName, _enumAssemblyName);
+            var type = _type.ConvertToType(_enumId);
             var collectionType = typeof(BaseCollectionDetail<>).MakeGenericType(type);
             return (IDetail) Activator.CreateInstance(collectionType, _name, ConstructList(type), false);
         }

@@ -43,8 +43,8 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
                 position.width * 0.25f - SharedDrawers.Buffer, 
                 EditorGUIUtility.singleLineHeight);
             
-            SharedDrawers.DrawTypeField(keyTypePos, property, SharedDrawers.KeyTypeString, SharedDrawers.KeyEnumTypeString);
-            SharedDrawers.DrawTypeField(valueTypePos, property, SharedDrawers.ValueTypeString, SharedDrawers.ValueEnumTypeString);
+            SharedDrawers.DrawTypeField(keyTypePos, property, SharedDrawers.KeyTypeString, SharedDrawers.KeyEnumIdString);
+            SharedDrawers.DrawTypeField(valueTypePos, property, SharedDrawers.ValueTypeString, SharedDrawers.ValueEnumIdString);
             
             var namePos = new Rect(valueTypePos.x + valueTypePos.width + SharedDrawers.Buffer,
                 position.y + SharedDrawers.Buffer, position.width * 0.5f - SharedDrawers.Buffer, 
@@ -155,17 +155,13 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
             var valueProp = valueCollectionProp.GetArrayElementAtIndex(valueCollectionProp.arraySize - 1);
             keyProp.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex =
                 property.FindPropertyRelative(SharedDrawers.KeyTypeString).enumValueIndex;
-            keyProp.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue =
-                property.FindPropertyRelative(SharedDrawers.KeyEnumTypeString).stringValue;
-            keyProp.FindPropertyRelative(SharedDrawers.EnumAssemblyString).stringValue =
-                property.FindPropertyRelative(SharedDrawers.KeyEnumAssemblyString).stringValue;
-                
+            keyProp.FindPropertyRelative(SharedDrawers.EnumIdString).intValue =
+                property.FindPropertyRelative(SharedDrawers.KeyEnumIdString).intValue;
+
             valueProp.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex =
                 property.FindPropertyRelative(SharedDrawers.ValueTypeString).enumValueIndex;
-            valueProp.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue =
-                property.FindPropertyRelative(SharedDrawers.ValueEnumTypeString).stringValue;
-            valueProp.FindPropertyRelative(SharedDrawers.EnumAssemblyString).stringValue =
-                property.FindPropertyRelative(SharedDrawers.ValueEnumAssemblyString).stringValue;
+            valueProp.FindPropertyRelative(SharedDrawers.EnumIdString).intValue =
+                property.FindPropertyRelative(SharedDrawers.ValueEnumIdString).intValue;
 
             return (keyProp, valueProp);
         }

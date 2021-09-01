@@ -34,7 +34,7 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
             EditorGUI.BeginProperty(position, label, property);
             
             var typePos = new Rect(position.x, position.y + SharedDrawers.Buffer, position.width * 0.15f, EditorGUIUtility.singleLineHeight);
-            SharedDrawers.DrawTypeField(typePos, property, SharedDrawers.TypeString, SharedDrawers.EnumTypeString);
+            SharedDrawers.DrawTypeField(typePos, property, SharedDrawers.TypeString, SharedDrawers.EnumIdString);
             
             var namePos = new Rect(typePos.x + typePos.width + SharedDrawers.Buffer, 
                 position.y + SharedDrawers.Buffer, position.width * 0.8f, EditorGUIUtility.singleLineHeight);
@@ -108,10 +108,8 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
             var newItem = collectionProp.GetArrayElementAtIndex(collectionProp.arraySize - 1);
             newItem.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex =
                 property.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex;
-            newItem.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue =
-                property.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue;
-            newItem.FindPropertyRelative(SharedDrawers.EnumAssemblyString).stringValue =
-                property.FindPropertyRelative(SharedDrawers.EnumAssemblyString).stringValue;
+            newItem.FindPropertyRelative(SharedDrawers.EnumIdString).intValue =
+                property.FindPropertyRelative(SharedDrawers.EnumIdString).intValue;
             return newItem;
         }
 

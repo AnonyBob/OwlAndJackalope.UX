@@ -17,11 +17,11 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
         public struct FullDetailType
         {
             public DetailType MainType;
-            public Type EnumType;
+            public (int EnumId, IEnumDetailCreator EnumCreator) EnumDetails;
 
             public override string ToString()
             {
-                return EnumType?.Name ?? MainType.ToString();
+                return EnumDetails.EnumCreator?.EnumName ?? MainType.ToString();
             }
         }
         
@@ -77,7 +77,7 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
             return new FullDetailType()
             {
                 MainType = DetailType.Enum,
-                EnumType = SerializedDetailEnumCache.GetEnumType(selected.Substring(selected.IndexOf('/') + 1))
+                EnumDetails = SerializedDetailEnumCache.GetCreator(selected.Substring(selected.IndexOf('/') + 1))
             };
         }
         
@@ -93,9 +93,9 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
                 }
                 else
                 {
-                    foreach (var enumType in SerializedDetailEnumCache.EnumTypes)
+                    foreach (var enumType in SerializedDetailEnumCache.EnumTypeNames)
                     {
-                        yield return $"{enumTypeString}/{enumType.Name}";
+                        yield return $"{enumTypeString}/{enumType}";
                     }
                 }
             }

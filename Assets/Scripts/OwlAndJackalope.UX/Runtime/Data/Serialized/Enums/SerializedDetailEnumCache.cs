@@ -6,49 +6,37 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized.Enums
 {
     public static class SerializedDetailEnumCache
     {
-        private static readonly List<Type> _enumTypes = new List<Type>();
+        private static readonly Dictionary<int, IEnumDetailCreator> EnumCreators = new Dictionary<int, IEnumDetailCreator>();
         private static string[] _cachedEnumTypeNames;
-        private static string[] _cachedEnumTypeFullNames;
+        
         public static string[] EnumTypeNames
         {
             get
             {
-                if (_cachedEnumTypeNames == null || _cachedEnumTypeNames.Length != _enumTypes.Count)
+                if (_cachedEnumTypeNames == null || _cachedEnumTypeNames.Length != EnumCreators.Count)
                 {
-                    _cachedEnumTypeNames = _enumTypes.Select(x => x.Name).ToArray();
+                    _cachedEnumTypeNames = EnumCreators.Values.Select(x => x.EnumName).ToArray();
                 }
 
                 return _cachedEnumTypeNames;
             }
         }
-        
-        public static string[] EnumTypeFullNames
-        {
-            get
-            {
-                if (_cachedEnumTypeFullNames == null || _cachedEnumTypeFullNames.Length != _enumTypes.Count)
-                {
-                    _cachedEnumTypeFullNames = _enumTypes.Select(x => x.FullName).ToArray();
-                }
 
-                return _cachedEnumTypeFullNames;
-            }
+        public static IEnumDetailCreator GetCreator(int enumId)
+        {
+            EnumCreators.TryGetValue(enumId, out var creator);
+            return creator;
         }
 
-        public static IEnumerable<Type> EnumTypes => _enumTypes;
-
-        public static void AddEnumType(Type type)
+        public static (int EnumId, IEnumDetailCreator Creator) GetCreator(string typeName)
         {
-            if (type.IsEnum && !EnumTypes.Contains(type))
-            {
-                _enumTypes.Add(type);
-                _enumTypes.Sort((type1, type2) => type1.Name.CompareTo(type2.Name));
-            }
+            var kvp = EnumCreators.FirstOrDefault(x => x.Value.EnumName == typeName);
+            return (kvp.Key, kvp.Value);
         }
 
-        public static Type GetEnumType(string name)
+        public static void AddEnumType(int enumId, IEnumDetailCreator creator)
         {
-            return EnumTypes.FirstOrDefault(x => x.Name == name);
+            EnumCreators[enumId] = creator;
         }
     }
 }

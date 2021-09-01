@@ -2,6 +2,7 @@
 using System.Reflection;
 using OwlAndJackalope.UX.Runtime.Data;
 using OwlAndJackalope.UX.Runtime.Data.Serialized;
+using OwlAndJackalope.UX.Runtime.Data.Serialized.Enums;
 using OwlAndJackalope.UX.Runtime.Modules;
 using UnityEngine;
 
@@ -23,11 +24,8 @@ namespace OwlAndJackalope.UX.Runtime.Conditions.Serialized
         private DetailType _type;
 
         [SerializeField]
-        private string _enumTypeName;
+        private int _enumId;
 
-        [SerializeField]
-        private string _enumAssemblyName;
-        
         [SerializeField]
         private Comparison _comparisonType;
         
@@ -79,10 +77,8 @@ namespace OwlAndJackalope.UX.Runtime.Conditions.Serialized
         {
             try
             {
-                var assembly = Assembly.Load(_enumAssemblyName);
-                var enumType = assembly.GetType(_enumTypeName);
-
-                var conditionType = typeof(BaseRuntimeCondition<>).MakeGenericType(enumType);
+                var creator = SerializedDetailEnumCache.GetCreator(_enumId);
+                var conditionType = typeof(BaseRuntimeCondition<>).MakeGenericType(creator?.EnumType);
                 if (_parameterTwo.Type == ParameterType.Value)
                 {
                     return (ICondition)Activator.CreateInstance(conditionType, _parameterOne, _value.ConvertToDetail(), _comparisonType);

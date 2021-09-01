@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using OwlAndJackalope.UX.Runtime.Data.Serialized.Enums;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -31,7 +32,7 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
 
     public static class DetailTypeExtensions
     {
-        public static Type ConvertToType(this DetailType detailType, string enumName, string enumAssembly)
+        public static Type ConvertToType(this DetailType detailType, int enumId)
         {
             switch (detailType)
             {
@@ -46,7 +47,7 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
                 case DetailType.Double:
                     return typeof(double);
                 case DetailType.Enum:
-                    return GetEnumType(enumName, enumAssembly);
+                    return SerializedDetailEnumCache.GetCreator(enumId)?.EnumType;
                 case DetailType.String:
                     return typeof(string);
                 case DetailType.Reference:

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using OwlAndJackalope.UX.Runtime.Data.Extensions;
+using OwlAndJackalope.UX.Runtime.Data.Serialized.Enums;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -15,8 +16,7 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
     public class BaseSerializedDetail : ISerializedDetail
     {
         public string Name => _name;
-        public Type Type => _type.ConvertToType(_enumTypeName, _enumAssemblyName);
-        
+        public Type Type => _type.ConvertToType(_enumId);
         public double NumericValue => _value;
         public string StringValue => _stringValue;
         public ReferenceTemplate ReferenceValue => _referenceValue as ReferenceTemplate;
@@ -30,9 +30,8 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
         //Identifying information used to select for the detail.
         [SerializeField] protected string _name;
         [SerializeField] protected DetailType _type;
-        [SerializeField] protected string _enumTypeName = "";
-        [SerializeField] protected string _enumAssemblyName = "";
-        
+        [SerializeField] protected int _enumId = 0;
+
         //Stored information representing the value stored in the detail at start, this will be
         //overwritten if a reference provider is being used.
         [SerializeField] protected double _value = 0;
@@ -84,20 +83,14 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
 
         private IDetail CreateEnumDetail()
         {
-            try
+            var creator = SerializedDetailEnumCache.GetCreator(_enumId);
+            if (creator == null)
             {
-                var assembly = Assembly.Load(_enumAssemblyName);
-                var enumType = assembly.GetType(_enumTypeName);
-
-                var detailType = typeof(BaseDetail<>).MakeGenericType(enumType);
-                var intValue = (int)Math.Floor(_value);
-                return (IDetail)Activator.CreateInstance(detailType, _name, Enum.ToObject(enumType, intValue));
-            }
-            catch(Exception e)
-            {
-                Debug.LogError(e);
+                Debug.LogWarning($"{_enumId} did not have a creator registered");
                 return null;
             }
+
+            return creator.CreateDetail(_name, this.GetInt());
         }
 
         private IDetail CreateReferenceDetail()

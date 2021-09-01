@@ -12,9 +12,14 @@ namespace OwlAndJackalope.UX.Editor
     public static class SharedDrawers
     {
         public const float Buffer = 5;
+        
+        //Name and type paths
         public const string TypeString = "_type";
         public const string NameString = "_name";
-        public const string CollectionString = "_collection";
+        public const string KeyTypeString = "_keyType";
+        public const string ValueTypeString = "_valueType";
+        
+        //Value paths
         public const string ValueString = "_value";
         public const string StringValueString = "_stringValue";
         public const string ObjectValueString = "_referenceValue";
@@ -24,27 +29,25 @@ namespace OwlAndJackalope.UX.Editor
         public const string SpriteValueString = "_spriteValue";
         public const string TextureValueString = "_textureValue";
         
-        public const string EnumAssemblyString = "_enumAssemblyName";
-        public const string EnumTypeString = "_enumTypeName";
-        
+        //Reference paths
         public const string ReferenceTemplatePath = "Reference";
         public const string ReferenceModulePath = "_reference";
         public const string ReferenceDetailsString = "_details";
         public const string ReferenceCollectionDetailsString = "_collectionDetails";
         public const string ReferenceMapDetailsString = "_mapDetails";
+
+        //Collection paths
         
-        public const string ConditionsString = "_conditions";
-
-        public const string KeyTypeString = "_keyType";
-        public const string ValueTypeString = "_valueType";
-
+        public const string CollectionString = "_collection";
         public const string KeyCollectionString = "_keyCollection";
         public const string ValueCollectionString = "_valueCollection";
         
-        public const string KeyEnumTypeString = "_keyEnumTypeName";
-        public const string KeyEnumAssemblyString = "_keyEnumAssemblyName";
-        public const string ValueEnumTypeString = "_valueEnumTypeName";
-        public const string ValueEnumAssemblyString = "_valueEnumAssemblyName";
+        //Enum id paths
+        public const string EnumIdString = "_enumId";
+        public const string KeyEnumIdString = "_keyEnumId";
+        public const string ValueEnumIdString = "_valueEnumId";
+        
+        public const string ConditionsString = "_conditions";
 
         public static bool Button(string text, Color color, params GUILayoutOption[] options)
         {
@@ -64,16 +67,16 @@ namespace OwlAndJackalope.UX.Editor
             Rect position, 
             SerializedProperty property, 
             string typeString,
-            string enumTypeString)
+            string enumIdString)
         {
-            return DrawTypeField(position, property, typeString, enumTypeString, null);
+            return DrawTypeField(position, property, typeString, enumIdString, null);
         }
 
         public static SerializedProperty DrawTypeField(
             Rect position,
             SerializedProperty property,
             string typeString,
-            string enumTypeString,
+            string enumIdString,
             string fieldName)
         {
             var typeProp = property.FindPropertyRelative(typeString);
@@ -81,7 +84,7 @@ namespace OwlAndJackalope.UX.Editor
             var detail = ((DetailType) typeProp.enumValueIndex);
             var displayString = detail != DetailType.Enum
                 ? ((DetailType) typeProp.enumValueIndex).ToString()
-                : GetEnumString(property, enumTypeString);
+                : GetEnumString(property, enumIdString);
             if (fieldName != null)
             {
                 EditorGUI.LabelField(position, fieldName, displayString, EditorStyles.helpBox);    
@@ -97,13 +100,10 @@ namespace OwlAndJackalope.UX.Editor
         private static string GetEnumString(SerializedProperty property, string enumTypeString)
         {
             var enumProp = property.FindPropertyRelative(enumTypeString);
-            if (enumProp != null && !string.IsNullOrEmpty(enumProp.stringValue))
+            if (enumProp != null)
             {
-                var regex = new Regex(".*[\\.\\+](.*)");
-                var groups = regex.Match(enumProp.stringValue).Groups;
-                return groups[1].Value;
+                return SerializedDetailEnumCache.GetCreator(enumProp.intValue).EnumName;
             }
-
             return "";
         }
 
@@ -128,43 +128,6 @@ namespace OwlAndJackalope.UX.Editor
             return nameProp;
         }
 
-        public static (SerializedProperty enumTypeProp, SerializedProperty enumAssemblyProp) DrawEnumTypeField(
-            Rect position, 
-            SerializedProperty property,
-            string enumTypeString,
-            string enumAssemblyString)
-        {
-            return DrawEnumTypeField(position, property, enumTypeString, enumAssemblyString, null);
-        }
-        
-        public static (SerializedProperty enumTypeProp, SerializedProperty enumAssemblyProp) DrawEnumTypeField(
-            Rect position, 
-            SerializedProperty property,
-            string enumTypeString,
-            string enumAssemblyString,
-            string fieldName)
-        {
-            var previousEnabled = GUI.enabled;
-            GUI.enabled = !InCollection(property) && !InCondition(property);
-            
-            var assemblyProp = property.FindPropertyRelative(enumAssemblyString);
-            var enumTypeProp = property.FindPropertyRelative(enumTypeString);
-            
-            var index = Array.FindIndex(SerializedDetailEnumCache.EnumTypeFullNames, x => enumTypeProp.stringValue == x);
-            index = Math.Max(0, index);
-            
-            index = EditorGUI.Popup(position, fieldName ?? string.Empty, index, SerializedDetailEnumCache.EnumTypeNames);   
-            var type = SerializedDetailEnumCache.GetEnumType(SerializedDetailEnumCache.EnumTypeNames[index]);
-            if (type != null)
-            {
-                assemblyProp.stringValue = type.Assembly.FullName;
-                enumTypeProp.stringValue = type.FullName;
-            }
-
-            GUI.enabled = previousEnabled;
-            return (enumTypeProp, assemblyProp);
-        }
-        
         public static bool InCollection(SerializedProperty property)
         {
             var collectionRegex = new Regex("_collectionDetails.Array.*_collection.Array");
@@ -225,11 +188,12 @@ namespace OwlAndJackalope.UX.Editor
                     }
                     else
                     {
-                        foreach (var enumType in SerializedDetailEnumCache.EnumTypes)
+                        foreach (var enumType in SerializedDetailEnumCache.EnumTypeNames)
                         {
-                            menu.AddItem(new GUIContent($"{enumTypeString}/{enumType.Name}"), false, selection =>
+                            menu.AddItem(new GUIContent($"{enumTypeString}/{enumType}"), false, selection =>
                             {
-                                InsertNewEnumItem(property, enumType, clearFunc);
+                                var enumDetails = SerializedDetailEnumCache.GetCreator(enumType);
+                                InsertNewEnumItem(property, enumDetails.EnumId, enumDetails.Creator.EnumName, clearFunc);
                             }, enumType);
                         }
                     }
@@ -255,17 +219,16 @@ namespace OwlAndJackalope.UX.Editor
             property.serializedObject.ApplyModifiedProperties();
         }
 
-        private static void InsertNewEnumItem(SerializedProperty property, Type enumType, Action<SerializedProperty> clearFunc)
+        private static void InsertNewEnumItem(SerializedProperty property, int enumId, string enumName, Action<SerializedProperty> clearFunc)
         {
             property.InsertArrayElementAtIndex(property.arraySize);
             var newItem = property.GetArrayElementAtIndex(property.arraySize - 1);
             newItem.FindPropertyRelative(TypeString).enumValueIndex = (int)DetailType.Enum;
-            newItem.FindPropertyRelative(EnumTypeString).stringValue = enumType.FullName;
-            newItem.FindPropertyRelative(EnumAssemblyString).stringValue = enumType.Assembly.FullName;
-            
+            newItem.FindPropertyRelative(EnumIdString).intValue = enumId;
+
             var guidString = Guid.NewGuid().ToString();
             newItem.FindPropertyRelative(NameString).stringValue =
-                $"{enumType.Name} {guidString.Substring(0, guidString.IndexOf("-"))}"; 
+                $"{enumName} {guidString.Substring(0, guidString.IndexOf("-"))}"; 
             
             clearFunc?.Invoke(newItem);
             property.serializedObject.ApplyModifiedProperties();
@@ -293,12 +256,9 @@ namespace OwlAndJackalope.UX.Editor
                     newItem.FindPropertyRelative(KeyTypeString).enumValueIndex = (int)keyType.MainType;
                     newItem.FindPropertyRelative(ValueTypeString).enumValueIndex = (int)valueType.MainType;
 
-                    newItem.FindPropertyRelative(KeyEnumTypeString).stringValue = keyType.EnumType?.FullName;
-                    newItem.FindPropertyRelative(KeyEnumAssemblyString).stringValue = keyType.EnumType?.Assembly?.FullName;
-                    
-                    newItem.FindPropertyRelative(ValueEnumTypeString).stringValue = valueType.EnumType?.FullName;
-                    newItem.FindPropertyRelative(ValueEnumAssemblyString).stringValue = valueType.EnumType?.Assembly?.FullName;
-                    
+                    newItem.FindPropertyRelative(KeyEnumIdString).intValue = keyType.EnumDetails.EnumId;
+                    newItem.FindPropertyRelative(ValueEnumIdString).intValue = valueType.EnumDetails.EnumId;
+
                     newItem.FindPropertyRelative(KeyCollectionString).ClearArray();
                     newItem.FindPropertyRelative(ValueCollectionString).ClearArray();
                     

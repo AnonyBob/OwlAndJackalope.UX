@@ -86,9 +86,8 @@ namespace OwlAndJackalope.UX.Editor.ReferenceDrawers
         {
             dst.FindPropertyRelative(SharedDrawers.NameString).stringValue = src.FindPropertyRelative(SharedDrawers.NameString).stringValue;
             dst.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex = src.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex;
-            dst.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue = src.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue;
-            dst.FindPropertyRelative(SharedDrawers.EnumAssemblyString).stringValue = src.FindPropertyRelative(SharedDrawers.EnumAssemblyString).stringValue;
-            
+            dst.FindPropertyRelative(SharedDrawers.EnumIdString).intValue = src.FindPropertyRelative(SharedDrawers.EnumIdString).intValue;
+
             var srcCollections = src.FindPropertyRelative(SharedDrawers.CollectionString);
             var dstCollections = dst.FindPropertyRelative(SharedDrawers.CollectionString);
             dstCollections.ClearArray();
@@ -107,12 +106,9 @@ namespace OwlAndJackalope.UX.Editor.ReferenceDrawers
             dst.FindPropertyRelative(SharedDrawers.KeyTypeString).enumValueIndex = src.FindPropertyRelative(SharedDrawers.KeyTypeString).enumValueIndex;
             dst.FindPropertyRelative(SharedDrawers.ValueTypeString).enumValueIndex = src.FindPropertyRelative(SharedDrawers.ValueTypeString).enumValueIndex;
             
-            dst.FindPropertyRelative(SharedDrawers.KeyEnumTypeString).stringValue = src.FindPropertyRelative(SharedDrawers.KeyEnumTypeString).stringValue;
-            dst.FindPropertyRelative(SharedDrawers.KeyEnumAssemblyString).stringValue = src.FindPropertyRelative(SharedDrawers.KeyEnumAssemblyString).stringValue;
-            
-            dst.FindPropertyRelative(SharedDrawers.ValueEnumTypeString).stringValue = src.FindPropertyRelative(SharedDrawers.ValueEnumTypeString).stringValue;
-            dst.FindPropertyRelative(SharedDrawers.ValueEnumAssemblyString).stringValue = src.FindPropertyRelative(SharedDrawers.ValueEnumAssemblyString).stringValue;
-            
+            dst.FindPropertyRelative(SharedDrawers.KeyEnumIdString).intValue = src.FindPropertyRelative(SharedDrawers.KeyEnumIdString).intValue;
+            dst.FindPropertyRelative(SharedDrawers.ValueEnumIdString).intValue = src.FindPropertyRelative(SharedDrawers.ValueEnumIdString).intValue;
+
             var srcKeys = src.FindPropertyRelative(SharedDrawers.KeyCollectionString);
             var srcValues = src.FindPropertyRelative(SharedDrawers.ValueCollectionString);
             
@@ -141,9 +137,8 @@ namespace OwlAndJackalope.UX.Editor.ReferenceDrawers
         {
             dst.FindPropertyRelative(SharedDrawers.NameString).stringValue = src.FindPropertyRelative(SharedDrawers.NameString).stringValue;
             dst.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex = src.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex;
-            dst.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue = src.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue;
-            dst.FindPropertyRelative(SharedDrawers.EnumAssemblyString).stringValue = src.FindPropertyRelative(SharedDrawers.EnumAssemblyString).stringValue;
-            
+            dst.FindPropertyRelative(SharedDrawers.EnumIdString).intValue = src.FindPropertyRelative(SharedDrawers.EnumIdString).intValue;
+
             dst.FindPropertyRelative(SharedDrawers.ValueString).doubleValue = src.FindPropertyRelative(SharedDrawers.ValueString).doubleValue;
             dst.FindPropertyRelative(SharedDrawers.StringValueString).stringValue = src.FindPropertyRelative(SharedDrawers.StringValueString).stringValue;
             dst.FindPropertyRelative(SharedDrawers.ObjectValueString).objectReferenceValue = src.FindPropertyRelative(SharedDrawers.ObjectValueString).objectReferenceValue;

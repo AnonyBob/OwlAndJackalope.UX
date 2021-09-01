@@ -4,6 +4,7 @@ using System.Reflection;
 using OwlAndJackalope.UX.Runtime.Data;
 using OwlAndJackalope.UX.Runtime.Data.Extensions;
 using OwlAndJackalope.UX.Runtime.Data.Serialized;
+using OwlAndJackalope.UX.Runtime.Data.Serialized.Enums;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -24,8 +25,6 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
         public static void Clear(SerializedProperty newItem)
         {
             newItem.FindPropertyRelative(SharedDrawers.ValueString).doubleValue = 0;
-            newItem.FindPropertyRelative(SharedDrawers.EnumTypeString).stringValue = null;
-            newItem.FindPropertyRelative(SharedDrawers.EnumAssemblyString).stringValue = null;
             newItem.FindPropertyRelative(SharedDrawers.StringValueString).stringValue = null;
             newItem.FindPropertyRelative(SharedDrawers.ObjectValueString).objectReferenceValue = null;
             newItem.FindPropertyRelative(SharedDrawers.VectorValueString).vector4Value = Vector4.zero;
@@ -49,7 +48,7 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
             if (!SharedDrawers.InCollection(property) && !SharedDrawers.InCondition(property))
             {
                 var typePos = new Rect(position.x, position.y, position.width * 0.15f, EditorGUIUtility.singleLineHeight);
-                var typeProp = SharedDrawers.DrawTypeField(typePos, property, SharedDrawers.TypeString, SharedDrawers.EnumTypeString);
+                var typeProp = SharedDrawers.DrawTypeField(typePos, property, SharedDrawers.TypeString, SharedDrawers.EnumIdString);
                 var namePos = new Rect(typePos.x + typePos.width + SharedDrawers.Buffer, position.y, 
                     position.width * 0.3f - SharedDrawers.Buffer, EditorGUIUtility.singleLineHeight);
                 SharedDrawers.DrawNameField(namePos, property, SharedDrawers.NameString, propertyData.NameChecker);
@@ -196,29 +195,17 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
 
         private void DrawEnumType(Rect position, SerializedProperty property, PropertyData propertyData, SerializedProperty valueProp)
         {
-            var enumTypeProp = property.FindPropertyRelative(SharedDrawers.EnumTypeString);
-            var assemblyProp = property.FindPropertyRelative(SharedDrawers.EnumAssemblyString);
-
-            var assemblyName = assemblyProp.stringValue;
-            var enumTypeName = enumTypeProp.stringValue;
-            if (!string.IsNullOrEmpty(assemblyName) && !string.IsNullOrEmpty(enumTypeName))
+            var enumIdProp = property.FindPropertyRelative(SharedDrawers.EnumIdString);
+            var enumType = SerializedDetailEnumCache.GetCreator(enumIdProp.intValue)?.EnumType;
+            if (enumType != null)
             {
-                if (propertyData.LoadedEnumType == null || propertyData.LoadedEnumType.FullName != enumTypeName)
-                {
-                    propertyData.LoadedAssembly = Assembly.Load(assemblyName);
-                    propertyData.LoadedEnumType = propertyData.LoadedAssembly.GetType(enumTypeName);
-                }
-
-                if (propertyData.LoadedEnumType != null)
-                {
-                    var value = (int)Math.Floor(valueProp.doubleValue);
-                    var updatedValue = Convert.ToInt32(EditorGUI.EnumPopup(position, (Enum)Enum.ToObject(propertyData.LoadedEnumType, value)));
-                    valueProp.doubleValue = updatedValue + 0.1;
-                }
-                else
-                {
-                    EditorGUI.LabelField(position, $"Could not load {enumTypeName}");
-                }
+                var value = (int)Math.Floor(valueProp.doubleValue);
+                var updatedValue = Convert.ToInt32(EditorGUI.EnumPopup(position, (Enum)Enum.ToObject(enumType, value)));
+                valueProp.doubleValue = updatedValue + 0.1;
+            }
+            else
+            {
+                EditorGUI.LabelField(position, $"Could not load enum with id: {enumIdProp}");
             }
         }
 
@@ -279,12 +266,8 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
 
         private object GetEnumValue(SerializedProperty property, PropertyData propertyData, int enumValue)
         {
-            if (propertyData.LoadedEnumType != null)
-            {
-                return Enum.ToObject(propertyData.LoadedEnumType, enumValue);
-            }
-
-            return DetailType.Bool;
+            var creator = SerializedDetailEnumCache.GetCreator(property.FindPropertyRelative(SharedDrawers.EnumIdString).intValue);
+            return creator?.Convert(enumValue) ?? DetailType.Bool;
         }
 
         protected virtual DetailNameChecker GetNameChecker()

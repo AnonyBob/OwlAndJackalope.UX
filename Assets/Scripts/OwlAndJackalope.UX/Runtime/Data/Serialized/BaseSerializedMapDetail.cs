@@ -12,24 +12,21 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
         public string Name => _name;
 
         public Type Type => typeof(Dictionary<,>).MakeGenericType(
-            _keyType.ConvertToType(_keyEnumTypeName, _keyEnumAssemblyName),
-            _valueType.ConvertToType(_valueEnumTypeName, _valueEnumAssemblyName));
+            _keyType.ConvertToType(_keyEnumId), _valueType.ConvertToType(_valueEnumId));
         
         [SerializeField] protected string _name;
         [SerializeField] protected DetailType _keyType;
-        [SerializeField] protected string _keyEnumTypeName = "";
-        [SerializeField] protected string _keyEnumAssemblyName = "";
+        [SerializeField] protected int _keyEnumId;
         [SerializeField] protected DetailType _valueType;
-        [SerializeField] protected string _valueEnumTypeName = "";
-        [SerializeField] protected string _valueEnumAssemblyName = "";
+        [SerializeField] protected int _valueEnumId;
         
         [SerializeField] private List<BaseSerializedDetail> _keyCollection = new List<BaseSerializedDetail>();
         [SerializeField] private List<BaseSerializedDetail> _valueCollection = new List<BaseSerializedDetail>();
 
         public IDetail ConvertToDetail()
         {
-            var keyType = _keyType.ConvertToType(_keyEnumTypeName, _keyEnumAssemblyName);
-            var valueType = _valueType.ConvertToType(_valueEnumTypeName, _valueEnumAssemblyName);
+            var keyType = _keyType.ConvertToType(_keyEnumId);
+            var valueType = _valueType.ConvertToType(_valueEnumId);
             
             var mapType = typeof(BaseMapDetail<,>).MakeGenericType(keyType, valueType);
             return (IDetail) Activator.CreateInstance(mapType, _name, ConstructDictionary(keyType, valueType), false);
