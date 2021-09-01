@@ -65,7 +65,7 @@ MonoBehaviour:
     - _name: EyeColor
       _type: 5
       _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumAssemblyName: OwlAndJackalope.UX
       _value: 3.1
       _stringValue: Web Developer
       _referenceValue: {fileID: 0}

@@ -528,6 +528,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 383866829}
     m_Modifications:
+    - target: {fileID: 7112081931823906626, guid: 33205873678aa674194cacce9e90b28e, type: 3}
+      propertyPath: _states.Array.data[0]._conditionGroups.Array.data[0]._conditions.Array.data[0]._enumTypeName
+      value: OwlAndJackalope.UX.Testing.EyeColor
+      objectReference: {fileID: 0}
+    - target: {fileID: 7112081931823906626, guid: 33205873678aa674194cacce9e90b28e, type: 3}
+      propertyPath: _states.Array.data[0]._conditionGroups.Array.data[0]._conditions.Array.data[0]._enumAssemblyName
+      value: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
     - target: {fileID: 7158147456346963029, guid: 33205873678aa674194cacce9e90b28e, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -762,27 +770,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8161309800340807879, guid: 33205873678aa674194cacce9e90b28e, type: 3}
       propertyPath: _reference._details.Array.size
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 8161309800340807879, guid: 33205873678aa674194cacce9e90b28e, type: 3}
-      propertyPath: _reference._collectionDetails.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8161309800340807879, guid: 33205873678aa674194cacce9e90b28e, type: 3}
-      propertyPath: _reference._details.Array.data[13]._name
-      value: Double fda4babb
-      objectReference: {fileID: 0}
-    - target: {fileID: 8161309800340807879, guid: 33205873678aa674194cacce9e90b28e, type: 3}
-      propertyPath: _reference._details.Array.data[13]._type
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8161309800340807879, guid: 33205873678aa674194cacce9e90b28e, type: 3}
-      propertyPath: _reference._details.Array.data[14]._name
-      value: Double fda4babb
-      objectReference: {fileID: 0}
-    - target: {fileID: 8161309800340807879, guid: 33205873678aa674194cacce9e90b28e, type: 3}
-      propertyPath: _reference._details.Array.data[14]._type
-      value: 4
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8161309800340807879, guid: 33205873678aa674194cacce9e90b28e, type: 3}
       propertyPath: _reference._details.Array.data[15]._name
@@ -791,34 +779,6 @@ PrefabInstance:
     - target: {fileID: 8161309800340807879, guid: 33205873678aa674194cacce9e90b28e, type: 3}
       propertyPath: _reference._details.Array.data[15]._type
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8161309800340807879, guid: 33205873678aa674194cacce9e90b28e, type: 3}
-      propertyPath: _reference._details.Array.data[13]._enumTypeName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8161309800340807879, guid: 33205873678aa674194cacce9e90b28e, type: 3}
-      propertyPath: _reference._details.Array.data[14]._enumTypeName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8161309800340807879, guid: 33205873678aa674194cacce9e90b28e, type: 3}
-      propertyPath: _reference._collectionDetails.Array.data[0]._name
-      value: Aliases
-      objectReference: {fileID: 0}
-    - target: {fileID: 8161309800340807879, guid: 33205873678aa674194cacce9e90b28e, type: 3}
-      propertyPath: _reference._collectionDetails.Array.data[0]._type
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8161309800340807879, guid: 33205873678aa674194cacce9e90b28e, type: 3}
-      propertyPath: _reference._details.Array.data[13]._referenceValue
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8161309800340807879, guid: 33205873678aa674194cacce9e90b28e, type: 3}
-      propertyPath: _reference._details.Array.data[13]._enumAssemblyName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8161309800340807879, guid: 33205873678aa674194cacce9e90b28e, type: 3}
-      propertyPath: _reference._details.Array.data[14]._enumAssemblyName
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8887690808880696696, guid: 33205873678aa674194cacce9e90b28e, type: 3}
       propertyPath: m_AnchorMax.y

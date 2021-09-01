@@ -65,7 +65,7 @@ MonoBehaviour:
     - _name: EyeColor
       _type: 5
       _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumAssemblyName: OwlAndJackalope.UX
       _value: 0.1
       _stringValue: Web Developer
       _referenceValue: {fileID: 0}
@@ -176,42 +176,6 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
-    - _name: Sprite 7166aeb5
-      _type: 13
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _value: 0
-      _stringValue: 
-      _referenceValue: {fileID: 21300000, guid: 829c54d39574a5843918608eb31219c4, type: 3}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-    - _name: Texture 5fe6cc7a
-      _type: 12
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _value: 0
-      _stringValue: 
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-    - _name: Double fda4babb
-      _type: 4
-      _enumTypeName: 
-      _enumAssemblyName: 
-      _value: 0
-      _stringValue: 
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
     _collectionDetails:
     - _name: Aliases
       _type: 6
@@ -266,4 +230,61 @@ MonoBehaviour:
           m_AssetGUID: 
           m_SubObjectName: 
           m_SubObjectType: 
-    _mapDetails: []
+    _mapDetails:
+    - _name: Colors
+      _keyType: 6
+      _keyEnumTypeName: 
+      _keyEnumAssemblyName: 
+      _valueType: 10
+      _valueEnumTypeName: 
+      _valueEnumAssemblyName: 
+      _keyCollection:
+      - _name: 
+        _type: 6
+        _enumTypeName: 
+        _enumAssemblyName: 
+        _value: 0
+        _stringValue: Favorite
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+      - _name: 
+        _type: 6
+        _enumTypeName: 
+        _enumAssemblyName: 
+        _value: 0
+        _stringValue: Worst
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+      _valueCollection:
+      - _name: 
+        _type: 10
+        _enumTypeName: 
+        _enumAssemblyName: 
+        _value: 0
+        _stringValue: 
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0.8901961, y: 0.12156865, z: 0.12886953, w: 1}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+      - _name: 
+        _type: 10
+        _enumTypeName: 
+        _enumAssemblyName: 
+        _value: 0
+        _stringValue: 
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0.6569241, y: 0.8901961, z: 0.12156865, w: 1}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 

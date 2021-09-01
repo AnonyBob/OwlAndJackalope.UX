@@ -16,13 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: a37be768838938346ae94104ce698df6
-  m_SerializeEntries:
-  - m_GUID: 36e4f3503b900874ba20cf9eb410c84f
-    m_Address: Assets/Scripts/OwlAndJackalope.UX/Data/Serialized/DanielCraig.asset
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 87e1c78f1cbfc3f42a63fc0b2cb963f4, type: 2}
   m_SchemaSet:
