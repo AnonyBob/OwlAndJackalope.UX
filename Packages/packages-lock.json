@@ -136,6 +136,16 @@
         "com.unity.modules.imgui": "1.0.0"
       }
     },
+    "owlandjackalope.ux": {
+      "version": "file:OwlAndJackalope.UX",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.addressables": "1.16.19",
+        "com.unity.ugui": "1.0.0",
+        "com.unity.textmeshpro": "3.0.6"
+      }
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
