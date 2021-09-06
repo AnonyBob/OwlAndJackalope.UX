@@ -1,7 +1,8 @@
 ﻿using OwlAndJackalope.UX.Runtime.Modules;
+using OwlAndJackalope.UX.Runtime.Observers;
 using UnityEngine;
 
-namespace OwlAndJackalope.UX.Runtime.Observers
+namespace OwlAndJackalope.UX.Runtime.Binders
 {
     /// <summary>
     /// Simple binder monobehavior that will bind details to certain in game actions.
@@ -19,6 +20,8 @@ namespace OwlAndJackalope.UX.Runtime.Observers
             }
         }
 
+        protected abstract int UpdateDetailNames(string previousName, string newName);
+        
         protected int UpdateDetailName(AbstractDetailObserver target, string previousName, string newName)
         {
             if (target.DetailName == previousName)
@@ -29,13 +32,11 @@ namespace OwlAndJackalope.UX.Runtime.Observers
 
             return 0;
         }
-
-        protected abstract int UpdateDetailNames(string previousName, string newName);
-
+        
         public void HandleDetailNameChange(string previousName, string newName, IDetailNameChangeHandler root)
         {
             _referenceModule = _referenceModule != null ? _referenceModule : GetComponentInParent<ReferenceModule>();
-            if (_referenceModule == root as ReferenceModule)
+            if (ReferenceEquals(_referenceModule, root))
             {
                 var detailsChanged = UpdateDetailNames(previousName, newName);
                 if (detailsChanged > 0)

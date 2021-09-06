@@ -42,13 +42,16 @@ namespace OwlAndJackalope.UX.Runtime.Modules
             return null;
         }
 
-        public void HandleStateNameChange(string previousName, string newName)
+        public void HandleStateNameChange(string previousName, string newName, IStateNameChangeHandler root)
         {
-            foreach (var handler in GetComponentsInChildren<IStateNameChangeHandler>())
+            if (root == null)
             {
-                if (!ReferenceEquals(handler, this))
+                foreach (var handler in GetComponentsInChildren<IStateNameChangeHandler>())
                 {
-                    handler.HandleStateNameChange(previousName, newName);
+                    if (!ReferenceEquals(handler, this))
+                    {
+                        handler.HandleStateNameChange(previousName, newName, this);
+                    }
                 }
             }
         }
@@ -62,8 +65,7 @@ namespace OwlAndJackalope.UX.Runtime.Modules
                     state.HandleDetailNameChange(previousName, newName, this);
                 }
             }
-            
-                        
+
 #if UNITY_EDITOR
             UnityEditor.EditorUtility.SetDirty(this);
 #endif

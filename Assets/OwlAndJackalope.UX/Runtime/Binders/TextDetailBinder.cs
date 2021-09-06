@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Linq;
+using OwlAndJackalope.UX.Runtime.Observers;
 using TMPro;
 using UnityEngine;
 
-namespace OwlAndJackalope.UX.Runtime.Observers
+namespace OwlAndJackalope.UX.Runtime.Binders
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class TextDetailBinder : BaseDetailBinder

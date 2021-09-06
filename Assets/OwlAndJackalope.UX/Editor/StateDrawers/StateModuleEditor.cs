@@ -162,7 +162,7 @@ namespace OwlAndJackalope.UX.Editor.StateDrawers
 
             if(serializedObject.targetObject is IStateNameChangeHandler handler)
             {
-                handler.HandleStateNameChange(oldName, newName);
+                handler.HandleStateNameChange(oldName, newName, null);
             }
             
             return newName;

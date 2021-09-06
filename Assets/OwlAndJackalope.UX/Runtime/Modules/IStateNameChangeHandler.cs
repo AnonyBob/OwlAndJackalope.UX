@@ -2,6 +2,6 @@
 {
     public interface IStateNameChangeHandler
     {
-        void HandleStateNameChange(string previousName, string newName);
+        void HandleStateNameChange(string previousName, string newName, IStateNameChangeHandler root);
     }
 }

@@ -8,7 +8,7 @@ namespace OwlAndJackalope.UX.Runtime.Observers
         public override IDetail Detail
         {
             get => _detail;
-            set => _detail = value;
+            protected set => _detail = value;
         }
 
         private IDetail _detail;
@@ -20,7 +20,7 @@ namespace OwlAndJackalope.UX.Runtime.Observers
         public override IDetail Detail
         {
             get => _detail;
-            set => _detail = value as IDetail<T>;
+            protected set => _detail = value as IDetail<T>;
         }
 
         public T Value => IsSet ? _detail.GetValue() : default;

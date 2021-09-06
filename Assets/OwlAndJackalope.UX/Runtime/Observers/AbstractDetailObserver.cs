@@ -7,7 +7,7 @@ namespace OwlAndJackalope.UX.Runtime.Observers
     [System.Serializable]
     public abstract class AbstractDetailObserver : IDisposable
     {
-        public abstract IDetail Detail { get; set; }
+        public abstract IDetail Detail { get; protected set; }
 
         public bool IsSet => Detail != null;
 

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
+using OwlAndJackalope.UX.Runtime.Observers;
 using TMPro;
 using UnityEngine;
 
-namespace OwlAndJackalope.UX.Runtime.Observers
+namespace OwlAndJackalope.UX.Runtime.Binders
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class NumericTextBinder : BaseDetailBinder
@@ -136,7 +137,7 @@ namespace OwlAndJackalope.UX.Runtime.Observers
         {
             var startingValue = _previousDouble.HasValue ? _previousDouble.Value : 0;
             var currentValue = startingValue;
-            var time = 0.0;
+            var time = 0.0f;
             while (time < _numberChangeDuration)
             {
                 currentValue = (startingValue + (value - startingValue) * (time / _numberChangeDuration));
