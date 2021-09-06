@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using OwlAndJackalope.UX.Runtime.Observers;
 using TMPro;
@@ -38,15 +39,6 @@ namespace OwlAndJackalope.UX.Runtime.Binders
             UpdateText();
         }
 
-        private void OnDestroy()
-        {
-            _baseStringObserver?.Dispose();
-            for (var i = 0; i < _stringArgumentObservers.Length; ++i)
-            {
-                _stringArgumentObservers[i].Dispose();
-            }
-        }
-
         private void UpdateText()
         {
             if (_text != null)
@@ -68,14 +60,13 @@ namespace OwlAndJackalope.UX.Runtime.Binders
             }
         }
 
-        protected override int UpdateDetailNames(string previousName, string newName)
+        protected override IEnumerable<AbstractDetailObserver> GetDetailObservers()
         {
-            var sum = UpdateDetailName(_baseStringObserver, previousName, newName);
-            for (var i = 0; i < _stringArgumentObservers.Length; ++i)
+            yield return _baseStringObserver;
+            foreach (var observer in _stringArgumentObservers)
             {
-                sum += UpdateDetailName(_stringArgumentObservers[i], previousName, newName);
+                yield return observer;
             }
-            return sum;
         }
     }
 }

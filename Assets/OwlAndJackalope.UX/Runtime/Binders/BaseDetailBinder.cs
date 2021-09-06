@@ -1,4 +1,8 @@
-﻿using OwlAndJackalope.UX.Runtime.Modules;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using OwlAndJackalope.UX.Runtime.Modules;
 using OwlAndJackalope.UX.Runtime.Observers;
 using UnityEngine;
 
@@ -20,11 +24,25 @@ namespace OwlAndJackalope.UX.Runtime.Binders
             }
         }
 
-        protected abstract int UpdateDetailNames(string previousName, string newName);
-        
-        protected int UpdateDetailName(AbstractDetailObserver target, string previousName, string newName)
+        protected void OnDestroy()
         {
-            if (target.DetailName == previousName)
+            foreach (var observer in GetDetailObservers())
+            {
+                observer?.Dispose();
+            }
+        }
+
+        protected abstract IEnumerable<AbstractDetailObserver> GetDetailObservers();
+
+        private int UpdateDetailNames(IEnumerable<AbstractDetailObserver> observers, string previousName,
+            string newName)
+        {
+            return observers.Sum(observer => UpdateDetailName(observer, previousName, newName));
+        }
+        
+        private int UpdateDetailName(AbstractDetailObserver target, string previousName, string newName)
+        {
+            if (target != null && target.DetailName == previousName)
             {
                 target.DetailName = newName;
                 return 1;
@@ -38,7 +56,7 @@ namespace OwlAndJackalope.UX.Runtime.Binders
             _referenceModule = _referenceModule != null ? _referenceModule : GetComponentInParent<ReferenceModule>();
             if (ReferenceEquals(_referenceModule, root))
             {
-                var detailsChanged = UpdateDetailNames(previousName, newName);
+                var detailsChanged = UpdateDetailNames(GetDetailObservers(), previousName, newName);
                 if (detailsChanged > 0)
                 {
                     Debug.Log($"{name} updated {detailsChanged} observers to {newName}");

@@ -10,6 +10,8 @@ namespace OwlAndJackalope.UX.Runtime.States.Serialized
     [System.Serializable]
     public class BaseSerializedState : ISerializedState, IDetailNameChangeHandler
     {
+        public string Name => _name;
+        
         [SerializeField]
         private string _name;
 

@@ -99,8 +99,8 @@ namespace OwlAndJackalope.UX.Editor.StateDrawers
             {
                 if(i > 0) 
                     EditorGUILayout.LabelField("OR");
-
-                using (new EditorGUILayout.HorizontalScope("button"))
+                
+                using (new EditorGUILayout.HorizontalScope("helpbox"))
                 {
                     var conditions = conditionGroups.GetArrayElementAtIndex(i).FindPropertyRelative(Conditions);
                     EditorGUILayout.PropertyField(conditions, new GUIContent($"Group {i + 1}"), true);

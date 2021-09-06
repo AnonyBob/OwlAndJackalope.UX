@@ -1,43 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using OwlAndJackalope.UX.Runtime.Modules;
 using OwlAndJackalope.UX.Runtime.Observers;
 using UnityEditor;
 using UnityEngine;
 
-namespace OwlAndJackalope.UX.Editor.DetailDrawers
+namespace OwlAndJackalope.UX.Editor.StateDrawers
 {
-    [CustomPropertyDrawer(typeof(DetailTypeAttribute))]
-    public class DetailTypeAttributeDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(StateObserver))]
+    public class StateNameDrawer : PropertyDrawer
     {
         public class PropertyData
         {
-            public ReferenceModule Module;
-            public DetailTypeAttribute Attribute;
+            public StateModule Module;
         }
-        protected readonly Dictionary<string, PropertyData> _data = new Dictionary<string, PropertyData>();
-
-        public override void OnGUI(Rect position, SerializedProperty property,
-            GUIContent label)
+        private readonly Dictionary<string, PropertyData> _data = new Dictionary<string, PropertyData>();
+        
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            label = new Regex("\\.data\\[\\d+\\]$").IsMatch(property.propertyPath) ? GUIContent.none : label;
-            
-            var name = property.FindPropertyRelative("DetailName");
+            var name = property.FindPropertyRelative("StateName");
             if (!_data.TryGetValue(property.propertyPath, out var propertyData))
             {
                 propertyData = new PropertyData();
-                propertyData.Attribute = (DetailTypeAttribute) attribute;
-                _data[property.propertyPath] = propertyData;
             }
 
             if (propertyData.Module == null)
             {
                 var containingObject = (property.serializedObject.targetObject as MonoBehaviour);
-                if (containingObject != null) //TODO: Check if there is a reference set instead of assuming.
+                if (containingObject != null) //TODO: Check if there is a module set instead of assuming.
                 {
-                    propertyData.Module = containingObject.GetComponentInParent<ReferenceModule>();
+                    propertyData.Module = containingObject.GetComponentInParent<StateModule>();
                 }
             }
 
@@ -57,10 +50,9 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
             }
         }
 
-        private string[] GetOptions(PropertyData data)
+        private string[] GetOptions(PropertyData propertyData)
         {
-            var details = data.Module.SerializedReference.GetDetails(data.Attribute.AcceptableTypes);
-            return details.Select(x => x.Name).ToArray();
+            return propertyData.Module.GetStateNames().ToArray();
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿using OwlAndJackalope.UX.Runtime.Modules;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using OwlAndJackalope.UX.Runtime.Modules;
 using OwlAndJackalope.UX.Runtime.Observers;
 using UnityEngine;
 
@@ -7,9 +10,9 @@ namespace OwlAndJackalope.UX.Runtime.Binders
     public abstract class BaseStateBinder : MonoBehaviour, IStateNameChangeHandler
     {
         [SerializeField]
-        private StateModule _stateModule;
+        protected StateModule _stateModule;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             if (_stateModule == null)
             {
@@ -17,9 +20,22 @@ namespace OwlAndJackalope.UX.Runtime.Binders
             }
         }
 
-        protected abstract int UpdateStateNames(string previousName, string newName);
+        protected void OnDestroy()
+        {
+            foreach (var observer in GetObservers())
+            {
+                observer?.Dispose();
+            }
+        }
+
+        protected abstract IEnumerable<StateObserver> GetObservers();
+
+        private int UpdateStateNames(IEnumerable<StateObserver> observers, string previousName, string newName)
+        {
+            return observers.Sum(x => UpdateStateName(x, previousName, newName));
+        }
         
-        protected int UpdateStateName(StateObserver target, string previousName, string newName)
+        private int UpdateStateName(StateObserver target, string previousName, string newName)
         {
             if (target.StateName == previousName)
             {
@@ -35,7 +51,7 @@ namespace OwlAndJackalope.UX.Runtime.Binders
             _stateModule = _stateModule != null ? _stateModule : GetComponentInParent<StateModule>();
             if (ReferenceEquals(_stateModule, root))
             {
-                var statesChanged = UpdateStateNames(previousName, newName);
+                var statesChanged = UpdateStateNames(GetObservers(), previousName, newName);
                 if (statesChanged > 0)
                 {
                     Debug.Log($"{name} updated {statesChanged} observers to {newName}");

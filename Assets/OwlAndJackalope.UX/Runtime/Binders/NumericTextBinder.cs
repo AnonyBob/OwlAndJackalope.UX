@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using OwlAndJackalope.UX.Runtime.Observers;
 using TMPro;
 using UnityEngine;
@@ -52,15 +53,6 @@ namespace OwlAndJackalope.UX.Runtime.Binders
             }
             
             UpdateNumber();
-        }
-
-        private void OnDestroy()
-        {
-            _number.Dispose();
-            _intObserver?.Dispose();
-            _floatObserver?.Dispose();
-            _doubleObserver?.Dispose();
-            _longObserver?.Dispose();
         }
 
         private void UpdateNumber()
@@ -159,9 +151,13 @@ namespace OwlAndJackalope.UX.Runtime.Binders
             return observer;
         }
 
-        protected override int UpdateDetailNames(string previousName, string newName)
+        protected override IEnumerable<AbstractDetailObserver> GetDetailObservers()
         {
-            return UpdateDetailName(_number, previousName, newName);
+            yield return _number;
+            yield return _intObserver;
+            yield return _floatObserver;
+            yield return _doubleObserver;
+            yield return _longObserver;
         }
     }
 }

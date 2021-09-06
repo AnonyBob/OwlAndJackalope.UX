@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using OwlAndJackalope.UX.Runtime.Data;
 using OwlAndJackalope.UX.Runtime.States;
 using OwlAndJackalope.UX.Runtime.States.Serialized;
@@ -40,6 +41,11 @@ namespace OwlAndJackalope.UX.Runtime.Modules
             }
 
             return null;
+        }
+
+        public IEnumerable<string> GetStateNames()
+        {
+            return _states.Select(x => x.Name);
         }
 
         public void HandleStateNameChange(string previousName, string newName, IStateNameChangeHandler root)
