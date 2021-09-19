@@ -40,6 +40,17 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
         [SerializeField] protected Vector4 _vectorValue;
         [SerializeField] protected AssetReference _assetReferenceValue;
 
+        public BaseSerializedDetail(IDetail detail)
+        {
+            _name = detail.Name;
+            var objectType = detail.GetObjectType();
+            _type = objectType.ConvertToEnum();
+            if (_type == DetailType.Enum)
+            {
+                _enumId = SerializedDetailEnumCache.GetCreator(objectType.Name).EnumId;
+            }
+        }
+
         public IDetail ConvertToDetail()
         {
             switch (_type)

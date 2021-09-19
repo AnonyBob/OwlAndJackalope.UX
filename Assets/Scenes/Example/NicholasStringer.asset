@@ -16,8 +16,7 @@ MonoBehaviour:
     _details:
     - _name: Name
       _type: 6
-      _enumTypeName: 
-      _enumAssemblyName: 
+      _enumId: 0
       _value: 0
       _stringValue: Nicholas Stringer
       _referenceValue: {fileID: 0}
@@ -28,8 +27,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Occupation
       _type: 6
-      _enumTypeName: 
-      _enumAssemblyName: 
+      _enumId: 0
       _value: 0
       _stringValue: Software Engineer
       _referenceValue: {fileID: 0}
@@ -40,8 +38,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Age
       _type: 1
-      _enumTypeName: 
-      _enumAssemblyName: 
+      _enumId: 0
       _value: 30.1
       _stringValue: Web Developer
       _referenceValue: {fileID: 0}
@@ -52,21 +49,8 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Weight
       _type: 1
-      _enumTypeName: 
-      _enumAssemblyName: 
+      _enumId: 0
       _value: 145.1
-      _stringValue: Web Developer
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-    - _name: EyeColor
-      _type: 5
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: OwlAndJackalope.UX
-      _value: 3.1
       _stringValue: Web Developer
       _referenceValue: {fileID: 0}
       _vectorValue: {x: 0, y: 0, z: 0, w: 0}
@@ -76,8 +60,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Gender
       _type: 6
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 0.1
       _stringValue: Male
       _referenceValue: {fileID: 0}
@@ -88,9 +71,8 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: IsFriend
       _type: 0
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _value: 1
+      _enumId: 0
+      _value: 0
       _stringValue: Female
       _referenceValue: {fileID: 0}
       _vectorValue: {x: 0, y: 0, z: 0, w: 0}
@@ -100,8 +82,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: LastOnline
       _type: 15
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 936000000000.1
       _stringValue: Female
       _referenceValue: {fileID: 0}
@@ -112,8 +93,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Avatar
       _type: 14
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 72000000000.1
       _stringValue: Female
       _referenceValue: {fileID: 0}
@@ -124,8 +104,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: AvatarFrame
       _type: 14
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 72000000000.1
       _stringValue: Female
       _referenceValue: {fileID: 0}
@@ -136,8 +115,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Description
       _type: 6
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 72000000000.1
       _stringValue: Nicholas is a silly man. He is driven by his passions and his
         love for Kaitlin. He will do anything to bring laughter to the world
@@ -149,8 +127,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: HeightFeet
       _type: 1
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 5.1
       _stringValue: Kaitlin is a fierce warrior. Brave and cunning. What she lacks
         in physical strength she more than makes up for in raw emotional strength.
@@ -163,8 +140,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: HeightInches
       _type: 1
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 8.1
       _stringValue: Kaitlin is a fierce warrior. Brave and cunning. What she lacks
         in physical strength she more than makes up for in raw emotional strength.
@@ -177,8 +153,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: FavoriteColor
       _type: 10
-      _enumTypeName: 
-      _enumAssemblyName: 
+      _enumId: 0
       _value: 0
       _stringValue: 
       _referenceValue: {fileID: 0}
@@ -187,16 +162,25 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+    - _name: EyeColor
+      _type: 5
+      _enumId: 1
+      _value: 3.1
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
     _collectionDetails:
     - _name: Aliases
       _type: 6
-      _enumTypeName: 
-      _enumAssemblyName: 
+      _enumId: 0
       _collection:
       - _name: 
         _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: The Owl
         _referenceValue: {fileID: 0}
@@ -207,8 +191,7 @@ MonoBehaviour:
           m_SubObjectType: 
       - _name: 
         _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: Anonymousbob
         _referenceValue: {fileID: 0}
@@ -219,8 +202,7 @@ MonoBehaviour:
           m_SubObjectType: 
       - _name: 
         _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: James Toolsh
         _referenceValue: {fileID: 0}
@@ -231,8 +213,7 @@ MonoBehaviour:
           m_SubObjectType: 
       - _name: 
         _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: Caterpillar
         _referenceValue: {fileID: 0}
@@ -241,4 +222,92 @@ MonoBehaviour:
           m_AssetGUID: 
           m_SubObjectName: 
           m_SubObjectType: 
-    _mapDetails: []
+    - _name: Percentages
+      _type: 4
+      _enumId: 0
+      _collection:
+      - _name: 
+        _type: 4
+        _enumId: 0
+        _value: 0.45
+        _stringValue: 
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+      - _name: 
+        _type: 4
+        _enumId: 0
+        _value: 0.9
+        _stringValue: 
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+      - _name: 
+        _type: 4
+        _enumId: 0
+        _value: 0.18
+        _stringValue: 
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+    _mapDetails:
+    - _name: ColorComparison
+      _keyType: 6
+      _keyEnumId: 0
+      _valueType: 10
+      _valueEnumId: 0
+      _keyCollection:
+      - _name: 
+        _type: 6
+        _enumId: 0
+        _value: 0
+        _stringValue: Good Colors
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+      - _name: 
+        _type: 6
+        _enumId: 0
+        _value: 0
+        _stringValue: Bad Colors
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+      _valueCollection:
+      - _name: 
+        _type: 10
+        _enumId: 0
+        _value: 0
+        _stringValue: 
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0.8396226, z: 0.038782388, w: 1}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+      - _name: 
+        _type: 10
+        _enumId: 0
+        _value: 0
+        _stringValue: 
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0.8392157, y: 0, z: 0, w: 1}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 

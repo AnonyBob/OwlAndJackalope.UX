@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using OwlAndJackalope.UX.Runtime.Data.Serialized;
 using OwlAndJackalope.UX.Runtime.Modules;
 using UnityEditor;
@@ -9,9 +10,16 @@ namespace OwlAndJackalope.UX.Editor.ReferenceDrawers
     [CustomEditor(typeof(ReferenceModule))]
     public class ReferenceModuleEditor : UnityEditor.Editor
     {
+        private class EditorData
+        {
+            public long ReferenceVersion;
+        }
+
         private ReferenceEditor _referenceEditor;
         private ReferenceTemplate _referenceTemplate;
-        
+
+        private static Dictionary<string, EditorData> _editorData = new Dictionary<string, EditorData>();        
+
         public override void OnInspectorGUI()
         {
             if (_referenceEditor == null)

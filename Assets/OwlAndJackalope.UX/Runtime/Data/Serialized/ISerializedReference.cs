@@ -8,5 +8,7 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
     public interface ISerializedReference : IEnumerable<ISerializedDetail>
     {
         IReference ConvertToReference();
+
+        void UpdateSerializedDetails(IReference reference);
     }
 }

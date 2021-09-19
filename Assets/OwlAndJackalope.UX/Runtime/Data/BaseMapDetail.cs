@@ -92,6 +92,11 @@ namespace OwlAndJackalope.UX.Runtime.Data
             return typeof(Dictionary<TKey, TValue>);
         }
 
+        public (Type KeyType, Type ValueType) GetItemType()
+        {
+            return (typeof(TKey), typeof(TValue));
+        }
+
         public void Add(KeyValuePair<TKey, TValue> item)
         {
             Add(item.Key, item.Value);

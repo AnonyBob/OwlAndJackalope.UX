@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using OwlAndJackalope.UX.Runtime.Data.Extensions;
+using OwlAndJackalope.UX.Runtime.Data.Serialized.Enums;
 using UnityEngine;
 
 namespace OwlAndJackalope.UX.Runtime.Data.Serialized
@@ -20,6 +21,17 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
         [SerializeField] protected int _enumId;
         
         [SerializeField] private List<BaseSerializedDetail> _collection = new List<BaseSerializedDetail>();
+
+        public BaseSerializedCollectionDetail(ICollectionDetail collectionDetail)
+        {
+            _name = collectionDetail.Name;
+            var collectionItemType = collectionDetail.GetItemType();
+            _type = collectionItemType.ConvertToEnum();
+            if (_type == DetailType.Enum)
+            {
+                _enumId = SerializedDetailEnumCache.GetCreator(collectionItemType.Name).EnumId;
+            }
+        }
         
         public IDetail ConvertToDetail()
         {

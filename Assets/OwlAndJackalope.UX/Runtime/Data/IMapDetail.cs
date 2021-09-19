@@ -1,12 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace OwlAndJackalope.UX.Runtime.Data
 {
     /// <summary>
+    /// Maintains a mapped collection of items.
+    /// </summary>
+    public interface IMapDetail : IDetail
+    {
+        (Type KeyType, Type ValueType) GetItemType();
+    }
+    
+    /// <summary>
     /// A detail that acts as a simple dictionary of one item type to another. The version is updated whenever
     /// items are added or removed.
     /// </summary>
-    public interface IMapDetail<TKey, TValue> : IDetail<Dictionary<TKey, TValue>>, IDictionary<TKey, TValue>
+    public interface IMapDetail<TKey, TValue> : IDetail<Dictionary<TKey, TValue>>, IDictionary<TKey, TValue>, IMapDetail
     {
     }
 

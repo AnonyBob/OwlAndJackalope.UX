@@ -72,6 +72,74 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
                     throw new ArgumentOutOfRangeException(nameof(detailType), detailType, null);
             }
         }
+        
+        public static DetailType ConvertToEnum(this Type type)
+        {
+            if (type == typeof(bool))
+            {
+                return DetailType.Bool;
+            }
+            if (type == typeof(int))
+            {
+                return DetailType.Integer;
+            }
+            if (type == typeof(long))
+            {
+                return DetailType.Long;
+            }
+            if (type == typeof(float))
+            {
+                return DetailType.Float;
+            }
+            if (type == typeof(double))
+            {
+                return DetailType.Double;
+            }
+            if (type == typeof(string))
+            {
+                return DetailType.String;
+            }
+            if (typeof(IReference).IsAssignableFrom(type))
+            {
+                return DetailType.Reference;
+            }
+            if (type == typeof(Vector2))
+            {
+                return DetailType.Vector2;
+            }
+            if (type == typeof(Vector3))
+            {
+                return DetailType.Vector3;
+            }
+            if (type == typeof(Color))
+            {
+                return DetailType.Color;
+            }
+            if (type == typeof(GameObject))
+            {
+                return DetailType.GameObject;
+            }
+            if (type == typeof(Texture2D))
+            {
+                return DetailType.Texture;
+            }
+            if (type == typeof(Sprite))
+            {
+                return DetailType.Sprite;
+            }
+            if (type == typeof(TimeSpan))
+            {
+                return DetailType.TimeSpan;
+            }
+
+            if (type.IsEnum)
+            {
+                return DetailType.Enum;
+            }
+
+            Debug.LogWarning($"{type} does not have a defined DetailType");
+            return DetailType.Bool;
+        }
 
         public static bool IsComparable(this DetailType type)
         {
@@ -89,21 +157,6 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
                 default:
                     return false;
             }
-        }
-
-        private static Type GetEnumType(string enumName, string assemblyName)
-        {
-            try
-            {
-                var assembly = Assembly.Load(assemblyName);
-                return assembly.GetType(enumName);
-            }
-            catch (Exception e)
-            {
-                Debug.LogWarning($"Can't deserialize enum type: {e}");
-            }
-
-            return null;
         }
     }
 }

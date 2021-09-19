@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using OwlAndJackalope.UX.Runtime.Data.Extensions;
+using OwlAndJackalope.UX.Runtime.Data.Serialized.Enums;
 using UnityEngine;
 
 namespace OwlAndJackalope.UX.Runtime.Data.Serialized
@@ -23,6 +24,23 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
         [SerializeField] private List<BaseSerializedDetail> _keyCollection = new List<BaseSerializedDetail>();
         [SerializeField] private List<BaseSerializedDetail> _valueCollection = new List<BaseSerializedDetail>();
 
+        public BaseSerializedMapDetail(IMapDetail detail)
+        {
+            _name = detail.Name;
+            var (keyType, valueType) = detail.GetItemType();
+            _keyType = keyType.ConvertToEnum();
+            _valueType = valueType.ConvertToEnum();
+            
+            if (_keyType == DetailType.Enum)
+            {
+                _keyEnumId = SerializedDetailEnumCache.GetCreator(keyType.Name).EnumId;
+            }
+            if (_valueType == DetailType.Enum)
+            {
+                _valueEnumId = SerializedDetailEnumCache.GetCreator(valueType.Name).EnumId;
+            }
+        }
+        
         public IDetail ConvertToDetail()
         {
             var keyType = _keyType.ConvertToType(_keyEnumId);

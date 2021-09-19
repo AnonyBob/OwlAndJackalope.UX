@@ -195,6 +195,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7360756858301228660}
   - component: {fileID: 7360756858301228663}
+  - component: {fileID: 934557835}
+  - component: {fileID: 934557836}
+  - component: {fileID: 934557837}
+  - component: {fileID: 934557838}
+  - component: {fileID: 934557839}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -253,6 +258,125 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &934557835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7360756858301228661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ee0f5296f9429e8b31d1cb290c61a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateModule: {fileID: 7112081931823906626}
+  _state:
+    StateName: CanMessage
+  _invertState: 0
+  _targetObjects:
+  - {fileID: 8887690809806146598}
+  - {fileID: 7360756857984951207}
+--- !u!114 &934557836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7360756858301228661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ee0f5296f9429e8b31d1cb290c61a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateModule: {fileID: 7112081931823906626}
+  _state:
+    StateName: IsFriend
+  _invertState: 0
+  _targetObjects:
+  - {fileID: 8887690809579936427}
+  - {fileID: 8887690808508184291}
+--- !u!114 &934557837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7360756858301228661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff5fbb43b0e48c6a7e54a3f9896084d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateModule: {fileID: 0}
+  _state:
+    StateName: CanMessage
+  _invertState: 0
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7360756858307976265}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_fontSize
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 12
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &934557838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7360756858301228661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ee0f5296f9429e8b31d1cb290c61a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateModule: {fileID: 0}
+  _state:
+    StateName: IsFriend
+  _invertState: 1
+  _targetObjects:
+  - {fileID: 8887690808880696697}
+  - {fileID: 8887690809299603458}
+--- !u!114 &934557839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7360756858301228661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff5fbb43b0e48c6a7e54a3f9896084d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateModule: {fileID: 0}
+  _state:
+    StateName: CanMessage
+  _invertState: 1
+  _unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7360756858307976265}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_fontSize
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 16
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7360756858307976268
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +543,7 @@ GameObject:
   - component: {fileID: 7360756858465701668}
   - component: {fileID: 8161309800340807879}
   - component: {fileID: 7112081931823906626}
+  - component: {fileID: 2038885875}
   m_Layer: 5
   m_Name: UserContainer
   m_TagString: Untagged
@@ -470,8 +595,7 @@ MonoBehaviour:
     _details:
     - _name: Name
       _type: 6
-      _enumTypeName: 
-      _enumAssemblyName: 
+      _enumId: 0
       _value: 0
       _stringValue: Kaitlin Stringer
       _referenceValue: {fileID: 0}
@@ -482,8 +606,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Occupation
       _type: 6
-      _enumTypeName: 
-      _enumAssemblyName: 
+      _enumId: 0
       _value: 0
       _stringValue: Web Developer
       _referenceValue: {fileID: 0}
@@ -494,8 +617,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Age
       _type: 1
-      _enumTypeName: 
-      _enumAssemblyName: 
+      _enumId: 0
       _value: 28.1
       _stringValue: Web Developer
       _referenceValue: {fileID: 0}
@@ -506,8 +628,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Weight
       _type: 1
-      _enumTypeName: 
-      _enumAssemblyName: 
+      _enumId: 0
       _value: 125.1
       _stringValue: Web Developer
       _referenceValue: {fileID: 0}
@@ -518,8 +639,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Gender
       _type: 6
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 0.1
       _stringValue: Female
       _referenceValue: {fileID: 0}
@@ -530,8 +650,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: IsFriend
       _type: 0
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 1
       _stringValue: Female
       _referenceValue: {fileID: 0}
@@ -542,8 +661,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: LastOnline
       _type: 15
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 72000000000.1
       _stringValue: Female
       _referenceValue: {fileID: 0}
@@ -554,8 +672,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Avatar
       _type: 14
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 72000000000.1
       _stringValue: Female
       _referenceValue: {fileID: 0}
@@ -566,8 +683,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: AvatarFrame
       _type: 14
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 72000000000.1
       _stringValue: Female
       _referenceValue: {fileID: 0}
@@ -578,8 +694,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Description
       _type: 6
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 72000000000.1
       _stringValue: Kaitlin is a fierce warrior. Brave and cunning. What she lacks
         in physical strength she more than makes up for in raw emotional strength.
@@ -592,8 +707,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: HeightFeet
       _type: 1
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 5.1
       _stringValue: Kaitlin is a fierce warrior. Brave and cunning. What she lacks
         in physical strength she more than makes up for in raw emotional strength.
@@ -606,8 +720,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: HeightInches
       _type: 1
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 2.1
       _stringValue: Kaitlin is a fierce warrior. Brave and cunning. What she lacks
         in physical strength she more than makes up for in raw emotional strength.
@@ -620,8 +733,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Sprite 7166aeb5
       _type: 13
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 0
       _stringValue: 
       _referenceValue: {fileID: 21300000, guid: 829c54d39574a5843918608eb31219c4, type: 3}
@@ -632,22 +744,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Texture 5fe6cc7a
       _type: 12
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      _value: 2.1
-      _stringValue: Kaitlin is a fierce warrior. Brave and cunning. What she lacks
-        in physical strength she more than makes up for in raw emotional strength.
-        Her wise words and warm heart can defeat many foes by making them friends.
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-    - _name: Double fda4babb
-      _type: 4
-      _enumTypeName: 
-      _enumAssemblyName: 
+      _enumId: 0
       _value: 2.1
       _stringValue: Kaitlin is a fierce warrior. Brave and cunning. What she lacks
         in physical strength she more than makes up for in raw emotional strength.
@@ -661,13 +758,11 @@ MonoBehaviour:
     _collectionDetails:
     - _name: Aliases
       _type: 6
-      _enumTypeName: 
-      _enumAssemblyName: 
+      _enumId: 0
       _collection:
       - _name: 
         _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: The Jackalope
         _referenceValue: {fileID: 0}
@@ -678,8 +773,7 @@ MonoBehaviour:
           m_SubObjectType: 
       - _name: 
         _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: Popkait
         _referenceValue: {fileID: 0}
@@ -690,8 +784,7 @@ MonoBehaviour:
           m_SubObjectType: 
       - _name: 
         _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: Julia Toolsh
         _referenceValue: {fileID: 0}
@@ -702,8 +795,7 @@ MonoBehaviour:
           m_SubObjectType: 
       - _name: 
         _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: Your Dad, Bubs
         _referenceValue: {fileID: 0}
@@ -715,16 +807,13 @@ MonoBehaviour:
     _mapDetails:
     - _name: Colors
       _keyType: 6
-      _keyEnumTypeName: 
-      _keyEnumAssemblyName: 
+      _keyEnumId: 0
       _valueType: 10
-      _valueEnumTypeName: 
-      _valueEnumAssemblyName: 
+      _valueEnumId: 0
       _keyCollection:
       - _name: 
         _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: Favorite
         _referenceValue: {fileID: 0}
@@ -735,8 +824,7 @@ MonoBehaviour:
           m_SubObjectType: 
       - _name: 
         _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: Worst
         _referenceValue: {fileID: 0}
@@ -748,8 +836,7 @@ MonoBehaviour:
       _valueCollection:
       - _name: 
         _type: 10
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: 
         _referenceValue: {fileID: 0}
@@ -760,8 +847,7 @@ MonoBehaviour:
           m_SubObjectType: 
       - _name: 
         _type: 10
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: 
         _referenceValue: {fileID: 0}
@@ -783,6 +869,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _states:
+  - _name: CanMessage
+    _conditionGroups:
+    - _conditions:
+      - _parameterOne:
+          Name: LastOnline
+          Type: 1
+          ComponentType: 0
+        _parameterTwo:
+          Name: 
+          Type: 0
+          ComponentType: 0
+        _value:
+          _name: 
+          _type: 15
+          _enumId: 0
+          _value: 6000000000.1
+          _stringValue: 
+          _referenceValue: {fileID: 0}
+          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+          _assetReferenceValue:
+            m_AssetGUID: 
+            m_SubObjectName: 
+            m_SubObjectType: 
+        _type: 15
+        _enumId: 0
+        _comparisonType: 5
+    - _conditions:
+      - _parameterOne:
+          Name: IsFriend
+          Type: 1
+          ComponentType: 0
+        _parameterTwo:
+          Name: 
+          Type: 0
+          ComponentType: 0
+        _value:
+          _name: 
+          _type: 0
+          _enumId: 0
+          _value: 1
+          _stringValue: 
+          _referenceValue: {fileID: 0}
+          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+          _assetReferenceValue:
+            m_AssetGUID: 
+            m_SubObjectName: 
+            m_SubObjectType: 
+        _type: 0
+        _enumId: 0
+        _comparisonType: 0
   - _name: IsFriend
     _conditionGroups:
     - _conditions:
@@ -797,8 +933,7 @@ MonoBehaviour:
         _value:
           _name: 
           _type: 0
-          _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-          _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+          _enumId: 0
           _value: 1
           _stringValue: 
           _referenceValue: {fileID: 0}
@@ -808,116 +943,21 @@ MonoBehaviour:
             m_SubObjectName: 
             m_SubObjectType: 
         _type: 0
-        _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        _enumId: 0
         _comparisonType: 0
-  - _name: CanInvite
-    _conditionGroups:
-    - _conditions:
-      - _parameterOne:
-          Name: IsFriend
-          Type: 1
-          ComponentType: 0
-        _parameterTwo:
-          Name: 
-          Type: 0
-          ComponentType: 0
-        _value:
-          _name: 
-          _type: 0
-          _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-          _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-          _value: 1
-          _stringValue: 
-          _referenceValue: {fileID: 0}
-          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-          _assetReferenceValue:
-            m_AssetGUID: 
-            m_SubObjectName: 
-            m_SubObjectType: 
-        _type: 0
-        _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        _comparisonType: 0
-    - _conditions:
-      - _parameterOne:
-          Name: IsFriend
-          Type: 1
-          ComponentType: 0
-        _parameterTwo:
-          Name: 
-          Type: 0
-          ComponentType: 0
-        _value:
-          _name: 
-          _type: 0
-          _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-          _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-          _value: 0
-          _stringValue: 
-          _referenceValue: {fileID: 0}
-          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-          _assetReferenceValue:
-            m_AssetGUID: 
-            m_SubObjectName: 
-            m_SubObjectType: 
-        _type: 0
-        _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        _comparisonType: 0
-      - _parameterOne:
-          Name: LastOnline
-          Type: 1
-          ComponentType: 0
-        _parameterTwo:
-          Name: 
-          Type: 0
-          ComponentType: 0
-        _value:
-          _name: 
-          _type: 15
-          _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-          _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-          _value: 6000000000.1
-          _stringValue: 
-          _referenceValue: {fileID: 0}
-          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-          _assetReferenceValue:
-            m_AssetGUID: 
-            m_SubObjectName: 
-            m_SubObjectType: 
-        _type: 15
-        _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        _comparisonType: 5
-  - _name: NotFriend
-    _conditionGroups:
-    - _conditions:
-      - _parameterOne:
-          Name: IsFriend
-          Type: 1
-          ComponentType: 0
-        _parameterTwo:
-          Name: 
-          Type: 0
-          ComponentType: 0
-        _value:
-          _name: 
-          _type: 0
-          _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-          _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-          _value: 0
-          _stringValue: 
-          _referenceValue: {fileID: 0}
-          _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-          _assetReferenceValue:
-            m_AssetGUID: 
-            m_SubObjectName: 
-            m_SubObjectType: 
-        _type: 0
-        _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-        _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        _comparisonType: 0
+--- !u!114 &2038885875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7360756858465701669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 044db90653854a1ab2e0e1562747247e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Template: {fileID: 11400000, guid: 0f0aa654f60d11245b69acc45e0c590c, type: 2}
 --- !u!1 &7360756858738264860
 GameObject:
   m_ObjectHideFlags: 0
@@ -2289,6 +2329,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2121691229463478052, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
   m_PrefabInstance: {fileID: 7360756858377275846}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8887690808508184291 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2121691229463478053, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
+  m_PrefabInstance: {fileID: 7360756858377275846}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7360756858668576551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2402,6 +2447,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
+--- !u!1 &8887690809299603458 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2121691229463478053, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
+  m_PrefabInstance: {fileID: 7360756858668576551}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8887690809299603459 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2121691229463478052, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
@@ -2520,6 +2570,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
+--- !u!1 &8887690808880696697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2121691229463478053, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
+  m_PrefabInstance: {fileID: 7360756858819048028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8887690808880696696 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2121691229463478052, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
@@ -2638,6 +2693,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
+--- !u!1 &8887690809806146598 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2121691229463478053, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
+  m_PrefabInstance: {fileID: 7360756858967339779}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8887690809806146599 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2121691229463478052, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
@@ -2902,6 +2962,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
+--- !u!1 &8887690809579936427 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2121691229463478053, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
+  m_PrefabInstance: {fileID: 7360756859453531534}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8887690809579936426 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2121691229463478052, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
@@ -3165,5 +3230,10 @@ PrefabInstance:
 --- !u!224 &7360756857984951206 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2121691229463478052, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
+  m_PrefabInstance: {fileID: 8887690808615885954}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7360756857984951207 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2121691229463478053, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
   m_PrefabInstance: {fileID: 8887690808615885954}
   m_PrefabAsset: {fileID: 0}

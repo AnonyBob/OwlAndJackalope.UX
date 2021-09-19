@@ -26,6 +26,37 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
                 .Where(x => x != null));
         }
 
+        public void UpdateSerializedDetails(IReference reference)
+        {
+            foreach (var detail in reference)
+            {
+                if (detail is ICollectionDetail collectionDetail)
+                {
+                    var contained = _collectionDetails.FirstOrDefault(d => d.Name == detail.Name);
+                    if (contained == null)
+                    {
+                        _collectionDetails.Add(CreateSerializedCollectionDetail(collectionDetail));
+                    }
+                }
+                else if (detail is IMapDetail mapDetail)
+                {
+                    var contained = _mapDetails.FirstOrDefault(d => d.Name == detail.Name);
+                    if (contained == null)
+                    {
+                        _mapDetails.Add(CreateSerializedMapDetail(mapDetail));
+                    }
+                }
+                else
+                {
+                    var contained = _details.FirstOrDefault(d => d.Name == detail.Name);
+                    if (contained == null)
+                    {
+                        _details.Add(CreateSerializedDetail(detail));
+                    }
+                }
+            }
+        }
+
         public IEnumerable<ISerializedDetail> GetDetails(Type[] acceptableTypes)
         {
             return _details
@@ -36,6 +67,11 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
                     .Where(x => acceptableTypes.Contains(x.Type)).Cast<ISerializedDetail>());
         }
 
+        protected abstract TDetail CreateSerializedDetail(IDetail detail);
+        protected abstract TCollectionDetail CreateSerializedCollectionDetail(ICollectionDetail detail);
+        protected abstract TMapDetail CreateSerializedMapDetail(IMapDetail detail);
+        
+        
         public IEnumerator<ISerializedDetail> GetEnumerator()
         {
             return _details.Cast<ISerializedDetail>().GetEnumerator();

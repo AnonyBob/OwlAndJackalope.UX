@@ -5,7 +5,22 @@
     /// standard IReference to be used by other systems.
     /// </summary>
     [System.Serializable]
-    public class BaseSerializedReference : AbstractSerializedReference<BaseSerializedDetail, BaseSerializedCollectionDetail, BaseSerializedMapDetail>
+    public class BaseSerializedReference 
+        : AbstractSerializedReference<BaseSerializedDetail, BaseSerializedCollectionDetail, BaseSerializedMapDetail>
     {
+        protected override BaseSerializedDetail CreateSerializedDetail(IDetail detail)
+        {
+            return new BaseSerializedDetail(detail);
+        }
+
+        protected override BaseSerializedCollectionDetail CreateSerializedCollectionDetail(ICollectionDetail detail)
+        {
+            return new BaseSerializedCollectionDetail(detail);
+        }
+
+        protected override BaseSerializedMapDetail CreateSerializedMapDetail(IMapDetail detail)
+        {
+            return new BaseSerializedMapDetail(detail);
+        }
     }
 }

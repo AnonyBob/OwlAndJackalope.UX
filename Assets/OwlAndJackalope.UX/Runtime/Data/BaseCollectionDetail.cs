@@ -88,6 +88,11 @@ namespace OwlAndJackalope.UX.Runtime.Data
             return typeof(List<T>);
         }
 
+        public Type GetItemType()
+        {
+            return typeof(T);
+        }
+
         public void Add(T item)
         {
             if (_value != null)

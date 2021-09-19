@@ -16,8 +16,7 @@ MonoBehaviour:
     _details:
     - _name: Name
       _type: 6
-      _enumTypeName: 
-      _enumAssemblyName: 
+      _enumId: 0
       _value: 0
       _stringValue: Kaitlin Stringer
       _referenceValue: {fileID: 0}
@@ -28,8 +27,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Occupation
       _type: 6
-      _enumTypeName: 
-      _enumAssemblyName: 
+      _enumId: 0
       _value: 0
       _stringValue: Web Developer
       _referenceValue: {fileID: 0}
@@ -40,8 +38,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Age
       _type: 1
-      _enumTypeName: 
-      _enumAssemblyName: 
+      _enumId: 0
       _value: 28.1
       _stringValue: Web Developer
       _referenceValue: {fileID: 0}
@@ -52,21 +49,8 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Weight
       _type: 1
-      _enumTypeName: 
-      _enumAssemblyName: 
+      _enumId: 0
       _value: 125.1
-      _stringValue: Web Developer
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 
-        m_SubObjectName: 
-        m_SubObjectType: 
-    - _name: EyeColor
-      _type: 5
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: OwlAndJackalope.UX
-      _value: 0.1
       _stringValue: Web Developer
       _referenceValue: {fileID: 0}
       _vectorValue: {x: 0, y: 0, z: 0, w: 0}
@@ -76,8 +60,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Gender
       _type: 6
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 0.1
       _stringValue: Female
       _referenceValue: {fileID: 0}
@@ -88,8 +71,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: IsFriend
       _type: 0
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 1
       _stringValue: Female
       _referenceValue: {fileID: 0}
@@ -100,8 +82,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: LastOnline
       _type: 15
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 72000000000.1
       _stringValue: Female
       _referenceValue: {fileID: 0}
@@ -112,8 +93,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Avatar
       _type: 14
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 72000000000.1
       _stringValue: Female
       _referenceValue: {fileID: 0}
@@ -124,8 +104,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: AvatarFrame
       _type: 14
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 72000000000.1
       _stringValue: Female
       _referenceValue: {fileID: 0}
@@ -136,8 +115,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: Description
       _type: 6
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 72000000000.1
       _stringValue: Kaitlin is a fierce warrior. Brave and cunning. What she lacks
         in physical strength she more than makes up for in raw emotional strength.
@@ -150,8 +128,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: HeightFeet
       _type: 1
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 5.1
       _stringValue: Kaitlin is a fierce warrior. Brave and cunning. What she lacks
         in physical strength she more than makes up for in raw emotional strength.
@@ -164,8 +141,7 @@ MonoBehaviour:
         m_SubObjectType: 
     - _name: HeightInches
       _type: 1
-      _enumTypeName: OwlAndJackalope.UX.Testing.EyeColor
-      _enumAssemblyName: Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      _enumId: 0
       _value: 2.1
       _stringValue: Kaitlin is a fierce warrior. Brave and cunning. What she lacks
         in physical strength she more than makes up for in raw emotional strength.
@@ -176,16 +152,25 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+    - _name: EyeColor
+      _type: 5
+      _enumId: 1
+      _value: 0.1
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
     _collectionDetails:
     - _name: Aliases
       _type: 6
-      _enumTypeName: 
-      _enumAssemblyName: 
+      _enumId: 0
       _collection:
       - _name: 
         _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: The Jackalope
         _referenceValue: {fileID: 0}
@@ -196,8 +181,7 @@ MonoBehaviour:
           m_SubObjectType: 
       - _name: 
         _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: Popkait
         _referenceValue: {fileID: 0}
@@ -208,8 +192,7 @@ MonoBehaviour:
           m_SubObjectType: 
       - _name: 
         _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: Julia Toolsh
         _referenceValue: {fileID: 0}
@@ -220,8 +203,7 @@ MonoBehaviour:
           m_SubObjectType: 
       - _name: 
         _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: Your Dad, Bubs
         _referenceValue: {fileID: 0}
@@ -233,16 +215,13 @@ MonoBehaviour:
     _mapDetails:
     - _name: Colors
       _keyType: 6
-      _keyEnumTypeName: 
-      _keyEnumAssemblyName: 
+      _keyEnumId: 0
       _valueType: 10
-      _valueEnumTypeName: 
-      _valueEnumAssemblyName: 
+      _valueEnumId: 0
       _keyCollection:
       - _name: 
         _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: Favorite
         _referenceValue: {fileID: 0}
@@ -253,8 +232,7 @@ MonoBehaviour:
           m_SubObjectType: 
       - _name: 
         _type: 6
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: Worst
         _referenceValue: {fileID: 0}
@@ -266,8 +244,7 @@ MonoBehaviour:
       _valueCollection:
       - _name: 
         _type: 10
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: 
         _referenceValue: {fileID: 0}
@@ -278,8 +255,7 @@ MonoBehaviour:
           m_SubObjectType: 
       - _name: 
         _type: 10
-        _enumTypeName: 
-        _enumAssemblyName: 
+        _enumId: 0
         _value: 0
         _stringValue: 
         _referenceValue: {fileID: 0}

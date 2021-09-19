@@ -10,19 +10,7 @@ namespace OwlAndJackalope.UX.Runtime.Modules
         public IReference Reference
         {
             get => _runtimeReference;
-            set
-            {
-                if (_runtimeReference == null)
-                {
-                    Initialize();
-                }
-
-                if (value != null)
-                {
-                    _runtimeReference.AddDetails(value);    
-                }
-                
-            }
+            set => AddDetails(value);
         }
 
         public BaseSerializedReference SerializedReference => _reference;
@@ -59,7 +47,10 @@ namespace OwlAndJackalope.UX.Runtime.Modules
                 Initialize();
             }
 
-            _runtimeReference.AddDetails(details);
+            _runtimeReference.AddDetails(details);   
+#if UNITY_EDITOR
+            _reference.UpdateSerializedDetails(_runtimeReference);
+#endif
         }
         
         public void HandleDetailNameChange(string previousName, string newName, IDetailNameChangeHandler root)

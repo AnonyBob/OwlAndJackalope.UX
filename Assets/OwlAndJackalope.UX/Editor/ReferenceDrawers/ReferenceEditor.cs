@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
 using OwlAndJackalope.UX.Editor.DetailDrawers;
+using OwlAndJackalope.UX.Runtime.Data;
+using OwlAndJackalope.UX.Runtime.Modules;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
@@ -11,6 +13,8 @@ namespace OwlAndJackalope.UX.Editor.ReferenceDrawers
         public SerializedProperty DetailListProperty => _detailListProp;
         public SerializedProperty CollectionListProperty => _collectionListProp;
         public SerializedProperty MapListProperty => _mapListProp;
+
+        public IReference RuntimeReference => ((ReferenceModule) _serializedObject.targetObject).Reference;
         
         private const string DetailPath = "_details";
         private const string CollectionsPath = "_collectionDetails";
