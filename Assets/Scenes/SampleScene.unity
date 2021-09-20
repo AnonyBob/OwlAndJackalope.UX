@@ -529,6 +529,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7162095058213613881, guid: 33205873678aa674194cacce9e90b28e, type: 3}
+      propertyPath: _useOverrideSprite
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7360756858213864290, guid: 33205873678aa674194cacce9e90b28e, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
