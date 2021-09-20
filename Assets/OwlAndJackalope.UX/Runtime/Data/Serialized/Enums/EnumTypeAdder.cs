@@ -1,5 +1,4 @@
-﻿using OwlAndJackalope.UX.Runtime.Testing;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace OwlAndJackalope.UX.Runtime.Data.Serialized.Enums
 {
@@ -16,7 +15,6 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized.Enums
         public static void InitializeEnums()
         {
             SerializedDetailEnumCache.AddEnumType(0, new EnumDetailCreator<DetailType>(x => (DetailType)x));
-            SerializedDetailEnumCache.AddEnumType(1, new EnumDetailCreator<EyeColor>(x => (EyeColor)x));
         }
     }
 }

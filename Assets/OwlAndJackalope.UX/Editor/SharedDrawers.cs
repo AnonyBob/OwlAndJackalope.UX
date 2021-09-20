@@ -102,7 +102,8 @@ namespace OwlAndJackalope.UX.Editor
             var enumProp = property.FindPropertyRelative(enumTypeString);
             if (enumProp != null)
             {
-                return SerializedDetailEnumCache.GetCreator(enumProp.intValue).EnumName;
+                var creator = SerializedDetailEnumCache.GetCreator(enumProp.intValue);
+                return creator?.EnumName ?? string.Empty;
             }
             return "";
         }
