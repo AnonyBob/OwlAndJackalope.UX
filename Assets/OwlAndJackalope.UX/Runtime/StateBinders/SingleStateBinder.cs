@@ -2,7 +2,7 @@
 using OwlAndJackalope.UX.Runtime.Observers;
 using UnityEngine;
 
-namespace OwlAndJackalope.UX.Runtime.Binders
+namespace OwlAndJackalope.UX.Runtime.StateBinders
 {
     public abstract class SingleStateBinder : BaseStateBinder
     {

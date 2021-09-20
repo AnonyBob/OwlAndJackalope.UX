@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-namespace OwlAndJackalope.UX.Runtime.Binders
+namespace OwlAndJackalope.UX.Runtime.StateBinders
 {
     public class UnityActionStateBinder : SingleStateBinder
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace OwlAndJackalope.UX.Runtime.Binders
+namespace OwlAndJackalope.UX.Runtime.StateBinders
 {
     public class GameObjectStateBinder : SingleStateBinder
     {

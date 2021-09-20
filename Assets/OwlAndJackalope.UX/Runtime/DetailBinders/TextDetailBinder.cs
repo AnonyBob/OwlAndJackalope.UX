@@ -5,7 +5,7 @@ using OwlAndJackalope.UX.Runtime.Observers;
 using TMPro;
 using UnityEngine;
 
-namespace OwlAndJackalope.UX.Runtime.Binders
+namespace OwlAndJackalope.UX.Runtime.DetailBinders
 {
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class TextDetailBinder : BaseDetailBinder

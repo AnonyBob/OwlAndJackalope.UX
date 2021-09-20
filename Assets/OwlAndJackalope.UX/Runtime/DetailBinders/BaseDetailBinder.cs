@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using OwlAndJackalope.UX.Runtime.Modules;
 using OwlAndJackalope.UX.Runtime.Observers;
 using UnityEngine;
 
-namespace OwlAndJackalope.UX.Runtime.Binders
+namespace OwlAndJackalope.UX.Runtime.DetailBinders
 {
     /// <summary>
     /// Simple binder monobehavior that will bind details to certain in game actions.
@@ -24,7 +22,7 @@ namespace OwlAndJackalope.UX.Runtime.Binders
             }
         }
 
-        protected void OnDestroy()
+        protected virtual void OnDestroy()
         {
             foreach (var observer in GetDetailObservers())
             {

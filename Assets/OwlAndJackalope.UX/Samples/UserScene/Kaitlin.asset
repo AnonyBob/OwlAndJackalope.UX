@@ -1,0 +1,245 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308a0fcb92eb4130aea54ffbe7361354, type: 3}
+  m_Name: Kaitlin
+  m_EditorClassIdentifier: 
+  Reference:
+    _details:
+    - _name: Name
+      _type: 6
+      _enumId: 0
+      _value: 0
+      _stringValue: Kaitlin
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+    - _name: Occupation
+      _type: 6
+      _enumId: 0
+      _value: 0
+      _stringValue: Web Developer
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+    - _name: Age
+      _type: 1
+      _enumId: 0
+      _value: 28.1
+      _stringValue: Web Developer
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+    - _name: Weight
+      _type: 1
+      _enumId: 0
+      _value: 125.1
+      _stringValue: Web Developer
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+    - _name: Gender
+      _type: 6
+      _enumId: 0
+      _value: 0.1
+      _stringValue: Female
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+    - _name: IsFriend
+      _type: 0
+      _enumId: 0
+      _value: 1
+      _stringValue: Female
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+    - _name: LastOnline
+      _type: 15
+      _enumId: 0
+      _value: 72000000000.1
+      _stringValue: Female
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+    - _name: Description
+      _type: 6
+      _enumId: 0
+      _value: 72000000000.1
+      _stringValue: Kaitlin is a fierce warrior. Brave and cunning. What she lacks
+        in physical strength she more than makes up for in raw emotional strength.
+        Her wise words and warm heart can defeat many foes by making them friends.
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+    - _name: HeightFeet
+      _type: 1
+      _enumId: 0
+      _value: 5.1
+      _stringValue: Kaitlin is a fierce warrior. Brave and cunning. What she lacks
+        in physical strength she more than makes up for in raw emotional strength.
+        Her wise words and warm heart can defeat many foes by making them friends.
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+    - _name: HeightInches
+      _type: 1
+      _enumId: 0
+      _value: 2.1
+      _stringValue: Kaitlin is a fierce warrior. Brave and cunning. What she lacks
+        in physical strength she more than makes up for in raw emotional strength.
+        Her wise words and warm heart can defeat many foes by making them friends.
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: 
+        m_SubObjectType: 
+    - _name: Avatar
+      _type: 14
+      _enumId: 0
+      _value: 0
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 20fb5a79ebce34942b806897c4e5de26
+        m_SubObjectName: Bubs_Face
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+    _collectionDetails:
+    - _name: Aliases
+      _type: 6
+      _enumId: 0
+      _collection:
+      - _name: 
+        _type: 6
+        _enumId: 0
+        _value: 0
+        _stringValue: The Jackalope
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+      - _name: 
+        _type: 6
+        _enumId: 0
+        _value: 0
+        _stringValue: Popkait
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+      - _name: 
+        _type: 6
+        _enumId: 0
+        _value: 0
+        _stringValue: Julia Toolsh
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+      - _name: 
+        _type: 6
+        _enumId: 0
+        _value: 0
+        _stringValue: Your Dad, Bubs
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+    _mapDetails:
+    - _name: FavoriteColors
+      _keyType: 6
+      _keyEnumId: 0
+      _valueType: 10
+      _valueEnumId: 0
+      _keyCollection:
+      - _name: 
+        _type: 6
+        _enumId: 0
+        _value: 0
+        _stringValue: Favorite
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+      - _name: 
+        _type: 6
+        _enumId: 0
+        _value: 0
+        _stringValue: Worst
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+      _valueCollection:
+      - _name: 
+        _type: 10
+        _enumId: 0
+        _value: 0
+        _stringValue: 
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0.8901961, y: 0.12156865, z: 0.12886953, w: 1}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 
+      - _name: 
+        _type: 10
+        _enumId: 0
+        _value: 0
+        _stringValue: 
+        _referenceValue: {fileID: 0}
+        _vectorValue: {x: 0.6569241, y: 0.8901961, z: 0.12156865, w: 1}
+        _assetReferenceValue:
+          m_AssetGUID: 
+          m_SubObjectName: 
+          m_SubObjectType: 

@@ -16,7 +16,13 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: a37be768838938346ae94104ce698df6
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 20fb5a79ebce34942b806897c4e5de26
+    m_Address: Assets/OwlAndJackalope.UX/Samples/UserScene/Bubs_Face.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 87e1c78f1cbfc3f42a63fc0b2cb963f4, type: 2}
   m_SchemaSet:

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using OwlAndJackalope.UX.Runtime.Modules;
 using OwlAndJackalope.UX.Runtime.Observers;
 using UnityEngine;
 
-namespace OwlAndJackalope.UX.Runtime.Binders
+namespace OwlAndJackalope.UX.Runtime.StateBinders
 {
     public abstract class BaseStateBinder : MonoBehaviour, IStateNameChangeHandler
     {
