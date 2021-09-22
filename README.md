@@ -57,5 +57,23 @@ Each ```IDetailObserver``` is initialized using the Reference provided by the as
 ```ReferenceTemplates``` are Scriptable Objects that contain a Reference and behave almost identically to ```ReferenceModules```. These can be used to assign ```IDetails``` to ```ReferenceModules``` and as example models to stub into your game for testing. ```ReferenceModules``` have an Import button that can be used to import the ```IDetails``` from an existing ```ReferenceTemplate```. This will only add ```IDetails``` that didn't originally existing the ```ReferenceModule```. All other ```IDetails``` will be preserved. 
 
 ### States
+```IStates``` are an optional structure that may be helpful in managing the flow of a particular user experience. ```IStates``` use ```IDetails``` in conditional statements to determine if they are currently active or not. ```IStates``` can then be used with ```StateBinders``` to fire off certain actions once the state becomes active or inactive. In other property binding systems these conditional checks are often maintained on an individual binder; however, I have found that various conditions are rarely used in a single location. As such, I've opted to treat ```IStates``` as a special "detail-like" object that is constructed in the ```StateModule```.
+
 #### State Module
+```StateModule``` is responsible for defining ```IStates``` through conditions that reference the ```IDetails``` exposed in the ```ReferenceModule```. ```IStates``` can use conditions where the ```IDetail``` is compared against a static value or against another ```IDetail``` of the same type. At runtime the ```StateModule``` will keep track of the activity of the ```IStates``` and can be used to query activity through code or through binders.
+
+![Screenshot_092121_110652_PM](https://user-images.githubusercontent.com/7310389/134281945-31da3b49-edd5-4a78-bbc9-223c9b09fae8.jpg)
+
 #### State Binder
+```StateBinders``` function very similarly to ```DetailBinders``` except that they point to ```IStates``` in the ```StateModule``` instead. Whenever the observed ```IState``` changes to active or inactive the binder will respond with the appropriate action.
+
+![Screenshot_092121_110957_PM](https://user-images.githubusercontent.com/7310389/134282157-953f2d2b-c51a-400a-b4b0-2fed04f876a4.jpg)
+
+In the above example, Gameobjects are turned on or off depending on whether the CanMessage ```IState``` is active or not. New ```StateBinders``` can be made by extending the ```BaseStateBinder```, or if you are only interested in a single ```IState```, the ```SingleStateBinder```. Either will require you to implement a PerformChange method where the logic for how to respond to the activity state change should happen. Below is an example of how the GameObjectStateBinder works.
+
+![Screenshot_092121_111349_PM](https://user-images.githubusercontent.com/7310389/134282422-85a6a161-b0fe-4731-8ae1-e711d51fff95.jpg)
+
+***BaseStateBinder handles IState name changes, fetching the StateModule Module, and ensuring that the StateObservers are properly disposed on destruction. If you do opt to create your Binder from scratch it is important that you ensure that all of these things are done as well for the best usage of this tool.***
+
+## Final Thoughts
+This tool is something I have developed in my spare time for my own personal projects. I'll be updating it as I find optimization problems, need new binders, and of course to squash bugs. Please feel free to use it in any of your own projects as well. Issues, new features, and improvement suggestions are always welcome! I would very much like to provide this as something that can help people build better experiences without all of the headaches of ensuring that the stuff they need to do that already exists, and hopefully this tool can help in some small way with that.
