@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using OwlAndJackalope.UX.Runtime.Data;
 using OwlAndJackalope.UX.Runtime.Data.Extensions;
 using OwlAndJackalope.UX.Runtime.Data.Serialized;
 using OwlAndJackalope.UX.Runtime.Data.Serialized.Enums;
 using UnityEditor;
 using UnityEngine;
+#if USE_ADDRESSABLES
 using UnityEngine.AddressableAssets;
+#endif
 
 namespace OwlAndJackalope.UX.Editor.DetailDrawers
 {
@@ -136,6 +137,7 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
                         referenceProp.objectReferenceValue, typeof(GameObject), true);
                     break;
                 case DetailType.AssetReference:
+#if USE_ADDRESSABLES
                     if (Application.isPlaying)
                     {
                         var value = assetRefValueProp.FindPropertyRelative("m_AssetGUID").stringValue;
@@ -150,6 +152,9 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
                         EditorGUI.PropertyField(valuePosition, assetRefValueProp, GUIContent.none);
                         EditorGUIUtility.labelWidth = previousWidth;
                     }
+#else
+                    EditorGUI.LabelField(valuePosition, "Add Addressables for Support");
+#endif
                     break;
                 case DetailType.Sprite:
                     referenceProp.objectReferenceValue = EditorGUI.ObjectField(valuePosition, GUIContent.none,
@@ -252,9 +257,11 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
                 case DetailType.Sprite:
                     return property.FindPropertyRelative(SharedDrawers.ObjectValueString).objectReferenceValue as
                         Sprite;
+#if USE_ADDRESSABLES
                 case DetailType.AssetReference:
                     return new AssetReference(property.FindPropertyRelative(SharedDrawers.AssetReferenceValueString)
                         .FindPropertyRelative("m_AssetGUID").stringValue);
+#endif
                 case DetailType.TimeSpan:
                     return TimeSpan.FromTicks((long) Math.Floor(valueProp.doubleValue));
                 default:

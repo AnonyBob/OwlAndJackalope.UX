@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿#if USE_ADDRESSABLES
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace OwlAndJackalope.UX.Runtime.DetailBinders.AddressableBinders
@@ -37,3 +38,4 @@ namespace OwlAndJackalope.UX.Runtime.DetailBinders.AddressableBinders
         }
     }
 }
+#endif

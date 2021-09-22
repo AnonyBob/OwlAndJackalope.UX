@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿#if USE_ADDRESSABLES
+using System.Collections.Generic;
 using OwlAndJackalope.UX.Runtime.Observers;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+
 
 namespace OwlAndJackalope.UX.Runtime.DetailBinders.AddressableBinders
 {
@@ -87,3 +89,5 @@ namespace OwlAndJackalope.UX.Runtime.DetailBinders.AddressableBinders
         }
     }
 }
+
+#endif

@@ -1,7 +1,9 @@
 ﻿using System;
 using OwlAndJackalope.UX.Runtime.Data.Serialized;
 using UnityEngine;
+#if USE_ADDRESSABLES
 using UnityEngine.AddressableAssets;
+#endif
 
 namespace OwlAndJackalope.UX.Runtime.Data.Extensions
 {
@@ -88,10 +90,12 @@ namespace OwlAndJackalope.UX.Runtime.Data.Extensions
             return detail.SpriteValue;
         }
 
+#if USE_ADDRESSABLES
         public static AssetReference GetAssetReference(this BaseSerializedDetail detail)
         {
             return detail.AssetReferenceValue;
         }
+#endif
 
         public static TimeSpan GetTimeSpan(this BaseSerializedDetail detail)
         {
@@ -124,8 +128,10 @@ namespace OwlAndJackalope.UX.Runtime.Data.Extensions
                 return detail.GetColor();
             if (type == typeof(GameObject))
                 return detail.GetGameObject();
+#if USE_ADDRESSABLES
             if (type == typeof(AssetReference))
                 return detail.GetAssetReference();
+#endif
             if (type == typeof(Sprite))
                 return detail.GetSprite();
             if (type == typeof(Texture2D))

@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Reflection;
 using OwlAndJackalope.UX.Runtime.Data.Serialized.Enums;
 using UnityEngine;
+#if USE_ADDRESSABLES
 using UnityEngine.AddressableAssets;
+#endif
 
 namespace OwlAndJackalope.UX.Runtime.Data.Serialized
 {
@@ -60,8 +61,10 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
                     return typeof(Color);
                 case DetailType.GameObject:
                     return typeof(GameObject);
+#if USE_ADDRESSABLES
                 case DetailType.AssetReference:
                     return typeof(AssetReference);
+#endif
                 case DetailType.Sprite:
                     return typeof(Sprite);
                 case DetailType.Texture:
@@ -131,7 +134,13 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
             {
                 return DetailType.TimeSpan;
             }
-
+            
+#if USE_ADDRESSABLES
+            if (type == typeof(AssetReference))
+            {
+                return DetailType.AssetReference;
+            }
+#endif
             if (type.IsEnum)
             {
                 return DetailType.Enum;

@@ -3,7 +3,9 @@ using System.Reflection;
 using OwlAndJackalope.UX.Runtime.Data.Extensions;
 using OwlAndJackalope.UX.Runtime.Data.Serialized.Enums;
 using UnityEngine;
+#if USE_ADDRESSABLES
 using UnityEngine.AddressableAssets;
+#endif
 
 namespace OwlAndJackalope.UX.Runtime.Data.Serialized
 {
@@ -16,16 +18,29 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
     public class BaseSerializedDetail : ISerializedDetail
     {
         public string Name => _name;
+        
         public Type Type => _type.ConvertToType(_enumId);
+        
         public double NumericValue => _value;
+        
         public string StringValue => _stringValue;
+        
         public ReferenceTemplate ReferenceValue => _referenceValue as ReferenceTemplate;
+        
         public Vector4 VectorValue => _vectorValue;
+        
         public GameObject GameObjectValue => _referenceValue as GameObject;
+        
+#if USE_ADDRESSABLES
         public AssetReference AssetReferenceValue => _assetReferenceValue;
+#endif
+        
         public Texture2D TextureValue => _referenceValue as Texture2D;
+        
         public Sprite SpriteValue => _referenceValue as Sprite;
+        
         public TimeSpan TimeSpanValue => TimeSpan.FromTicks((long) Math.Floor(_value));
+        
         
         //Identifying information used to select for the detail.
         [SerializeField] protected string _name;
@@ -38,7 +53,10 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
         [SerializeField] protected string _stringValue;
         [SerializeField] protected UnityEngine.Object _referenceValue;
         [SerializeField] protected Vector4 _vectorValue;
+        
+#if USE_ADDRESSABLES
         [SerializeField] protected AssetReference _assetReferenceValue;
+#endif
 
         public BaseSerializedDetail(IDetail detail)
         {
@@ -83,8 +101,10 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
                     return new BaseDetail<Texture2D>(_name, this.GetTexture());
                 case DetailType.Sprite:
                     return new BaseDetail<Sprite>(_name, this.GetSprite());
+#if USE_ADDRESSABLES
                 case DetailType.AssetReference:
                     return new BaseDetail<AssetReference>(_name, this.GetAssetReference());
+#endif
                 case DetailType.TimeSpan:
                     return new BaseDetail<TimeSpan>(_name, this.GetTimeSpan());
                 default:

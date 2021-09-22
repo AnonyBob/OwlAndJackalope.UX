@@ -6,7 +6,6 @@
   "unity": "2020.3",
   "type": "tool",
   "dependencies": {
-    "com.unity.addressables": "1.16.19",
     "com.unity.ugui": "1.0.0",
     "com.unity.textmeshpro": "3.0.6"
   }
