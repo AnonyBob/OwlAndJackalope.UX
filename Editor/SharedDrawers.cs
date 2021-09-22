@@ -24,11 +24,8 @@ namespace OwlAndJackalope.UX.Editor
         public const string StringValueString = "_stringValue";
         public const string ObjectValueString = "_referenceValue";
         public const string VectorValueString = "_vectorValue";
-        public const string GameObjectValueString = "_gameObjectValue";
         public const string AssetReferenceValueString = "_assetReferenceValue";
-        public const string SpriteValueString = "_spriteValue";
-        public const string TextureValueString = "_textureValue";
-        
+
         //Reference paths
         public const string ReferenceTemplatePath = "Reference";
         public const string ReferenceModulePath = "_reference";
