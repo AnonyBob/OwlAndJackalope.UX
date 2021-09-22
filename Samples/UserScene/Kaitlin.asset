@@ -130,24 +130,24 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
-    - _name: Avatar
-      _type: 14
-      _enumId: 0
-      _value: 0
-      _stringValue: 
-      _referenceValue: {fileID: 0}
-      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
-      _assetReferenceValue:
-        m_AssetGUID: 20fb5a79ebce34942b806897c4e5de26
-        m_SubObjectName: Bubs_Face
-        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
     - _name: EyeColor
       _type: 5
       _enumId: 1
       _value: 4.1
       _stringValue: 
       _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: Bubs_Face
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+    - _name: Avatar
+      _type: 13
+      _enumId: 1
+      _value: 0
+      _stringValue: 
+      _referenceValue: {fileID: 21300000, guid: 20fb5a79ebce34942b806897c4e5de26, type: 3}
       _vectorValue: {x: 0, y: 0, z: 0, w: 0}
       _assetReferenceValue:
         m_AssetGUID: 

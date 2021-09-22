@@ -99,15 +99,18 @@ namespace OwlAndJackalope.UX.Editor.StateDrawers
         private (int DetailType, int EnumId) GetDetailType(SerializedProperty property, string detailName)
         {
             var details = GetDetailsProperty(property);
-            for (var i = 0; i < details.arraySize; ++i)
+            if (details != null)
             {
-                var detail = details.GetArrayElementAtIndex(i);
-                if (detail.FindPropertyRelative(SharedDrawers.NameString).stringValue == detailName)
+                for (var i = 0; i < details.arraySize; ++i)
                 {
-                    var detailType = detail.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex;
-                    var enumId = detail.FindPropertyRelative(SharedDrawers.EnumIdString).intValue;
+                    var detail = details.GetArrayElementAtIndex(i);
+                    if (detail.FindPropertyRelative(SharedDrawers.NameString).stringValue == detailName)
+                    {
+                        var detailType = detail.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex;
+                        var enumId = detail.FindPropertyRelative(SharedDrawers.EnumIdString).intValue;
 
-                    return (detailType, enumId);
+                        return (detailType, enumId);
+                    }
                 }
             }
 
@@ -117,13 +120,16 @@ namespace OwlAndJackalope.UX.Editor.StateDrawers
         private IEnumerable<string> GetDetailOptions(SerializedProperty property, int detailType)
         {
             var details = GetDetailsProperty(property);
-            for (var i = 0; i < details.arraySize; ++i)
+            if (details != null)
             {
-                var detail = details.GetArrayElementAtIndex(i);
-                var type = detail.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex;
-                if (detailType == type || (detailType < 0 && ((DetailType)type).IsComparable()))
+                for (var i = 0; i < details.arraySize; ++i)
                 {
-                    yield return detail.FindPropertyRelative(SharedDrawers.NameString).stringValue;
+                    var detail = details.GetArrayElementAtIndex(i);
+                    var type = detail.FindPropertyRelative(SharedDrawers.TypeString).enumValueIndex;
+                    if (detailType == type || (detailType < 0 && ((DetailType)type).IsComparable()))
+                    {
+                        yield return detail.FindPropertyRelative(SharedDrawers.NameString).stringValue;
+                    }
                 }
             }
         }
@@ -141,8 +147,22 @@ namespace OwlAndJackalope.UX.Editor.StateDrawers
         private SerializedProperty GetDetailsProperty(SerializedProperty property)
         {
             var target = property.serializedObject.targetObject as MonoBehaviour;
-            var serializedReference = new SerializedObject(target.GetComponentInParent<ReferenceModule>());
-            return serializedReference.FindProperty($"{SharedDrawers.ReferenceModulePath}.{SharedDrawers.ReferenceDetailsString}");
+            if (target != null)
+            {
+                var referenceModule = target.GetComponent<ReferenceModule>();
+                if (referenceModule == null)
+                {
+                    referenceModule = target.GetComponentInParent<ReferenceModule>();
+                }
+
+                if (referenceModule != null)
+                {
+                    var serializedReference = new SerializedObject(referenceModule);
+                    return serializedReference.FindProperty($"{SharedDrawers.ReferenceModulePath}.{SharedDrawers.ReferenceDetailsString}");
+                }
+            }
+
+            return null;
         }
     }
 }

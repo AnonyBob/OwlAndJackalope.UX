@@ -17,8 +17,6 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
         protected class PropertyData : BasePropertyData
         {
             public DetailNameChecker NameChecker;
-            public Assembly LoadedAssembly;
-            public Type LoadedEnumType;
         }
         protected readonly Dictionary<string, PropertyData> _data = new Dictionary<string, PropertyData>();
 
@@ -246,13 +244,13 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
                 case DetailType.Color:
                     return (Color)vectorValueProp.vector4Value;
                 case DetailType.GameObject:
-                    return property.FindPropertyRelative(SharedDrawers.GameObjectValueString)
+                    return property.FindPropertyRelative(SharedDrawers.ObjectValueString)
                         .objectReferenceValue as GameObject;
                 case DetailType.Texture:
-                    return property.FindPropertyRelative(SharedDrawers.TextureValueString).objectReferenceValue as
+                    return property.FindPropertyRelative(SharedDrawers.ObjectValueString).objectReferenceValue as
                         Texture2D;
                 case DetailType.Sprite:
-                    return property.FindPropertyRelative(SharedDrawers.SpriteValueString).objectReferenceValue as
+                    return property.FindPropertyRelative(SharedDrawers.ObjectValueString).objectReferenceValue as
                         Sprite;
                 case DetailType.AssetReference:
                     return new AssetReference(property.FindPropertyRelative(SharedDrawers.AssetReferenceValueString)
