@@ -4,6 +4,8 @@ Owl and Jackalope UX is a simple data binding and UX prototyping tool designed t
 
 ![simple_example](https://user-images.githubusercontent.com/7310389/134276910-f89ddd49-0d1b-4dcd-9a11-ea8279499ad3.gif)
 
+![longer_example](https://user-images.githubusercontent.com/7310389/134280647-1ac61ad6-4c9a-442b-ba7c-4549ef0ac2bf.gif)
+
 ## Features
 1. Create references of data models to use during prototyping without needing to load rest of game.
 2. Display live data in editor for easy debugging and allow for manipulation to test responsiveness of scenes.
@@ -45,9 +47,14 @@ Each ```IDetailObserver``` is initialized using the Reference provided by the as
 ***BaseDetailBinder handles IDetail name changes, fetching the Reference Module, and ensuring that the DetailObservers are properly disposed on destruction. If you do opt to create your Binder from scratch it is important that you ensure that all of these things are done as well for the best usage of this tool.***
 
 #### Reference Providers
-```ReferenceProviders``` are components that provide a Reference to an existing ```ReferenceModule``` at start up. Up to this point, you have been working with a Reference that only exists in the ```ReferenceModule```, but in a real game you will want your model to get backed by actual data. You can create a new component that extends the ```ReferenceProvider``` class in order to do this. At start up the ```ReferenceModule``` will grab this component and request the Reference from the provider. This Reference can be retrieved in whatever way makes sense for your game. The provided Reference will override any ```IDetails``` contained in the ```ReferenceModule's``` default Reference with its own. Effectively updating any ```DetailBinders``` to point to the new Reference. However, if there are any ```IDetails``` that exist in the ```ReferenceModule``` and not in the new Reference, then they will continue to exist as well. In this way, you can combine view only ```IDetails``` with backing models and access them from the same source instead of maintaining two sets of models.
+```ReferenceProviders``` are components that provide a Reference to an existing ```ReferenceModule``` at start up. Up to this point, you have been working with a Reference that only exists in the ```ReferenceModule```, but in a real game you will want your model to get backed by actual data. You can create a new component that extends the ```ReferenceProvider``` class in order to do this. At start up the ```ReferenceModule``` will grab this component and request the Reference from the provider. This Reference can be retrieved in whatever way makes sense for your game. The provided Reference will override any ```IDetails``` contained in the ```ReferenceModule's``` default Reference with its own. Effectively updating any ```DetailBinders``` to point to the new Reference. However, if there are any ```IDetails``` that exist in the ```ReferenceModule``` and not in the new Reference, then they will continue to exist as well. In this way, you can combine view only ```IDetails``` with backing models and access them from the same source instead of maintaining two sets of models or cramming view and data only stuff into a single object.
+
+```ReferenceModules``` can have their Reference set via code by using the exposed Reference property at anytime during gameplay. ```ReferenceProviders``` simply provide a mechanism to assign the Reference at start up without having to access the ```ReferenceModule``` externally. A single example ```TemplateReferenceProvider``` has been added for testing purposes. It will provide the Reference contained in the assigned ```ReferenceTemplate``` and has a context menu item to set the Reference value for testing changing the Reference at different times during execution.
+
+![provider_example](https://user-images.githubusercontent.com/7310389/134281237-c3f8dde4-c69d-4be9-9b9a-c154a92f03e7.gif)
 
 #### Reference Templates
+```ReferenceTemplates``` are Scriptable Objects that contain a Reference and behave almost identically to ```ReferenceModules```. These can be used to assign ```IDetails``` to ```ReferenceModules``` and as example models to stub into your game for testing. ```ReferenceModules``` have an Import button that can be used to import the ```IDetails``` from an existing ```ReferenceTemplate```. This will only add ```IDetails``` that didn't originally existing the ```ReferenceModule```. All other ```IDetails``` will be preserved. 
 
 ### States
 #### State Module
