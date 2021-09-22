@@ -1,5 +1,5 @@
 {
-  "name": "owlandjackalope.ux",
+  "name": "com.owlandjackalope.ux",
   "version": "1.0.0",
   "displayName": "OwlAndJackalope.UX",
   "description": "Tool for managing UX experiences and updating UI via property binding.",

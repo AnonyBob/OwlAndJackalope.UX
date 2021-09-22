@@ -137,6 +137,17 @@ MonoBehaviour:
       _referenceValue: {fileID: 0}
       _vectorValue: {x: 0, y: 0, z: 0, w: 0}
       _assetReferenceValue:
+        m_AssetGUID: 7d26f7f4c91fab5489ab909dd027273f
+        m_SubObjectName: 
+        m_SubObjectType: 
+    - _name: EyeColor
+      _type: 5
+      _enumId: 1
+      _value: 2.1
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _assetReferenceValue:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 

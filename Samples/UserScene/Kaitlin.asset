@@ -142,6 +142,18 @@ MonoBehaviour:
         m_SubObjectName: Bubs_Face
         m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
+    - _name: EyeColor
+      _type: 5
+      _enumId: 1
+      _value: 4.1
+      _stringValue: 
+      _referenceValue: {fileID: 0}
+      _vectorValue: {x: 0, y: 0, z: 0, w: 0}
+      _assetReferenceValue:
+        m_AssetGUID: 
+        m_SubObjectName: Bubs_Face
+        m_SubObjectType: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
     _collectionDetails:
     - _name: Aliases
       _type: 6

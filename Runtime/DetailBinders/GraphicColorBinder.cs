@@ -7,7 +7,7 @@ namespace OwlAndJackalope.UX.Runtime.DetailBinders
 {
     public class GraphicColorBinder : BaseDetailBinder
     {
-        [SerializeField]
+        [SerializeField, DetailType(typeof(Color))]
         private DetailObserver<Color> _observer;
 
         [SerializeField]
@@ -33,7 +33,7 @@ namespace OwlAndJackalope.UX.Runtime.DetailBinders
         
         protected override IEnumerable<AbstractDetailObserver> GetDetailObservers()
         {
-            throw new System.NotImplementedException();
+            yield return _observer;
         }
     }
 }
