@@ -24,7 +24,9 @@ namespace OwlAndJackalope.UX.Editor
         public const string StringValueString = "_stringValue";
         public const string ObjectValueString = "_referenceValue";
         public const string VectorValueString = "_vectorValue";
+#if USE_ADDRESSABLES
         public const string AssetReferenceValueString = "_assetReferenceValue";
+#endif
 
         //Reference paths
         public const string ReferenceTemplatePath = "Reference";

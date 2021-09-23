@@ -151,8 +151,11 @@ namespace OwlAndJackalope.UX.Editor.ReferenceDrawers
             dst.FindPropertyRelative(SharedDrawers.StringValueString).stringValue = src.FindPropertyRelative(SharedDrawers.StringValueString).stringValue;
             dst.FindPropertyRelative(SharedDrawers.ObjectValueString).objectReferenceValue = src.FindPropertyRelative(SharedDrawers.ObjectValueString).objectReferenceValue;
             dst.FindPropertyRelative(SharedDrawers.VectorValueString).vector4Value = src.FindPropertyRelative(SharedDrawers.VectorValueString).vector4Value;
+            
+#if USE_ADDRESSABLES
             dst.FindPropertyRelative(SharedDrawers.AssetReferenceValueString).FindPropertyRelative("m_AssetGUID").stringValue = 
                 src.FindPropertyRelative(SharedDrawers.AssetReferenceValueString).FindPropertyRelative("m_AssetGUID").stringValue;
+#endif
         }
     }
 }

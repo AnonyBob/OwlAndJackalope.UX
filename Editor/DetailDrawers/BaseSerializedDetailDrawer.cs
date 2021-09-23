@@ -27,8 +27,10 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
             newItem.FindPropertyRelative(SharedDrawers.StringValueString).stringValue = null;
             newItem.FindPropertyRelative(SharedDrawers.ObjectValueString).objectReferenceValue = null;
             newItem.FindPropertyRelative(SharedDrawers.VectorValueString).vector4Value = Vector4.zero;
+#if USE_ADDRESSABLES
             newItem.FindPropertyRelative(SharedDrawers.AssetReferenceValueString).FindPropertyRelative("m_AssetGUID")
                 .stringValue = null;
+#endif
         }
         
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -73,9 +75,12 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
             var stringValueProp = property.FindPropertyRelative(SharedDrawers.StringValueString);
             var referenceProp = property.FindPropertyRelative(SharedDrawers.ObjectValueString);
             var vectorValueProp = property.FindPropertyRelative(SharedDrawers.VectorValueString);
+            
+#if USE_ADDRESSABLES
             var assetRefValueProp = property.FindPropertyRelative(SharedDrawers.AssetReferenceValueString);
+#endif
+            
             var valuePosition = new Rect(remaining.x, remaining.y, remaining.width, EditorGUIUtility.singleLineHeight);
-
             var enabled = GUI.enabled;
             GUI.enabled = !Application.isPlaying || propertyData.RuntimeDetail is IMutableDetail;
             
@@ -98,7 +103,7 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
                     EditorGUI.PropertyField(valuePosition, valueProp, GUIContent.none);
                     break;
                 case DetailType.Enum:
-                    DrawEnumType(remaining, property, propertyData, valueProp);
+                    DrawEnumType(remaining, property, valueProp);
                     break;
                 case DetailType.String:
                     EditorGUI.PropertyField(valuePosition, stringValueProp,  GUIContent.none);
@@ -196,7 +201,7 @@ namespace OwlAndJackalope.UX.Editor.DetailDrawers
             GUI.enabled = enabled;
         }
 
-        private void DrawEnumType(Rect position, SerializedProperty property, PropertyData propertyData, SerializedProperty valueProp)
+        private void DrawEnumType(Rect position, SerializedProperty property, SerializedProperty valueProp)
         {
             var enumIdProp = property.FindPropertyRelative(SharedDrawers.EnumIdString);
             var enumType = SerializedDetailEnumCache.GetCreator(enumIdProp.intValue)?.EnumType;
