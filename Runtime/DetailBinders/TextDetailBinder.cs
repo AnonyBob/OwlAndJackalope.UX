@@ -20,14 +20,16 @@ namespace OwlAndJackalope.UX.Runtime.DetailBinders
         private string _defaultString;
         
         [SerializeField, DetailType(typeof(string), typeof(int),
-              typeof(long), typeof(double), typeof(bool), typeof(Enum))]
+              typeof(long), typeof(double), typeof(bool), typeof(Enum), typeof(TimeSpan))]
         private DetailObserver[] _stringArgumentObservers;
         
         private TextMeshProUGUI _text;
+        private TextFormattingProvider _formattingProvider;
 
         private void Start()
         {
             _text = GetComponent<TextMeshProUGUI>();
+            _formattingProvider = GetComponent<TextFormattingProvider>();
             var reference = _referenceModule.Reference;
             
             _baseStringObserver.Initialize(reference, UpdateText);
@@ -48,7 +50,15 @@ namespace OwlAndJackalope.UX.Runtime.DetailBinders
                 {
                     try
                     {
-                        formatText = string.Format(formatText, _stringArgumentObservers.Select(x => x.ObjectValue).ToArray());
+                        if (_formattingProvider != null)
+                        {
+                            formatText = string.Format(_formattingProvider.GetProvider(), formatText, 
+                                _stringArgumentObservers.Select(x => x.ObjectValue).ToArray());    
+                        }
+                        else
+                        {
+                            formatText = string.Format(formatText, _stringArgumentObservers.Select(x => x.ObjectValue).ToArray());    
+                        }
                     }
                     catch (FormatException)
                     {

@@ -27,4 +27,28 @@ namespace OwlAndJackalope.UX.Runtime.Observers
 
         private IDetail<T> _detail;
     }
+    
+    [System.Serializable]
+    public class MutableDetailObserver<T> : AbstractDetailObserver
+    {
+        public override IDetail Detail
+        {
+            get => _mutableDetail;
+            protected set => _mutableDetail = value as IMutableDetail<T>;
+        }
+
+        public T Value
+        {
+            get => IsSet ? _mutableDetail.GetValue() : default;
+            set
+            {
+                if (IsSet)
+                {
+                    _mutableDetail.SetValue(value);
+                }
+            }
+        } 
+
+        private IMutableDetail<T> _mutableDetail;
+    }
 }
