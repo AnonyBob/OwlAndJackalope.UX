@@ -1,0 +1,14 @@
+name: TestRunner Template
+on: push
+
+env: 
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+
+jobs:
+  checkLicense: 
+    name: Check for Unity License
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail - No License
+        if: ${{ !startsWith(env.UNITY_LICENSE, '<' }}
+        run: exit 1
