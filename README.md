@@ -1,5 +1,8 @@
 # Owl and Jackalope UX
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/AnonyBob/OwlAndJackalope.UX) 
+![GitHub](https://img.shields.io/github/license/AnonyBob/OwlAndJackalope.UX)
+
 Owl and Jackalope UX is a simple data binding and UX prototyping tool designed to make iterating on UI screens without needing to write code to back up the original models. It also includes several quality of life features intended to make reusing data models and UX states easier.
 
 ![simple_example](https://user-images.githubusercontent.com/7310389/134276910-f89ddd49-0d1b-4dcd-9a11-ea8279499ad3.gif)
@@ -14,7 +17,7 @@ Owl and Jackalope UX is a simple data binding and UX prototyping tool designed t
 5. Inject actual data models at runtime based on your personal project needs.
 
 ## Installation
-Owl and Jackalope UX can be installed via the Unity package manager.
+Owl and Jackalope UX can be installed via the Unity package manager by following these [instructions](https://docs.unity3d.com/Manual/upm-ui-giturl.html).
 
 or by adding
 
