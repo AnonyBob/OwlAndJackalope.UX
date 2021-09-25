@@ -17,13 +17,16 @@ Owl and Jackalope UX is a simple data binding and UX prototyping tool designed t
 5. Inject actual data models at runtime based on your personal project needs.
 
 ## Installation
-Owl and Jackalope UX can be installed via the Unity package manager by following these [instructions](https://docs.unity3d.com/Manual/upm-ui-giturl.html).
+Owl and Jackalope UX can be installed via the Unity package manager by following these [instructions](https://docs.unity3d.com/Manual/upm-ui-giturl.html) with the git url of:
+https://github.com/AnonyBob/OwlAndJackalope.UX.git?path=/Assets/OwlAndJackalope.UX
 
 or by adding
 
-```"com.owlandjackalope.ux": "https://github.com/AnonyBob/OwlAndJackalope.UX.git"```
+```"com.owlandjackalope.ux": "https://github.com/AnonyBob/OwlAndJackalope.UX.git?path=/Assets/OwlAndJackalope.UX"```
 
 to the Packages/manifest.json file
+
+or by downloading the released Unity Package.
 
 ## Usage
 ### References
