@@ -41,17 +41,15 @@ jobs:
       - name: Restore Library cache
         uses: actions/cache@v2
         with:
-          path: test-projects/test-project/Library
-          key: Library-test-project-${{ matrix.targetPlatform }}
+          path: Library
+          key: Library-OwlAndJackalope.UX
           restore-keys: |
-            Library-test-project-
             Library-
             
       # Configure test runner
       - uses: game-ci/unity-test-runner@v2.0-alpha-5
         id: testRunner
         with:
-          projectPath: test-projects/test-project
           testMode: ${{ matrix.testMode }}
           checkName: ${{ matrix.testMode }} test results
           githubToken: ${{ secrets.GITHUB_TOKEN }}
