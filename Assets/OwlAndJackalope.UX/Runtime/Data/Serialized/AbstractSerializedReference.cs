@@ -16,7 +16,7 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
         [SerializeField] protected List<TDetail> _details = new List<TDetail>();
         [SerializeField] protected List<TCollectionDetail> _collectionDetails = new List<TCollectionDetail>();
         [SerializeField] protected List<TMapDetail> _mapDetails = new List<TMapDetail>();
-        
+
         public virtual IReference ConvertToReference()
         {
             return new BaseReference(_details
@@ -26,7 +26,7 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
                 .Where(x => x != null));
         }
 
-        public void UpdateSerializedDetails(IReference reference)
+        public void UpdateSerializedDetails(IEnumerable<IDetail> reference)
         {
             foreach (var detail in reference)
             {

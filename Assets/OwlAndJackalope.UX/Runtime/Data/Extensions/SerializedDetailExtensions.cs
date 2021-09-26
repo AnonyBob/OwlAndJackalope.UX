@@ -102,6 +102,11 @@ namespace OwlAndJackalope.UX.Runtime.Data.Extensions
             return detail.TimeSpanValue;
         }
 
+        public static TValue GetValue<TValue>(this BaseSerializedDetail detail)
+        {
+            return (TValue)detail.GetValue(typeof(TValue));
+        }
+        
         public static object GetValue(this BaseSerializedDetail detail, Type type)
         {
             if (type == typeof(bool))

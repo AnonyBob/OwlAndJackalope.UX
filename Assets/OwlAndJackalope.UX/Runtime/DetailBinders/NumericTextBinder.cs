@@ -49,7 +49,7 @@ namespace OwlAndJackalope.UX.Runtime.DetailBinders
             }
             else if (selectedType == typeof(long))
             {
-                _longObserver = CreateDetail<long>(); ;
+                _longObserver = CreateDetail<long>();
             }
             
             UpdateNumber();

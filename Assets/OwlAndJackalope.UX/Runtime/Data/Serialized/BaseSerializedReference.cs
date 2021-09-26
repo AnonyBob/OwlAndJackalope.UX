@@ -1,4 +1,6 @@
-﻿namespace OwlAndJackalope.UX.Runtime.Data.Serialized
+﻿using System.Collections;
+
+namespace OwlAndJackalope.UX.Runtime.Data.Serialized
 {
     /// <summary>
     /// A container for a series of SerializedDetails. This can be when required converted into a
@@ -10,7 +12,7 @@
     {
         protected override BaseSerializedDetail CreateSerializedDetail(IDetail detail)
         {
-            return new BaseSerializedDetail(detail);
+            return new BaseSerializedDetail(detail.Name, detail.GetObjectType());
         }
 
         protected override BaseSerializedCollectionDetail CreateSerializedCollectionDetail(ICollectionDetail detail)

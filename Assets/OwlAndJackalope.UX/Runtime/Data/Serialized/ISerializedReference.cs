@@ -9,6 +9,6 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
     {
         IReference ConvertToReference();
 
-        void UpdateSerializedDetails(IReference reference);
+        void UpdateSerializedDetails(IEnumerable<IDetail> reference);
     }
 }

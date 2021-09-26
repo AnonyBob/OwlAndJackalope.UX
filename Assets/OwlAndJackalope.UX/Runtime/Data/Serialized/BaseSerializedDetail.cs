@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 using OwlAndJackalope.UX.Runtime.Data.Extensions;
 using OwlAndJackalope.UX.Runtime.Data.Serialized.Enums;
 using UnityEngine;
@@ -58,14 +57,13 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
         [SerializeField] protected AssetReference _assetReferenceValue;
 #endif
 
-        public BaseSerializedDetail(IDetail detail)
+        public BaseSerializedDetail(string name, Type detailType)
         {
-            _name = detail.Name;
-            var objectType = detail.GetObjectType();
-            _type = objectType.ConvertToEnum();
+            _name = name;
+            _type = detailType.ConvertToEnum();
             if (_type == DetailType.Enum)
             {
-                _enumId = SerializedDetailEnumCache.GetCreator(objectType.Name).EnumId;
+                _enumId = SerializedDetailEnumCache.GetCreator(detailType.Name).EnumId;
             }
         }
 

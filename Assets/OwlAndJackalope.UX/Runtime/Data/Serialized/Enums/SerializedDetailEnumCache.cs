@@ -15,7 +15,10 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized.Enums
             {
                 if (_cachedEnumTypeNames == null || _cachedEnumTypeNames.Length != EnumCreators.Count)
                 {
-                    _cachedEnumTypeNames = EnumCreators.Values.Select(x => x.EnumName).ToArray();
+                    _cachedEnumTypeNames = EnumCreators.Keys
+                        .Select(x => EnumCreators[x].EnumName)
+                        .OrderBy(x => x)
+                        .ToArray();
                 }
 
                 return _cachedEnumTypeNames;
@@ -37,6 +40,11 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized.Enums
         public static void AddEnumType(int enumId, IEnumDetailCreator creator)
         {
             EnumCreators[enumId] = creator;
+        }
+
+        public static void RemoveEnumType(int enumId)
+        {
+            EnumCreators.Remove(enumId);
         }
     }
 }
