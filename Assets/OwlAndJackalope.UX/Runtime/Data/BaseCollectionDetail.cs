@@ -95,11 +95,13 @@ namespace OwlAndJackalope.UX.Runtime.Data
 
         public void Add(T item)
         {
-            if (_value != null)
+            if (_value == null)
             {
-                _value.Add(item);
-                Version++;
+                _value = new List<T>();
             }
+            
+            _value.Add(item);
+            Version++;
         }
 
         public void Clear()
