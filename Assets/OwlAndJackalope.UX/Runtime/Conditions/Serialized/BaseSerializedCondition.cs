@@ -49,19 +49,9 @@ namespace OwlAndJackalope.UX.Runtime.Conditions.Serialized
                     return CreateComparableCondition<string>();
                 case DetailType.TimeSpan:
                     return CreateComparableCondition<TimeSpan>();
-                case DetailType.Reference:
-                    break;
-                case DetailType.Vector2:
-                    break;
-                case DetailType.Vector3:
-                    break;
-                case DetailType.Color:
-                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-
-            return null;
         }
         
         private ICondition CreateComparableCondition<T>() where T : IComparable<T>
@@ -78,12 +68,13 @@ namespace OwlAndJackalope.UX.Runtime.Conditions.Serialized
             try
             {
                 var creator = SerializedDetailEnumCache.GetCreator(_enumId);
-                var conditionType = typeof(BaseRuntimeCondition<>).MakeGenericType(creator?.EnumType);
-                if (_parameterTwo.Type == ParameterType.Value)
+                if (creator != null)
                 {
-                    return (ICondition)Activator.CreateInstance(conditionType, _parameterOne, _value.ConvertToDetail(), _comparisonType);
+                    return creator.CreateCondition(_comparisonType, _parameterOne, _parameterTwo, _value.ConvertToDetail());    
                 }
-                return (ICondition)Activator.CreateInstance(conditionType, _parameterOne, _parameterTwo, _comparisonType);
+                
+                Debug.LogError($"{_enumId} does not have a defined enum creator");
+                return null;
             }
             catch(Exception e)
             {

@@ -69,5 +69,10 @@ namespace OwlAndJackalope.UX.Tests.Editor
         {
             
         }
+
+        public void DisposeRemovesReferenceAndDetailListeners()
+        {
+            
+        }
     }
 }

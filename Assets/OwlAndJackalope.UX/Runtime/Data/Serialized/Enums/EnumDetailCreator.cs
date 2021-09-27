@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using OwlAndJackalope.UX.Runtime.Conditions;
 
 namespace OwlAndJackalope.UX.Runtime.Data.Serialized.Enums
 {
@@ -13,8 +14,7 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized.Enums
         
         IDetail CreateDetail(string name, int value);
         IDetail CreateCollectionDetail(string name, IEnumerable<int> value);
-        IDetail CreateMapDetailWithKey<TKey>(string name, IEnumerable<(TKey key, int value)> entries);
-        IDetail CreateMapDetailWithValue<TValue>(string name, IEnumerable<(int key, TValue value)> entries);
+        ICondition CreateCondition(Comparison comparison, Parameter parameterOne, Parameter parameterTwo, IDetail comparisonValue);
     }
     
     public class EnumDetailCreator<TEnumType> : IEnumDetailCreator
@@ -43,17 +43,15 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized.Enums
         {
             return new BaseCollectionDetail<TEnumType>(name, values.Select(Converter), false);
         }
-        
-        public IDetail CreateMapDetailWithKey<TKey>(string name, IEnumerable<(TKey key, int value)> entries)
+
+        public ICondition CreateCondition(Comparison comparison, Parameter parameterOne, Parameter parameterTwo, IDetail comparisonValue)
         {
-            return new BaseMapDetail<TKey, TEnumType>(name, entries.ToDictionary(t => t.key, 
-                t => Converter(t.value)), false);
-        }
-        
-        public IDetail CreateMapDetailWithValue<TValue>(string name, IEnumerable<(int key, TValue value)> entries)
-        {
-            return new BaseMapDetail<TEnumType, TValue>(name, entries.ToDictionary(t => Converter(t.key), 
-                t => t.value), false);
+            if (parameterTwo.Type == ParameterType.Value)
+            {
+                return new BaseRuntimeCondition<TEnumType>(parameterOne, parameterTwo, comparison);
+            }
+
+            return new BaseRuntimeCondition<TEnumType>(parameterOne, comparisonValue as IDetail<TEnumType>, comparison);
         }
     }
 }
