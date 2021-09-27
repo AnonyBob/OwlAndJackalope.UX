@@ -104,11 +104,13 @@ namespace OwlAndJackalope.UX.Runtime.Data
         
         public void Add(TKey key, TValue value)
         {
-            if (_value != null)
+            if (_value == null)
             {
-                _value.Add(key, value);
-                Version++;
+                _value = new Dictionary<TKey, TValue>();
             }
+            
+            _value.Add(key, value);
+            Version++;
         }
         
         public bool Remove(KeyValuePair<TKey, TValue> item)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using OwlAndJackalope.UX.Runtime.Data.Serialized;
 using UnityEngine;
 #if USE_ADDRESSABLES
@@ -144,6 +145,65 @@ namespace OwlAndJackalope.UX.Runtime.Data.Extensions
             if (type == typeof(TimeSpan))
                 return detail.GetTimeSpan();
             return null;
+        }
+        
+        public static void SetValue<T>(this BaseSerializedDetail detail, T value)
+        {
+            var detailType = typeof(BaseSerializedDetail);
+            var valueField = detailType.GetField("_value", BindingFlags.Instance | BindingFlags.NonPublic);
+            var stringField = detailType.GetField("_stringValue", BindingFlags.Instance | BindingFlags.NonPublic);
+            var referenceField = detailType.GetField("_referenceValue", BindingFlags.Instance | BindingFlags.NonPublic);
+            var vectorField = detailType.GetField("_vectorValue", BindingFlags.Instance | BindingFlags.NonPublic);
+            
+            if (value is bool boolValue)
+            {
+                valueField.SetValue(detail, boolValue ? 1 : 0);
+            }
+            else if (value is int intValue)
+            {
+                valueField.SetValue(detail, intValue + 0.1);
+            }
+            else if (value is long longValue)
+            {
+                valueField.SetValue(detail, longValue + 0.1);
+            }
+            else if (value is float floatValue)
+            {
+                valueField.SetValue(detail, floatValue);
+            }
+            else if (value is double doubleValue)
+            {
+                valueField.SetValue(detail, doubleValue);
+            }
+            else if (typeof(T).IsEnum)
+            {
+                var enumValue = Convert.ToInt32(value);
+                valueField.SetValue(detail, enumValue + 0.1);
+            }
+            else if (value is string stringValue)
+            {
+                stringField.SetValue(detail, stringValue);
+            }
+            else if (value is UnityEngine.Object objectField) //References, Gameobject, Sprite, Texture
+            {
+                referenceField.SetValue(detail, objectField);
+            }
+            else if (value is Vector2 vector2Value)
+            {
+                vectorField.SetValue(detail, (Vector4)vector2Value);
+            }
+            else if (value is Vector3 vector3Value)
+            {
+                vectorField.SetValue(detail, (Vector4)vector3Value);
+            }
+            else if (value is Color colorValue)
+            {
+                vectorField.SetValue(detail, (Vector4)colorValue);
+            }
+            else if (value is TimeSpan timeSpan)
+            {
+                valueField.SetValue(detail, timeSpan.Ticks + 0.1);
+            }
         }
     }
 }

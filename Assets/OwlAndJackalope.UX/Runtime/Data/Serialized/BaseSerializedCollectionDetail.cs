@@ -22,10 +22,10 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
         
         [SerializeField] private List<BaseSerializedDetail> _collection = new List<BaseSerializedDetail>();
 
-        public BaseSerializedCollectionDetail(ICollectionDetail collectionDetail)
+        public BaseSerializedCollectionDetail(string name, Type itemType)
         {
-            _name = collectionDetail.Name;
-            var collectionItemType = collectionDetail.GetItemType();
+            _name = name;
+            var collectionItemType = itemType;
             _type = collectionItemType.ConvertToEnum();
             if (_type == DetailType.Enum)
             {

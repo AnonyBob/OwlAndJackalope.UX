@@ -24,10 +24,9 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
         [SerializeField] private List<BaseSerializedDetail> _keyCollection = new List<BaseSerializedDetail>();
         [SerializeField] private List<BaseSerializedDetail> _valueCollection = new List<BaseSerializedDetail>();
 
-        public BaseSerializedMapDetail(IMapDetail detail)
+        public BaseSerializedMapDetail(string name, Type keyType, Type valueType)
         {
-            _name = detail.Name;
-            var (keyType, valueType) = detail.GetItemType();
+            _name = name;
             _keyType = keyType.ConvertToEnum();
             _valueType = valueType.ConvertToEnum();
             

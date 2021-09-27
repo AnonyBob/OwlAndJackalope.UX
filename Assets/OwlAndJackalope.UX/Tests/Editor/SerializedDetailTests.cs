@@ -46,7 +46,7 @@ namespace OwlAndJackalope.UX.Tests.Editor
         {
             try
             {
-                SerializedDetailEnumCache.AddEnumType(12, new EnumDetailCreator<TestEnumOne>(x => (TestEnumOne)x));
+                SerializedDetailEnumCache.AddEnumType(-2000, new EnumDetailCreator<TestEnumOne>(x => (TestEnumOne)x));
                 
                 var serializedDetailType = typeof(BaseSerializedDetail);
                 var typeField = serializedDetailType.GetField("_type", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -57,7 +57,7 @@ namespace OwlAndJackalope.UX.Tests.Editor
                 Assert.That(detail.Type, Is.EqualTo(typeof(TestEnumOne)));
                
                 Assert.That(typeField.GetValue(detail), Is.EqualTo(DetailType.Enum));
-                Assert.That(enumField.GetValue(detail), Is.EqualTo(12));
+                Assert.That(enumField.GetValue(detail), Is.EqualTo(-2000));
             }
             finally
             {
@@ -231,61 +231,12 @@ namespace OwlAndJackalope.UX.Tests.Editor
 
             public void SetValue(ReferenceTemplate template)
             {
-                var detailType = typeof(BaseSerializedDetail);
-                var referenceField = detailType.GetField("_referenceValue", BindingFlags.Instance | BindingFlags.NonPublic);
-                referenceField.SetValue(Detail, template);
+                Detail.SetValue(template);
             }
             
             public void SetValue(T value)
             {
-                var detailType = typeof(BaseSerializedDetail);
-                var valueField = detailType.GetField("_value", BindingFlags.Instance | BindingFlags.NonPublic);
-                var stringField = detailType.GetField("_stringValue", BindingFlags.Instance | BindingFlags.NonPublic);
-                var referenceField = detailType.GetField("_referenceValue", BindingFlags.Instance | BindingFlags.NonPublic);
-                var vectorField = detailType.GetField("_vectorValue", BindingFlags.Instance | BindingFlags.NonPublic);
-                
-                var type = Detail.GetType();
-                if (value is bool boolValue)
-                {
-                    valueField.SetValue(Detail, boolValue ? 1 : 0);
-                }
-                else if (value is int intValue)
-                {
-                    valueField.SetValue(Detail, intValue + 0.1);
-                }
-                else if (value is long longValue)
-                {
-                    valueField.SetValue(Detail, longValue + 0.1);
-                }
-                else if (value is float floatValue)
-                {
-                    valueField.SetValue(Detail, floatValue);
-                }
-                else if (value is double doubleValue)
-                {
-                    valueField.SetValue(Detail, doubleValue);
-                }
-                else if (type.IsEnum)
-                {
-                    var enumValue = Convert.ToInt32(value);
-                    valueField.SetValue(Detail, enumValue + 0.1);
-                }
-                else if (value is string stringValue)
-                {
-                    stringField.SetValue(Detail, stringValue);
-                }
-                else if (value is UnityEngine.Object objectField) //References, Gameobject, Sprite, Texture
-                {
-                    referenceField.SetValue(Detail, objectField);
-                }
-                else if (value is Vector4 vectorValue)
-                {
-                    vectorField.SetValue(Detail, vectorValue);
-                }
-                else if (value is TimeSpan timeSpan)
-                {
-                    valueField.SetValue(Detail, timeSpan.Ticks + 0.1);
-                }
+                Detail.SetValue(value);
             }
         }
     }

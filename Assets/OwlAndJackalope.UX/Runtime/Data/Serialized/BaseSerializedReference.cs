@@ -17,12 +17,13 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
 
         protected override BaseSerializedCollectionDetail CreateSerializedCollectionDetail(ICollectionDetail detail)
         {
-            return new BaseSerializedCollectionDetail(detail);
+            return new BaseSerializedCollectionDetail(detail.Name, detail.GetItemType());
         }
 
         protected override BaseSerializedMapDetail CreateSerializedMapDetail(IMapDetail detail)
         {
-            return new BaseSerializedMapDetail(detail);
+            var (keyType, valueType) = detail.GetItemType();
+            return new BaseSerializedMapDetail(detail.Name, keyType, valueType);
         }
     }
 }
