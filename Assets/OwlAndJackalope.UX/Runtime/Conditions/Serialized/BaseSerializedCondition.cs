@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using OwlAndJackalope.UX.Runtime.Data;
+using OwlAndJackalope.UX.Runtime.Data.Extensions;
 using OwlAndJackalope.UX.Runtime.Data.Serialized;
 using OwlAndJackalope.UX.Runtime.Data.Serialized.Enums;
 using OwlAndJackalope.UX.Runtime.Modules;
@@ -28,7 +29,40 @@ namespace OwlAndJackalope.UX.Runtime.Conditions.Serialized
 
         [SerializeField]
         private Comparison _comparisonType;
+
+        public static BaseSerializedCondition Create<T>(string parameterOne, string parameterTwo, Comparison comparison)
+        {
+            var condition = new BaseSerializedCondition();
+            condition._type = typeof(T).ConvertToEnum();
+            if (condition._type == DetailType.Enum)
+            {
+                condition._enumId = SerializedDetailEnumCache.GetCreator(typeof(T).Name).EnumId;
+            }
+
+            condition._parameterOne = new Parameter() { Type = ParameterType.Detail, Name = parameterOne };
+            condition._parameterTwo = new Parameter() { Type = ParameterType.Detail, Name = parameterTwo };
+            condition._comparisonType = comparison;
+            return condition;
+        }
         
+        public static BaseSerializedCondition Create<T>(string parameterOne, T value, Comparison comparison)
+        {
+            var condition = new BaseSerializedCondition();
+            condition._type = typeof(T).ConvertToEnum();
+            if (condition._type == DetailType.Enum)
+            {
+                condition._enumId = SerializedDetailEnumCache.GetCreator(typeof(T).Name).EnumId;
+            }
+
+            condition._parameterOne = new Parameter() { Type = ParameterType.Detail, Name = parameterOne };
+            condition._parameterTwo = new Parameter() { Type = ParameterType.Value };
+            condition._value = new BaseSerializedDetail("", typeof(T));
+            condition._value.SetValue(value);
+            
+            condition._comparisonType = comparison;
+            return condition;
+        }
+
         public ICondition ConvertToCondition()
         {
             switch (_type)

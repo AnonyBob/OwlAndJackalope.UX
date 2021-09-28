@@ -13,7 +13,14 @@ namespace OwlAndJackalope.UX.Runtime.Conditions
         
         public AndConditionGroup(IEnumerable<ICondition> conditions)
         {
-            _conditions = conditions.ToList();
+            if (conditions == null)
+            {
+                _conditions = new List<ICondition>();
+            }
+            else
+            {
+                _conditions = conditions.ToList();    
+            }
         }
         
         public IEnumerable<string> GetUsedDetails()
@@ -23,6 +30,11 @@ namespace OwlAndJackalope.UX.Runtime.Conditions
 
         public bool IsMet(IReference reference)
         {
+            if (_conditions.Count == 0)
+            {
+                return false;
+            }
+            
             foreach (var condition in _conditions)
             {
                 if (!condition.IsMet(reference))

@@ -87,6 +87,11 @@ namespace OwlAndJackalope.UX.Runtime.Conditions
         
         private bool CalculateComparison(IDetail<TValue> one, IDetail<TValue> two)
         {
+            if (one == null || two == null)
+            {
+                return false;
+            }
+            
             var compare = Comparer<TValue>.Default.Compare(one.GetValue(), two.GetValue());
             switch (_comparisonType)
             {

@@ -11,6 +11,11 @@ namespace OwlAndJackalope.UX.Runtime.Conditions.Serialized
         [SerializeField]
         private List<BaseSerializedCondition> _conditions;
 
+        public SerializedConditionAndGroup(IEnumerable<BaseSerializedCondition> conditions)
+        {
+            _conditions = conditions?.ToList() ?? new List<BaseSerializedCondition>();
+        }
+        
         public void HandleDetailNameChange(string previousName, string newName, IDetailNameChangeHandler root)
         {
             foreach (var condition in _conditions)
