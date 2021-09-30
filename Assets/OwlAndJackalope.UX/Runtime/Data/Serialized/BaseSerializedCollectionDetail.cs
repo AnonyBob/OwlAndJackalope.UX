@@ -68,7 +68,8 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
                     return new BaseCollectionDetail<Sprite>(_name, CreateList(x => x.GetSprite()), false);
 #if USE_ADDRESSABLES
                 case DetailType.AssetReference:
-                    return new BaseCollectionDetail<AssetReference>(_name, CreateList(x => x.GetAssetReference()), false);
+                    return new BaseCollectionDetail<UnityEngine.AddressableAssets.AssetReference>(_name, 
+                        CreateList(x => x.GetAssetReference()), false);
 #endif
                 case DetailType.TimeSpan:
                     return new BaseCollectionDetail<TimeSpan>(_name, CreateList(x => x.GetTimeSpan()), false);
