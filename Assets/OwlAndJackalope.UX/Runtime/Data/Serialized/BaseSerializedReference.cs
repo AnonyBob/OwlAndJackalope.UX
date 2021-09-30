@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 
 namespace OwlAndJackalope.UX.Runtime.Data.Serialized
 {
@@ -10,6 +11,25 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized
     public class BaseSerializedReference 
         : AbstractSerializedReference<BaseSerializedDetail, BaseSerializedCollectionDetail, BaseSerializedMapDetail>
     {
+        public BaseSerializedReference()
+        {
+            
+        }
+        
+        public BaseSerializedReference(IEnumerable<BaseSerializedDetail> details, 
+            IEnumerable<BaseSerializedCollectionDetail> collectionDetails, 
+            IEnumerable<BaseSerializedMapDetail> mapDetails)
+        {
+            if(details != null)
+                _details.AddRange(details);
+            
+            if(collectionDetails != null)
+                _collectionDetails.AddRange(collectionDetails);
+            
+            if(mapDetails != null)
+                _mapDetails.AddRange(mapDetails);
+        }
+        
         protected override BaseSerializedDetail CreateSerializedDetail(IDetail detail)
         {
             return new BaseSerializedDetail(detail.Name, detail.GetObjectType());

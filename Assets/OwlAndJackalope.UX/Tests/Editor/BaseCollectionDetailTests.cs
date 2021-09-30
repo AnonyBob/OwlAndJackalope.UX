@@ -492,13 +492,21 @@ namespace OwlAndJackalope.UX.Tests.Editor
             Assert.That(referenceValue.GetDetail<float>("TestTwo"), Is.Not.Null);
         }
         
-        private class SerializedDetailWrapper<T>
+        public class SerializedDetailWrapper<T>
         {
             public readonly BaseSerializedCollectionDetail Detail;
 
             public SerializedDetailWrapper(string name)
             {
                 Detail = new BaseSerializedCollectionDetail(name, typeof(T));
+            }
+
+            public SerializedDetailWrapper(string name, List<T> values) : this(name)
+            {
+                foreach (var value in values)
+                {
+                    AddValue(value);
+                }
             }
             
             public void AddValue(ReferenceTemplate template)

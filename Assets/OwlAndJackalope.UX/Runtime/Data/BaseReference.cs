@@ -88,9 +88,9 @@ namespace OwlAndJackalope.UX.Runtime.Data
             return totalAdded;
         }
 
-        public bool RemoveDetail(IDetail detail)
+        public bool RemoveDetail(string detailName)
         {
-            if (_details.Remove(detail.Name))
+            if (detailName != null && _details.Remove(detailName))
             {
                 Version++;
                 return true;

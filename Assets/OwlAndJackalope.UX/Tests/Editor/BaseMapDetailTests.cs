@@ -481,7 +481,7 @@ namespace OwlAndJackalope.UX.Tests.Editor
             Assert.That(referenceValue.GetDetail<float>("TestTwo"), Is.Not.Null);
         }
         
-        private class SerializedDetailWrapper<TKey, TValue>
+        public class SerializedDetailWrapper<TKey, TValue>
         {
             public readonly BaseSerializedMapDetail Detail;
 
@@ -489,7 +489,15 @@ namespace OwlAndJackalope.UX.Tests.Editor
             {
                 Detail = new BaseSerializedMapDetail(name, typeof(TKey), typeof(TValue));
             }
-            
+
+            public SerializedDetailWrapper(string name, Dictionary<TKey, TValue> values) : this(name)
+            {
+                foreach (var value in values)
+                {
+                    AddValue(value.Key, value.Value);
+                }
+            }
+
             public void AddValue(string key, ReferenceTemplate template)
             {
                 var newKey = new BaseSerializedDetail("", typeof(TKey));

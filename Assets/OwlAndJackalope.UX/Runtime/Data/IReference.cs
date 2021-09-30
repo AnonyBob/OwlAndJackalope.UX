@@ -22,6 +22,6 @@ namespace OwlAndJackalope.UX.Runtime.Data
 
         int AddDetails(IEnumerable<IDetail> details, bool overwrite = true);
 
-        bool RemoveDetail(IDetail detail);
+        bool RemoveDetail(string detailName);
     }
 }
