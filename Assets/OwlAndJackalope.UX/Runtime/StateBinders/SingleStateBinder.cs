@@ -6,11 +6,7 @@ namespace OwlAndJackalope.UX.Runtime.StateBinders
 {
     public abstract class SingleStateBinder : BaseStateBinder
     {
-        private enum WhenState
-        {
-            Active,
-            NotActive
-        }
+       
 
         [SerializeField]
         private StateObserver _state;

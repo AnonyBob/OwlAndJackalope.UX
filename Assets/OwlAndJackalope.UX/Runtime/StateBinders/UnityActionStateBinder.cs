@@ -3,16 +3,20 @@ using UnityEngine.Events;
 
 namespace OwlAndJackalope.UX.Runtime.StateBinders
 {
-    public class UnityActionStateBinder : SingleStateBinder
+    public class UnityActionStateBinder : MultiStateBinder<UnityActionStateBinder.UnityActionStateHandler>
     {
-        [SerializeField]
-        private UnityEvent _unityEvent;
-
-        protected override void PerformChange(bool isActive)
+        [System.Serializable]
+        public class UnityActionStateHandler : StateActionHandler
         {
-            if (isActive)
+            [SerializeField]
+            private UnityEvent _unityEvent;
+            
+            protected override void PerformChange(bool isActive)
             {
-                _unityEvent?.Invoke();
+                if (isActive)
+                {
+                    _unityEvent?.Invoke();
+                }
             }
         }
     }
