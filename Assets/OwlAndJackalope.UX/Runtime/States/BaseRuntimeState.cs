@@ -25,7 +25,7 @@ namespace OwlAndJackalope.UX.Runtime.States
         {
             _name = name;
             _reference = reference;
-            _conditions = conditions.ToList();
+            _conditions = conditions?.ToList() ?? new List<ICondition>();
 
             _reference.VersionChanged += HandleReferenceVersionChange;
             RegisterDetails();
@@ -38,7 +38,7 @@ namespace OwlAndJackalope.UX.Runtime.States
             ClearDetails();
         }
         
-        public void CheckActive()
+        private void CheckActive()
         {
             var nextActive = false;
             for (var i = 0; i < _conditions.Count; ++i)

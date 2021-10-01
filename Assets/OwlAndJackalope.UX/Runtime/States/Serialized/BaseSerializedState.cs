@@ -18,6 +18,12 @@ namespace OwlAndJackalope.UX.Runtime.States.Serialized
         [SerializeField]
         private List<SerializedConditionAndGroup> _conditionGroups;
 
+        public BaseSerializedState(string name, IEnumerable<SerializedConditionAndGroup> conditions)
+        {
+            _name = name;
+            _conditionGroups = conditions?.ToList() ?? new List<SerializedConditionAndGroup>();
+        }
+        
         public IState ConvertToState(IReference reference)
         {
             return new BaseRuntimeState(_name, reference, _conditionGroups

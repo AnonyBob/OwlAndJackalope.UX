@@ -19,6 +19,14 @@ namespace OwlAndJackalope.UX.Runtime.Conditions
             _comparisonType = comparisonType;
         }
 
+        public BaseRuntimeCondition(string detailName, TValue value, Comparison comparisonType)
+        {
+            _leftHandSide = new Parameter() { Name = detailName, Type = ParameterType.Detail };
+            _rightHandSide = new Parameter() { Type = ParameterType.Value };
+            _valueParameter = new BaseDetail<TValue>(string.Empty, value);
+            _comparisonType = comparisonType;
+        }
+
         public BaseRuntimeCondition(Parameter leftHandSide, IDetail<TValue> rightHandSide, Comparison comparisonType)
         {
             _leftHandSide = leftHandSide;
