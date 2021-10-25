@@ -50,7 +50,7 @@ MonoBehaviour:
     - _name: Weight
       _type: 1
       _enumId: 0
-      _value: 125.1
+      _value: 115.1
       _stringValue: Web Developer
       _referenceValue: {fileID: 0}
       _vectorValue: {x: 0, y: 0, z: 0, w: 0}
