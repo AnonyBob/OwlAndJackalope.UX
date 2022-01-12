@@ -46,7 +46,7 @@ namespace OwlAndJackalope.UX.Runtime.Data.Serialized.Enums
 
         public ICondition CreateCondition(Comparison comparison, Parameter parameterOne, Parameter parameterTwo, IDetail comparisonValue)
         {
-            if (parameterTwo.Type == ParameterType.Value)
+            if (parameterTwo.Type != ParameterType.Value)
             {
                 return new BaseRuntimeCondition<TEnumType>(parameterOne, parameterTwo, comparison);
             }
