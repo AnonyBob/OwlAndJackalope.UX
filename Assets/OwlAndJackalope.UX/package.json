@@ -1,6 +1,6 @@
 {
   "name": "com.owlandjackalope.ux",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "displayName": "OwlAndJackalope.UX",
   "description": "Tool for managing UX experiences and updating UI via property binding.",
   "unity": "2020.3",
