@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace OwlAndJackalope.UX.Runtime.Data
 {
@@ -39,7 +40,7 @@ namespace OwlAndJackalope.UX.Runtime.Data
 
         public bool SetValue(TValue value)
         {
-            if (!_internalValue.Equals(value))
+            if (!EqualityComparer<TValue>.Default.Equals(_internalValue, value))
             {
                 _internalValue = value;
                 Version++;
