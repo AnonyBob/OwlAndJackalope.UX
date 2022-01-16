@@ -20,7 +20,7 @@ namespace OwlAndJackalope.UX.Runtime.DetailBinders
         private string _defaultString;
         
         [SerializeField, DetailType(typeof(string), typeof(int),
-              typeof(long), typeof(double), typeof(bool), typeof(Enum), typeof(TimeSpan))]
+              typeof(long), typeof(float), typeof(double), typeof(bool), typeof(Enum), typeof(TimeSpan))]
         private DetailObserver[] _stringArgumentObservers;
         
         private TextMeshProUGUI _text;

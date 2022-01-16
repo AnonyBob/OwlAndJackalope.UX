@@ -41,6 +41,20 @@ namespace OwlAndJackalope.UX.Runtime.Data
             }
         }
 
+        public BaseReference(params IDetail[] startingDetails)
+        {
+            if (startingDetails != null)
+            {
+                foreach (var detail in startingDetails)
+                {
+                    if (detail != null)
+                    {
+                        _details[detail.Name] = detail;    
+                    }
+                } 
+            }
+        }
+
         public BaseReference()
         {
         }

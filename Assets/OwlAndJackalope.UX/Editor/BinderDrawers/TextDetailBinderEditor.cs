@@ -8,6 +8,8 @@ namespace OwlAndJackalope.UX.Editor.BinderDrawers
     {
         public override void OnInspectorGUI()
         {
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_referenceModule"));
+            
             var useDefaultString = serializedObject.FindProperty("_useDefaultString");
             EditorGUILayout.PropertyField(useDefaultString);
 

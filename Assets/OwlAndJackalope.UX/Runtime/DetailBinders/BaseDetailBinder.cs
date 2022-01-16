@@ -11,9 +11,11 @@ namespace OwlAndJackalope.UX.Runtime.DetailBinders
     /// </summary>
     public abstract class BaseDetailBinder : MonoBehaviour, IDetailNameChangeHandler
     {
+        public ReferenceModule ReferenceModule => _referenceModule;
+        
         [SerializeField]
         protected ReferenceModule _referenceModule;
-        
+
         protected virtual void Awake()
         {
             if (_referenceModule == null)
