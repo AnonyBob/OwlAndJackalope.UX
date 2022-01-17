@@ -18,16 +18,19 @@ namespace OwlAndJackalope.UX.Runtime.StateBinders
 
         protected virtual void Start()
         {
-            _state.Initialize(_stateModule, HandleActiveChanged, _applyOnStart);
+            _state.Initialize(_stateModule, HandleActiveChanged, !_applyOnStart);
         }
 
         protected abstract void PerformChange(bool isActive);
         
         private void HandleActiveChanged(bool isActive)
         {
-            var invertState = _is == WhenState.NotActive;
-            var currentState = isActive == !invertState;
-            PerformChange(currentState);
+            if (_is == WhenState.NotActive)
+            {
+                isActive = !isActive;
+            }
+            
+            PerformChange(isActive);
         }
 
         protected override IEnumerable<StateObserver> GetObservers()
