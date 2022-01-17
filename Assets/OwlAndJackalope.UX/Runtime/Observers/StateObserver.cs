@@ -30,7 +30,10 @@ namespace OwlAndJackalope.UX.Runtime.Observers
             if (State != null)
             {
                 State.OnStateActiveChanged += HandleActiveChanged;
-                HandleActiveChanged();
+                if (!suppressInitial)
+                {
+                    HandleActiveChanged();    
+                }
             }
         }
         

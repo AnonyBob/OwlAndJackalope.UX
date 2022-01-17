@@ -14,16 +14,25 @@ namespace OwlAndJackalope.UX.Runtime.StateBinders
 
         [SerializeField]
         public bool ApplyOnStart;
+
+        protected GameObject _gameObject;
         
         protected abstract void PerformChange(bool currentState);
 
+        protected virtual void InitializeGameObject()
+        {
+            
+        }
+        
         protected virtual void ApplyInitialChange()
         {
             //Do nothing by default.
         }
 
-        public void InitializeState(StateModule module)
+        public void InitializeState(StateModule module, GameObject gameObject)
         {
+            _gameObject = gameObject;
+            InitializeGameObject();
             State.Initialize(module, HandleChange, !ApplyOnStart);
             ApplyInitialChange();
         }

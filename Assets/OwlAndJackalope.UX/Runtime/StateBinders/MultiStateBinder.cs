@@ -14,7 +14,7 @@ namespace OwlAndJackalope.UX.Runtime.StateBinders
         {
             for (var i = 0; i < _handlers.Length; ++i)
             {
-                _handlers[i].InitializeState(_stateModule);
+                _handlers[i].InitializeState(_stateModule, gameObject);
             }
         }
         

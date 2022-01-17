@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using OwlAndJackalope.UX.Runtime.Observers;
 using UnityEngine;
 
@@ -6,8 +7,6 @@ namespace OwlAndJackalope.UX.Runtime.StateBinders
 {
     public abstract class SingleStateBinder : BaseStateBinder
     {
-       
-
         [SerializeField]
         private StateObserver _state;
         
