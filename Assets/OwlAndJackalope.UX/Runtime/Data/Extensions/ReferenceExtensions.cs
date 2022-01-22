@@ -4,6 +4,26 @@ namespace OwlAndJackalope.UX.Runtime.Data.Extensions
 {
     public static class ReferenceExtensions
     {
+        public static TValue GetValue<TValue>(this IReference reference, string name)
+        {
+            var detail = reference.GetDetail<TValue>(name);
+            if (detail != null)
+            {
+                return detail.GetValue();
+            }
+
+            return default;
+        }
+
+        public static void SetValue<TValue>(this IReference reference, string name, TValue value)
+        {
+            var detail = reference.GetMutable<TValue>(name);
+            if (detail != null)
+            {
+                detail.SetValue(value);
+            }
+        }
+        
         public static IMutableDetail<TValue> GetMutable<TValue>(this IReference reference, string name)
         {
             return reference.GetDetail(name) as IMutableDetail<TValue>;
