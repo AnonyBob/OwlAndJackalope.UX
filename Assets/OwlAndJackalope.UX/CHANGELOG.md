@@ -32,3 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.3] - 2022-01-16
 ### Fixed
 - Fixed null reference during comparisons in the base detail if the value is null.
+
+## [1.0.4] - 2022-03-19
+### Fixed
+- Fixed recursive call to the map detail try get value method.
