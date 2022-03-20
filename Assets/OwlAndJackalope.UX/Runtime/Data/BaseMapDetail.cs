@@ -156,7 +156,7 @@ namespace OwlAndJackalope.UX.Runtime.Data
         {
             if (_value != null)
             {
-                return TryGetValue(key, out value);
+                return _value.TryGetValue(key, out value);
             }
 
             value = default(TValue);
