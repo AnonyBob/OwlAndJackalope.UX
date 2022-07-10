@@ -7,15 +7,16 @@ namespace OJ.UX.Runtime.Binding
      [System.Serializable]
     public class Observer : IDisposable
     {
-        public IDetail Detail { get; private set; }
+        public IDetail ObjectDetail => _objectDetail;
 
-        public bool IsSet => Detail != null;
+        public bool IsSet => ObjectDetail != null;
 
         [SerializeField] protected string _detailName;
         [SerializeField] protected ReferenceModule _referenceModule;
 
         protected event Action _onChange;
         protected IReference _reference;
+        protected IDetail _objectDetail;
 
         public void Initialize(Action changeHandler = null, bool suppressInitial = false)
         {
@@ -39,7 +40,7 @@ namespace OJ.UX.Runtime.Binding
 
         public TValue GetValue<TValue>()
         {
-            if (Detail is IDetail<TValue> detailAsType)
+            if (_objectDetail is IDetail<TValue> detailAsType)
                 return detailAsType.Value;
 
             return default;
@@ -48,21 +49,21 @@ namespace OJ.UX.Runtime.Binding
         protected virtual void HandleReferenceChanged(bool suppressInitial)
         {
             var newDetail = _reference.GetDetail(_detailName);
-            if (Detail != null)
+            if (_objectDetail != null)
             {
                 //Do nothing if this is the existing detail.
-                if (ReferenceEquals(newDetail, Detail))
+                if (ReferenceEquals(newDetail, _objectDetail))
                 {
                     return;
                 }
 
-                Detail.OnChanged -= HandleDetailChanged;
+                _objectDetail.OnChanged -= HandleDetailChanged;
             }
 
-            Detail = newDetail;
-            if (Detail != null)
+            _objectDetail = newDetail;
+            if (_objectDetail != null)
             {
-                Detail.OnChanged += HandleDetailChanged;
+                _objectDetail.OnChanged += HandleDetailChanged;
                 if (!suppressInitial)
                 {
                     HandleDetailChanged();
@@ -77,7 +78,7 @@ namespace OJ.UX.Runtime.Binding
 
         protected void HandleDetailChanged()
         {
-            if(Detail != null)
+            if(_objectDetail != null)
                 _onChange?.Invoke();
         }
 
@@ -88,9 +89,9 @@ namespace OJ.UX.Runtime.Binding
                 _reference.OnChanged -= HandleReferenceChanged;
             }
             
-            if (Detail != null)
+            if (_objectDetail != null)
             {
-                Detail.OnChanged -= HandleDetailChanged;
+                _objectDetail.OnChanged -= HandleDetailChanged;
             }
 
             _onChange = null;
@@ -100,9 +101,7 @@ namespace OJ.UX.Runtime.Binding
     [Serializable]
     public class Observer<TValue> : Observer
     {
-        public new IDetail<TValue> Detail { get; private set; }
-
-        public new bool IsSet => Detail != null;
+        public IDetail<TValue> Detail => _valueDetail;
 
         public bool CanMutate => _mutableDetail != null;
 
@@ -117,27 +116,29 @@ namespace OJ.UX.Runtime.Binding
         } 
 
         private IMutableDetail<TValue> _mutableDetail;
+        private IDetail<TValue> _valueDetail;
 
         protected override void HandleReferenceChanged(bool suppressInitial)
         {
             var newDetail = _reference.GetDetail<TValue>(_detailName);
-            if (Detail != null)
+            if (_objectDetail != null)
             {
                 //Do nothing if this is the existing detail.
-                if (ReferenceEquals(newDetail, Detail))
+                if (ReferenceEquals(newDetail, _objectDetail))
                 {
                     return;
                 }
 
-                Detail.OnChanged -= HandleDetailChanged;
+                _objectDetail.OnChanged -= HandleDetailChanged;
             }
 
-            Detail = newDetail;
-            _mutableDetail = Detail as IMutableDetail<TValue>;
+            _objectDetail = newDetail;
+            _valueDetail = _objectDetail as IDetail<TValue>;
+            _mutableDetail = _objectDetail as IMutableDetail<TValue>;
             
-            if (Detail != null)
+            if (_objectDetail != null)
             {
-                Detail.OnChanged += HandleDetailChanged;
+                _objectDetail.OnChanged += HandleDetailChanged;
                 if (!suppressInitial)
                 {
                     HandleDetailChanged();

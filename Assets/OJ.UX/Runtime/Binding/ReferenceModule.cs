@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using OJ.UX.Runtime.References;
 using OJ.UX.Runtime.References.Serialized;
 using UnityEngine;
@@ -22,9 +23,8 @@ namespace OJ.UX.Runtime.Binding
                 if (_runtimeReference == null)
                     InitializeRuntime();
                 
-
                 if(value != null)
-                    _runtimeReference.AddDetails(value);
+                    AddDetails(value);
             }
         }
 
@@ -44,8 +44,21 @@ namespace OJ.UX.Runtime.Binding
             var provider = GetComponent<DetailsProvider>();
             if (provider != null)
             {
-                _runtimeReference.AddDetails(provider.ProvideDetails());
+                AddDetails(provider.ProvideDetails());
             }
+        }
+
+        private void AddDetails(IEnumerable<KeyValuePair<string, IDetail>> details)
+        {
+#if UNITY_EDITOR
+            foreach (var detail in details)
+            {
+                _serializedReference.LinkDetail(detail.Key, detail.Value);
+                _runtimeReference.AddDetail(detail.Key, detail.Value);
+            }
+#else
+            _runtimeReference.AddDetails(details);
+#endif
         }
     }
 }

@@ -99,11 +99,25 @@ namespace OJ.UX.Runtime.References.Serialized
             return detail;
         }
 
+        public override bool CanMutateRuntimeDetail() => false;
+
+        public override bool IsRuntimeDetailProvided() => IsProvided;
+
         public override void LinkRuntimeDetail(IDetail detail, bool isProvided)
         {
             RuntimeDetail = detail as IDetail<IReference>;
             MutableRuntimeDetail = detail as IMutableDetail<IReference>;
             IsProvided = isProvided;
+        }
+
+        public override void RespondToChangesInRuntimeDetail()
+        {
+            //Do nothing right now.
+        }
+        
+        public override void ForceUpdateRuntimeDetail()
+        {
+            throw new NotImplementedException();
         }
     }
 }

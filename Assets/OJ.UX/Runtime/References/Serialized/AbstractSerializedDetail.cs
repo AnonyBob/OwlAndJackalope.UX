@@ -12,7 +12,15 @@ namespace OJ.UX.Runtime.References.Serialized
         
         IDetail CreateDetail();
 
+        bool CanMutateRuntimeDetail();
+
+        bool IsRuntimeDetailProvided();
+        
         void LinkRuntimeDetail(IDetail detail, bool isProvided);
+
+        void RespondToChangesInRuntimeDetail();
+        
+        void ForceUpdateRuntimeDetail();
     }
 
     [Serializable]
@@ -30,6 +38,14 @@ namespace OJ.UX.Runtime.References.Serialized
 
         public abstract IDetail CreateDetail();
 
+        public abstract bool CanMutateRuntimeDetail();
+
+        public abstract bool IsRuntimeDetailProvided();
+
         public abstract void LinkRuntimeDetail(IDetail detail, bool isProvided);
+
+        public abstract void RespondToChangesInRuntimeDetail();
+
+        public abstract void ForceUpdateRuntimeDetail();
     }
 }

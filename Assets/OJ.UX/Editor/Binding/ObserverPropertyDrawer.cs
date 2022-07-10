@@ -17,6 +17,9 @@ namespace OJ.UX.Editor.Binding
         
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            var previousEnabled = GUI.enabled;
+            GUI.enabled = !Application.isPlaying;
+            
             GUI.Box(position, GUIContent.none, EditorStyles.helpBox);
             
             var labelPos = new Rect(position.x + 5, position.y, position.width, EditorGUIUtility.singleLineHeight);
@@ -55,6 +58,8 @@ namespace OJ.UX.Editor.Binding
                     detailProp.stringValue = null;
                 }
             }
+            
+            GUI.enabled = previousEnabled;
         }
 
         private int GetPreviousSelection(SerializedProperty detailProp, string[] options)

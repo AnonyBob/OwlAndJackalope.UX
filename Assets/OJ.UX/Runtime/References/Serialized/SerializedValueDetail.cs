@@ -19,6 +19,7 @@ namespace OJ.UX.Runtime.References.Serialized
         public IDetail<TValue> RuntimeDetail { get; private set; }
         public IMutableDetail<TValue> MutableRuntimeDetail { get; private set; }
         public bool IsProvided { get; private set; }
+        public long PreviousRuntimeVersion { get; private set; }
 
         public override Type GetValueType()
         {
@@ -34,6 +35,10 @@ namespace OJ.UX.Runtime.References.Serialized
             return detail;
         }
 
+        public override bool CanMutateRuntimeDetail() => MutableRuntimeDetail != null;
+
+        public override bool IsRuntimeDetailProvided() => IsProvided;
+
         public override void LinkRuntimeDetail(IDetail detail, bool isProvided)
         {
             IsProvided = isProvided;
@@ -43,6 +48,24 @@ namespace OJ.UX.Runtime.References.Serialized
             if(RuntimeDetail != null)
             {
                 Value = RuntimeDetail.Value;
+                PreviousRuntimeVersion = RuntimeDetail.Version;
+            }
+        }
+
+        public override void RespondToChangesInRuntimeDetail()
+        {
+            if (RuntimeDetail != null && PreviousRuntimeVersion != RuntimeDetail.Version)
+            {
+                PreviousRuntimeVersion = RuntimeDetail.Version;
+                Value = RuntimeDetail.Value;
+            }
+        }
+
+        public override void ForceUpdateRuntimeDetail()
+        {
+            if (CanMutateRuntimeDetail())
+            {
+                MutableRuntimeDetail.Value = Value;
             }
         }
     }

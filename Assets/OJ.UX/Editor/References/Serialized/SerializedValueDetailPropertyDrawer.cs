@@ -13,6 +13,12 @@ namespace OJ.UX.Editor.References.Serialized
         
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            if (Application.isPlaying)
+            {
+                var detail = property.managedReferenceValue as ISerializedDetail;
+                detail?.RespondToChangesInRuntimeDetail();
+            }
+            
             var nameProp = property.FindPropertyRelative(nameof(AbstractSerializedDetail.Name));
             var valueProp = property.FindPropertyRelative(VALUE_PROP);
 
@@ -39,7 +45,16 @@ namespace OJ.UX.Editor.References.Serialized
             }
             else
             {
+                EditorGUI.BeginChangeCheck();
                 EditorGUI.PropertyField(valuePos, valueProp, GUIContent.none);
+
+                if (EditorGUI.EndChangeCheck())
+                {
+                    property.serializedObject.ApplyModifiedProperties();
+                    
+                    var detail = property.managedReferenceValue as ISerializedDetail;
+                    detail?.ForceUpdateRuntimeDetail();
+                }
             }
         }
     }
