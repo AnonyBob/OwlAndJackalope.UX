@@ -12,8 +12,7 @@ namespace OJ.UX.Editor.Binding
     [CustomPropertyDrawer(typeof(ObserveDetailsAttribute), true)]
     public class ObserverPropertyDrawer : PropertyDrawer
     {
-        private int _selectedIndex = -1;
-        private readonly List<string> _options = new List<string>(10);
+        private readonly List<GUIContent> _options = new List<GUIContent>(10);
         
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
@@ -21,7 +20,7 @@ namespace OJ.UX.Editor.Binding
             var detailProp = property.FindPropertyRelative("_detailName");
 
             var pos = position;
-            pos.width = position.width * 0.7f;
+            pos.width = position.width * 0.7f - 2;
             
             var previousEnabled = GUI.enabled;
             GUI.enabled = !Application.isPlaying;
@@ -33,18 +32,19 @@ namespace OJ.UX.Editor.Binding
             }
             else
             {
+                var isArray = CheckIfInArray();
                 var previousSelection = GetPreviousSelection(detailProp, options);
-                var newSelection = EditorGUI.Popup(pos, label.text, previousSelection, options);
+                var newSelection = EditorGUI.Popup(pos, isArray ? GUIContent.none : label, previousSelection, options);
                 if (previousSelection != newSelection && newSelection >= 0 && newSelection < options.Length)
                 {
-                    detailProp.stringValue = options[newSelection];
+                    detailProp.stringValue = options[newSelection].text;
                 }
             }
 
             EditorGUI.BeginChangeCheck();
             
-            pos.x = pos.width + 20;
-            pos.width = position.width - pos.width;
+            pos.x = pos.x + pos.width + 2;
+            pos.width = position.width - pos.width - 4;
             EditorGUI.PropertyField(pos, referenceModuleProp, GUIContent.none);
 
             if (EditorGUI.EndChangeCheck())
@@ -58,9 +58,9 @@ namespace OJ.UX.Editor.Binding
             GUI.enabled = previousEnabled;
         }
 
-        private int GetPreviousSelection(SerializedProperty detailProp, string[] options)
+        private int GetPreviousSelection(SerializedProperty detailProp, GUIContent[] options)
         {
-            return Array.IndexOf(options, detailProp.stringValue);
+            return Array.FindIndex(options, o => o.text == detailProp.stringValue);
         }
 
         private Type[] GetTypes(SerializedProperty property)
@@ -77,7 +77,7 @@ namespace OJ.UX.Editor.Binding
             return new Type[0];
         }
 
-        private string[] GetOptions(SerializedProperty referenceModuleProp, params Type[] types)
+        private GUIContent[] GetOptions(SerializedProperty referenceModuleProp, params Type[] types)
         {
             _options.Clear();
             if (referenceModuleProp.objectReferenceValue is ReferenceModule referenceModule)
@@ -90,12 +90,17 @@ namespace OJ.UX.Editor.Binding
                     var detail = detailProp.managedReferenceValue as ISerializedDetail;
                     if (detail != null && types.Contains(detail.GetValueType()))
                     {
-                        _options.Add(detail.GetName());
+                        _options.Add(new GUIContent(detail.GetName()));
                     }
                 }
             }
 
             return _options.ToArray();
+        }
+
+        private bool CheckIfInArray()
+        {
+            return fieldInfo.FieldType.IsArray || fieldInfo.FieldType == typeof(List<Observer>);
         }
     }
 }
