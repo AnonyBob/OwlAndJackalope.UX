@@ -7,6 +7,8 @@ namespace OJ.UX.Runtime.References.Serialized
     public interface ISerializedDetail
     {
         string GetName();
+
+        Type GetValueType();
         
         IDetail CreateDetail();
 
@@ -23,6 +25,8 @@ namespace OJ.UX.Runtime.References.Serialized
         {
             return Name;
         }
+
+        public abstract Type GetValueType();
 
         public abstract IDetail CreateDetail();
 

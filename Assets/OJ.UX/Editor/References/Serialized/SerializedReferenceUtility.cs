@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using OJ.UX.Runtime.References.Serialized;
@@ -30,12 +31,15 @@ namespace OJ.UX.Editor.References.Serialized
 
             list.drawElementCallback = (rect, index, active, focused) =>
             {
-                EditorGUI.PropertyField(rect, detailsProp.GetArrayElementAtIndex(index), true);
+                if(detailsProp.arraySize > index)
+                    EditorGUI.PropertyField(rect, detailsProp.GetArrayElementAtIndex(index), true);
             };
 
             list.elementHeightCallback = index =>
             {
-                return EditorGUI.GetPropertyHeight(detailsProp.GetArrayElementAtIndex(index));
+                if(detailsProp.arraySize > index)
+                    return EditorGUI.GetPropertyHeight(detailsProp.GetArrayElementAtIndex(index));
+                return 0;
             };
 
             list.onAddDropdownCallback = (rect, list) =>
@@ -52,11 +56,11 @@ namespace OJ.UX.Editor.References.Serialized
 
             foreach (var menuItem in _menuItems)
             {
-                menu.AddItem(menuItem.DisplayContent, false, () =>
+                menu.AddItem(menuItem.ListDisplay, false, () =>
                 {
                     listProp.arraySize++;
                     var itemProp = listProp.GetArrayElementAtIndex(listProp.arraySize - 1);
-                    itemProp.managedReferenceValue = CreateDetailFromType(menuItem.DisplayContent, menuItem.DetailType);
+                    itemProp.managedReferenceValue = CreateDetailFromType(menuItem.DisplayName, menuItem.DetailType);
 
                     listProp.serializedObject.ApplyModifiedProperties();
                 });
@@ -65,10 +69,10 @@ namespace OJ.UX.Editor.References.Serialized
             return menu;
         }
 
-        private static ISerializedDetail CreateDetailFromType(GUIContent displayName, Type menuItemDetailType)
+        private static ISerializedDetail CreateDetailFromType(string displayName, Type menuItemDetailType)
         {
             var detail = (AbstractSerializedDetail)Activator.CreateInstance(menuItemDetailType);
-            detail.Name = $"{displayName.text} {Guid.NewGuid().ToString().Substring(0, 5)}";
+            detail.Name = $"{displayName} {Guid.NewGuid().ToString().Substring(0, 5)}";
             return detail;
         }
 
@@ -98,13 +102,14 @@ namespace OJ.UX.Editor.References.Serialized
                                 var displayHelper = type.GetCustomAttribute<SerializedDetailDisplayAttribute>();
                                 if (displayHelper != null)
                                 {
-                                    displayContent = displayHelper.DisplayName;
+                                    displayContent = displayHelper.FullName;
                                 }
                                 
                                 items.Add(new DetailListMenuItem()
                                 {
                                     DetailType = type,
-                                    DisplayContent = new GUIContent(displayContent)
+                                    ListDisplay = new GUIContent(displayContent),
+                                    DisplayName = displayHelper?.DisplayName ?? displayContent
                                 });
                             }
                             
@@ -118,7 +123,8 @@ namespace OJ.UX.Editor.References.Serialized
 
         private struct DetailListMenuItem
         {
-            public GUIContent DisplayContent { get; set; }
+            public GUIContent ListDisplay { get; set; }
+            public string DisplayName { get; set; }
             public Type DetailType { get; set; }
         }
     }

@@ -11,7 +11,7 @@ namespace OJ.UX.Runtime.References.Serialized
         [SerializeReference]
         public List<ISerializedDetail> Details;
 
-        public IReference CreateReference()
+        public IMutableReference CreateReference()
         {
             return new Reference(Details.Select(d => new KeyValuePair<string, IDetail>(d.GetName(), d.CreateDetail())));
         }

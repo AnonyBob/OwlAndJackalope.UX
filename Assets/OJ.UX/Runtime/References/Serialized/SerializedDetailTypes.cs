@@ -75,23 +75,23 @@ namespace OJ.UX.Runtime.References.Serialized
         
     }
 
-    [Serializable, SerializedDetailDisplay("Reference")]
-    public class SerializedReferenceDetail : AbstractSerializedDetail, ISerializedValueDetail<IReference>
+    [Serializable, SerializedDetailDisplay("Reference", "Special")]
+    public sealed class SerializedReferenceDetail : AbstractSerializedDetail, ISerializedValueDetail<IReference>
     {
         [SerializeField]
-        public SerializedReferenceTemplate Template;
+        public SerializedReferenceTemplate Value;
 
         private IDetail<IReference> _runtimeDetail;
         private IMutableDetail<IReference> _mutableRuntimeDetail;
         
-        public Type GetDataType()
+        public override Type GetValueType()
         {
             return typeof(IReference);
         }
         
         public override IDetail CreateDetail()
         {
-            var detail = new Detail<IReference>(Template.CreateReference());
+            var detail = new Detail<IReference>(Value.CreateReference());
 #if UNITY_EDITOR
             LinkRuntimeDetail(detail);
 #endif

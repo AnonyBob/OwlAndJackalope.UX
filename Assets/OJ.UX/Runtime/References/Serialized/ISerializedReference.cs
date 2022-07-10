@@ -2,6 +2,6 @@
 {
     public interface ISerializedReference
     {
-        IReference CreateReference();
+        IMutableReference CreateReference();
     }
 }

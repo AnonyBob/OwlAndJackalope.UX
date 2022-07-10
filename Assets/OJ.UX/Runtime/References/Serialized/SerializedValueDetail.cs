@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace OJ.UX.Runtime.References.Serialized
 {
-    public interface ISerializedValueDetail<TValue>
+    public interface ISerializedValueDetail<TValue> : ISerializedDetail
     {
     }
     
@@ -16,6 +16,11 @@ namespace OJ.UX.Runtime.References.Serialized
         private IDetail<TValue> _runtimeDetail;
         private IMutableDetail<TValue> _mutableRuntimeDetail;
 
+        public override Type GetValueType()
+        {
+            return typeof(TValue);
+        }
+        
         public override IDetail CreateDetail()
         {
             var detail = new Detail<TValue>(Value);
