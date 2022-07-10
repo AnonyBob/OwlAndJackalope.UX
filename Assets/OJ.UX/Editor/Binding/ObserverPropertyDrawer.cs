@@ -21,7 +21,10 @@ namespace OJ.UX.Editor.Binding
             var detailProp = property.FindPropertyRelative("_detailName");
 
             var pos = position;
-            pos.width = position.width * 0.7f - 2;
+            pos.width = position.width * 0.7f;
+            
+            var previousEnabled = GUI.enabled;
+            GUI.enabled = !Application.isPlaying;
             
             var options = GetOptions(referenceModuleProp, GetTypes(property));
             if (options.Length == 0 || referenceModuleProp.objectReferenceValue == null)
@@ -40,48 +43,19 @@ namespace OJ.UX.Editor.Binding
 
             EditorGUI.BeginChangeCheck();
             
-            pos.x = pos.width + 2;
+            pos.x = pos.width + 20;
             pos.width = position.width - pos.width;
             EditorGUI.PropertyField(pos, referenceModuleProp, GUIContent.none);
 
             if (EditorGUI.EndChangeCheck())
             {
-                
+                if (referenceModuleProp.objectReferenceValue == null || options.Length == 0)
+                {
+                    detailProp.stringValue = null;
+                }
             }
 
-            // var pos = position;
-            // EditorGUI.PropertyField()
-            //
-            // var previousEnabled = GUI.enabled;
-            // GUI.enabled = !Application.isPlaying;
-            //
-            // GUI.Box(position, GUIContent.none, EditorStyles.helpBox);
-            //
-            // var labelPos = new Rect(position.x + 5, position.y, position.width, EditorGUIUtility.singleLineHeight);
-            // EditorGUI.LabelField(labelPos, label, EditorStyles.boldLabel);
-            //
-            // EditorGUI.BeginChangeCheck();
-            //
-            // var posY = labelPos.y + EditorGUIUtility.singleLineHeight;
-            // var referenceModulePos = new Rect(position.x + 10, posY, position.width - 15, EditorGUIUtility.singleLineHeight);
-            //
-            // EditorGUI.PropertyField(referenceModulePos, referenceModuleProp, new GUIContent("Reference"));
-            //
-            // posY = referenceModulePos.y + EditorGUIUtility.singleLineHeight;
-            // var detailPos = new Rect(position.x + 10, posY, position.width - 15, EditorGUIUtility.singleLineHeight);
-            // var detailProp = property.FindPropertyRelative("_detailName");
-            //
-
-            //
-            // if (EditorGUI.EndChangeCheck())
-            // {
-            //     if (referenceModuleProp.objectReferenceValue == null || options.Length == 0)
-            //     {
-            //         detailProp.stringValue = null;
-            //     }
-            // }
-            //
-            // GUI.enabled = previousEnabled;
+            GUI.enabled = previousEnabled;
         }
 
         private int GetPreviousSelection(SerializedProperty detailProp, string[] options)
