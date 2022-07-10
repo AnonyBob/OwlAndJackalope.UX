@@ -4,79 +4,90 @@ using UnityEngine;
 namespace OJ.UX.Runtime.References.Serialized
 {
     [Serializable]
-    public class SerializedIntDetail : SerializedDetail<int>
+    public class SerializedBoolDetail : SerializedValueDetail<bool>
+    {
+        
+    }
+    
+    [Serializable, SerializedDetailDisplay("Integer")]
+    public class SerializedIntDetail : SerializedValueDetail<int>
+    {
+        
+    }
+    
+    [Serializable, SerializedDetailDisplay("Long")]
+    public class SerializedLongDetail : SerializedValueDetail<long>
+    {
+        
+    }
+    
+    [Serializable, SerializedDetailDisplay("Float")]
+    public class SerializedFloatDetail : SerializedValueDetail<float>
     {
         
     }
     
     [Serializable]
-    public class SerializedLongDetail : SerializedDetail<long>
+    public class SerializedDoubleDetail : SerializedValueDetail<double>
     {
         
     }
     
     [Serializable]
-    public class SerializedFloatDetail : SerializedDetail<float>
-    {
-        
-    }
-    
-    [Serializable]
-    public class SerializedDoubleDetail : SerializedDetail<double>
-    {
-        
-    }
-    
-    [Serializable]
-    public class SerializedStringDetail : SerializedDetail<string>
+    public class SerializedStringDetail : SerializedValueDetail<string>
     {
         
     }
 
     [Serializable]
-    public class SerializedVector2Detail : SerializedDetail<Vector2>
+    public class SerializedVector2Detail : SerializedValueDetail<Vector2>
     {
         
     }
     
     [Serializable]
-    public class SerializedVector3Detail : SerializedDetail<Vector3>
+    public class SerializedVector3Detail : SerializedValueDetail<Vector3>
     {
         
     }
     
     [Serializable]
-    public class SerializedColorDetail : SerializedDetail<Color>
+    public class SerializedColorDetail : SerializedValueDetail<Color>
     {
         
     }
     
     [Serializable]
-    public class SerializedGameObjectDetail : SerializedDetail<GameObject>
+    public class SerializedGameObjectDetail : SerializedValueDetail<GameObject>
     {
         
     }
     
     [Serializable]
-    public class SerializedTextureDetail : SerializedDetail<Texture2D>
+    public class SerializedTextureDetail : SerializedValueDetail<Texture2D>
     {
         
     }
     
     [Serializable]
-    public class SerializedSpriteDetail : SerializedDetail<Sprite>
+    public class SerializedSpriteDetail : SerializedValueDetail<Sprite>
     {
         
     }
 
-    [Serializable]
-    public class SerializedReferenceDetail : AbstractSerializedDetail
+    [Serializable, SerializedDetailDisplay("Reference")]
+    public class SerializedReferenceDetail : AbstractSerializedDetail, ISerializedValueDetail<IReference>
     {
         [SerializeField]
         public SerializedReferenceTemplate Template;
 
         private IDetail<IReference> _runtimeDetail;
         private IMutableDetail<IReference> _mutableRuntimeDetail;
+        
+        public Type GetDataType()
+        {
+            return typeof(IReference);
+        }
         
         public override IDetail CreateDetail()
         {

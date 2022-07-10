@@ -686,15 +686,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reference:
     Details:
-    - rid: 8756104008383332352
+    - rid: 8756104008383332364
+    - rid: 8756104008383332365
+    - rid: 8756104008383332366
+    - rid: 8756104008383332367
+    - rid: 8756104008383332368
+    - rid: 8756104008383332369
   references:
     version: 2
     RefIds:
-    - rid: 8756104008383332352
-      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+    - rid: 8756104008383332364
+      type: {class: SerializedBoolDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
       data:
-        Name: be366
-        Value: 23
+        Name: Boolean 2a45d
+        Value: 0
+    - rid: 8756104008383332365
+      type: {class: SerializedGameObjectDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: GameObject a9654
+        Value: {fileID: 247604117}
+    - rid: 8756104008383332366
+      type: {class: SerializedFloatDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Single 9d96b
+        Value: 0
+    - rid: 8756104008383332367
+      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: String 4e348
+        Value: 
+    - rid: 8756104008383332368
+      type: {class: SerializedFloatDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Float 20518
+        Value: 0
+    - rid: 8756104008383332369
+      type: {class: SerializedReferenceDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Reference c4774
+        Template: {fileID: 0}
 --- !u!1 &383866825
 GameObject:
   m_ObjectHideFlags: 0
