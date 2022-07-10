@@ -12,7 +12,17 @@ namespace OJ.UX.Runtime.References
             get => _value;
             set
             {
-                if (!EqualityComparer<TValue>.Default.Equals(_value, value))
+                if (_comparer != null)
+                {
+                    if (_comparer.Equals(_value, value))
+                    {
+                        _value = value;
+                        Version++;
+                    
+                        OnChanged?.Invoke();
+                    }
+                }
+                else if (!EqualityComparer<TValue>.Default.Equals(_value, value))
                 {
                     _value = value;
                     Version++;

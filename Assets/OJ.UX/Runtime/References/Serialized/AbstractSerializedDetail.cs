@@ -12,7 +12,7 @@ namespace OJ.UX.Runtime.References.Serialized
         
         IDetail CreateDetail();
 
-        void LinkRuntimeDetail(IDetail detail);
+        void LinkRuntimeDetail(IDetail detail, bool isProvided);
     }
 
     [Serializable]
@@ -30,6 +30,6 @@ namespace OJ.UX.Runtime.References.Serialized
 
         public abstract IDetail CreateDetail();
 
-        public abstract void LinkRuntimeDetail(IDetail detail);
+        public abstract void LinkRuntimeDetail(IDetail detail, bool isProvided);
     }
 }

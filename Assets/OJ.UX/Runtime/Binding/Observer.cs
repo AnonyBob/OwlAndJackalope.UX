@@ -11,16 +11,11 @@ namespace OJ.UX.Runtime.Binding
 
         public bool IsSet => Detail != null;
 
-        public object Value => Detail?.Value;
+        [SerializeField] protected string _detailName;
+        [SerializeField] protected ReferenceModule _referenceModule;
 
-        [SerializeField]
-        private string _detailName;
-        
-        [SerializeField]
-        private ReferenceModule _referenceModule;
-
-        private event Action _onChange;
-        private IReference _reference;
+        protected event Action _onChange;
+        protected IReference _reference;
 
         public void Initialize(Action changeHandler = null, bool suppressInitial = false)
         {
@@ -37,6 +32,11 @@ namespace OJ.UX.Runtime.Binding
             }
         }
 
+        public void RemoveHandler(Action changeHandler)
+        {
+            _onChange -= changeHandler;
+        }
+
         public TValue GetValue<TValue>()
         {
             if (Detail is IDetail<TValue> detailAsType)
@@ -44,13 +44,8 @@ namespace OJ.UX.Runtime.Binding
 
             return default;
         }
-
-        private void HandleReferenceChanged()
-        {
-            HandleReferenceChanged(false);
-        }
         
-        private void HandleReferenceChanged(bool suppressInitial)
+        protected virtual void HandleReferenceChanged(bool suppressInitial)
         {
             var newDetail = _reference.GetDetail(_detailName);
             if (Detail != null)
@@ -75,7 +70,12 @@ namespace OJ.UX.Runtime.Binding
             }
         }
 
-        private void HandleDetailChanged()
+        protected void HandleReferenceChanged()
+        {
+            HandleReferenceChanged(false);
+        }
+
+        protected void HandleDetailChanged()
         {
             if(Detail != null)
                 _onChange?.Invoke();
@@ -87,17 +87,22 @@ namespace OJ.UX.Runtime.Binding
             {
                 _reference.OnChanged -= HandleReferenceChanged;
             }
+            
+            if (Detail != null)
+            {
+                Detail.OnChanged -= HandleDetailChanged;
+            }
 
             _onChange = null;
         }
     }
     
-    [System.Serializable]
-    public class Observer<TValue> : IDisposable
+    [Serializable]
+    public class Observer<TValue> : Observer
     {
-        public IDetail<TValue> Detail { get; private set; }
+        public new IDetail<TValue> Detail { get; private set; }
 
-        public bool IsSet => Detail != null;
+        public new bool IsSet => Detail != null;
 
         public bool CanMutate => _mutableDetail != null;
 
@@ -111,38 +116,9 @@ namespace OJ.UX.Runtime.Binding
             }
         } 
 
-        [SerializeField]
-        private string _detailName;
-        
-        [SerializeField]
-        private ReferenceModule _referenceModule;
-
-        private event Action _onChange;
-        
-        private IReference _reference;
         private IMutableDetail<TValue> _mutableDetail;
 
-        public void Initialize(Action changeHandler = null, bool suppressInitial = false)
-        {
-            if (changeHandler != null)
-            {
-                _onChange += changeHandler;
-            }
-
-            if (_reference == null && _referenceModule != null)
-            {
-                _reference = _referenceModule.Reference;
-                _reference.OnChanged += HandleReferenceChanged;
-                HandleReferenceChanged(suppressInitial);
-            }
-        }
-
-        private void HandleReferenceChanged()
-        {
-            HandleReferenceChanged(false);
-        }
-        
-        private void HandleReferenceChanged(bool suppressInitial)
+        protected override void HandleReferenceChanged(bool suppressInitial)
         {
             var newDetail = _reference.GetDetail<TValue>(_detailName);
             if (Detail != null)
@@ -167,22 +143,6 @@ namespace OJ.UX.Runtime.Binding
                     HandleDetailChanged();
                 }
             }
-        }
-
-        private void HandleDetailChanged()
-        {
-            if(Detail != null)
-                _onChange?.Invoke();
-        }
-
-        public void Dispose()
-        {
-            if (_reference != null)
-            {
-                _reference.OnChanged -= HandleReferenceChanged;
-            }
-
-            _onChange = null;
         }
     }
 }

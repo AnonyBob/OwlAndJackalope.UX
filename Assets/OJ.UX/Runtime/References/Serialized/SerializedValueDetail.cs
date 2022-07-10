@@ -5,6 +5,9 @@ namespace OJ.UX.Runtime.References.Serialized
 {
     public interface ISerializedValueDetail<TValue> : ISerializedDetail
     {
+        public IDetail<TValue> RuntimeDetail { get; }
+        public IMutableDetail<TValue> MutableRuntimeDetail { get; }
+        public bool IsProvided { get; }
     }
     
     [Serializable]
@@ -13,8 +16,9 @@ namespace OJ.UX.Runtime.References.Serialized
         [SerializeField]
         public TValue Value;
 
-        private IDetail<TValue> _runtimeDetail;
-        private IMutableDetail<TValue> _mutableRuntimeDetail;
+        public IDetail<TValue> RuntimeDetail { get; private set; }
+        public IMutableDetail<TValue> MutableRuntimeDetail { get; private set; }
+        public bool IsProvided { get; private set; }
 
         public override Type GetValueType()
         {
@@ -25,19 +29,20 @@ namespace OJ.UX.Runtime.References.Serialized
         {
             var detail = new Detail<TValue>(Value);
 #if UNITY_EDITOR
-            LinkRuntimeDetail(detail);
+            LinkRuntimeDetail(detail, false);
 #endif
             return detail;
         }
 
-        public override void LinkRuntimeDetail(IDetail detail)
+        public override void LinkRuntimeDetail(IDetail detail, bool isProvided)
         {
-            _mutableRuntimeDetail = detail as IMutableDetail<TValue>;
-            _runtimeDetail = detail as IDetail<TValue>;
+            IsProvided = isProvided;
+            MutableRuntimeDetail = detail as IMutableDetail<TValue>;
+            RuntimeDetail = detail as IDetail<TValue>;
             
-            if(_runtimeDetail != null)
+            if(RuntimeDetail != null)
             {
-                Value = _runtimeDetail.Value;
+                Value = RuntimeDetail.Value;
             }
         }
     }

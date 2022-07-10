@@ -81,8 +81,9 @@ namespace OJ.UX.Runtime.References.Serialized
         [SerializeField]
         public SerializedReferenceTemplate Value;
 
-        private IDetail<IReference> _runtimeDetail;
-        private IMutableDetail<IReference> _mutableRuntimeDetail;
+        public IDetail<IReference> RuntimeDetail { get; private set; }
+        public IMutableDetail<IReference> MutableRuntimeDetail { get; private set; }
+        public bool IsProvided { get; private set; }
         
         public override Type GetValueType()
         {
@@ -93,15 +94,16 @@ namespace OJ.UX.Runtime.References.Serialized
         {
             var detail = new Detail<IReference>(Value.CreateReference());
 #if UNITY_EDITOR
-            LinkRuntimeDetail(detail);
+            LinkRuntimeDetail(detail, false);
 #endif
             return detail;
         }
 
-        public override void LinkRuntimeDetail(IDetail detail)
+        public override void LinkRuntimeDetail(IDetail detail, bool isProvided)
         {
-            _runtimeDetail = detail as IDetail<IReference>;
-            _mutableRuntimeDetail = detail as IMutableDetail<IReference>;
+            RuntimeDetail = detail as IDetail<IReference>;
+            MutableRuntimeDetail = detail as IMutableDetail<IReference>;
+            IsProvided = isProvided;
         }
     }
 }
