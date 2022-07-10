@@ -617,6 +617,7 @@ GameObject:
   - component: {fileID: 247604118}
   - component: {fileID: 247604122}
   - component: {fileID: 247604121}
+  - component: {fileID: 247604123}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -636,6 +637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -686,10 +688,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _intBinder:
-    _detailName: Flipping
+    _detailName: BetterHelp
     _referenceModule: {fileID: 247604122}
   _stringBinder:
-    _detailName: Guess
+    _detailName: Welp
     _referenceModule: {fileID: 247604122}
   _text: {fileID: 1862942484}
 --- !u!114 &247604122
@@ -716,23 +718,36 @@ MonoBehaviour:
     - rid: 8756104008383332373
       type: {class: SerializedBoolDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
       data:
-        Name: Boolean 0edc3
+        Name: Better
         Value: 0
     - rid: 8756104008383332374
       type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
       data:
-        Name: Flipping
+        Name: BetterHelp
         Value: 234
     - rid: 8756104008383332375
       type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
       data:
-        Name: Guess
+        Name: Welp
         Value: Which place?
     - rid: 8756104008383332376
       type: {class: SerializedDoubleDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
       data:
         Name: Found
         Value: 2.67
+--- !u!114 &247604123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247604117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c3b1a4e01a443bac722acb3d7db341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _template: {fileID: 11400000, guid: 3d3ade358c351224fbe3f078351837ea, type: 2}
 --- !u!1 &383866825
 GameObject:
   m_ObjectHideFlags: 0

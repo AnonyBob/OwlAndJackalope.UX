@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using OJ.UX.Runtime.References;
 using OJ.UX.Runtime.References.Serialized;
 using UnityEngine;
@@ -60,5 +61,17 @@ namespace OJ.UX.Runtime.Binding
             _runtimeReference.AddDetails(details);
 #endif
         }
+
+#if UNITY_EDITOR
+        public bool Editor_CheckName(string name)
+        {
+            if (_serializedReference?.Details != null)
+            {
+                return _serializedReference.Details.All(d => d.GetName() != name);
+            }
+
+            return true;
+        }
+#endif
     }
 }

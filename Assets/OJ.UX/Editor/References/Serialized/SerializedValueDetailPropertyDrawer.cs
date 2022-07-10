@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
+using OJ.UX.Runtime.Binders;
+using OJ.UX.Runtime.Binding;
 using OJ.UX.Runtime.References.Serialized;
 using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace OJ.UX.Editor.References.Serialized
 {
@@ -11,7 +11,7 @@ namespace OJ.UX.Editor.References.Serialized
     public class SerializedValueDetailPropertyDrawer : PropertyDrawer
     {
         private const string VALUE_PROP = "Value";
-        private const float BUFFER = 5;
+        private const float BUFFER = 2;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
@@ -34,8 +34,8 @@ namespace OJ.UX.Editor.References.Serialized
 
                 GUI.backgroundColor = originalColor;
 
-                startingPos = 30;
-                startingWidth = 30;
+                startingPos = position.x + 22;
+                startingWidth = 22;
             }
 
             var nameProp = property.FindPropertyRelative(nameof(AbstractSerializedDetail.Name));
@@ -51,7 +51,13 @@ namespace OJ.UX.Editor.References.Serialized
             GUI.enabled = !Application.isPlaying;
             
             var namePos = new Rect(startingPos + typePos.width + BUFFER, position.y, position.width * 0.3f - BUFFER, EditorGUIUtility.singleLineHeight);
-            EditorGUI.PropertyField(namePos, nameProp, GUIContent.none);
+            var nameValue = EditorGUI.TextField(namePos, nameProp.stringValue);
+            if (nameValue != nameProp.stringValue && NameValueIsNotDuplicate(nameValue, property))
+            {
+                var previousNameValue = nameProp.stringValue;
+                nameProp.stringValue = nameValue;
+                UpdateObservingBinders(property, previousNameValue, nameValue);
+            }
             
             GUI.enabled = previousEnableState;
         
@@ -77,6 +83,28 @@ namespace OJ.UX.Editor.References.Serialized
                 }
 
                 GUI.enabled = previousEnableState;
+            }
+        }
+        
+        private bool NameValueIsNotDuplicate(string newName, SerializedProperty property)
+        {
+            if (property.serializedObject.targetObject is ReferenceModule module)
+            {
+                return module.Editor_CheckName(newName);
+            }
+
+            return true;
+        }
+        
+        private void UpdateObservingBinders(SerializedProperty property, string originalName, string newName)
+        {
+            if (property.serializedObject.targetObject is ReferenceModule module)
+            {
+                var detailBinders = Object.FindObjectsOfType<AbstractDetailBinder>();
+                foreach (var detailBinder in detailBinders)
+                {
+                    detailBinder.RespondToNameChange(module, originalName, newName);
+                }
             }
         }
     }

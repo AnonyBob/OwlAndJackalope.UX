@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Reference Template
   m_EditorClassIdentifier: 
   Details:
-  - rid: 8756104008383332370
+  - rid: 8756104028291858432
   references:
     version: 2
     RefIds:
-    - rid: 8756104008383332370
-      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+    - rid: 8756104028291858432
+      type: {class: SerializedBoolDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
       data:
-        Name: Integer a4925
-        Value: 0
+        Name: Better
+        Value: 1

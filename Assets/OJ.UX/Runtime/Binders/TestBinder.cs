@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace OJ.UX.Runtime.Binders
 {
-    public class TestBinder : MonoBehaviour
+    public class TestBinder : AbstractDetailBinder
     {
         [SerializeField]
         private Observer<int> _intBinder;
