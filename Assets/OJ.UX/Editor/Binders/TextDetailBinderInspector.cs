@@ -9,6 +9,8 @@ namespace OJ.UX.Editor.Binders
         public override void OnInspectorGUI()
         {
             EditorGUI.BeginChangeCheck();
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_textField"));
             
             var useDefaultStringProp = serializedObject.FindProperty("_useDefaultString");
             EditorGUILayout.PropertyField(useDefaultStringProp);

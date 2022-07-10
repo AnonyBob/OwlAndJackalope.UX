@@ -6,9 +6,11 @@ using UnityEngine;
 
 namespace OJ.UX.Runtime.Binders
 {
-    [RequireComponent(typeof(TextMeshProUGUI))]
     public class TextDetailBinder : AbstractDetailBinder
     {
+        [SerializeField]
+        private TextMeshProUGUI _textField;
+        
         [SerializeField]
         private bool _useDefaultString;
 
@@ -22,13 +24,11 @@ namespace OJ.UX.Runtime.Binders
              typeof(long), typeof(float), typeof(double), typeof(bool), 
              typeof(Enum), typeof(TimeSpan), typeof(DateTime))]
         private Observer[] _stringArgumentObservers;
-
-        private TextMeshProUGUI _textField;
+        
         private FormattingProvider _formattingProvider;
 
         private void Start()
         {
-            _textField = GetComponent<TextMeshProUGUI>();
             _formattingProvider = GetComponent<FormattingProvider>();
             
             _defaultStringObserver.Initialize(UpdateText, true);
@@ -62,6 +62,11 @@ namespace OJ.UX.Runtime.Binders
                     if (_formattingProvider != null)
                     {
                         textString = string.Format(_formattingProvider.GetFormatter(), textString,
+                            _stringArgumentObservers.Select(x => x.ObjectDetail.Value).ToArray());
+                    }
+                    else
+                    {
+                        textString = string.Format(textString,
                             _stringArgumentObservers.Select(x => x.ObjectDetail.Value).ToArray());
                     }
                 }
