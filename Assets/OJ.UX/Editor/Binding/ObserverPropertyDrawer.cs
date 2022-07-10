@@ -17,49 +17,71 @@ namespace OJ.UX.Editor.Binding
         
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            var previousEnabled = GUI.enabled;
-            GUI.enabled = !Application.isPlaying;
-            
-            GUI.Box(position, GUIContent.none, EditorStyles.helpBox);
-            
-            var labelPos = new Rect(position.x + 5, position.y, position.width, EditorGUIUtility.singleLineHeight);
-            EditorGUI.LabelField(labelPos, label, EditorStyles.boldLabel);
-
-            EditorGUI.BeginChangeCheck();
-            
-            var posY = labelPos.y + EditorGUIUtility.singleLineHeight;
-            var referenceModulePos = new Rect(position.x + 10, posY, position.width - 15, EditorGUIUtility.singleLineHeight);
             var referenceModuleProp = property.FindPropertyRelative("_referenceModule");
-            EditorGUI.PropertyField(referenceModulePos, referenceModuleProp, new GUIContent("Reference"));
-
-            posY = referenceModulePos.y + EditorGUIUtility.singleLineHeight;
-            var detailPos = new Rect(position.x + 10, posY, position.width - 15, EditorGUIUtility.singleLineHeight);
             var detailProp = property.FindPropertyRelative("_detailName");
 
+            var pos = position;
+            pos.width = position.width * 0.7f - 2;
+            
             var options = GetOptions(referenceModuleProp, GetTypes(property));
             if (options.Length == 0 || referenceModuleProp.objectReferenceValue == null)
             {
-                EditorGUI.LabelField(detailPos, "⚠ No valid details available!");
+                EditorGUI.LabelField(pos, "⚠ No valid details available!");
             }
             else
             {
                 var previousSelection = GetPreviousSelection(detailProp, options);
-                var newSelection = EditorGUI.Popup(detailPos, "Detail", previousSelection, options);
+                var newSelection = EditorGUI.Popup(pos, label.text, previousSelection, options);
                 if (previousSelection != newSelection && newSelection >= 0 && newSelection < options.Length)
                 {
                     detailProp.stringValue = options[newSelection];
                 }
             }
 
+            EditorGUI.BeginChangeCheck();
+            
+            pos.x = pos.width + 2;
+            pos.width = position.width - pos.width;
+            EditorGUI.PropertyField(pos, referenceModuleProp, GUIContent.none);
+
             if (EditorGUI.EndChangeCheck())
             {
-                if (referenceModuleProp.objectReferenceValue == null || options.Length == 0)
-                {
-                    detailProp.stringValue = null;
-                }
+                
             }
-            
-            GUI.enabled = previousEnabled;
+
+            // var pos = position;
+            // EditorGUI.PropertyField()
+            //
+            // var previousEnabled = GUI.enabled;
+            // GUI.enabled = !Application.isPlaying;
+            //
+            // GUI.Box(position, GUIContent.none, EditorStyles.helpBox);
+            //
+            // var labelPos = new Rect(position.x + 5, position.y, position.width, EditorGUIUtility.singleLineHeight);
+            // EditorGUI.LabelField(labelPos, label, EditorStyles.boldLabel);
+            //
+            // EditorGUI.BeginChangeCheck();
+            //
+            // var posY = labelPos.y + EditorGUIUtility.singleLineHeight;
+            // var referenceModulePos = new Rect(position.x + 10, posY, position.width - 15, EditorGUIUtility.singleLineHeight);
+            //
+            // EditorGUI.PropertyField(referenceModulePos, referenceModuleProp, new GUIContent("Reference"));
+            //
+            // posY = referenceModulePos.y + EditorGUIUtility.singleLineHeight;
+            // var detailPos = new Rect(position.x + 10, posY, position.width - 15, EditorGUIUtility.singleLineHeight);
+            // var detailProp = property.FindPropertyRelative("_detailName");
+            //
+
+            //
+            // if (EditorGUI.EndChangeCheck())
+            // {
+            //     if (referenceModuleProp.objectReferenceValue == null || options.Length == 0)
+            //     {
+            //         detailProp.stringValue = null;
+            //     }
+            // }
+            //
+            // GUI.enabled = previousEnabled;
         }
 
         private int GetPreviousSelection(SerializedProperty detailProp, string[] options)
@@ -100,11 +122,6 @@ namespace OJ.UX.Editor.Binding
             }
 
             return _options.ToArray();
-        }
-
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-        {
-            return EditorGUIUtility.singleLineHeight * 3 + 4;
         }
     }
 }

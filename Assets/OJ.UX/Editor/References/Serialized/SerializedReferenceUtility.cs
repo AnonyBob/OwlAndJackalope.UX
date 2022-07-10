@@ -22,7 +22,7 @@ namespace OJ.UX.Editor.References.Serialized
         public static ReorderableList CreateDetailList(GUIContent label, SerializedProperty detailsProp, GenericMenu menu)
         {
             var list = new ReorderableList(detailsProp.serializedObject, detailsProp, 
-                true, true, true, true);
+                false, true, true, true);
 
             list.drawHeaderCallback = rect =>
             {
