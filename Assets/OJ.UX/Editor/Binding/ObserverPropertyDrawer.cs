@@ -88,7 +88,9 @@ namespace OJ.UX.Editor.Binding
                 {
                     var detailProp = details.GetArrayElementAtIndex(i);
                     var detail = detailProp.managedReferenceValue as ISerializedDetail;
-                    if (detail != null && types.Contains(detail.GetValueType()))
+                    if (detail != null && types.Any(t => t == detail.GetValueType() 
+                                                         || detail.GetValueType().IsSubclassOf(t) 
+                                                         || t.IsAssignableFrom(detail.GetValueType())))
                     {
                         _options.Add(new GUIContent(detail.GetName()));
                     }

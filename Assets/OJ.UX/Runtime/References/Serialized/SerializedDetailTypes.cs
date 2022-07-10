@@ -52,6 +52,18 @@ namespace OJ.UX.Runtime.References.Serialized
     }
     
     [Serializable]
+    public class SerializedVector2IntDetail : SerializedValueDetail<Vector2Int>
+    {
+        
+    }
+    
+    [Serializable]
+    public class SerializedVector3IntDetail : SerializedValueDetail<Vector3Int>
+    {
+        
+    }
+    
+    [Serializable]
     public class SerializedColorDetail : SerializedValueDetail<Color>
     {
         
