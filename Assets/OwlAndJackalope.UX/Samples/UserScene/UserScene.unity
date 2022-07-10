@@ -401,6 +401,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1063022875}
   m_Father: {fileID: 1319732465}
@@ -478,6 +479,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1319732465}
   m_RootOrder: 4
@@ -613,6 +615,7 @@ GameObject:
   - component: {fileID: 247604120}
   - component: {fileID: 247604119}
   - component: {fileID: 247604118}
+  - component: {fileID: 247604121}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -664,10 +667,34 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &247604121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247604117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e0bf01f1314ed9b11e205b91fc9d95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reference:
+    Details:
+    - rid: 8756104008383332352
+  references:
+    version: 2
+    RefIds:
+    - rid: 8756104008383332352
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: be366
+        Value: 23
 --- !u!1 &383866825
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,6 +785,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1319732465}
   m_Father: {fileID: 0}
@@ -802,6 +830,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1319732465}
   m_RootOrder: 1
@@ -876,6 +905,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 444746389}
   - {fileID: 391936805840143629}
@@ -945,6 +975,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2142001335}
   m_RootOrder: 0
@@ -1019,6 +1050,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 391936805661393696}
   - {fileID: 391936806117376023}
@@ -1455,6 +1487,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 69943408}
   m_RootOrder: 0
@@ -1644,6 +1677,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 69943408}
   - {fileID: 622648912}
@@ -1814,6 +1848,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2142001335}
   m_Father: {fileID: 1319732465}
@@ -1854,6 +1889,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1319732465}
   m_RootOrder: 2
@@ -2058,6 +2094,7 @@ Transform:
   m_LocalRotation: {x: -0.022957042, y: 0.97606146, z: -0.17338957, w: -0.12927918}
   m_LocalPosition: {x: 2.32, y: 1.203, z: 2.378}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -2084,6 +2121,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 1
   m_Antialiasing: 1
   m_AntialiasingQuality: 2
@@ -2395,6 +2433,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1319732465}
   m_RootOrder: 7
@@ -2551,6 +2590,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1782671475}
   - {fileID: 2121691229727215999}
@@ -2757,6 +2797,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 654153005}
   m_Father: {fileID: 1594694944}
@@ -2945,6 +2986,7 @@ MonoBehaviour:
             m_AssetGUID: 
             m_SubObjectName: 
             m_SubObjectType: 
+            m_EditorAssetChanged: 0
         _type: 15
         _enumId: 0
         _comparisonType: 5
@@ -2969,6 +3011,7 @@ MonoBehaviour:
             m_AssetGUID: 
             m_SubObjectName: 
             m_SubObjectType: 
+            m_EditorAssetChanged: 0
         _type: 0
         _enumId: 0
         _comparisonType: 0
@@ -2995,6 +3038,7 @@ MonoBehaviour:
             m_AssetGUID: 
             m_SubObjectName: 
             m_SubObjectType: 
+            m_EditorAssetChanged: 0
         _type: 0
         _enumId: 0
         _comparisonType: 0
@@ -3021,6 +3065,7 @@ MonoBehaviour:
             m_AssetGUID: 
             m_SubObjectName: 
             m_SubObjectType: 
+            m_EditorAssetChanged: 0
         _type: 15
         _enumId: 0
         _comparisonType: 2
@@ -3044,6 +3089,7 @@ MonoBehaviour:
             m_AssetGUID: 
             m_SubObjectName: 
             m_SubObjectType: 
+            m_EditorAssetChanged: 0
         _type: 15
         _enumId: 0
         _comparisonType: 5
@@ -3070,6 +3116,7 @@ MonoBehaviour:
             m_AssetGUID: 
             m_SubObjectName: 
             m_SubObjectType: 
+            m_EditorAssetChanged: 0
         _type: 15
         _enumId: 0
         _comparisonType: 5
@@ -3096,6 +3143,7 @@ MonoBehaviour:
             m_AssetGUID: 
             m_SubObjectName: 
             m_SubObjectType: 
+            m_EditorAssetChanged: 0
         _type: 15
         _enumId: 0
         _comparisonType: 2
@@ -3254,6 +3302,7 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+        m_EditorAssetChanged: 0
     - _name: Occupation
       _type: 6
       _enumId: 0
@@ -3265,6 +3314,7 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+        m_EditorAssetChanged: 0
     - _name: Age
       _type: 1
       _enumId: 0
@@ -3276,6 +3326,7 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+        m_EditorAssetChanged: 0
     - _name: Gender
       _type: 6
       _enumId: 0
@@ -3287,6 +3338,7 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+        m_EditorAssetChanged: 0
     - _name: IsFriend
       _type: 0
       _enumId: 0
@@ -3298,6 +3350,7 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+        m_EditorAssetChanged: 0
     - _name: LastOnline
       _type: 15
       _enumId: 0
@@ -3309,6 +3362,7 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+        m_EditorAssetChanged: 0
     - _name: Description
       _type: 6
       _enumId: 0
@@ -3320,6 +3374,7 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+        m_EditorAssetChanged: 0
     - _name: HeightFeet
       _type: 1
       _enumId: 0
@@ -3333,6 +3388,7 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+        m_EditorAssetChanged: 0
     - _name: HeightInches
       _type: 1
       _enumId: 0
@@ -3346,6 +3402,7 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+        m_EditorAssetChanged: 0
     - _name: EyeColor
       _type: 5
       _enumId: 1
@@ -3357,6 +3414,7 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+        m_EditorAssetChanged: 0
     - _name: Avatar
       _type: 13
       _enumId: 1
@@ -3368,6 +3426,7 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+        m_EditorAssetChanged: 0
     - _name: NiceJob
       _type: 2
       _enumId: 1
@@ -3379,6 +3438,7 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+        m_EditorAssetChanged: 0
     - _name: OnlineColor
       _type: 10
       _enumId: 1
@@ -3390,6 +3450,7 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+        m_EditorAssetChanged: 0
     - _name: Weight
       _type: 1
       _enumId: 1
@@ -3401,6 +3462,7 @@ MonoBehaviour:
         m_AssetGUID: 
         m_SubObjectName: 
         m_SubObjectType: 
+        m_EditorAssetChanged: 0
     _collectionDetails:
     - _name: Aliases
       _type: 6
@@ -3417,6 +3479,7 @@ MonoBehaviour:
           m_AssetGUID: 
           m_SubObjectName: 
           m_SubObjectType: 
+          m_EditorAssetChanged: 0
       - _name: 
         _type: 6
         _enumId: 0
@@ -3428,6 +3491,7 @@ MonoBehaviour:
           m_AssetGUID: 
           m_SubObjectName: 
           m_SubObjectType: 
+          m_EditorAssetChanged: 0
       - _name: 
         _type: 6
         _enumId: 0
@@ -3439,6 +3503,7 @@ MonoBehaviour:
           m_AssetGUID: 
           m_SubObjectName: 
           m_SubObjectType: 
+          m_EditorAssetChanged: 0
       - _name: 
         _type: 6
         _enumId: 0
@@ -3450,6 +3515,7 @@ MonoBehaviour:
           m_AssetGUID: 
           m_SubObjectName: 
           m_SubObjectType: 
+          m_EditorAssetChanged: 0
     _mapDetails:
     - _name: FavoriteColors
       _keyType: 6
@@ -3468,6 +3534,7 @@ MonoBehaviour:
           m_AssetGUID: 
           m_SubObjectName: 
           m_SubObjectType: 
+          m_EditorAssetChanged: 0
       - _name: 
         _type: 6
         _enumId: 0
@@ -3479,6 +3546,7 @@ MonoBehaviour:
           m_AssetGUID: 
           m_SubObjectName: 
           m_SubObjectType: 
+          m_EditorAssetChanged: 0
       _valueCollection:
       - _name: 
         _type: 10
@@ -3491,6 +3559,7 @@ MonoBehaviour:
           m_AssetGUID: 
           m_SubObjectName: 
           m_SubObjectType: 
+          m_EditorAssetChanged: 0
       - _name: 
         _type: 10
         _enumId: 0
@@ -3502,6 +3571,7 @@ MonoBehaviour:
           m_AssetGUID: 
           m_SubObjectName: 
           m_SubObjectType: 
+          m_EditorAssetChanged: 0
 --- !u!1 &2121691229727215998 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2121691229463478053, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
