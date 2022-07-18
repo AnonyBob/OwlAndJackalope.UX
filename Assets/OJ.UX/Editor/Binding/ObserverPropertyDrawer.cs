@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using OJ.UX.Runtime.Binders.Conditions;
 using OJ.UX.Runtime.Binding;
 using OJ.UX.Runtime.References.Serialized;
 using UnityEditor;
@@ -65,14 +66,27 @@ namespace OJ.UX.Editor.Binding
 
         private Type[] GetTypes(SerializedProperty property)
         {
-            if (attribute is ObserveDetailsAttribute observeAttr)
+            var parentProperty = property.FindParentProperty();
+            if (parentProperty != null)
             {
-                return observeAttr.AcceptableTypes;
-            }
+                var comparisonProperty = parentProperty.FindPropertyRelative("_comparison");
+                if (comparisonProperty != null)
+                {
+                    if (comparisonProperty.managedReferenceValue is IConditionComparison comparison)
+                    {
+                        return new Type[] { comparison.GetConditionValueType() };
+                    }
+                }
+            
+                if (attribute is ObserveDetailsAttribute observeAttr)
+                {
+                    return observeAttr.AcceptableTypes;
+                }
 
-            if (fieldInfo.FieldType.IsGenericType)
-            {
-                return new Type[] { fieldInfo.FieldType.GetGenericArguments()[0] };
+                if (fieldInfo.FieldType.IsGenericType)
+                {
+                    return new Type[] { fieldInfo.FieldType.GetGenericArguments()[0] };
+                }
             }
             return new Type[0];
         }

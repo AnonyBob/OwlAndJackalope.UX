@@ -1,10 +1,11 @@
 ﻿using System;
+using OJ.UX.Runtime.Binding;
 using UnityEngine;
 
 namespace OJ.UX.Runtime.Binders.Conditions
 {
     [System.Serializable]
-    public class AndConditionGroup : ICondition, IConditionChangedHandler
+    public class AndConditionGroup : ICondition, IConditionChangedHandler, IDetailBinder
     {
         [SerializeField]
         private Condition[] _conditions;
@@ -48,6 +49,20 @@ namespace OJ.UX.Runtime.Binders.Conditions
                 foreach (var condition in _conditions)
                     condition.Dispose();
             }
+        }
+
+        public bool RespondToNameChange(ReferenceModule changingModule, string originalName, string newName)
+        {
+            if (_conditions == null)
+                return false;
+
+            var didChange = false;
+            foreach (var condition in _conditions)
+            {
+                didChange = condition.RespondToNameChange(changingModule, originalName, newName) || didChange;
+            }
+
+            return didChange;
         }
     }
 }

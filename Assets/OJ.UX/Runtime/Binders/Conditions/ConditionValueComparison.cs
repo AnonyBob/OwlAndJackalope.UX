@@ -4,8 +4,14 @@ using UnityEngine;
 
 namespace OJ.UX.Runtime.Binders.Conditions
 {
+    public interface IConditionValueComparison<TValue> : IConditionComparison 
+        where TValue : IComparable<TValue>
+    {
+        
+    }
+    
     [System.Serializable]
-    public class ConditionValueComparison<TValue> : IConditionComparison 
+    public abstract class ConditionValueComparison<TValue> : IConditionValueComparison<TValue>
         where TValue : IComparable<TValue>
     {
         [SerializeField]

@@ -8,7 +8,7 @@ namespace OJ.UX.Runtime.Binders
 {
     public class AbstractDetailBinder : MonoBehaviour, IDetailBinder
     {
-        public virtual void RespondToNameChange(ReferenceModule changingModule, string originalName, string newName)
+        public virtual bool RespondToNameChange(ReferenceModule changingModule, string originalName, string newName)
         {
             var didChange = false;
             var observerType = typeof(Observer);
@@ -57,6 +57,8 @@ namespace OJ.UX.Runtime.Binders
                 UnityEditor.EditorUtility.SetDirty(this);
 #endif
             }
+
+            return didChange;
         }
 
         private void CheckAndUpdateObserverDetailName(object observer, ReferenceModule changingModule, string oldName, string newName, 

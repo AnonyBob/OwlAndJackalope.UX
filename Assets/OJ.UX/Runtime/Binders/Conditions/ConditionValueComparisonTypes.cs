@@ -4,37 +4,37 @@ using UnityEngine;
 
 namespace OJ.UX.Runtime.Binders.Conditions
 {
-    [System.Serializable]
+    [System.Serializable, ConditionDisplay("Integer Comparison", "Integer")]
     public class ConditionIntComparison : ConditionValueComparison<int>
     {
         
     }
     
-    [System.Serializable]
+    [System.Serializable, ConditionDisplay("Long Comparison", "Long")]
     public class ConditionLongComparison : ConditionValueComparison<long>
     {
         
     }
     
-    [System.Serializable]
+    [System.Serializable, ConditionDisplay("Double Comparison", "Double")]
     public class ConditionDoubleComparison : ConditionValueComparison<double>
     {
         
     }
     
-    [System.Serializable]
+    [System.Serializable, ConditionDisplay("Float Comparison", "Float")]
     public class ConditionFloatComparison : ConditionValueComparison<float>
     {
         
     }
     
-    [System.Serializable]
+    [System.Serializable, ConditionDisplay("Bool Comparison", "Bool")]
     public class ConditionBoolComparison : ConditionValueComparison<bool>
     {
         
     }
 
-    [System.Serializable]
+    [System.Serializable, ConditionDisplay("Enum Comparison", "Enum")]
     public class ConditionEnumComparison : IConditionComparison
     {
         [SerializeField]
