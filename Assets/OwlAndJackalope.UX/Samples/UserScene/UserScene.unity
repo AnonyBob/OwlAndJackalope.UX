@@ -234,6 +234,42 @@ PrefabInstance:
       propertyPath: m_text
       value: --
       objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _defaultString
+      value: '{0}'' {0}"'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _useDefaultString
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _defaultStringObserver._detailName
+      value: Blocked
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _stringArgumentObservers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _defaultStringObserver._referenceModule
+      value: 
+      objectReference: {fileID: 1319732466}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _stringArgumentObservers.Array.data[0]._detailName
+      value: HeightFeet
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _stringArgumentObservers.Array.data[1]._detailName
+      value: HeightInches
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _stringArgumentObservers.Array.data[0]._referenceModule
+      value: 
+      objectReference: {fileID: 1319732466}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _stringArgumentObservers.Array.data[1]._referenceModule
+      value: 
+      objectReference: {fileID: 1319732466}
     - target: {fileID: 7153218103939760774, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
       propertyPath: _defaultString
       value: '{0}''{1}"'
@@ -352,6 +388,7 @@ GameObject:
   - component: {fileID: 144836066}
   - component: {fileID: 144836069}
   - component: {fileID: 144836068}
+  - component: {fileID: 144836070}
   m_Layer: 5
   m_Name: Occupation
   m_TagString: Untagged
@@ -476,6 +513,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144836065}
   m_CullTransparentMesh: 1
+--- !u!114 &144836070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 144836065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c19778242f47f38005a62128be5401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textField: {fileID: 144836068}
+  _useDefaultString: 0
+  _defaultStringObserver:
+    _detailName: Occupation
+    _referenceModule: {fileID: 1319732466}
+  _defaultString: 
+  _stringArgumentObservers: []
 --- !u!1 &247604117
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,9 +543,6 @@ GameObject:
   - component: {fileID: 247604127}
   - component: {fileID: 247604119}
   - component: {fileID: 247604118}
-  - component: {fileID: 247604122}
-  - component: {fileID: 247604123}
-  - component: {fileID: 247604128}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -532,105 +585,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &247604122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247604117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8657d1da46174865b267cd9728f9aba5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _serializedReference:
-    Details:
-    - rid: 8756104008383332373
-    - rid: 8756104008383332375
-    - rid: 8756104008383332376
-    - rid: 8756104037421809676
-    - rid: 8756104037421809677
-    - rid: 8756104037421809678
-    - rid: 8756104193492647948
-    - rid: 8756104441476153346
-    - rid: 8756104441476153355
-    - rid: 8756104441476153384
-    - rid: 8756104441476153385
-  references:
-    version: 2
-    RefIds:
-    - rid: 8756104008383332373
-      type: {class: SerializedBoolDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Nice
-        Value: 1
-    - rid: 8756104008383332375
-      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Name
-        Value: Jeepers mister, you're {0} years old?!
-    - rid: 8756104008383332376
-      type: {class: SerializedDoubleDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Found
-        Value: 2.67
-    - rid: 8756104037421809676
-      type: {class: SerializedLongDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Long ae415
-        Value: 0
-    - rid: 8756104037421809677
-      type: {class: SerializedFloatDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Fancy
-        Value: 56.9
-    - rid: 8756104037421809678
-      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: NiceJob
-        Value: 0
-    - rid: 8756104193492647948
-      type: {class: SerializedLongDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Long 6fae4
-        Value: 0
-    - rid: 8756104441476153346
-      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Occupation
-        Value: Job
-    - rid: 8756104441476153355
-      type: {class: SerializedSpriteDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Image
-        Value: {fileID: 21300000, guid: 20fb5a79ebce34942b806897c4e5de26, type: 3}
-    - rid: 8756104441476153384
-      type: {class: SerializedIntListValueDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Integer 4c7b7
-        Value: 040000000c000000
-    - rid: 8756104441476153385
-      type: {class: SerializedTextureListValueDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Texture[] a0852
-        Value:
-        - {fileID: 2800000, guid: dffef66376be4fa480fb02b19edbe903, type: 3}
-        - {fileID: 314609362438275689, guid: 8c4dc299c1164334f93c226fdadf801a, type: 2}
-        - {fileID: 2800000, guid: 7d26f7f4c91fab5489ab909dd027273f, type: 3}
---- !u!114 &247604123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247604117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3c3b1a4e01a443bac722acb3d7db341, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _template: {fileID: 11400000, guid: 3d3ade358c351224fbe3f078351837ea, type: 2}
 --- !u!224 &247604127
 RectTransform:
   m_ObjectHideFlags: 0
@@ -651,52 +605,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &247604128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247604117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d4a965c24af4bb1a2d508e075fef2de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _conditionalActions:
-  - _actionDescription: When Occupution is not null turn on occurpation
-    _conditionGroups:
-    - _conditions:
-      - _observer:
-          _detailName: NiceJob
-          _referenceModule: {fileID: 247604122}
-        _comparison:
-          rid: 8756104441476153370
-    _action:
-      action:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 144836065}
-            m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_MethodName: SetActive
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-    _isOpen: 0
-  references:
-    version: 2
-    RefIds:
-    - rid: 8756104441476153370
-      type: {class: ConditionIntComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
-      data:
-        _comparisonValue: 0
-        _comparisonType: 0
 --- !u!1 &383866825
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,6 +722,7 @@ GameObject:
   - component: {fileID: 622648912}
   - component: {fileID: 622648914}
   - component: {fileID: 622648913}
+  - component: {fileID: 622648915}
   m_Layer: 5
   m_Name: UserIcon
   m_TagString: Untagged
@@ -879,6 +788,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622648911}
   m_CullTransparentMesh: 1
+--- !u!114 &622648915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622648911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92a4871293414610be39ebe6efc470fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sprite:
+    _detailName: Avatar
+    _referenceModule: {fileID: 1319732466}
+  _image: {fileID: 622648913}
+  _useOverride: 1
 --- !u!1 &641474770
 GameObject:
   m_ObjectHideFlags: 0
@@ -1655,6 +1581,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1319732465}
+  - component: {fileID: 1319732466}
+  - component: {fileID: 1319732467}
   m_Layer: 5
   m_Name: UserContainer
   m_TagString: Untagged
@@ -1691,6 +1619,113 @@ RectTransform:
   m_AnchoredPosition: {x: 445.83, y: 0}
   m_SizeDelta: {x: 655.0095, y: 272.6986}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1319732466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319732464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8657d1da46174865b267cd9728f9aba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedReference:
+    Details:
+    - rid: 8756104441476153398
+    - rid: 8756104441476153399
+    - rid: 8756104441476153400
+    - rid: 8756104441476153401
+    - rid: 8756104441476153402
+    - rid: 8756104441476153403
+    - rid: 8756104441476153404
+    - rid: 8756104441476153405
+    - rid: 8756104441476153406
+    - rid: 8756104441476153414
+    - rid: 8756104441476153407
+    - rid: 8756104441476153408
+  references:
+    version: 2
+    RefIds:
+    - rid: 8756104441476153398
+      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Name
+        Value: Nicholas
+    - rid: 8756104441476153399
+      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Occupation
+        Value: Software Engineer
+    - rid: 8756104441476153400
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Age
+        Value: 31
+    - rid: 8756104441476153401
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Weight
+        Value: 0
+    - rid: 8756104441476153402
+      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Gender
+        Value: Male
+    - rid: 8756104441476153403
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: HeightFeet
+        Value: 5
+    - rid: 8756104441476153404
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: HeightInches
+        Value: 8
+    - rid: 8756104441476153405
+      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Description
+        Value: Nicholas is a silly man. He is driven by his passions and his love
+          for Kaitlin. He will do anything to bring laughter to the world
+    - rid: 8756104441476153406
+      type: {class: SerializedBoolDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: IsFriend
+        Value: 0
+    - rid: 8756104441476153407
+      type: {class: SerializedSpriteDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Avatar
+        Value: {fileID: 21300000, guid: 7d26f7f4c91fab5489ab909dd027273f, type: 3}
+    - rid: 8756104441476153408
+      type: {class: SerializedStringListValueDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Aliases
+        Value:
+        - The Owl
+        - Anonymousbob
+        - James Toolsh
+        - Caterpillar
+    - rid: 8756104441476153414
+      type: {class: SerializedBoolDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Blocked
+        Value: 0
+--- !u!114 &1319732467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319732464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c3b1a4e01a443bac722acb3d7db341, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _template: {fileID: 11400000, guid: 813fff51b627a5348bd6c24bc8384a34, type: 2}
 --- !u!1001 &1536833929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1852,6 +1887,7 @@ GameObject:
   - component: {fileID: 1600815306}
   - component: {fileID: 1600815309}
   - component: {fileID: 1600815308}
+  - component: {fileID: 1600815310}
   m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
@@ -1976,6 +2012,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1600815305}
   m_CullTransparentMesh: 1
+--- !u!114 &1600815310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600815305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c19778242f47f38005a62128be5401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textField: {fileID: 1600815308}
+  _useDefaultString: 0
+  _defaultStringObserver:
+    _detailName: Name
+    _referenceModule: {fileID: 1319732466}
+  _defaultString: 
+  _stringArgumentObservers: []
 --- !u!1 &1687258581
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,6 +2278,26 @@ PrefabInstance:
       propertyPath: m_fontSizeMin
       value: 9.1
       objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _defaultString
+      value: '{0}lbs'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _useDefaultString
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _stringArgumentObservers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _stringArgumentObservers.Array.data[0]._detailName
+      value: Weight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _stringArgumentObservers.Array.data[0]._referenceModule
+      value: 
+      objectReference: {fileID: 1319732466}
     - target: {fileID: 7153218103939760774, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
       propertyPath: _defaultString
       value: '{0}lb'
@@ -2377,7 +2452,7 @@ GameObject:
   - component: {fileID: 1962956698}
   - component: {fileID: 1962956701}
   - component: {fileID: 1962956700}
-  - component: {fileID: 1962956699}
+  - component: {fileID: 1962956702}
   m_Layer: 5
   m_Name: Description
   m_TagString: Untagged
@@ -2405,24 +2480,6 @@ RectTransform:
   m_AnchoredPosition: {x: 333.98, y: -193.74}
   m_SizeDelta: {x: 607.9658, y: 45.457}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1962956699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962956697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1577b0a6a0cf4849810ef43a6db60561, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _referenceModule: {fileID: 0}
-  _useDefaultString: 0
-  _baseStringObserver:
-    DetailName: Description
-  _defaultString: 
-  _stringArgumentObservers: []
 --- !u!114 &1962956700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2522,6 +2579,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962956697}
   m_CullTransparentMesh: 1
+--- !u!114 &1962956702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1962956697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c19778242f47f38005a62128be5401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textField: {fileID: 1962956700}
+  _useDefaultString: 0
+  _defaultStringObserver:
+    _detailName: Description
+    _referenceModule: {fileID: 1319732466}
+  _defaultString: 
+  _stringArgumentObservers: []
 --- !u!1 &1969712544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2532,9 +2608,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1969712545}
   - component: {fileID: 1969712546}
-  - component: {fileID: 7360756859420275550}
-  - component: {fileID: 7360756859420275545}
-  - component: {fileID: 7360756859420275547}
   - component: {fileID: 7360756859420275551}
   m_Layer: 5
   m_Name: Buttons
@@ -2714,6 +2787,14 @@ PrefabInstance:
       propertyPath: m_fontSizeMin
       value: 9.1
       objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _defaultStringObserver._detailName
+      value: Gender
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _defaultStringObserver._referenceModule
+      value: 
+      objectReference: {fileID: 1319732466}
     - target: {fileID: 7153218103939760774, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
       propertyPath: _referenceModule
       value: 
@@ -2984,6 +3065,34 @@ PrefabInstance:
       propertyPath: m_text
       value: --
       objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _defaultString
+      value: '{0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _useDefaultString
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _defaultStringObserver._detailName
+      value: Blocked
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _stringArgumentObservers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _defaultStringObserver._referenceModule
+      value: 
+      objectReference: {fileID: 1319732466}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _stringArgumentObservers.Array.data[0]._detailName
+      value: Age
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _stringArgumentObservers.Array.data[0]._referenceModule
+      value: 
+      objectReference: {fileID: 1319732466}
     - target: {fileID: 7153218103939760774, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
       propertyPath: _baseStringObserver.DetailName
       value: Name
@@ -3169,66 +3278,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
---- !u!114 &7360756859420275545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969712544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59ee0f5296f9429e8b31d1cb290c61a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stateModule: {fileID: 0}
-  _state:
-    StateName: IsFriend
-  _is: 0
-  _applyOnStart: 1
-  _targetObjects:
-  - {fileID: 2121691229727215998}
-  - {fileID: 2121691230798986550}
---- !u!114 &7360756859420275547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969712544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59ee0f5296f9429e8b31d1cb290c61a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stateModule: {fileID: 0}
-  _state:
-    StateName: IsFriend
-  _is: 1
-  _applyOnStart: 1
-  _targetObjects:
-  - {fileID: 2121691230359340716}
-  - {fileID: 2121691230511913943}
---- !u!114 &7360756859420275550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1969712544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59ee0f5296f9429e8b31d1cb290c61a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stateModule: {fileID: 0}
-  _state:
-    StateName: CanMessage
-  _is: 0
-  _applyOnStart: 1
-  _targetObjects:
-  - {fileID: 2121691230072473587}
-  - {fileID: 1782671474}
 --- !u!114 &7360756859420275551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3243,37 +3292,114 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _conditionalActions:
   - _actionDescription: If can message
-    _conditionGroups: []
+    _conditionGroups:
+    - _conditions:
+      - _observer:
+          _detailName: IsFriend
+          _referenceModule: {fileID: 1319732466}
+        _comparison:
+          rid: 8756104441476153409
+      - _observer:
+          _detailName: Blocked
+          _referenceModule: {fileID: 1319732466}
+        _comparison:
+          rid: 8756104441476153415
     _action:
-      _setActive: 1
       _gameObjects:
-      - {fileID: 2121691230072473587}
-      - {fileID: 1782671474}
+      - GameObject: {fileID: 2121691230072473587}
+        ActiveState: 1
+      - GameObject: {fileID: 1782671474}
+        ActiveState: 1
     _isOpen: 0
   - _actionDescription: If can't message
-    _conditionGroups: []
+    _conditionGroups:
+    - _conditions:
+      - _observer:
+          _detailName: IsFriend
+          _referenceModule: {fileID: 1319732466}
+        _comparison:
+          rid: 8756104441476153410
+    - _conditions:
+      - _observer:
+          _detailName: Blocked
+          _referenceModule: {fileID: 1319732466}
+        _comparison:
+          rid: 8756104441476153416
     _action:
-      _setActive: 0
       _gameObjects:
-      - {fileID: 2121691230072473587}
-      - {fileID: 1782671474}
+      - GameObject: {fileID: 2121691230072473587}
+        ActiveState: 0
+      - GameObject: {fileID: 1782671474}
+        ActiveState: 0
     _isOpen: 0
   - _actionDescription: If is a friend
-    _conditionGroups: []
+    _conditionGroups:
+    - _conditions:
+      - _observer:
+          _detailName: IsFriend
+          _referenceModule: {fileID: 1319732466}
+        _comparison:
+          rid: 8756104441476153411
     _action:
-      _setActive: 1
       _gameObjects:
-      - {fileID: 2121691229727215998}
-      - {fileID: 2121691230798986550}
+      - GameObject: {fileID: 2121691229727215998}
+        ActiveState: 1
+      - GameObject: {fileID: 2121691230798986550}
+        ActiveState: 1
+      - GameObject: {fileID: 2121691230359340716}
+        ActiveState: 0
+      - GameObject: {fileID: 2121691230511913943}
+        ActiveState: 0
     _isOpen: 0
   - _actionDescription: If is not a friend.
-    _conditionGroups: []
+    _conditionGroups:
+    - _conditions:
+      - _observer:
+          _detailName: IsFriend
+          _referenceModule: {fileID: 1319732466}
+        _comparison:
+          rid: 8756104441476153412
     _action:
-      _setActive: 0
       _gameObjects:
-      - {fileID: 2121691229727215998}
-      - {fileID: 2121691230798986550}
+      - GameObject: {fileID: 2121691229727215998}
+        ActiveState: 0
+      - GameObject: {fileID: 2121691230798986550}
+        ActiveState: 0
+      - GameObject: {fileID: 2121691230359340716}
+        ActiveState: 1
+      - GameObject: {fileID: 2121691230511913943}
+        ActiveState: 1
     _isOpen: 0
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: 8756104441476153409
+      type: {class: ConditionBoolComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
+      data:
+        _comparisonValue: 1
+        _comparisonType: 0
+    - rid: 8756104441476153410
+      type: {class: ConditionBoolComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
+      data:
+        _comparisonValue: 0
+        _comparisonType: 0
+    - rid: 8756104441476153411
+      type: {class: ConditionBoolComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
+      data:
+        _comparisonValue: 1
+        _comparisonType: 0
+    - rid: 8756104441476153412
+      type: {class: ConditionBoolComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
+      data:
+        _comparisonValue: 0
+        _comparisonType: 0
+    - rid: 8756104441476153415
+      type: {class: ConditionBoolComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
+      data:
+        _comparisonValue: 0
+        _comparisonType: 0
+    - rid: 8756104441476153416
+      type: {class: ConditionBoolComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
+      data:
+        _comparisonValue: 1
+        _comparisonType: 0

@@ -12,7 +12,6 @@ namespace OJ.UX.Editor.References
     {
         private SerializedReferenceTemplate _referenceTemplate;
         private const string SerializedReferenceProp = "_serializedReference";
-            
         
         public override void OnInspectorGUI()
         {

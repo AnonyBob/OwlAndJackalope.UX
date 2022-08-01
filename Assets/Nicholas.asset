@@ -46,7 +46,7 @@ MonoBehaviour:
       type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
       data:
         Name: Weight
-        Value: 0
+        Value: 150
     - rid: 8756104441476153390
       type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
       data:

@@ -14,5 +14,12 @@ namespace OJ.UX.Runtime.Binding
         {
             return _template.CreateReference();
         }
+
+        [ContextMenu("Set Reference")]
+        private void SetReference()
+        {
+            if(Application.isPlaying)
+                GetComponent<ReferenceModule>().Reference = _template.CreateReference();
+        }
     }
 }

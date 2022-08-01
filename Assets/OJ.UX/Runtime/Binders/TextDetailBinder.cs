@@ -30,6 +30,10 @@ namespace OJ.UX.Runtime.Binders
         private void Start()
         {
             _formattingProvider = GetComponent<FormattingProvider>();
+            if (_textField == null)
+            {
+                _textField = GetComponent<TextMeshProUGUI>();
+            }
             
             _defaultStringObserver.Initialize(UpdateText, true);
             foreach (var observer in _stringArgumentObservers)

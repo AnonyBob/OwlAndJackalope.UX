@@ -69,14 +69,14 @@ namespace OJ.UX.Editor.Binders
                 EditorGUI.indentLevel--;
 
                 if(isOpenProp.boolValue)
-                    DrawConditionGroups(conditionalAction);
+                    DrawConditionGroups(conditionalAction, index);
                 
                 EditorGUILayout.Space();
             }
             return delete;
         }
 
-        private void DrawConditionGroups(SerializedProperty conditionalAction)
+        private void DrawConditionGroups(SerializedProperty conditionalAction, int conditionalActionIndex)
         {
             var conditionGroupsProp = conditionalAction.FindPropertyRelative("_conditionGroups");
             EditorGUILayout.Space();
@@ -97,9 +97,9 @@ namespace OJ.UX.Editor.Binders
                                 EditorGUILayout.Space();
                                 if (OJEditorUtility.Button("+", Color.green, 50, EditorStyles.miniButton))
                                 {
-                                    AddAnotherCondition(conditions, OJEditorUtility.GetLastRect($"conditionGroup_add_{groupIndex}"));
+                                    AddAnotherCondition(conditions, OJEditorUtility.GetLastRect($"conditionGroup_add_{conditionalActionIndex}_{groupIndex}"));
                                 }
-                                OJEditorUtility.SetLastRect($"conditionGroup_add_{groupIndex}");
+                                OJEditorUtility.SetLastRect($"conditionGroup_add_{conditionalActionIndex}_{groupIndex}");
 
                                 deleteConditionGroup = OJEditorUtility.Button("-", Color.red, 50, EditorStyles.miniButton);
                                 EditorGUILayout.Space();
@@ -109,7 +109,7 @@ namespace OJ.UX.Editor.Binders
                         {
                             for (var conditionIndex = 0; conditionIndex < conditions.arraySize; ++conditionIndex)
                             {
-                                if (DrawCondition(conditions, conditionIndex, groupIndex))
+                                if (DrawCondition(conditions, conditionIndex, groupIndex, conditionalActionIndex))
                                 {
                                     conditions.DeleteArrayElementAtIndex(conditionIndex);
                                     conditionIndex--;
@@ -120,7 +120,14 @@ namespace OJ.UX.Editor.Binders
                     }
                     EditorGUILayout.Space(6, false);
                 }
+                
                 EditorGUILayout.Space();
+                if (groupIndex < conditionGroupsProp.arraySize - 1)
+                {
+                    var style = EditorStyles.boldLabel;
+                    style.alignment = TextAnchor.MiddleCenter;
+                    OJEditorUtility.CenteredButton("or", GUI.backgroundColor, 50, style);
+                }
 
                 if (deleteConditionGroup)
                 {
@@ -133,7 +140,7 @@ namespace OJ.UX.Editor.Binders
             DrawActionWithinConditional(conditionalAction);
         }
 
-        private bool DrawCondition(SerializedProperty conditions, int conditionIndex, int groupIndex)
+        private bool DrawCondition(SerializedProperty conditions, int conditionIndex, int groupIndex, int conditionalActionIndex)
         {
             var delete = false;
             var condition = conditions.GetArrayElementAtIndex(conditionIndex);
@@ -148,10 +155,10 @@ namespace OJ.UX.Editor.Binders
                         EditorGUILayout.PropertyField(condition.FindPropertyRelative("_observer"), GUIContent.none);
                         if (OJEditorUtility.Button("+", Color.green, 30, EditorStyles.miniButton))
                         {
-                            AddAnotherCondition(conditions, OJEditorUtility.GetLastRect($"condition_and_{conditionIndex}_{groupIndex}"));
+                            AddAnotherCondition(conditions, OJEditorUtility.GetLastRect($"condition_and_{conditionIndex}_{groupIndex}_{conditionalActionIndex}"));
                         }
                         
-                        OJEditorUtility.SetLastRect($"condition_and_{conditionIndex}_{groupIndex}");
+                        OJEditorUtility.SetLastRect($"condition_and_{conditionIndex}_{groupIndex}_{conditionalActionIndex}");
                         delete = OJEditorUtility.Button("-", Color.red, 30, EditorStyles.miniButton);
                     }
 

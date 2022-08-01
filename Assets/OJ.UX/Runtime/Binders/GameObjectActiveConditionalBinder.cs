@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using OJ.UX.Runtime.Binders.Conditions;
+using OJ.UX.Runtime.Utility;
 using UnityEngine;
 
 namespace OJ.UX.Runtime.Binders
@@ -7,13 +8,20 @@ namespace OJ.UX.Runtime.Binders
     public class GameObjectActiveConditionalBinder : ConditionalBinder<GameObjectActiveConditionalBinder.GameObjectActiveActionDetail>
     {
         [System.Serializable]
-        public class GameObjectActiveActionDetail : IConditionalActionDetail
+        public struct GameObjectActiveState
         {
             [SerializeField]
-            private bool _setActive;
+            public GameObject GameObject;
             
             [SerializeField]
-            private List<GameObject> _gameObjects;
+            public bool ActiveState;
+        }
+        
+        [System.Serializable]
+        public class GameObjectActiveActionDetail : IConditionalActionDetail
+        {
+            [SerializeField, ComplexInlineProperty("GameObject", "@ActiveState")]
+            private List<GameObjectActiveState> _gameObjects;
             
             public void PerformAction()
             {
@@ -22,8 +30,8 @@ namespace OJ.UX.Runtime.Binders
 
                 foreach (var go in _gameObjects)
                 {
-                    if(go != null)
-                        go.SetActive(_setActive);
+                    if(go.GameObject != null)
+                        go.GameObject.SetActive(go.ActiveState);
                 }
             }
         }
