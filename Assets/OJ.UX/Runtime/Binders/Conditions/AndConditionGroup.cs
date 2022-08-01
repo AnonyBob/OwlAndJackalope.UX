@@ -42,12 +42,12 @@ namespace OJ.UX.Runtime.Binders.Conditions
             _handler.ConditionHasChanged(this);
         }
 
-        public void Dispose()
+        public void Destroy()
         {
             if (_conditions != null)
             {
                 foreach (var condition in _conditions)
-                    condition.Dispose();
+                    condition.Destroy();
             }
         }
 

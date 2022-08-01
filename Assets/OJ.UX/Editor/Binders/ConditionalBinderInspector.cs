@@ -31,7 +31,6 @@ namespace OJ.UX.Editor.Binders
                 }
             }
             
-
             serializedObject.ApplyModifiedProperties();
         }
 
@@ -151,8 +150,8 @@ namespace OJ.UX.Editor.Binders
                         {
                             AddAnotherCondition(conditions, OJEditorUtility.GetLastRect($"condition_and_{conditionIndex}_{groupIndex}"));
                         }
-                        OJEditorUtility.SetLastRect($"condition_and_{conditionIndex}_{groupIndex}");
                         
+                        OJEditorUtility.SetLastRect($"condition_and_{conditionIndex}_{groupIndex}");
                         delete = OJEditorUtility.Button("-", Color.red, 30, EditorStyles.miniButton);
                     }
 
@@ -178,6 +177,8 @@ namespace OJ.UX.Editor.Binders
             if (OJEditorUtility.CenteredButton("or", GUI.backgroundColor, 50, EditorStyles.miniButton))
             {
                 conditionGroupsProp.arraySize++;
+                var newGroup = conditionGroupsProp.GetArrayElementAtIndex(conditionGroupsProp.arraySize - 1);
+                newGroup.FindPropertyRelative("_conditions").arraySize = 0;
             }
         }
 

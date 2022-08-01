@@ -5,7 +5,7 @@ using UnityEngine;
 namespace OJ.UX.Runtime.Binding
 {
      [System.Serializable]
-    public class Observer : IDisposable
+    public class Observer
     {
         public IDetail ObjectDetail => _objectDetail;
 
@@ -82,7 +82,7 @@ namespace OJ.UX.Runtime.Binding
                 _onChange?.Invoke();
         }
 
-        public void Dispose()
+        public void Destroy()
         {
             if (_reference != null)
             {

@@ -42,10 +42,10 @@ namespace OJ.UX.Runtime.Binders
 
         private void OnDestroy()
         {
-            _defaultStringObserver.Dispose();
+            _defaultStringObserver.Destroy();
             foreach (var observer in _stringArgumentObservers)
             {
-                observer.Dispose();
+                observer.Destroy();
             }
         }
         

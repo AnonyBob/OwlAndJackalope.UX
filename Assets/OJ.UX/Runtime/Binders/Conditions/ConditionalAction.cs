@@ -6,7 +6,7 @@ using UnityEngine;
 namespace OJ.UX.Runtime.Binders.Conditions
 {
     [System.Serializable]
-    public class ConditionalAction<TActionDetail> : IConditionChangedHandler, IDisposable, IDetailBinder
+    public class ConditionalAction<TActionDetail> : IConditionChangedHandler, IDetailBinder
         where TActionDetail : IConditionalActionDetail
     {
         [SerializeField]
@@ -55,12 +55,12 @@ namespace OJ.UX.Runtime.Binders.Conditions
             _previousConditionStatus = conditionIsMet;
         }
 
-        public void Dispose()
+        public void Clear()
         {
             if (_conditionGroups != null)
             {
                 foreach (var group in _conditionGroups)
-                    group.Dispose();
+                    group.Destroy();
             }
         }
 

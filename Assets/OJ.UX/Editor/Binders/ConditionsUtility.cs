@@ -58,30 +58,62 @@ namespace OJ.UX.Editor.Binders
                         var interfaces = type.GetInterfaces();
                         if (interfaces.Contains(conditionComparisonType))
                         {
-                            var conditionValueType = type.GetInterfaces().FirstOrDefault(i => i.IsGenericType 
-                                && i.GetGenericTypeDefinition() == conditionValueComparisonType);
-                            if(conditionValueType == null) 
-                                continue;
-
-                            var valueType = conditionValueType.GenericTypeArguments[0];
-                            if (!_conditionTypes.TryGetValue(valueType, out var conditionTypeList))
+                            var conditionValueType = GetConditionValueTypeInterface(type, conditionValueComparisonType);
+                            if (conditionValueType != null)
                             {
-                                conditionTypeList = new List<ConditionComparisonListItem>();
-                                _conditionTypes[valueType] = conditionTypeList;
+                                AddDetailsForConditionValueType(type, conditionValueType);
                             }
-                            
-                            var displayAttribute = type.GetCustomAttribute<ConditionDisplayAttribute>();
-                            conditionTypeList.Add(new ConditionComparisonListItem()
+                            else
                             {
-                                Display = displayAttribute ?? new ConditionDisplayAttribute(type.Name),
-                                ConditionComparisonType = type,
-                                ValueType = valueType
-                            });
+                                AddDetailsForGenericCondition(type);
+                            }
                         }
                     }
                     
                 }
             }
+        }
+
+        private static Type GetConditionValueTypeInterface(Type type, Type conditionValueComparisonType)
+        {
+            return type.GetInterfaces().FirstOrDefault(i => i.IsGenericType && i.GetGenericTypeDefinition() == conditionValueComparisonType);
+        }
+
+        private static void AddDetailsForConditionValueType(Type originalType, Type conditionValueType)
+        {
+            var valueType = conditionValueType.GenericTypeArguments[0];
+            if (!_conditionTypes.TryGetValue(valueType, out var conditionTypeList))
+            {
+                conditionTypeList = new List<ConditionComparisonListItem>();
+                _conditionTypes[valueType] = conditionTypeList;
+            }
+                            
+            var displayAttribute = originalType.GetCustomAttribute<ConditionDisplayAttribute>();
+            conditionTypeList.Add(new ConditionComparisonListItem()
+            {
+                Display = displayAttribute ?? new ConditionDisplayAttribute(originalType.Name),
+                ConditionComparisonType = originalType,
+                ValueType = valueType
+            });
+        }
+
+        private static void AddDetailsForGenericCondition(Type type)
+        {
+            var instance = Activator.CreateInstance(type) as IConditionComparison;
+            var valueType = instance!.GetConditionValueType();   
+            if (!_conditionTypes.TryGetValue(valueType, out var conditionTypeList))
+            {
+                conditionTypeList = new List<ConditionComparisonListItem>();
+                _conditionTypes[valueType] = conditionTypeList;
+            }
+                                
+            var displayAttribute = type.GetCustomAttribute<ConditionDisplayAttribute>();
+            conditionTypeList.Add(new ConditionComparisonListItem()
+            {
+                Display = displayAttribute ?? new ConditionDisplayAttribute(type.Name),
+                ConditionComparisonType = type,
+                ValueType = valueType
+            });
         }
 
         private struct ConditionComparisonListItem

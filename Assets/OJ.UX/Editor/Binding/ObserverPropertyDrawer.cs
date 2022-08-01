@@ -77,17 +77,18 @@ namespace OJ.UX.Editor.Binding
                         return new Type[] { comparison.GetConditionValueType() };
                     }
                 }
-            
-                if (attribute is ObserveDetailsAttribute observeAttr)
-                {
-                    return observeAttr.AcceptableTypes;
-                }
-
-                if (fieldInfo.FieldType.IsGenericType)
-                {
-                    return new Type[] { fieldInfo.FieldType.GetGenericArguments()[0] };
-                }
             }
+            
+            if (attribute is ObserveDetailsAttribute observeAttr)
+            {
+                return observeAttr.AcceptableTypes;
+            }
+
+            if (fieldInfo.FieldType.IsGenericType)
+            {
+                return new Type[] { fieldInfo.FieldType.GetGenericArguments()[0] };
+            }
+            
             return new Type[0];
         }
 

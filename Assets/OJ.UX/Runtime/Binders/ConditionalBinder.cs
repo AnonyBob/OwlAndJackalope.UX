@@ -11,6 +11,54 @@ namespace OJ.UX.Runtime.Binders
         [SerializeField]
         private ConditionalAction<TActionDetail>[] _conditionalActions;
 
+        private void Start()
+        {
+            BeforeConditionInitialized();
+            if (_conditionalActions != null)
+            {
+                for (var i = 0; i < _conditionalActions.Length; ++i)
+                {
+                    _conditionalActions[i].Initialize();
+                }
+            }
+            
+            AfterConditionInitialized();
+        }
+
+        protected virtual void BeforeConditionInitialized()
+        {
+            
+        }
+        
+        protected virtual void AfterConditionInitialized()
+        {
+            
+        }
+
+        private void OnDestroy()
+        {
+            BeforeConditionsCleared();
+            if (_conditionalActions != null)
+            {
+                for (var i = 0; i < _conditionalActions.Length; ++i)
+                {
+                    _conditionalActions[i].Clear();
+                }
+            }
+            
+            AfterConditionsCleared();
+        }
+
+        protected virtual void BeforeConditionsCleared()
+        {
+            
+        }
+        
+        protected virtual void AfterConditionsCleared()
+        {
+            
+        }
+
         public override bool RespondToNameChange(ReferenceModule changingModule, string originalName, string newName)
         {
             if (_conditionalActions == null)

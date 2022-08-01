@@ -8,9 +8,11 @@ namespace OJ.UX.Runtime.Binders.Conditions
     [System.Serializable]
     public class Condition : ICondition, IDetailBinder
     {
-        [SerializeField] private Observer _observer;
+        [SerializeField] 
+        private Observer _observer;
 
-        [SerializeField, SerializeReference] private IConditionComparison _comparison;
+        [SerializeField, SerializeReference] 
+        private IConditionComparison _comparison;
 
         private IConditionChangedHandler _handler;
 
@@ -30,9 +32,9 @@ namespace OJ.UX.Runtime.Binders.Conditions
             _handler.ConditionHasChanged(this);
         }
 
-        public void Dispose()
+        public void Destroy()
         {
-            _observer.Dispose();
+            _observer.Destroy();
         }
 
         public bool RespondToNameChange(ReferenceModule changingModule, string originalName, string newName)

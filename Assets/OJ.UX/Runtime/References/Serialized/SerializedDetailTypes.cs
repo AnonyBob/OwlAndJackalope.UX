@@ -87,7 +87,7 @@ namespace OJ.UX.Runtime.References.Serialized
         
     }
 
-    [Serializable, SerializedDetailDisplay("Reference", "Special")]
+    [Serializable, SerializedDetailDisplay("Reference")]
     public sealed class SerializedReferenceDetail : AbstractSerializedDetail, ISerializedValueDetail<IReference>
     {
         [SerializeField]
