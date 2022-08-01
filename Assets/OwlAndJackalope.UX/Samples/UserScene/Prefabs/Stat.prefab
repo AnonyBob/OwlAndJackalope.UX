@@ -29,6 +29,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 391936806319079313}
   m_Father: {fileID: 391936805600785723}
@@ -177,6 +178,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 391936805229920940}
   m_Father: {fileID: 0}
@@ -218,7 +220,7 @@ GameObject:
   - component: {fileID: 391936806260520368}
   - component: {fileID: 391936806260520334}
   - component: {fileID: 391936806260520369}
-  - component: {fileID: 7153218103939760774}
+  - component: {fileID: 5673992395731649311}
   m_Layer: 5
   m_Name: Stat
   m_TagString: Untagged
@@ -236,6 +238,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 391936806319079313}
   m_RootOrder: 0
@@ -342,7 +345,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &7153218103939760774
+--- !u!114 &5673992395731649311
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -351,12 +354,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 391936806260520371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1577b0a6a0cf4849810ef43a6db60561, type: 3}
+  m_Script: {fileID: 11500000, guid: d2c19778242f47f38005a62128be5401, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _referenceModule: {fileID: 0}
-  _baseStringObserver:
-    DetailName: AnotherName
+  _textField: {fileID: 0}
+  _useDefaultString: 0
+  _defaultStringObserver:
+    _detailName: 
+    _referenceModule: {fileID: 0}
+  _defaultString: 
   _stringArgumentObservers: []
 --- !u!1 &391936806319079312
 GameObject:
@@ -386,6 +392,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 391936806260520368}
   m_Father: {fileID: 391936805229920940}

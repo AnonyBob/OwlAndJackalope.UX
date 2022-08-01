@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace OJ.UX.Runtime.References.Serialized
@@ -67,6 +68,21 @@ namespace OJ.UX.Runtime.References.Serialized
             {
                 MutableRuntimeDetail.Value = Value;
             }
+        }
+
+        public override ISerializedDetail Copy()
+        {
+            var type = GetType();
+            var newInstance = (SerializedValueDetail<TValue>)Activator.CreateInstance(type);
+            newInstance.Name = Name;
+            newInstance.Value = CopyValue();
+
+            return newInstance;
+        }
+
+        protected virtual TValue CopyValue()
+        {
+            return Value;
         }
     }
 }

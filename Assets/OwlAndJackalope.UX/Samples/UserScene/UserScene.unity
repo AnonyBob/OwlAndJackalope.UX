@@ -123,115 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &11
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654153004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac2dec61b98f4a17a4a3c77209689f35, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _referenceModule: {fileID: 0}
-  _color:
-    DetailName: OnlineColor
-  _providedColors:
-  - {r: 0.20784315, g: 0.8431373, b: 0.2509804, a: 1}
-  - {r: 0.80676705, g: 0.84313726, b: 0.20784315, a: 1}
-  - {r: 0.8431373, g: 0.20784315, b: 0.20784315, a: 1}
---- !u!114 &12
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1600815305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c70338b27bb429dab15827ad077aa55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _referenceModule: {fileID: 0}
-  _observer:
-    DetailName: 
-  _graphic: {fileID: 1600815308}
---- !u!114 &14
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654153004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ff5fbb43b0e48c6a7e54a3f9896084d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stateModule: {fileID: 0}
-  _handlers:
-  - State:
-      StateName: OnlineNow
-    Is: 0
-    ApplyOnStart: 1
-    _unityEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 11}
-          m_TargetAssemblyTypeName: OwlAndJackalope.UX.Runtime.DetailBinders.Appliers.ColorDetailApplier,
-            OwlAndJackalope.UX.Runtime
-          m_MethodName: SetUsingProvidedColorIndex
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - State:
-      StateName: OnlineRecently
-    Is: 0
-    ApplyOnStart: 1
-    _unityEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 11}
-          m_TargetAssemblyTypeName: OwlAndJackalope.UX.Runtime.DetailBinders.Appliers.ColorDetailApplier,
-            OwlAndJackalope.UX.Runtime
-          m_MethodName: SetUsingProvidedColorIndex
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 1
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - State:
-      StateName: NotOnline
-    Is: 0
-    ApplyOnStart: 1
-    _unityEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 11}
-          m_TargetAssemblyTypeName: OwlAndJackalope.UX.Runtime.DetailBinders.Appliers.ColorDetailApplier,
-            OwlAndJackalope.UX.Runtime
-          m_MethodName: SetUsingProvidedColorIndex
-          m_Mode: 3
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 2
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1001 &65353243
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -467,7 +358,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &144836066
 RectTransform:
   m_ObjectHideFlags: 0
@@ -664,6 +555,8 @@ MonoBehaviour:
     - rid: 8756104193492647948
     - rid: 8756104441476153346
     - rid: 8756104441476153355
+    - rid: 8756104441476153384
+    - rid: 8756104441476153385
   references:
     version: 2
     RefIds:
@@ -705,13 +598,26 @@ MonoBehaviour:
     - rid: 8756104441476153346
       type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
       data:
-        Name: Fierce
-        Value: Forgiven
+        Name: Occupation
+        Value: Job
     - rid: 8756104441476153355
       type: {class: SerializedSpriteDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
       data:
         Name: Image
         Value: {fileID: 21300000, guid: 20fb5a79ebce34942b806897c4e5de26, type: 3}
+    - rid: 8756104441476153384
+      type: {class: SerializedIntListValueDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Integer 4c7b7
+        Value: 040000000c000000
+    - rid: 8756104441476153385
+      type: {class: SerializedTextureListValueDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Texture[] a0852
+        Value:
+        - {fileID: 2800000, guid: dffef66376be4fa480fb02b19edbe903, type: 3}
+        - {fileID: 314609362438275689, guid: 8c4dc299c1164334f93c226fdadf801a, type: 2}
+        - {fileID: 2800000, guid: 7d26f7f4c91fab5489ab909dd027273f, type: 3}
 --- !u!114 &247604123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -758,94 +664,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _conditionalActions:
-  - _actionDescription: When Nice turn on Occupation.
+  - _actionDescription: When Occupution is not null turn on occurpation
     _conditionGroups:
     - _conditions:
       - _observer:
-          _detailName: Nice
+          _detailName: NiceJob
           _referenceModule: {fileID: 247604122}
         _comparison:
-          rid: 8756104441476153361
+          rid: 8756104441476153370
     _action:
       action:
         m_PersistentCalls:
           m_Calls:
           - m_Target: {fileID: 144836065}
-            m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_MethodName: SetActive
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 1
-            m_CallState: 2
-    _isOpen: 0
-  - _actionDescription: Wnen not nice turn off Occupation
-    _conditionGroups:
-    - _conditions:
-      - _observer:
-          _detailName: Nice
-          _referenceModule: {fileID: 247604122}
-        _comparison:
-          rid: 8756104441476153362
-    _action:
-      action:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 144836065}
-            m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_MethodName: SetActive
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-    _isOpen: 0
-  - _actionDescription: When name is empty
-    _conditionGroups:
-    - _conditions:
-      - _observer:
-          _detailName: Name
-          _referenceModule: {fileID: 247604122}
-        _comparison:
-          rid: 8756104441476153365
-    _action:
-      action:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1600815305}
-            m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_MethodName: SetActive
-            m_Mode: 6
-            m_Arguments:
-              m_ObjectArgument: {fileID: 0}
-              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-              m_IntArgument: 0
-              m_FloatArgument: 0
-              m_StringArgument: 
-              m_BoolArgument: 0
-            m_CallState: 2
-    _isOpen: 0
-  - _actionDescription: When name is not empty
-    _conditionGroups:
-    - _conditions:
-      - _observer:
-          _detailName: Name
-          _referenceModule: {fileID: 247604122}
-        _comparison:
-          rid: 8756104441476153366
-    _action:
-      action:
-        m_PersistentCalls:
-          m_Calls:
-          - m_Target: {fileID: 1600815305}
             m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
             m_MethodName: SetActive
             m_Mode: 6
@@ -861,24 +692,11 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 8756104441476153361
-      type: {class: ConditionBoolComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
-      data:
-        _comparisonValue: 1
-        _comparisonType: 0
-    - rid: 8756104441476153362
-      type: {class: ConditionBoolComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
+    - rid: 8756104441476153370
+      type: {class: ConditionIntComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
       data:
         _comparisonValue: 0
         _comparisonType: 0
-    - rid: 8756104441476153365
-      type: {class: StringNullOrEmptyComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
-      data:
-        _compare: 0
-    - rid: 8756104441476153366
-      type: {class: StringNullOrEmptyComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
-      data:
-        _compare: 1
 --- !u!1 &383866825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,9 +956,6 @@ GameObject:
   - component: {fileID: 654153005}
   - component: {fileID: 654153007}
   - component: {fileID: 654153006}
-  - component: {fileID: 7360756859175718125}
-  - component: {fileID: 11}
-  - component: {fileID: 14}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -2037,8 +1852,6 @@ GameObject:
   - component: {fileID: 1600815306}
   - component: {fileID: 1600815309}
   - component: {fileID: 1600815308}
-  - component: {fileID: 1600815307}
-  - component: {fileID: 12}
   m_Layer: 5
   m_Name: Name
   m_TagString: Untagged
@@ -2066,24 +1879,6 @@ RectTransform:
   m_AnchoredPosition: {x: 340.66, y: -50.797997}
   m_SizeDelta: {x: 336.32, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1600815307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1600815305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1577b0a6a0cf4849810ef43a6db60561, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _referenceModule: {fileID: 0}
-  _useDefaultString: 0
-  _baseStringObserver:
-    DetailName: Name
-  _defaultString: 
-  _stringArgumentObservers: []
 --- !u!114 &1600815308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2740,6 +2535,7 @@ GameObject:
   - component: {fileID: 7360756859420275550}
   - component: {fileID: 7360756859420275545}
   - component: {fileID: 7360756859420275547}
+  - component: {fileID: 7360756859420275551}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -2799,11 +2595,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!1 &2100365853 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 391936806260520371, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
-  m_PrefabInstance: {fileID: 391936805240192942}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2126295094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2931,7 +2722,8 @@ PrefabInstance:
       propertyPath: _baseStringObserver.DetailName
       value: Gender
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7153218103939760774, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
 --- !u!1 &2142001334
 GameObject:
@@ -2945,10 +2737,8 @@ GameObject:
   - component: {fileID: 2142001338}
   - component: {fileID: 2142001337}
   - component: {fileID: 2142001336}
-  - component: {fileID: 2142001339}
-  - component: {fileID: 2142001340}
   m_Layer: 5
-  m_Name: Title
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3086,37 +2876,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142001334}
   m_CullTransparentMesh: 1
---- !u!114 &2142001339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142001334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1577b0a6a0cf4849810ef43a6db60561, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _referenceModule: {fileID: 0}
-  _useDefaultString: 1
-  _baseStringObserver:
-    DetailName: Name
-  _defaultString: Online {0:S2} Ago
-  _stringArgumentObservers:
-  - DetailName: LastOnline
---- !u!114 &2142001340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142001334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e10f079b31104b1baebf1af122d04f5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &391936805034905120 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 391936805600785723, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
@@ -3410,39 +3169,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e1d572516dc9434e8733679083e65ec, type: 3}
---- !u!114 &2973538535956387202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2100365853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc0592971f854bfd83f64fa5233dd9d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _referenceModule: {fileID: 0}
-  _number:
-    DetailName: Age
-  _numberChangeDuration: 0
-  _numberFormat: 
---- !u!114 &7360756859175718125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654153004}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c70338b27bb429dab15827ad077aa55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _referenceModule: {fileID: 0}
-  _observer:
-    DetailName: OnlineColor
-  _graphic: {fileID: 654153006}
 --- !u!114 &7360756859420275545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3503,3 +3229,51 @@ MonoBehaviour:
   _targetObjects:
   - {fileID: 2121691230072473587}
   - {fileID: 1782671474}
+--- !u!114 &7360756859420275551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969712544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05b323eb2e334ee7ada3b9c71ea1d4cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _conditionalActions:
+  - _actionDescription: If can message
+    _conditionGroups: []
+    _action:
+      _setActive: 1
+      _gameObjects:
+      - {fileID: 2121691230072473587}
+      - {fileID: 1782671474}
+    _isOpen: 0
+  - _actionDescription: If can't message
+    _conditionGroups: []
+    _action:
+      _setActive: 0
+      _gameObjects:
+      - {fileID: 2121691230072473587}
+      - {fileID: 1782671474}
+    _isOpen: 0
+  - _actionDescription: If is a friend
+    _conditionGroups: []
+    _action:
+      _setActive: 1
+      _gameObjects:
+      - {fileID: 2121691229727215998}
+      - {fileID: 2121691230798986550}
+    _isOpen: 0
+  - _actionDescription: If is not a friend.
+    _conditionGroups: []
+    _action:
+      _setActive: 0
+      _gameObjects:
+      - {fileID: 2121691229727215998}
+      - {fileID: 2121691230798986550}
+    _isOpen: 0
+  references:
+    version: 2
+    RefIds: []

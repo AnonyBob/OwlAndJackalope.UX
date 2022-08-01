@@ -43,7 +43,25 @@ namespace OJ.UX.Runtime.References
         }
 
         private List<TValue> _value;
-        
+
+        public ListDetail()
+        {
+            _value = new List<TValue>();
+        }
+
+        public ListDetail(List<TValue> list, bool makeCopy = false)
+        {
+            if (makeCopy)
+                _value = new List<TValue>(list);
+
+            _value = list;
+        }
+
+        public ListDetail(IEnumerable<TValue> collection)
+        {
+            _value = new List<TValue>(collection);
+        }
+
         public void Add(TValue item)
         {
             if (_value == null)

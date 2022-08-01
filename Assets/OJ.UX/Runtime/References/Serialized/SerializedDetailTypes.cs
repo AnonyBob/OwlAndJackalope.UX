@@ -129,7 +129,16 @@ namespace OJ.UX.Runtime.References.Serialized
         
         public override void ForceUpdateRuntimeDetail()
         {
-            throw new NotImplementedException();
+            //Do nothing right now.
+        }
+
+        public override ISerializedDetail Copy()
+        {
+            var detail = new SerializedReferenceDetail();
+            detail.Name = Name;
+            detail.Value = Value;
+
+            return detail;
         }
     }
 }

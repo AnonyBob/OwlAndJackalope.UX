@@ -11,7 +11,7 @@ namespace OJ.UX.Editor.References.Serialized
     public class SerializedValueDetailPropertyDrawer : PropertyDrawer
     {
         private const string VALUE_PROP = "Value";
-        private const float BUFFER = 2;
+        private const float BUFFER = 5;
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
@@ -40,17 +40,20 @@ namespace OJ.UX.Editor.References.Serialized
 
             var nameProp = property.FindPropertyRelative(nameof(AbstractSerializedDetail.Name));
             var valueProp = property.FindPropertyRelative(VALUE_PROP);
+            var isArray = valueProp.isArray && valueProp.propertyType != SerializedPropertyType.String;
         
             var typePos = new Rect(startingPos, position.y, position.width * 0.2f, EditorGUIUtility.singleLineHeight);
             var serializedDetail = property.managedReferenceValue as ISerializedDetail;
             var typeString = serializedDetail?.GetType().GetCustomAttribute<SerializedDetailDisplayAttribute>()?.DisplayName ??
                 serializedDetail?.GetValueType().Name;
+            
             EditorGUI.LabelField(typePos, typeString, EditorStyles.helpBox);   
             
             var previousEnableState = GUI.enabled;
             GUI.enabled = !Application.isPlaying;
-            
-            var namePos = new Rect(startingPos + typePos.width + BUFFER, position.y, position.width * 0.3f - BUFFER, EditorGUIUtility.singleLineHeight);
+
+            var nameWidth = position.width * 0.3f - BUFFER;
+            var namePos = new Rect(startingPos + typePos.width + BUFFER, position.y, nameWidth, EditorGUIUtility.singleLineHeight);
             var nameValue = EditorGUI.TextField(namePos, nameProp.stringValue);
             if (nameValue != nameProp.stringValue && NameValueIsNotDuplicate(nameValue, property))
             {
@@ -61,31 +64,39 @@ namespace OJ.UX.Editor.References.Serialized
             
             GUI.enabled = previousEnableState;
         
-            var xPos = namePos.x + namePos.width + BUFFER;
-            var width = position.width - (namePos.width + typePos.width + startingWidth) - (BUFFER * 2);
-            var valuePos = new Rect(xPos, position.y, width, EditorGUIUtility.singleLineHeight);
-            if (valueProp == null)
-            {
-                EditorGUI.LabelField(valuePos, $"Can't find {VALUE_PROP} property!");
-            }
-            else
-            {
-                previousEnableState = GUI.enabled;
-                GUI.enabled = !Application.isPlaying || (detail?.CanMutateRuntimeDetail() ?? false);
+            var xPos = isArray ? startingPos + (typePos.width / 2)  : namePos.x + namePos.width + BUFFER;
+            var yPos = isArray ? position.y + EditorGUIUtility.singleLineHeight + BUFFER : position.y;
+            var width = isArray ? position.width - (typePos.width / 2 + BUFFER) 
+                : position.width - (namePos.width + typePos.width + startingWidth) - (BUFFER * 2);
+            
+            var valuePos = new Rect(xPos, yPos, width, EditorGUI.GetPropertyHeight(valueProp));
+            
+            previousEnableState = GUI.enabled;
+            GUI.enabled = !Application.isPlaying || (detail?.CanMutateRuntimeDetail() ?? false);
                 
-                EditorGUI.BeginChangeCheck();
-                EditorGUI.PropertyField(valuePos, valueProp, GUIContent.none);
+            EditorGUI.BeginChangeCheck();
+            EditorGUI.PropertyField(valuePos, valueProp, GUIContent.none);
         
-                if (EditorGUI.EndChangeCheck())
-                {
-                    property.serializedObject.ApplyModifiedProperties();
-                    detail?.ForceUpdateRuntimeDetail();
-                }
-
-                GUI.enabled = previousEnableState;
+            if (EditorGUI.EndChangeCheck())
+            {
+                property.serializedObject.ApplyModifiedProperties();
+                detail?.ForceUpdateRuntimeDetail();
             }
+
+            GUI.enabled = previousEnableState;
         }
-        
+
+        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+        {
+            var valueProp = property.FindPropertyRelative(VALUE_PROP);
+            if (valueProp != null && valueProp.isArray && valueProp.propertyType != SerializedPropertyType.String)
+            {
+                return EditorGUI.GetPropertyHeight(valueProp, true) + base.GetPropertyHeight(property, label) + BUFFER;
+            }
+
+            return base.GetPropertyHeight(property, label);
+        }
+
         private bool NameValueIsNotDuplicate(string newName, SerializedProperty property)
         {
             if (property.serializedObject.targetObject is ReferenceModule module)

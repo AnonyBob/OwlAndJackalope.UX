@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ecedd8edf244a968cd8bff898d24e03, type: 3}
+  m_Name: Nicholas
+  m_EditorClassIdentifier: 
+  Details:
+  - rid: 8756104441476153386
+  - rid: 8756104441476153387
+  - rid: 8756104441476153388
+  - rid: 8756104441476153389
+  - rid: 8756104441476153390
+  - rid: 8756104441476153391
+  - rid: 8756104441476153392
+  - rid: 8756104441476153394
+  - rid: 8756104441476153395
+  - rid: 8756104441476153396
+  - rid: 8756104441476153397
+  references:
+    version: 2
+    RefIds:
+    - rid: 8756104441476153386
+      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Name
+        Value: Nicholas
+    - rid: 8756104441476153387
+      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Occupation
+        Value: Software Engineer
+    - rid: 8756104441476153388
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Age
+        Value: 31
+    - rid: 8756104441476153389
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Weight
+        Value: 0
+    - rid: 8756104441476153390
+      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Gender
+        Value: Male
+    - rid: 8756104441476153391
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: HeightFeet
+        Value: 5
+    - rid: 8756104441476153392
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: HeightInches
+        Value: 8
+    - rid: 8756104441476153394
+      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Description
+        Value: Nicholas is a silly man. He is driven by his passions and his love
+          for Kaitlin. He will do anything to bring laughter to the world
+    - rid: 8756104441476153395
+      type: {class: SerializedBoolDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: IsFriend
+        Value: 0
+    - rid: 8756104441476153396
+      type: {class: SerializedSpriteDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Avatar
+        Value: {fileID: 21300000, guid: 7d26f7f4c91fab5489ab909dd027273f, type: 3}
+    - rid: 8756104441476153397
+      type: {class: SerializedStringListValueDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Aliases
+        Value:
+        - The Owl
+        - Anonymousbob
+        - James Toolsh
+        - Caterpillar

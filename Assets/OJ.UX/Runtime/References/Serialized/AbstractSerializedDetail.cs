@@ -7,7 +7,7 @@ namespace OJ.UX.Runtime.References.Serialized
     public interface ISerializedDetail
     {
         string GetName();
-
+        
         Type GetValueType();
         
         IDetail CreateDetail();
@@ -21,6 +21,8 @@ namespace OJ.UX.Runtime.References.Serialized
         void RespondToChangesInRuntimeDetail();
         
         void ForceUpdateRuntimeDetail();
+
+        ISerializedDetail Copy();
     }
 
     [Serializable]
@@ -47,5 +49,7 @@ namespace OJ.UX.Runtime.References.Serialized
         public abstract void RespondToChangesInRuntimeDetail();
 
         public abstract void ForceUpdateRuntimeDetail();
+
+        public abstract ISerializedDetail Copy();
     }
 }
