@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEditor;
@@ -80,6 +81,32 @@ namespace OJ.UX.Editor
 
             rect.width -= padding;
             EditorGUI.DrawRect(rect, color);
+        }
+
+        public static void DrawTimeSpanFromLong(Rect valuePos, SerializedProperty valueProp)
+        {
+            var previousWidth = EditorGUIUtility.labelWidth;
+            EditorGUIUtility.labelWidth = 12f;
+            
+            var timeSpan = TimeSpan.FromTicks(valueProp.longValue);
+            var pos = new Rect(valuePos.x, valuePos.y, valuePos.width / 4 - 2, valuePos.height);
+
+            var days = EditorGUI.IntField(pos, "D", timeSpan.Days);
+            pos.x += pos.width + 2;
+            
+            var hours = EditorGUI.IntField(pos, "H", timeSpan.Hours);
+            pos.x += pos.width + 2;
+            
+            var minutes = EditorGUI.IntField(pos, "M", timeSpan.Minutes);
+            pos.x += pos.width + 2;
+            
+            var seconds = EditorGUI.IntField(pos, "S", timeSpan.Seconds);
+            pos.x += pos.width + 2;
+
+            timeSpan = new TimeSpan(days, hours, minutes, seconds);
+            valueProp.longValue = timeSpan.Ticks;
+
+            EditorGUIUtility.labelWidth = previousWidth;
         }
         
         public static SerializedProperty FindParentProperty(this SerializedProperty serializedProperty)

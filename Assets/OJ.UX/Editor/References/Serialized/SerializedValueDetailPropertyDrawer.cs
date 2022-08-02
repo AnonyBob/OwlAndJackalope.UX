@@ -7,13 +7,15 @@ using UnityEngine;
 
 namespace OJ.UX.Editor.References.Serialized
 {
-    [CustomPropertyDrawer(typeof(ISerializedValueDetail<>), true)]
+    [CustomPropertyDrawer(typeof(SerializedValueDetail<>), true)]
+    [CustomPropertyDrawer(typeof(SerializedReferenceDetail))]
+    [CustomPropertyDrawer(typeof(SerializedReferenceListValueDetail))]
     public class SerializedValueDetailPropertyDrawer : PropertyDrawer
     {
         private const string VALUE_PROP = "Value";
         private const float BUFFER = 5;
 
-        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        public sealed override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             var startingPos = position.x;
             var startingWidth = 0;
@@ -70,23 +72,10 @@ namespace OJ.UX.Editor.References.Serialized
                 : position.width - (namePos.width + typePos.width + startingWidth) - (BUFFER * 2);
             
             var valuePos = new Rect(xPos, yPos, width, EditorGUI.GetPropertyHeight(valueProp));
-            
-            previousEnableState = GUI.enabled;
-            GUI.enabled = !Application.isPlaying || (detail?.CanMutateRuntimeDetail() ?? false);
-                
-            EditorGUI.BeginChangeCheck();
-            EditorGUI.PropertyField(valuePos, valueProp, GUIContent.none);
-        
-            if (EditorGUI.EndChangeCheck())
-            {
-                property.serializedObject.ApplyModifiedProperties();
-                detail?.ForceUpdateRuntimeDetail();
-            }
-
-            GUI.enabled = previousEnableState;
+            HandleValue(valuePos, valueProp, property, detail);
         }
 
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+        public sealed override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
             var valueProp = property.FindPropertyRelative(VALUE_PROP);
             if (valueProp != null && valueProp.isArray && valueProp.propertyType != SerializedPropertyType.String)
@@ -95,6 +84,28 @@ namespace OJ.UX.Editor.References.Serialized
             }
 
             return base.GetPropertyHeight(property, label);
+        }
+
+        protected virtual void DrawValue(Rect valuePos, SerializedProperty valueProp)
+        {
+            EditorGUI.PropertyField(valuePos, valueProp, GUIContent.none, true);
+        }
+        
+        private void HandleValue(Rect valuePos, SerializedProperty valueProp, SerializedProperty baseProperty, ISerializedDetail detail)
+        {
+            var previousEnableState = GUI.enabled;
+            GUI.enabled = !Application.isPlaying || (detail?.CanMutateRuntimeDetail() ?? false);
+                
+            EditorGUI.BeginChangeCheck();
+            DrawValue(valuePos, valueProp);
+        
+            if (EditorGUI.EndChangeCheck())
+            {
+                baseProperty.serializedObject.ApplyModifiedProperties();
+                detail?.ForceUpdateRuntimeDetail();
+            }
+
+            GUI.enabled = previousEnableState;
         }
 
         private bool NameValueIsNotDuplicate(string newName, SerializedProperty property)

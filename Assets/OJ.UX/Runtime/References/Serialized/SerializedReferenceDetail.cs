@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace OJ.UX.Runtime.References.Serialized
@@ -16,21 +18,42 @@ namespace OJ.UX.Runtime.References.Serialized
             throw new NotImplementedException();
         }
         
+        public override bool CanMutateRuntimeDetail() => false;
+        
         public override void RespondToChangesInRuntimeDetail()
         {
-            // if (RuntimeDetail != null && PreviousRuntimeVersion != RuntimeDetail.Version)
-            // {
-            //     PreviousRuntimeVersion = RuntimeDetail.Version;
-            //     Value =  ConvertToStoredValue(RuntimeDetail.Value);
-            // }
+            //Do nothing right now.
         }
 
         public override void ForceUpdateRuntimeDetail()
         {
-            // if (CanMutateRuntimeDetail())
-            // {
-            //     MutableRuntimeDetail.Value =  ConvertToFinalValue(Value);
-            // }
+            //Do nothing right now.
+        }
+    }
+    
+    [System.Serializable, SerializedDetailDisplay("Reference[]", "Lists")]
+    public class SerializedReferenceListValueDetail : SerializedConversionValueDetail<List<SerializedReferenceTemplate>, List<IReference>>
+    {
+        protected override List<IReference> ConvertToFinalValue(List<SerializedReferenceTemplate> value)
+        {
+            return new List<IReference>(value.Select(v => v.CreateReference()));
+        }
+
+        protected override List<SerializedReferenceTemplate> ConvertToStoredValue(List<IReference> value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool CanMutateRuntimeDetail() => false;
+
+        public override void RespondToChangesInRuntimeDetail()
+        {
+            //Do nothing right now.
+        }
+
+        public override void ForceUpdateRuntimeDetail()
+        {
+            //Do nothing right now.
         }
     }
 }
