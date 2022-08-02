@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Details:
   - rid: 8756104441476153386
+  - rid: 8756104441476153430
   - rid: 8756104441476153387
   - rid: 8756104441476153388
   - rid: 8756104441476153389
@@ -88,3 +89,8 @@ MonoBehaviour:
         - Popkait
         - Julia Toolsh
         - Bubs
+    - rid: 8756104441476153430
+      type: {class: SerializedEyeColorDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: EyeColor
+        Value: 0

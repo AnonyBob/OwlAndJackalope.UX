@@ -1236,6 +1236,30 @@ PrefabInstance:
       propertyPath: m_text
       value: --
       objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _defaultString
+      value: '{0}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _useDefaultString
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _stringArgumentObservers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _defaultStringObserver._referenceModule
+      value: 
+      objectReference: {fileID: 1319732466}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _stringArgumentObservers.Array.data[0]._detailName
+      value: EyeColor
+      objectReference: {fileID: 0}
+    - target: {fileID: 5673992395731649311, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+      propertyPath: _stringArgumentObservers.Array.data[0]._referenceModule
+      value: 
+      objectReference: {fileID: 1319732466}
     - target: {fileID: 7153218103939760774, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1633,85 +1657,92 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serializedReference:
     Details:
-    - rid: 8756104441476153398
-    - rid: 8756104441476153399
-    - rid: 8756104441476153400
-    - rid: 8756104441476153401
-    - rid: 8756104441476153402
-    - rid: 8756104441476153403
-    - rid: 8756104441476153404
-    - rid: 8756104441476153405
-    - rid: 8756104441476153406
+    - rid: 8756104441476153418
+    - rid: 8756104441476153429
+    - rid: 8756104441476153419
+    - rid: 8756104441476153420
+    - rid: 8756104441476153421
+    - rid: 8756104441476153422
+    - rid: 8756104441476153423
+    - rid: 8756104441476153424
+    - rid: 8756104441476153425
+    - rid: 8756104441476153426
     - rid: 8756104441476153414
-    - rid: 8756104441476153407
-    - rid: 8756104441476153408
+    - rid: 8756104441476153427
+    - rid: 8756104441476153428
   references:
     version: 2
     RefIds:
-    - rid: 8756104441476153398
-      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Name
-        Value: Nicholas
-    - rid: 8756104441476153399
-      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Occupation
-        Value: Software Engineer
-    - rid: 8756104441476153400
-      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Age
-        Value: 31
-    - rid: 8756104441476153401
-      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Weight
-        Value: 0
-    - rid: 8756104441476153402
-      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Gender
-        Value: Male
-    - rid: 8756104441476153403
-      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: HeightFeet
-        Value: 5
-    - rid: 8756104441476153404
-      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: HeightInches
-        Value: 8
-    - rid: 8756104441476153405
-      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Description
-        Value: Nicholas is a silly man. He is driven by his passions and his love
-          for Kaitlin. He will do anything to bring laughter to the world
-    - rid: 8756104441476153406
-      type: {class: SerializedBoolDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: IsFriend
-        Value: 0
-    - rid: 8756104441476153407
-      type: {class: SerializedSpriteDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Avatar
-        Value: {fileID: 21300000, guid: 7d26f7f4c91fab5489ab909dd027273f, type: 3}
-    - rid: 8756104441476153408
-      type: {class: SerializedStringListValueDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Aliases
-        Value:
-        - The Owl
-        - Anonymousbob
-        - James Toolsh
-        - Caterpillar
     - rid: 8756104441476153414
       type: {class: SerializedBoolDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
       data:
         Name: Blocked
+        Value: 0
+    - rid: 8756104441476153418
+      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Name
+        Value: Kaitilin
+    - rid: 8756104441476153419
+      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Occupation
+        Value: Public Relations
+    - rid: 8756104441476153420
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Age
+        Value: 29
+    - rid: 8756104441476153421
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Weight
+        Value: 115
+    - rid: 8756104441476153422
+      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Gender
+        Value: Female
+    - rid: 8756104441476153423
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: HeightFeet
+        Value: 5
+    - rid: 8756104441476153424
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: HeightInches
+        Value: 2
+    - rid: 8756104441476153425
+      type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Description
+        Value: Kaitlin is a fierce warrior. Brave and cunning. What she lacks in
+          physical strength she more than makes up for in raw emotional strength.
+          Her wise words and warm heart can defeat many foes by making them friends.
+    - rid: 8756104441476153426
+      type: {class: SerializedBoolDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: IsFriend
+        Value: 1
+    - rid: 8756104441476153427
+      type: {class: SerializedSpriteDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Avatar
+        Value: {fileID: 21300000, guid: 20fb5a79ebce34942b806897c4e5de26, type: 3}
+    - rid: 8756104441476153428
+      type: {class: SerializedStringListValueDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Aliases
+        Value:
+        - The Jackalope
+        - Popkait
+        - Julia Toolsh
+        - Bubs
+    - rid: 8756104441476153429
+      type: {class: SerializedEyeColorDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: EyeColor
         Value: 0
 --- !u!114 &1319732467
 MonoBehaviour:
@@ -2806,6 +2837,182 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7153218103939760774, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+--- !u!1 &2135089041 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 391936806260520371, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+  m_PrefabInstance: {fileID: 784186139}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2135089044 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 391936806260520369, guid: 3292f32233ec7ee43a18cf055d65b5ff, type: 3}
+  m_PrefabInstance: {fileID: 784186139}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135089041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2135089047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135089041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b26a6c1e3bf48edaf81f7461cc40af4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _conditionalActions:
+  - _actionDescription: If Brown
+    _conditionGroups:
+    - _conditions:
+      - _observer:
+          _detailName: EyeColor
+          _referenceModule: {fileID: 1319732466}
+        _comparison:
+          rid: 8756104441476153432
+    _action:
+      _colors:
+      - Graphic: {fileID: 2135089044}
+        Color: {r: 0.6981132, g: 0.35527056, b: 0.1745283, a: 1}
+    _isOpen: 0
+  - _actionDescription: If Blue
+    _conditionGroups:
+    - _conditions:
+      - _observer:
+          _detailName: EyeColor
+          _referenceModule: {fileID: 1319732466}
+        _comparison:
+          rid: 8756104441476153433
+    _action:
+      _colors:
+      - Graphic: {fileID: 2135089044}
+        Color: {r: 0.2509804, g: 0.46274513, b: 1, a: 1}
+    _isOpen: 0
+  - _actionDescription: If Green
+    _conditionGroups:
+    - _conditions:
+      - _observer:
+          _detailName: EyeColor
+          _referenceModule: {fileID: 1319732466}
+        _comparison:
+          rid: 8756104441476153434
+    _action:
+      _colors:
+      - Graphic: {fileID: 2135089044}
+        Color: {r: 0.39607847, g: 1, b: 0.2509804, a: 1}
+    _isOpen: 0
+  - _actionDescription: If Hazel
+    _conditionGroups:
+    - _conditions:
+      - _observer:
+          _detailName: EyeColor
+          _referenceModule: {fileID: 1319732466}
+        _comparison:
+          rid: 8756104441476153435
+    _action:
+      _colors:
+      - Graphic: {fileID: 2135089044}
+        Color: {r: 0.48628876, g: 0.6132076, b: 0.08966714, a: 1}
+    _isOpen: 0
+  - _actionDescription: If Red
+    _conditionGroups:
+    - _conditions:
+      - _observer:
+          _detailName: EyeColor
+          _referenceModule: {fileID: 1319732466}
+        _comparison:
+          rid: 8756104441476153436
+    _action:
+      _colors:
+      - Graphic: {fileID: 2135089044}
+        Color: {r: 1, g: 0.35686275, b: 0.2509804, a: 1}
+    _isOpen: 0
+  - _actionDescription: If Purple
+    _conditionGroups:
+    - _conditions:
+      - _observer:
+          _detailName: EyeColor
+          _referenceModule: {fileID: 1319732466}
+        _comparison:
+          rid: 8756104441476153437
+    _action:
+      _colors:
+      - Graphic: {fileID: 2135089044}
+        Color: {r: 0.71805185, g: 0.25098038, b: 1, a: 1}
+    _isOpen: 0
+  - _actionDescription: If Yellow
+    _conditionGroups:
+    - _conditions:
+      - _observer:
+          _detailName: EyeColor
+          _referenceModule: {fileID: 1319732466}
+        _comparison:
+          rid: 8756104441476153438
+    _action:
+      _colors:
+      - Graphic: {fileID: 2135089044}
+        Color: {r: 1, g: 0.87843144, b: 0.2509804, a: 1}
+    _isOpen: 0
+  - _actionDescription: If Grey
+    _conditionGroups:
+    - _conditions:
+      - _observer:
+          _detailName: EyeColor
+          _referenceModule: {fileID: 1319732466}
+        _comparison:
+          rid: 8756104441476153439
+    _action:
+      _colors:
+      - Graphic: {fileID: 2135089044}
+        Color: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
+    _isOpen: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 8756104441476153432
+      type: {class: ConditionEnumComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
+      data:
+        _comparisonValue: 0
+        _comparisonType: 0
+    - rid: 8756104441476153433
+      type: {class: ConditionEnumComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
+      data:
+        _comparisonValue: 1
+        _comparisonType: 0
+    - rid: 8756104441476153434
+      type: {class: ConditionEnumComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
+      data:
+        _comparisonValue: 3
+        _comparisonType: 0
+    - rid: 8756104441476153435
+      type: {class: ConditionEnumComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
+      data:
+        _comparisonValue: 2
+        _comparisonType: 0
+    - rid: 8756104441476153436
+      type: {class: ConditionEnumComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
+      data:
+        _comparisonValue: 4
+        _comparisonType: 0
+    - rid: 8756104441476153437
+      type: {class: ConditionEnumComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
+      data:
+        _comparisonValue: 5
+        _comparisonType: 0
+    - rid: 8756104441476153438
+      type: {class: ConditionEnumComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
+      data:
+        _comparisonValue: 6
+        _comparisonType: 0
+    - rid: 8756104441476153439
+      type: {class: ConditionEnumComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
+      data:
+        _comparisonValue: 7
+        _comparisonType: 0
 --- !u!1 &2142001334
 GameObject:
   m_ObjectHideFlags: 0

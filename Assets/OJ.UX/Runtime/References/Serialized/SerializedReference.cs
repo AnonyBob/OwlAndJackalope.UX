@@ -63,9 +63,14 @@ namespace OJ.UX.Runtime.References.Serialized
 
             foreach (var detail in details)
             {
-                if (Details.FirstOrDefault(x => x.GetName() == detail.GetName()) == null)
+                var index = Details.FindIndex(x => x.GetName() == detail.GetName());
+                if (index < 0)
                 {
                     Details.Add(detail);
+                }
+                else
+                {
+                    Details[index] = detail;
                 }
             }
         }
