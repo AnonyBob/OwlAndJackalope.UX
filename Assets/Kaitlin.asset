@@ -24,10 +24,16 @@ MonoBehaviour:
   - rid: 8756104441476153394
   - rid: 8756104441476153395
   - rid: 8756104441476153396
+  - rid: 6348247418363183104
   - rid: 8756104441476153397
   references:
     version: 2
     RefIds:
+    - rid: 6348247418363183104
+      type: {class: SerializedTimeSpanDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: LastOnline
+        Value: 36000000000
     - rid: 8756104441476153386
       type: {class: SerializedStringDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
       data:

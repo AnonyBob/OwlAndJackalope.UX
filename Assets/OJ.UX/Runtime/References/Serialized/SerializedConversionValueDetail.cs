@@ -45,7 +45,10 @@ namespace OJ.UX.Runtime.References.Serialized
             
             if(RuntimeDetail != null)
             {
-                Value = ConvertToStoredValue(RuntimeDetail.Value);
+                if (CanMutateRuntimeDetail())
+                {
+                    Value = ConvertToStoredValue(RuntimeDetail.Value);    
+                }
                 PreviousRuntimeVersion = RuntimeDetail.Version;
             }
         }

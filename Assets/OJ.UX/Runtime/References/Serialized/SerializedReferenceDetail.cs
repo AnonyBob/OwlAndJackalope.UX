@@ -10,12 +10,16 @@ namespace OJ.UX.Runtime.References.Serialized
     {
         protected override IReference ConvertToFinalValue(SerializedReferenceTemplate value)
         {
+            if (value == null)
+            {
+                return new Reference();
+            }
             return value.CreateReference();
         }
 
         protected override SerializedReferenceTemplate ConvertToStoredValue(IReference value)
         {
-            throw new NotImplementedException();
+            return Value;
         }
         
         public override bool CanMutateRuntimeDetail() => false;
@@ -36,12 +40,19 @@ namespace OJ.UX.Runtime.References.Serialized
     {
         protected override List<IReference> ConvertToFinalValue(List<SerializedReferenceTemplate> value)
         {
-            return new List<IReference>(value.Select(v => v.CreateReference()));
+            return new List<IReference>(value.Select(v =>
+            {
+                if (v == null)
+                {
+                    return new Reference();
+                }
+                return v.CreateReference();
+            }));
         }
 
         protected override List<SerializedReferenceTemplate> ConvertToStoredValue(List<IReference> value)
         {
-            throw new NotImplementedException();
+            return Value;
         }
 
         public override bool CanMutateRuntimeDetail() => false;

@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ecedd8edf244a968cd8bff898d24e03, type: 3}
+  m_Name: SelectionTemplate
+  m_EditorClassIdentifier: 
+  Details:
+  - rid: 6348247477113061378
+  - rid: 6348247477113061379
+  - rid: 6348247477113061380
+  - rid: 6348247477113061376
+  - rid: 6348247477113061377
+  references:
+    version: 2
+    RefIds:
+    - rid: 6348247477113061376
+      type: {class: SerializedReferenceDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Selected
+        Value: {fileID: 0}
+    - rid: 6348247477113061377
+      type: {class: SerializedReferenceListValueDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: SelectedList
+        Value: []
+    - rid: 6348247477113061378
+      type: {class: SerializedBoolDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: AtMaxSelected
+        Value: 0
+    - rid: 6348247477113061379
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: SelectedCount
+        Value: 0
+    - rid: 6348247477113061380
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: MaxSelectedAllowed
+        Value: 0

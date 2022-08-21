@@ -1785,7 +1785,7 @@ MonoBehaviour:
     - rid: 8756104441476153440
       type: {class: SerializedTimeSpanDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
       data:
-        Name: TimeSpan 06d00
+        Name: LastOnline
         Value: 0
 --- !u!114 &1319732467
 MonoBehaviour:
@@ -3560,7 +3560,7 @@ MonoBehaviour:
         ActiveState: 1
       - GameObject: {fileID: 1782671474}
         ActiveState: 1
-    _isOpen: 0
+    _isOpen: 1
   - _actionDescription: If can't message
     _conditionGroups:
     - _conditions:

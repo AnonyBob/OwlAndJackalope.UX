@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using OJ.UX.Runtime.References;
 using UnityEngine;
 
 namespace OJ.UX.Runtime.Binding
 {
-     [System.Serializable]
+    [System.Serializable]
     public class Observer
     {
         public IDetail ObjectDetail => _objectDetail;
@@ -112,6 +115,8 @@ namespace OJ.UX.Runtime.Binding
             {
                 if (_mutableDetail != null)
                     _mutableDetail.Value = value;
+                else
+                    Debug.LogWarning($"{_detailName} is not mutable.");
             }
         } 
 
@@ -145,5 +150,155 @@ namespace OJ.UX.Runtime.Binding
                 }
             }
         }
+    }
+    
+    [Serializable]
+    public class ListObserver<TValue> : Observer, IList<TValue>
+    {
+        public IDetail<List<TValue>> Detail => _valueDetail;
+
+        public ListDetail<TValue> ListDetail => _mutableDetail;
+
+        public bool CanMutate => _mutableDetail != null;
+
+        public List<TValue> Value
+        {
+            get => Detail != null ? Detail.Value : null;
+            set
+            {
+                if (_mutableDetail != null)
+                    _mutableDetail.Value = value;
+                else
+                    Debug.LogWarning($"{_detailName} is not mutable.");
+            }
+        }
+
+        public int Count => _valueDetail?.Value?.Count ?? 0;
+        
+        public bool IsReadOnly => !CanMutate;
+
+        private ListDetail<TValue> _mutableDetail;
+        private IDetail<List<TValue>> _valueDetail;
+        
+        public TValue this[int index]
+        {
+            get => _valueDetail?.Value != null 
+                ? _valueDetail.Value[index] 
+                : throw new ArgumentOutOfRangeException("List is not provided");
+            set
+            {
+                if (!CanMutate)
+                {
+                    throw new InvalidOperationException("List is not mutable");
+                }
+
+                _mutableDetail[index] = value;
+            }
+        }
+        
+        
+        public void Add(TValue item)
+        {
+            if (!CanMutate)
+            {
+                throw new InvalidOperationException("List is not mutable");
+            }
+            
+            _mutableDetail.Add(item);
+        }
+
+        public void Clear()
+        {
+            if (!CanMutate)
+            {
+                throw new InvalidOperationException("List is not mutable");
+            }
+            
+            _mutableDetail.Clear();
+        }
+
+        public bool Contains(TValue item)
+        {
+            return _valueDetail?.Value?.Contains(item) ?? false;
+        }
+
+        public void CopyTo(TValue[] array, int arrayIndex)
+        {
+            _valueDetail?.Value?.CopyTo(array, arrayIndex);
+        }
+
+        public bool Remove(TValue item)
+        {
+            if (!CanMutate)
+            {
+                throw new InvalidOperationException("List is not mutable");
+            }
+            
+            return _mutableDetail.Remove(item);
+        }
+        
+        public int IndexOf(TValue item)
+        {
+            return _valueDetail?.Value?.IndexOf(item) ?? -1;
+        }
+
+        public void Insert(int index, TValue item)
+        {
+            if (!CanMutate)
+            {
+                throw new InvalidOperationException("List is not mutable");
+            }
+            
+            _mutableDetail.Insert(index, item);
+        }
+
+        public void RemoveAt(int index)
+        {
+            if (!CanMutate)
+            {
+                throw new InvalidOperationException("List is not mutable");
+            }
+            
+            _mutableDetail.RemoveAt(index);
+        }
+
+        public IEnumerator<TValue> GetEnumerator()
+        {
+            return _valueDetail?.Value?.GetEnumerator() ?? Enumerable.Empty<TValue>().GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+        
+        protected override void HandleReferenceChanged(bool suppressInitial)
+        {
+            var newDetail = _reference.GetDetail<TValue>(_detailName);
+            if (_objectDetail != null)
+            {
+                //Do nothing if this is the existing detail.
+                if (ReferenceEquals(newDetail, _objectDetail))
+                {
+                    return;
+                }
+
+                _objectDetail.OnChanged -= HandleDetailChanged;
+            }
+
+            _objectDetail = newDetail;
+            _valueDetail = _objectDetail as IDetail<List<TValue>>;
+            _mutableDetail = _objectDetail as ListDetail<TValue>;
+            
+            if (_objectDetail != null)
+            {
+                _objectDetail.OnChanged += HandleDetailChanged;
+                if (!suppressInitial)
+                {
+                    HandleDetailChanged();
+                }
+            }
+        }
+
     }
 }
