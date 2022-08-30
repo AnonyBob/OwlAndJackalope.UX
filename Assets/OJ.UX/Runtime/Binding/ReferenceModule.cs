@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using OJ.UX.Runtime.References;
 using OJ.UX.Runtime.References.Serialized;
+using OJ.UX.Runtime.Versions;
 using UnityEngine;
 
 namespace OJ.UX.Runtime.Binding
 {
     [DefaultExecutionOrder(-100)]
-    public sealed class ReferenceModule : MonoBehaviour
+    public sealed class ReferenceModule : MonoBehaviour, IInitializableGameObject<IReference>
     {
         public IReference Reference
         {
@@ -29,9 +30,16 @@ namespace OJ.UX.Runtime.Binding
             }
         }
 
+        public GameObject GameObject => this.gameObject;
+
         [SerializeField]
         private SerializedReference _serializedReference;
         private IMutableReference _runtimeReference;
+
+        public void Initialize(IReference value)
+        {
+            Reference = value;
+        }
 
         private void OnEnable()
         {
@@ -73,5 +81,6 @@ namespace OJ.UX.Runtime.Binding
             return true;
         }
 #endif
+        
     }
 }

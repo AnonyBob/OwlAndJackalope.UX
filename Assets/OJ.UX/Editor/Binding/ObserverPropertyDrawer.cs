@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using OJ.UX.Runtime.Binders.Conditions;
@@ -86,7 +87,15 @@ namespace OJ.UX.Editor.Binding
 
             if (fieldInfo.FieldType.IsGenericType)
             {
-                return new Type[] { fieldInfo.FieldType.GetGenericArguments()[0] };
+                if (typeof(IEnumerable).IsAssignableFrom(fieldInfo.FieldType))
+                {
+                    var listType = typeof(List<>);
+                    return new[] { listType.MakeGenericType(fieldInfo.FieldType.GetGenericArguments()[0]) };
+                }
+                else
+                {
+                    return new Type[] { fieldInfo.FieldType.GetGenericArguments()[0] };    
+                }
             }
             
             return new Type[0];
