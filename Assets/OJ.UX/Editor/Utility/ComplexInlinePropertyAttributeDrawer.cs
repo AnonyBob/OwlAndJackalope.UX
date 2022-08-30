@@ -2,7 +2,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace DefaultNamespace
+namespace OJ.UX.Editor.Utility
 {
     [CustomPropertyDrawer(typeof(ComplexInlinePropertyAttribute))]
     public class ComplexInlinePropertyAttributeDrawer : PropertyDrawer
