@@ -38,7 +38,7 @@ namespace OJ.UX.Editor
             return pressed;
         }
         
-        public static bool CenteredButton(string text, Color color, float width, GUIStyle style = null)
+        public static bool CenteredButton(string text, Color color, float width, GUIStyle style = null, string rectId = null)
         {
             var pressed = false;
             using (new EditorGUILayout.HorizontalScope())
@@ -47,7 +47,11 @@ namespace OJ.UX.Editor
                 var previousColor = GUI.backgroundColor;
                 GUI.backgroundColor = color;
                 
-                pressed =  GUILayout.Button(text, style ?? GUI.skin.button,GUILayout.Width(width));  
+                pressed =  GUILayout.Button(text, style ?? GUI.skin.button,GUILayout.Width(width));
+                if (rectId != null)
+                {
+                    SetLastRect(rectId);
+                }
                 
                 GUI.backgroundColor = previousColor;
                 GUILayout.FlexibleSpace();

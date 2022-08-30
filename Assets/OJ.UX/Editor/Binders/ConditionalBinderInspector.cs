@@ -56,7 +56,17 @@ namespace OJ.UX.Editor.Binders
                 {
                     using (new EditorGUILayout.HorizontalScope(GUILayout.Width(70)))
                     {
-                        isOpenProp.boolValue = EditorGUILayout.Foldout(isOpenProp.boolValue, $"{index}", true);
+                        var previousColor = GUI.backgroundColor;
+                        var content = string.Empty;
+                        if (Application.isPlaying)
+                        {
+                            var isMet = CheckConditionIsMet(serializedObject, index);
+                            GUI.backgroundColor = isMet ? Color.green : Color.red;
+                            content = isMet ? "Active" : "Inactive";
+                        }
+
+                        isOpenProp.boolValue = EditorGUILayout.Foldout(isOpenProp.boolValue, content, true, EditorStyles.foldoutHeader);
+                        GUI.backgroundColor = previousColor;
                     }
                     EditorGUILayout.PropertyField(actionDescriptionProp, GUIContent.none);
                     if (OJEditorUtility.Button("+", GUI.backgroundColor, 30, EditorStyles.miniButtonLeft))
@@ -113,6 +123,11 @@ namespace OJ.UX.Editor.Binders
                                 {
                                     conditions.DeleteArrayElementAtIndex(conditionIndex);
                                     conditionIndex--;
+
+                                    if (conditions.arraySize == 0)
+                                    {
+                                        deleteConditionGroup = true;
+                                    }
                                 }
                             }
                         }
@@ -136,7 +151,7 @@ namespace OJ.UX.Editor.Binders
                 }
             }
 
-            DrawAddConditionGroup(conditionGroupsProp);
+            DrawAddConditionGroup(conditionGroupsProp, conditionalActionIndex);
             DrawActionWithinConditional(conditionalAction);
         }
 
@@ -170,23 +185,52 @@ namespace OJ.UX.Editor.Binders
             return delete;
         }
 
-        private void AddAnotherCondition(SerializedProperty conditions, Rect? lastRect)
+        private void AddAnotherCondition(SerializedProperty conditions, Rect? lastRect, Object previousReferenceModule = null)
         {
             if (lastRect.HasValue)
             {
-                var menu = ConditionsUtility.GetInitialConditionMenu(conditions);
+                var menu = ConditionsUtility.GetInitialConditionMenu(conditions, previousReferenceModule);
                 menu.DropDown(lastRect.Value);
             }
         }
 
-        private void DrawAddConditionGroup(SerializedProperty conditionGroupsProp)
+        private void DrawAddConditionGroup(SerializedProperty conditionGroupsProp, int conditionActionIndex)
         {
-            if (OJEditorUtility.CenteredButton("or", GUI.backgroundColor, 50, EditorStyles.miniButton))
+            if (OJEditorUtility.CenteredButton("or", GUI.backgroundColor, 50, EditorStyles.miniButton, $"condition_or_{conditionActionIndex}"))
             {
                 conditionGroupsProp.arraySize++;
                 var newGroup = conditionGroupsProp.GetArrayElementAtIndex(conditionGroupsProp.arraySize - 1);
-                newGroup.FindPropertyRelative("_conditions").arraySize = 0;
+                var conditions = newGroup.FindPropertyRelative("_conditions");
+
+                //Get the reference module from the previous group. We will likely want to assign it in the next 
+                //group as well.
+                Object previousReferenceModule = null;
+                if (conditions.arraySize > 0)
+                {
+                    var firstCondition = conditions.GetArrayElementAtIndex(0);
+                    var observer = firstCondition.FindPropertyRelative("_observer");
+                    if (observer != null)
+                    {
+                        var referenceModule = observer.FindPropertyRelative("_referenceModule");
+                        previousReferenceModule = referenceModule.objectReferenceValue;
+                    }
+                }
+                
+                conditions.arraySize = 0;
+                AddAnotherCondition(conditions, OJEditorUtility.GetLastRect($"condition_or_{conditionActionIndex}"), previousReferenceModule);
             }
+        }
+
+        private bool CheckConditionIsMet(SerializedObject conditionalBinder, int conditionalActionIndex)
+        {
+            var type = conditionalBinder.targetObject.GetType();
+            var method = type.GetMethod("IsConditionalActionActive");
+            if (method != null)
+            {
+                var result = method.Invoke(conditionalBinder.targetObject, new object[] { conditionalActionIndex });
+                return (bool)result;
+            }
+            return false;
         }
 
         protected virtual void DrawActionWithinConditional(SerializedProperty conditionalAction)

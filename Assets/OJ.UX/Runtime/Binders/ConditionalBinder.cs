@@ -78,5 +78,16 @@ namespace OJ.UX.Runtime.Binders
             }
             return didChange;
         }
+        
+        public bool IsConditionalActionActive(int conditionalActionIndex)
+        {
+            if (_conditionalActions != null && _conditionalActions.Length > conditionalActionIndex &&
+                conditionalActionIndex >= 0)
+            {
+                return _conditionalActions[conditionalActionIndex].IsConditionMet;
+            }
+
+            return false;
+        }
     }
 }

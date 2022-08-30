@@ -5,6 +5,7 @@ using System.Reflection;
 using OJ.UX.Runtime.Binders.Conditions;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace OJ.UX.Editor.Binders
 {
@@ -18,7 +19,7 @@ namespace OJ.UX.Editor.Binders
             CreateConditionTypesDictionary();
         }
 
-        public static GenericMenu GetInitialConditionMenu(SerializedProperty conditionsList)
+        public static GenericMenu GetInitialConditionMenu(SerializedProperty conditionsList, Object referenceModule)
         {
             var genericMenu = new GenericMenu();
             foreach (var conditionTypeComparisons in _conditionTypes)
@@ -30,7 +31,11 @@ namespace OJ.UX.Editor.Binders
                     var conditionProp = conditionsList.GetArrayElementAtIndex(conditionsList.arraySize - 1);
                     var observerProp = conditionProp.FindPropertyRelative("_observer");
                     observerProp.FindPropertyRelative("_detailName").stringValue = string.Empty;
-                    
+                    if (referenceModule != null)
+                    {
+                        observerProp.FindPropertyRelative("_referenceModule").objectReferenceValue = referenceModule;    
+                    }
+
                     var conditionComparisonInstance = Activator.CreateInstance(firstConditionComparison.ConditionComparisonType);
                     conditionProp.FindPropertyRelative("_comparison").managedReferenceValue = conditionComparisonInstance;
                     conditionProp.serializedObject.ApplyModifiedProperties();

@@ -9,6 +9,8 @@ namespace OJ.UX.Runtime.Binders.Conditions
     public class ConditionalAction<TActionDetail> : IConditionChangedHandler, IDetailBinder
         where TActionDetail : IConditionalActionDetail
     {
+        public bool IsConditionMet => _previousConditionStatus ?? false;
+        
         [SerializeField]
         private string _actionDescription;
         
