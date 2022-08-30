@@ -53,7 +53,7 @@ namespace OJ.UX.Runtime.Binders.FormatProviders
                 return string.Empty;
             }
 
-            if (format.StartsWith("S"))
+            if (format != null && format.StartsWith("S"))
             {
                 if (arg is TimeSpan timespan)
                 {

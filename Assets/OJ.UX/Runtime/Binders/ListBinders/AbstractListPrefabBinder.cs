@@ -65,10 +65,15 @@ namespace OJ.UX.Runtime.Binders.ListBinders
             
             //Destroy existing prefabs that are no longer available
             _removeValues.Clear();
-            _removeValues.AddRange(_activePrefabs.Keys.Where(x => _list.Value.Contains(x)));
+            _removeValues.AddRange(_activePrefabs.Keys.Where(x => !_list.Value.Contains(x)));
             foreach (var itemToRemove in _removeValues)
             {
+                if (_activePrefabs[itemToRemove].GameObject != null)
+                {
+                    Destroy(_activePrefabs[itemToRemove].GameObject);    
+                }
                 _activePrefabs.Remove(itemToRemove);
+                
             }
             
             //Create the prefabs that will replace the objects or simply reorder the objects that already exist.

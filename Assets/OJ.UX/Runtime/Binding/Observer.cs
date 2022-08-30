@@ -274,7 +274,7 @@ namespace OJ.UX.Runtime.Binding
         
         protected override void HandleReferenceChanged(bool suppressInitial)
         {
-            var newDetail = _reference.GetDetail<TValue>(_detailName);
+            var newDetail = _reference.GetDetail<List<TValue>>(_detailName);
             if (_objectDetail != null)
             {
                 //Do nothing if this is the existing detail.
