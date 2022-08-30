@@ -615,33 +615,77 @@ MonoBehaviour:
   m_GameObject: {fileID: 247604117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8657d1da46174865b267cd9728f9aba5, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b26a6c1e3bf48edaf81f7461cc40af4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _serializedReference:
-    Details:
-    - rid: 8756104441476153442
-    - rid: 8756104441476153444
-    - rid: 8756104441476153450
+  _conditionalActions:
+  - _actionDescription: Online
+    _conditionGroups:
+    - _conditions:
+      - _observer:
+          _detailName: LastOnline
+          _referenceModule: {fileID: 1319732466}
+        _comparison:
+          rid: 6348247667326582801
+    _action:
+      _colors:
+      - Graphic: {fileID: 654153006}
+        Color: {r: 0.39607847, g: 1, b: 0.2509804, a: 1}
+    _isOpen: 1
+  - _actionDescription: Recently Online
+    _conditionGroups:
+    - _conditions:
+      - _observer:
+          _detailName: LastOnline
+          _referenceModule: {fileID: 1319732466}
+        _comparison:
+          rid: 6348247667326582802
+      - _observer:
+          _detailName: LastOnline
+          _referenceModule: {fileID: 1319732466}
+        _comparison:
+          rid: 6348247667326582803
+    _action:
+      _colors:
+      - Graphic: {fileID: 654153006}
+        Color: {r: 1, g: 0.87843144, b: 0.2509804, a: 1}
+    _isOpen: 1
+  - _actionDescription: Offline
+    _conditionGroups:
+    - _conditions:
+      - _observer:
+          _detailName: LastOnline
+          _referenceModule: {fileID: 1319732466}
+        _comparison:
+          rid: 6348247667326582804
+    _action:
+      _colors:
+      - Graphic: {fileID: 654153006}
+        Color: {r: 1, g: 0.35686275, b: 0.2509804, a: 1}
+    _isOpen: 1
   references:
     version: 2
     RefIds:
-    - rid: 8756104441476153442
-      type: {class: SerializedTimeSpanDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+    - rid: 6348247667326582801
+      type: {class: ConditionTimeSpanComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
       data:
-        Name: Fine Day
-        Value: 0
-    - rid: 8756104441476153444
-      type: {class: SerializedReferenceDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+        _comparisonValue: 6000000000
+        _comparisonType: 5
+    - rid: 6348247667326582802
+      type: {class: ConditionTimeSpanComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
       data:
-        Name: Reference 49e95
-        Value: {fileID: 0}
-    - rid: 8756104441476153450
-      type: {class: SerializedReferenceListValueDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+        _comparisonValue: 6000000000
+        _comparisonType: 2
+    - rid: 6348247667326582803
+      type: {class: ConditionTimeSpanComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
       data:
-        Name: Reference[] 1cd04
-        Value:
-        - {fileID: 11400000, guid: 8f43d34a6c87b08499b15d63577fc25f, type: 2}
+        _comparisonValue: 36000000000
+        _comparisonType: 5
+    - rid: 6348247667326582804
+      type: {class: ConditionTimeSpanComparison, ns: OJ.UX.Runtime.Binders.Conditions, asm: OJ.UX.Runtime}
+      data:
+        _comparisonValue: 36000000000
+        _comparisonType: 2
 --- !u!1 &383866825
 GameObject:
   m_ObjectHideFlags: 0
@@ -3314,7 +3358,7 @@ MonoBehaviour:
   _defaultStringObserver:
     _detailName: 
     _referenceModule: {fileID: 1319732466}
-  _defaultString: Online {0} Ago
+  _defaultString: Online {0:S2} Ago
   _stringArgumentObservers:
   - _detailName: LastOnline
     _referenceModule: {fileID: 1319732466}

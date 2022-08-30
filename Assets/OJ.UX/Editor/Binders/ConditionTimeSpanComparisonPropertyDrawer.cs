@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace OJ.UX.Editor.Binders
 {
-    [CustomPropertyDrawer(typeof(IConditionComparison), true)]
-    public class ConditionValueComparisonPropertyDrawer : PropertyDrawer
+    [CustomPropertyDrawer(typeof(ConditionTimeSpanComparison), true)]
+    public class ConditionTimeSpanComparisonPropertyDrawer : PropertyDrawer
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
@@ -14,8 +14,9 @@ namespace OJ.UX.Editor.Binders
             EditorGUI.PropertyField(pos, property.FindPropertyRelative("_comparisonType"), GUIContent.none);
 
             pos.x = pos.x + pos.width + 2f;
-            EditorGUI.PropertyField(pos, property.FindPropertyRelative("_comparisonValue"), GUIContent.none);
-            
+
+            var valueProp = property.FindPropertyRelative("_comparisonValue");
+            OJEditorUtility.DrawTimeSpanFromLong(pos, valueProp);
         }
     }
 }
