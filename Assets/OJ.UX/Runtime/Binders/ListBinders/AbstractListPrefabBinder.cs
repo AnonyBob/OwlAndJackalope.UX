@@ -87,6 +87,7 @@ namespace OJ.UX.Runtime.Binders.ListBinders
                 }
                 
                 prefab.GameObject.transform.SetSiblingIndex(i + _startingSiblingIndex);
+                prefab.GameObject.name = $"{gameObject.name}-{i}";
             }
         }
 

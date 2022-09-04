@@ -8,7 +8,7 @@ namespace OJ.UX.Runtime.Selection
     /// <summary>
     /// Constructs a reference for selecting a specific object.
     /// </summary>
-    public abstract class SelectionGroupReference<TValue> : DetailsProvider
+    public class SelectionGroupDetailsProvider : DetailsProvider
     {
         [SerializeField, Tooltip("Amount that can be selected at one time. Set to zero to have unlimited.")]
         private int _maxSelectionCount = 1;
@@ -17,8 +17,8 @@ namespace OJ.UX.Runtime.Selection
         private bool _deselectOldest = false;
         
         private IReference _reference;
-        private ListDetail<TValue> _selectedList;
-        private IDetail<TValue> _selectedItem;
+        private ListDetail<GameObject> _selectedList;
+        private IDetail<GameObject> _selectedItem;
         private IDetail<int> _selectedCount;
         private IDetail<int> _maxSelectionCountDetail;
         private IDetail<bool> _atMaxSelected;
@@ -31,7 +31,7 @@ namespace OJ.UX.Runtime.Selection
             }
         }
         
-        public bool Select(TValue item)
+        public bool Select(GameObject item)
         {
             if (_selectedList.Contains(item))
             {
@@ -44,7 +44,10 @@ namespace OJ.UX.Runtime.Selection
                 {
                     Deselect(_selectedList[0]);
                 }
-                return false;
+                else
+                {
+                    return false;    
+                }
             }
             
             _selectedList.Add(item);
@@ -52,7 +55,19 @@ namespace OJ.UX.Runtime.Selection
             return true;
         }
 
-        public void SelectMultiple(params TValue[] items)
+        public void ToggleSelect(GameObject item)
+        {
+            if (_selectedList.Contains(item))
+            {
+                Deselect(item);
+            }
+            else
+            {
+                Select(item);
+            }
+        }
+
+        public void SelectMultiple(params GameObject[] items)
         {
             foreach (var item in items)
             {
@@ -60,7 +75,7 @@ namespace OJ.UX.Runtime.Selection
             }
         }
 
-        public bool Deselect(TValue item)
+        public bool Deselect(GameObject item)
         {
             var deselected = _selectedList.Remove(item);
             OnSelectionChanged(item, false);
@@ -76,26 +91,26 @@ namespace OJ.UX.Runtime.Selection
             }
         }
 
-        protected virtual void OnSelectionChanged(TValue item, bool selected)
+        protected virtual void OnSelectionChanged(GameObject item, bool selected)
         {
-            //Override to create behavior to use on a specific item upon selection.
+            item.GetComponent<SelectableItem>().SetSelectionStatus(selected);
         }
         
         private void CreateReference()
         {
-            _selectedList = new ListDetail<TValue>();
-            _selectedItem = new TransformDetail<List<TValue>, TValue>(list =>
+            _selectedList = new ListDetail<GameObject>();
+            _selectedItem = new TransformDetail<List<GameObject>, GameObject>(list =>
             {
                 if (list == null || list.Count == 0)
                 {
-                    return default(TValue);
+                    return default(GameObject);
                 }
 
                 return list[0];
             }, _selectedList);
             
             _maxSelectionCountDetail = new Detail<int>(_maxSelectionCount);
-            _selectedCount = new TransformDetail<List<TValue>, int>(list => list?.Count ?? 0, _selectedList);
+            _selectedCount = new TransformDetail<List<GameObject>, int>(list => list?.Count ?? 0, _selectedList);
             _atMaxSelected = new TransformDetail<int, int, bool>(
                 (selectedCount, maxSelectedCount) => selectedCount >= maxSelectedCount && maxSelectedCount != 0, 
                 _selectedCount, _maxSelectionCountDetail);

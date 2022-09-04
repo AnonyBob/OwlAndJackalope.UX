@@ -5,10 +5,10 @@ using UnityEngine;
 namespace OJ.UX.Runtime.Binders.ListBinders
 {
     [CreateAssetMenu(menuName = "OJ.UX/Prefab Provider", fileName = "Simple Providers")]
-    public class SimpleReferencePrefabProvider : AbstractPrefabProvider<IReference, ReferenceModule>
+    public class SimpleReferencePrefabProvider : AbstractPrefabProvider<IReference, ReferenceInitializationObject>
     {
         [SerializeField]
-        private ReferenceModule _prefab;
+        private ReferenceInitializationObject _prefab;
         
         public override bool IsReady() => true;
 
@@ -20,11 +20,11 @@ namespace OJ.UX.Runtime.Binders.ListBinders
         {
         }
 
-        public override ReferenceModule CreateElement(IReference reference, MonoBehaviour parent)
+        public override ReferenceInitializationObject CreateElement(IReference reference, MonoBehaviour parent)
         {
             var parentTransform = parent != null ? parent.transform : null;
             var instance = Instantiate(_prefab, parentTransform);
-            instance.Reference = reference;
+            instance.Initialize(reference);
             return instance;
         }
     }

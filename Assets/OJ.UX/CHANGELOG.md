@@ -42,3 +42,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Remove the state behavior to use a new condition binder instead.
 - Updated the serialization to use serialize reference instead of the complex previous binders.
 - Added selection logic and new binder types.
+
+## [1.1.1] - 2022-09-03
+### Changed
+- Updated the conditional groups to make custom editors for the conditional actions
+- Made the conditional groups reorderable.

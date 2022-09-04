@@ -1751,7 +1751,11 @@ MonoBehaviour:
       type: {class: SerializedReferenceListValueDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
       data:
         Name: Example
-        Value: []
+        Value:
+        - {fileID: 11400000, guid: 3b61f8ae263f94e4a9304790a6d88006, type: 2}
+        - {fileID: 11400000, guid: 70d4a6548e2512d4eabd1eb774014ab2, type: 2}
+        - {fileID: 11400000, guid: 3b91eda358bbf214da681facbf5a90a9, type: 2}
+        - {fileID: 11400000, guid: 63baa81f68c53bb4ba668c7aa25262c8, type: 2}
     - rid: 8756104441476153414
       type: {class: SerializedBoolDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
       data:
@@ -1963,8 +1967,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1557847147}
-  - component: {fileID: 1557847149}
   - component: {fileID: 1557847148}
+  - component: {fileID: 1557847149}
+  - component: {fileID: 1557847151}
+  - component: {fileID: 1557847150}
   m_Layer: 5
   m_Name: Container
   m_TagString: Untagged
@@ -2027,14 +2033,75 @@ MonoBehaviour:
   m_GameObject: {fileID: 1557847146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cc4f691c7874cc980cc75950aa28604, type: 3}
+  m_Script: {fileID: 11500000, guid: d52394e7253a49a8b3486e5802970ee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _list:
-    _detailName: Aliases
+    _detailName: Example
     _referenceModule: {fileID: 1319732466}
-  _prefabProvider: {fileID: 11400000, guid: 7dd1fb53b0d10cf49924f48f6e3ac5d9, type: 2}
+  _prefabProvider: {fileID: 11400000, guid: c251d7911ea6b6a4cb8b9579bba59e66, type: 2}
   _startingSiblingIndex: 0
+--- !u!114 &1557847150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557847146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8657d1da46174865b267cd9728f9aba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedReference:
+    Details:
+    - rid: 6054588409902792756
+    - rid: 6054588409902792757
+    - rid: 6054588409902792758
+    - rid: 6054588409902792759
+    - rid: 6054588409902792760
+  references:
+    version: 2
+    RefIds:
+    - rid: 6054588409902792756
+      type: {class: SerializedBoolDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: AtMaxSelected
+        Value: 0
+    - rid: 6054588409902792757
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: SelectedCount
+        Value: 0
+    - rid: 6054588409902792758
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: MaxSelectedAllowed
+        Value: 0
+    - rid: 6054588409902792759
+      type: {class: SerializedGameObjectDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Selected
+        Value: {fileID: 0}
+    - rid: 6054588409902792760
+      type: {class: SerializedGameObjectListValueDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: SelectedList
+        Value: []
+--- !u!114 &1557847151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557847146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f1c483d4494eb485049c425da3d5c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxSelectionCount: 1
+  _deselectOldest: 0
 --- !u!1 &1594694943
 GameObject:
   m_ObjectHideFlags: 0

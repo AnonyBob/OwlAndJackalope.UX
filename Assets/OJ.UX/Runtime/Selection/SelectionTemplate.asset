@@ -16,21 +16,21 @@ MonoBehaviour:
   - rid: 6348247477113061378
   - rid: 6348247477113061379
   - rid: 6348247477113061380
-  - rid: 6348247477113061376
-  - rid: 6348247477113061377
+  - rid: 6054588409902792755
+  - rid: 6054588409902792754
   references:
     version: 2
     RefIds:
-    - rid: 6348247477113061376
-      type: {class: SerializedReferenceDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Selected
-        Value: {fileID: 0}
-    - rid: 6348247477113061377
-      type: {class: SerializedReferenceListValueDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+    - rid: 6054588409902792754
+      type: {class: SerializedGameObjectListValueDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
       data:
         Name: SelectedList
         Value: []
+    - rid: 6054588409902792755
+      type: {class: SerializedGameObjectDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Selected
+        Value: {fileID: 0}
     - rid: 6348247477113061378
       type: {class: SerializedBoolDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
       data:

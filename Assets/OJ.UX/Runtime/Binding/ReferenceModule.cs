@@ -9,7 +9,7 @@ using UnityEngine;
 namespace OJ.UX.Runtime.Binding
 {
     [DefaultExecutionOrder(-100)]
-    public sealed class ReferenceModule : MonoBehaviour, IInitializableGameObject<IReference>
+    public sealed class ReferenceModule : MonoBehaviour
     {
         public IReference Reference
         {
@@ -35,11 +35,6 @@ namespace OJ.UX.Runtime.Binding
         [SerializeField]
         private SerializedReference _serializedReference;
         private IMutableReference _runtimeReference;
-
-        public void Initialize(IReference value)
-        {
-            Reference = value;
-        }
 
         private void OnEnable()
         {

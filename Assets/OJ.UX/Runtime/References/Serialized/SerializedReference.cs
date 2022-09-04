@@ -21,15 +21,16 @@ namespace OJ.UX.Runtime.References.Serialized
             var linkedDetail = Details.FirstOrDefault(d => d.GetName() == detailName);
             if (linkedDetail == null)
             {
-                linkedDetail = ConstructFromDetail(detail);
+                linkedDetail = ConstructFromDetail(detailName, detail);
                 Details.Add(linkedDetail);
             }
             
             linkedDetail.LinkRuntimeDetail(detail, true);
         }
 
-        private ISerializedDetail ConstructFromDetail(IDetail detail)
+        private ISerializedDetail ConstructFromDetail(string detailName, IDetail detail)
         {
+            //TODO: Construct the serialized detail from the provided detail.
             return null;
         }
         

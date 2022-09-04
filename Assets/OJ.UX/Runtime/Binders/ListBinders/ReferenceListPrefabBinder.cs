@@ -3,7 +3,7 @@ using OJ.UX.Runtime.References;
 
 namespace OJ.UX.Runtime.Binders.ListBinders
 {
-    public class ReferenceListPrefabBinder : AbstractListPrefabBinder<IReference, ReferenceModule>
+    public class ReferenceListPrefabBinder : AbstractListPrefabBinder<IReference, ReferenceInitializationObject>
     {
         
     }
