@@ -24,6 +24,8 @@ namespace OJ.UX.Runtime.References
             }
         }
 
+        public Type ValueType => typeof(List<TValue>);
+        
         public long Version { get; private set; }
 
         public int Count => _value?.Count ?? 0;

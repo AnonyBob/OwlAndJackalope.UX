@@ -18,6 +18,8 @@ namespace OJ.UX.Runtime.References
             }
         }
 
+        public Type ValueType => typeof(TValue);
+
         public long Version => _originalValue.Version;
         
         public event Action OnChanged;
@@ -65,6 +67,8 @@ namespace OJ.UX.Runtime.References
                 return _cachedValue;
             }
         }
+        
+        public Type ValueType => typeof(TValue);
 
         public long Version => _version;
         

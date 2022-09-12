@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using OJ.UX.Runtime.Utility;
 using UnityEngine;
 
 namespace OJ.UX.Runtime.References.Serialized
@@ -30,7 +32,16 @@ namespace OJ.UX.Runtime.References.Serialized
 
         private ISerializedDetail ConstructFromDetail(string detailName, IDetail detail)
         {
-            //TODO: Construct the serialized detail from the provided detail.
+            var serializedType = SerializedReferenceUtility.GetSerializedDetailType(detail.ValueType);
+            if (serializedType != null)
+            {
+                var serializedDetail = (AbstractSerializedDetail)Activator.CreateInstance(serializedType);
+                serializedDetail.Name = detailName;
+
+                return serializedDetail;
+            }
+
+            Debug.LogWarning($"{detailName} of type: {detail.ValueType} could not be linked");
             return null;
         }
         

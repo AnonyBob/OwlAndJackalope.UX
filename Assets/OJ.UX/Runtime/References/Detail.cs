@@ -31,6 +31,8 @@ namespace OJ.UX.Runtime.References
                 }
             }
         }
+
+        public Type ValueType => typeof(TValue);
         
         public long Version { get; private set; }
 

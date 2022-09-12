@@ -1,10 +1,13 @@
-﻿using OJ.UX.Runtime.Versions;
+﻿using System;
+using OJ.UX.Runtime.Versions;
 
 namespace OJ.UX.Runtime.References
 {
     public interface IDetail : IVersionable, IChangeable
     {
         object Value { get; }
+        
+        Type ValueType { get; }
     }
 
     public interface IDetail<TValue> : IDetail

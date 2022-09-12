@@ -16,8 +16,8 @@ namespace OJ.UX.Editor.References.Serialized
             if (_list == null)
             {
                 var detailsProp = property.FindPropertyRelative(nameof(SerializedReference.Details));
-                _menu = SerializedReferenceUtility.CreateSelectionMenu(detailsProp);
-                _list = SerializedReferenceUtility.CreateDetailList(label, detailsProp, _menu);
+                _menu = SerializedEditorReferenceUtility.CreateSelectionMenu(detailsProp);
+                _list = SerializedEditorReferenceUtility.CreateDetailList(label, detailsProp, _menu);
             }
             
             _list.DoList(position);
