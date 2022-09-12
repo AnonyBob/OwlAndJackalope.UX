@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5596229890578130940}
   - component: {fileID: 5596229890578130913}
   - component: {fileID: 4777512950599480152}
-  - component: {fileID: 4847891766302329621}
+  - component: {fileID: 8048671799721556070}
   - component: {fileID: 3086630714705387201}
   - component: {fileID: 5596229890578130914}
   - component: {fileID: 7987962701428832419}
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f999726aebc448bfa644c51278058ad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4847891766302329621
+--- !u!114 &8048671799721556070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,10 +73,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5596229890578130941}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5f1786abff74edcb6d5ef3dc48940b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 958bd0e87faa48dc992f920751655623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _group: {fileID: 0}
 --- !u!114 &3086630714705387201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,8 +309,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4847891766302329621}
-        m_TargetAssemblyTypeName: OJ.UX.Runtime.Selection.SelectableItem, OJ.UX.Runtime
+      - m_Target: {fileID: 8048671799721556070}
+        m_TargetAssemblyTypeName: OJ.UX.Runtime.Selection.SelectionItem`1[[OJ.UX.Runtime.References.IReference,
+          OJ.UX.Runtime
         m_MethodName: ToggleSelect
         m_Mode: 1
         m_Arguments:

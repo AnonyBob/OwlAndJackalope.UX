@@ -1,4 +1,5 @@
-﻿using OJ.UX.Editor.Utility;
+﻿using System.Text.RegularExpressions;
+using OJ.UX.Editor.Utility;
 using OJ.UX.Runtime.Binders.Conditions;
 using UnityEditor;
 using UnityEngine;
@@ -64,7 +65,11 @@ namespace OJ.UX.Editor.Binders
             var content = string.Empty;
             if (Application.isPlaying)
             {
-                var isMet = CheckConditionIsMet(conditionalAction.serializedObject, 0);
+                var regex = new Regex(@"_conditionalActions\.Array\.data\[(\d+)\]");
+                var match = regex.Match(conditionalAction.propertyPath);
+                var index = int.Parse(match.Groups[1].Value);
+                
+                var isMet = CheckConditionIsMet(conditionalAction.serializedObject, index);
                 GUI.backgroundColor = isMet ? Color.green : Color.red;
                 content = isMet ? "Active" : "Inactive";
             }

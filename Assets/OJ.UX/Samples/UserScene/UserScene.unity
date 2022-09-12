@@ -1969,8 +1969,8 @@ GameObject:
   - component: {fileID: 1557847147}
   - component: {fileID: 1557847148}
   - component: {fileID: 1557847149}
-  - component: {fileID: 1557847151}
   - component: {fileID: 1557847150}
+  - component: {fileID: 1557847151}
   m_Layer: 5
   m_Name: Container
   m_TagString: Untagged
@@ -2050,44 +2050,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1557847146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8657d1da46174865b267cd9728f9aba5, type: 3}
+  m_Script: {fileID: 11500000, guid: db62140af8a6461496badb9bca6ce58d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _serializedReference:
-    Details:
-    - rid: 6054588409902792756
-    - rid: 6054588409902792757
-    - rid: 6054588409902792758
-    - rid: 6054588409902792759
-    - rid: 6054588409902792760
-  references:
-    version: 2
-    RefIds:
-    - rid: 6054588409902792756
-      type: {class: SerializedBoolDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: AtMaxSelected
-        Value: 0
-    - rid: 6054588409902792757
-      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: SelectedCount
-        Value: 0
-    - rid: 6054588409902792758
-      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: MaxSelectedAllowed
-        Value: 0
-    - rid: 6054588409902792759
-      type: {class: SerializedGameObjectDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: Selected
-        Value: {fileID: 0}
-    - rid: 6054588409902792760
-      type: {class: SerializedGameObjectListValueDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
-      data:
-        Name: SelectedList
-        Value: []
+  _maxSelectionCount: 1
+  _deselectOldest: 1
 --- !u!114 &1557847151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2097,11 +2064,44 @@ MonoBehaviour:
   m_GameObject: {fileID: 1557847146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2f1c483d4494eb485049c425da3d5c1, type: 3}
+  m_Script: {fileID: 11500000, guid: 8657d1da46174865b267cd9728f9aba5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSelectionCount: 1
-  _deselectOldest: 0
+  _serializedReference:
+    Details:
+    - rid: 6054588590381596674
+    - rid: 6054588590381596675
+    - rid: 6054588590381596676
+    - rid: 6054588590381596677
+    - rid: 6054588590381596678
+  references:
+    version: 2
+    RefIds:
+    - rid: 6054588590381596674
+      type: {class: SerializedBoolDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: AtMaxSelected
+        Value: 0
+    - rid: 6054588590381596675
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: SelectedCount
+        Value: 0
+    - rid: 6054588590381596676
+      type: {class: SerializedIntDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: MaxSelectedAllowed
+        Value: 0
+    - rid: 6054588590381596677
+      type: {class: SerializedReferenceDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: Selected
+        Value: {fileID: 0}
+    - rid: 6054588590381596678
+      type: {class: SerializedReferenceListValueDetail, ns: OJ.UX.Runtime.References.Serialized, asm: OJ.UX.Runtime}
+      data:
+        Name: SelectedList
+        Value: []
 --- !u!1 &1594694943
 GameObject:
   m_ObjectHideFlags: 0

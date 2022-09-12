@@ -11,7 +11,8 @@ namespace OJ.UX.Runtime.Binders.ListBinders
     public class ReferenceInitializationObject : DetailsProvider, IInitializableGameObject<IReference>
     {
         private IReference _reference;
-        public IReference Reference => _reference;
+        
+        public IReference Value => _reference;
 
         public GameObject GameObject => gameObject;
         
@@ -22,6 +23,12 @@ namespace OJ.UX.Runtime.Binders.ListBinders
             if (module != null && _reference != null)
             {
                 module.Reference = _reference;
+            }
+
+            var alertables = GetComponents<IAlertable>();
+            foreach (var alertable in alertables)
+            {
+                alertable.AlertOfChange();
             }
         }
 
