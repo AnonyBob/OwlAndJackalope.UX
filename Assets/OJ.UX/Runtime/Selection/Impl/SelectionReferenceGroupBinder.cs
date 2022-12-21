@@ -2,7 +2,7 @@
 
 namespace OJ.UX.Runtime.Selection.Impl
 {
-    public class SelectionReferenceGroup : SelectionGroup<IReference>
+    public class SelectionReferenceGroupBinder : SelectionGroupBinder<IReference>
     {
         
     }

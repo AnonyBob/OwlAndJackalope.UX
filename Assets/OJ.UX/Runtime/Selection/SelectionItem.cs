@@ -8,54 +8,57 @@ namespace OJ.UX.Runtime.Selection
 {
     public abstract class SelectionItem<TValue> : MonoBehaviour, IAlertable
     {
-        private SelectionGroup<TValue> _selectionGroup;
+        private SelectionGroupBinder<TValue> _selectionGroupProvider;
         private ReferenceModule _module;
 
         protected virtual void Awake()
         {
-            _selectionGroup = GetComponentInParent<SelectionGroup<TValue>>();
+            _selectionGroupProvider = GetComponentInParent<SelectionGroupBinder<TValue>>();
             _module = GetComponent<ReferenceModule>();
         }
 
         protected virtual void Start()
         {
-            _selectionGroup.SelectedItems.OnChanged += HandleSelectionChanged;
+            _selectionGroupProvider.OnSelectionChanged.AddListener(HandleSelectionChanged);
         }
 
         protected virtual void OnDestroy()
         {
-            _selectionGroup.SelectedItems.OnChanged -= HandleSelectionChanged;
+            if (_selectionGroupProvider != null)
+            {
+                _selectionGroupProvider.OnSelectionChanged.RemoveListener(HandleSelectionChanged);
+            }
         }
 
         public abstract TValue GetValue();
 
         public void AlertOfChange()
         {
-            if(_selectionGroup != null && _selectionGroup.SelectedItems != null)
+            if(_selectionGroupProvider != null && _selectionGroupProvider.SelectedItems != null)
                 HandleSelectionChanged();
         }
 
         public void Select()
         {
-            if (_selectionGroup != null)
+            if (_selectionGroupProvider != null)
             {
-                _selectionGroup.Select(GetValue());
+                _selectionGroupProvider.Select(GetValue());
             }
         }
 
         public void ToggleSelect()
         {
-            if (_selectionGroup != null)
+            if (_selectionGroupProvider != null)
             {
-                _selectionGroup.ToggleSelect(GetValue());
+                _selectionGroupProvider.ToggleSelect(GetValue());
             }
         }
 
         public void Deselect()
         {
-            if (_selectionGroup != null)
+            if (_selectionGroupProvider != null)
             {
-                _selectionGroup.Deselect(GetValue());
+                _selectionGroupProvider.Deselect(GetValue());
             }
         }
         
@@ -63,7 +66,7 @@ namespace OJ.UX.Runtime.Selection
         {
             if (_module != null)
             {
-                var isSelected = _selectionGroup.SelectedItems.Contains(GetValue());
+                var isSelected = _selectionGroupProvider.SelectedItems.Contains(GetValue());
                 var detail = _module.Reference.GetDetail<bool>(SelectionConstants.IsSelected);
                 if (detail is IMutableDetail<bool> mutableDetail)
                 {

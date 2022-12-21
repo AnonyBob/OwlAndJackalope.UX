@@ -5,13 +5,10 @@ using UnityEngine;
 
 namespace OJ.UX.Runtime.Selection
 {
-    public class SelectionGroup<TValue> : DetailsProvider
+    public abstract class SelectionGroupProvider<TValue> : DetailsProvider
     {
         [SerializeField, Tooltip("Amount that can be selected at one time. Set to zero to have unlimited.")]
         private int _maxSelectionCount = 1;
-
-        [SerializeField, Tooltip("When true, if there is a max selection count set, when exceeded the oldest item will be deselected.")] 
-        private bool _deselectOldest = false;
         
         private IReference _reference;
         private ListDetail<TValue> _selectedList;
@@ -19,10 +16,7 @@ namespace OJ.UX.Runtime.Selection
         private IDetail<int> _selectedCount;
         private IDetail<int> _maxSelectionCountDetail;
         private IDetail<bool> _atMaxSelected;
-
-        public IDetail<TValue> SelectedItem => _selectedItem;
-        public ListDetail<TValue> SelectedItems => _selectedList;
-
+        
         private void Awake()
         {
             if (_reference == null)
@@ -31,63 +25,6 @@ namespace OJ.UX.Runtime.Selection
             }
         }
         
-        public bool Select(TValue item)
-        {
-            if (_selectedList.Contains(item))
-            {
-                return false;
-            }
-            
-            if (_atMaxSelected.Value)
-            {
-                if (_deselectOldest)
-                {
-                    Deselect(_selectedList[0]);
-                }
-                else
-                {
-                    return false;    
-                }
-            }
-            
-            _selectedList.Add(item);
-            return true;
-        }
-
-        public void ToggleSelect(TValue item)
-        {
-            if (_selectedList.Contains(item))
-            {
-                Deselect(item);
-            }
-            else
-            {
-                Select(item);
-            }
-        }
-
-        public void SelectMultiple(params TValue[] items)
-        {
-            foreach (var item in items)
-            {
-                Select(item);
-            }
-        }
-
-        public bool Deselect(TValue item)
-        {
-            var deselected = _selectedList.Remove(item);
-            return deselected;
-        }
-
-        public void DeselectAll()
-        {
-            for (var i = _selectedCount.Value - 1; i >= 0; --i)
-            {
-                Deselect(_selectedList[i]);
-            }
-        }
-
         private void CreateReference()
         {
             _selectedList = new ListDetail<TValue>();
