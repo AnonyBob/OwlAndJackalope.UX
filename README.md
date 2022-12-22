@@ -53,5 +53,10 @@ Each ```Observer``` must be initialized. This should most likely happen in the S
 #### Reference Templates
 ```ReferenceTemplates``` are Scriptable Objects that contain a Reference and behave almost identically to ```ReferenceModules```. These can be used to assign ```IDetails``` to ```ReferenceModules``` and as example models to stub into your game for testing. ```ReferenceModules``` have an Import button that can be used to import the ```IDetails``` from an existing ```ReferenceTemplate```. This will only add ```IDetails``` that didn't originally existing the ```ReferenceModule```. All other ```IDetails``` will be preserved. ```ReferenceModules``` can now export ```ReferenceTemplates``` via a button in the inspector.
 
-### Conditions and Condition Binders
+### Conditions and Conditional Binders
+```Conditions``` are objects that will check a Detail against a fixed value. If the Detail when compared to the value returns true then the condition is met. ```Conditional Binders``` are special Detail Binders that pair multiple conditions with an associated action. Once the condition becomes true the associated action will be performed. This could be used to script the appearance of certain buttons or options depending on the level of the player. There are a few default Conditional Binders to get you started. The ```GameObjectActiveConditionalBinder``` controls whether GameObjects are enabled or disabled depending on the associated conditions. ```UnityActionConditionalBinder``` will fire an arbitrary set of actions whenever the associated conditions are met.
+
+#### Creating New Condition Comparisons 
+By default most primitive type comparisons are available, but you can extend to include new comparisons in conditions. By implementing the ```IConditionComparison``` interface you have created a new comparsion type that can be used against details. Using the ```ConditionDisplay``` attribute can allow you to put it into specific categories when displaying options. 
+
 
