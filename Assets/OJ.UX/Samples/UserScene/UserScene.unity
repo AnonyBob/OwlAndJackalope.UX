@@ -3992,7 +3992,7 @@ MonoBehaviour:
         ActiveState: 1
       - GameObject: {fileID: 1782671474}
         ActiveState: 1
-    _isOpen: 0
+    _isOpen: 1
   - _actionDescription: If can't message
     _conditionGroups:
     - _conditions:
@@ -4013,7 +4013,7 @@ MonoBehaviour:
         ActiveState: 0
       - GameObject: {fileID: 1782671474}
         ActiveState: 0
-    _isOpen: 0
+    _isOpen: 1
   - _actionDescription: If is a friend
     _conditionGroups:
     - _conditions:
@@ -4032,7 +4032,7 @@ MonoBehaviour:
         ActiveState: 0
       - GameObject: {fileID: 2121691230511913943}
         ActiveState: 0
-    _isOpen: 0
+    _isOpen: 1
   - _actionDescription: If is not a friend.
     _conditionGroups:
     - _conditions:
@@ -4051,7 +4051,7 @@ MonoBehaviour:
         ActiveState: 1
       - GameObject: {fileID: 2121691230511913943}
         ActiveState: 1
-    _isOpen: 0
+    _isOpen: 1
   references:
     version: 2
     RefIds:

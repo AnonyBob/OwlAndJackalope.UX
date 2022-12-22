@@ -33,6 +33,11 @@ namespace OJ.UX.Runtime.Binders.Conditions
     {
         
     }
+    
+    [System.Serializable, ConditionDisplay("String Comparison", "String")]
+    public class ConditionStringComparison : ConditionValueComparison<string>
+    {
+    }
 
     [System.Serializable, ConditionDisplay("Enum Comparison", "Enum")]
     public class ConditionEnumComparison : IConditionComparison

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using OJ.UX.Editor.Utility;
 using UnityEditor;
+using UnityEditor.Experimental;
 using UnityEngine;
 
 namespace OJ.UX.Editor
@@ -112,6 +113,35 @@ namespace OJ.UX.Editor
             valueProp.longValue = timeSpan.Ticks;
 
             EditorGUIUtility.labelWidth = previousWidth;
+        }
+
+        public static void DrawDateTimeFromLong(Rect valuePos, SerializedProperty valueProp)
+        {
+            var dateTime = new DateTime(valueProp.longValue, DateTimeKind.Utc);
+            var pos = new Rect(valuePos);
+            pos.width = valuePos.width * .75f;
+
+            var changedDate = false;
+            EditorGUI.BeginChangeCheck();
+            var originalDateString = dateTime.ToString("G");
+            var dateString = EditorGUI.TextField(pos, GUIContent.none, originalDateString);
+            if (EditorGUI.EndChangeCheck() && originalDateString != dateString)
+            {
+                if (DateTime.TryParse(dateString, out var date))
+                {
+                    valueProp.longValue = date.Ticks;
+                }
+
+                changedDate = true;
+            }
+
+            pos.x = pos.x + pos.width + 2;
+            pos.width = valuePos.width - pos.width - 2;
+            var isDark = EditorGUIUtility.isProSkin;
+            var stopWatchTex = Resources.Load<Texture>(isDark ? "stopwatch" : "stopwatch_black");
+            if (GUI.Button(pos, stopWatchTex) && !changedDate)
+            {
+            }
         }
         
         public static SerializedProperty FindParentProperty(this SerializedProperty serializedProperty)

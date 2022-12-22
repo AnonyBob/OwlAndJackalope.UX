@@ -10,7 +10,7 @@ namespace OJ.UX.Runtime.Binders.Conditions
         IsNotNullOrEmpty
     }
     
-    [Serializable, ConditionDisplay("String is Null/Empty", "String")]
+    [Serializable, ConditionDisplay("String is Null or Empty", "String")]
     public class StringNullOrEmptyComparison : IConditionComparison
     {
         [SerializeField]

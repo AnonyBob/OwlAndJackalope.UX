@@ -18,7 +18,7 @@ namespace OJ.UX.Editor.Binders
                 var conditionalActionsProp = serializedObject.FindProperty("_conditionalActions");
                 _conditionalActionList = new ReorderableList(serializedObject, 
                     conditionalActionsProp, true, true, true, true);
-            
+                
                 _conditionalActionList.drawHeaderCallback = rect => EditorGUI.LabelField(rect, "Conditional Actions");
                 _conditionalActionList.drawElementCallback = (rect, index, active, focused) =>
                 {
