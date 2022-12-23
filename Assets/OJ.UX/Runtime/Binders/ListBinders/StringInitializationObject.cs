@@ -17,6 +17,13 @@ namespace OJ.UX.Runtime.Binders.ListBinders
         {
             Value = value;
             _onValueSet?.Invoke(Value);
+
+            
+            var alertables = GetComponents<IAlertable>();
+            foreach (var alertable in alertables)
+            {
+                alertable.AlertOfChange();
+            }
         }
     }
 }

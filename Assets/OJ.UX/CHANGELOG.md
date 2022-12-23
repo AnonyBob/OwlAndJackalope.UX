@@ -47,3 +47,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Updated the conditional groups to make custom editors for the conditional actions
 - Made the conditional groups reorderable.
+
+## [1.1.2] -- 2022-12-22
+### Fixed 
+- DateTime now has a proper inspector window
+- Conditional comparisons can now support multiple comparison types for a single type
+- Fixed the test runner and updated deprecated actions.
+### Changes
+- SelectionGroup was broken up into SelectionGroupDetailProvider and SelectionGroupBinder.
+- Updated to Unity 2022.
+- Added check to the AbstractDetailBinder that will detect undestroyed Observers in Editor.
+- Added new default string comparison in addition to the null or empty check.
+- Updated Readme.

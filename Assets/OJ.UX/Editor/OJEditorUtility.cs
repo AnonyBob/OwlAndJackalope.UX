@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using OJ.UX.Editor.Utility;
 using UnityEditor;
-using UnityEditor.Experimental;
 using UnityEngine;
 
 namespace OJ.UX.Editor
 {
-    public static class OJEditorUtility
+    public static partial class OJEditorUtility
     {
         private static readonly Dictionary<string, Rect> _lastRects = new Dictionary<string, Rect>();
 
@@ -18,7 +17,23 @@ namespace OJ.UX.Editor
             return GUILayout.Button(text, style ?? GUI.skin.button);
         }
         
+        public static bool Button(Texture text, GUIStyle style = null)
+        {
+            return GUILayout.Button(text, style ?? GUI.skin.button);
+        }
+        
         public static bool Button(string text, Color color, GUIStyle style = null)
+        {
+            var previousColor = GUI.backgroundColor;
+            GUI.backgroundColor = color;
+            
+            var pressed =  GUILayout.Button(text, style ?? GUI.skin.button);
+            GUI.backgroundColor = previousColor;
+
+            return pressed;
+        }
+        
+        public static bool Button(Texture text, Color color, GUIStyle style = null)
         {
             var previousColor = GUI.backgroundColor;
             GUI.backgroundColor = color;
@@ -40,6 +55,28 @@ namespace OJ.UX.Editor
             return pressed;
         }
         
+        public static bool Button(Texture text, Color color, float width, GUIStyle style = null)
+        {
+            var previousColor = GUI.backgroundColor;
+            GUI.backgroundColor = color;
+            
+            var pressed =  GUILayout.Button(text, style ?? GUI.skin.button, GUILayout.Width(width));
+            GUI.backgroundColor = previousColor;
+
+            return pressed;
+        }
+        
+        public static bool Button(string text, Color color, float width, float height, GUIStyle style = null)
+        {
+            var previousColor = GUI.backgroundColor;
+            GUI.backgroundColor = color;
+            
+            var pressed =  GUILayout.Button(text, style ?? GUI.skin.button, GUILayout.Width(width), GUILayout.Height(height));
+            GUI.backgroundColor = previousColor;
+
+            return pressed;
+        }
+        
         public static bool CenteredButton(string text, Color color, float width, GUIStyle style = null, string rectId = null)
         {
             var pressed = false;
@@ -50,6 +87,36 @@ namespace OJ.UX.Editor
                 GUI.backgroundColor = color;
                 
                 pressed =  GUILayout.Button(text, style ?? GUI.skin.button,GUILayout.Width(width));
+                if (rectId != null)
+                {
+                    SetLastRect(rectId);
+                }
+                
+                GUI.backgroundColor = previousColor;
+                GUILayout.FlexibleSpace();
+            }
+            
+            return pressed;
+        }
+        
+        public static bool CenteredButton(Texture text, Color color, float width, float height = 0f, GUIStyle style = null, string rectId = null)
+        {
+            var pressed = false;
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                GUILayout.FlexibleSpace();
+                var previousColor = GUI.backgroundColor;
+                GUI.backgroundColor = color;
+
+                if (height > 0)
+                {
+                    pressed = GUILayout.Button(text, style ?? GUI.skin.button,GUILayout.Width(width), GUILayout.Height(height));  
+                }
+                else
+                {
+                    pressed =  GUILayout.Button(text, style ?? GUI.skin.button,GUILayout.Width(width));    
+                }
+                
                 if (rectId != null)
                 {
                     SetLastRect(rectId);
@@ -141,6 +208,7 @@ namespace OJ.UX.Editor
             var stopWatchTex = Resources.Load<Texture>(isDark ? "stopwatch" : "stopwatch_black");
             if (GUI.Button(pos, stopWatchTex) && !changedDate)
             {
+                PopupWindow.Show(valuePos, new DateTimePickerWindow(valueProp));
             }
         }
         
